@@ -14,9 +14,19 @@
         ],
         "pathGroups": [
           {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
             "pattern": "{react/**,react-dom/**}",
             "group": "external",
             "position": "before"
+          },
+          {
+            "pattern": "next",
+            "group": "external",
+            "position": "after"
           },
           {
             "pattern": "next/**",
