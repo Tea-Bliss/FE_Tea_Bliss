@@ -1,0 +1,23 @@
+@import '@/styles/mixins.scss';
+
+.square {
+  padding: 1.2rem;
+  width: 100%;
+  font-feature-settings: 'ss10' on;
+  text-align: center;
+  background-color: #ff8980;
+  color: #ffffff;
+  @include sopoqa(1.6rem, 600, 2.4rem);
+
+  &:disabled {
+    background-color: #fff1f0;
+    color: #bfbfbf;
+  }
+}
+
+.round {
+  padding: 0.8rem 1.2rem;
+  font-feature-settings: 'ss10' on;
+  text-align: center;
+  @include sopoqa(1.3rem, 500, 1.8rem);
+}
