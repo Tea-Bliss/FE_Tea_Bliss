@@ -1,0 +1,15 @@
+@mixin flexSort($direction, $justify, $alignItems, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $alignItems;
+  gap: $gap;
+}
+
+@mixin sopoqa($size, $weight, $height) {
+  font-family: 'SpoqaHanSansNeo-Regular';
+  font-size: $size;
+  font-style: normal;
+  font-weight: $weight;
+  line-height: $height;
+}
