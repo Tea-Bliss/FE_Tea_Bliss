@@ -1,6 +1,10 @@
+import { ToastContainer } from 'react-toastify';
+
 import type { Metadata } from 'next';
 
 import { Inter } from 'next/font/google';
+
+import ReactQueryProvider from '@/components/common/Provider/ReactQueryProvider';
 
 import 'react-toastify/dist/ReactToastify.css';
 
