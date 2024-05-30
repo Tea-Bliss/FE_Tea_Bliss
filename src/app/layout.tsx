@@ -8,6 +8,8 @@ import ReactQueryProvider from '@/components/common/Provider/ReactQueryProvider'
 
 import 'react-toastify/dist/ReactToastify.css';
 
+import '@/styles/_reset.scss';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
