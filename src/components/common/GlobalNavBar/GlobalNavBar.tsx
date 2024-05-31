@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import Link from 'next/link';
 
 import styles from '@/components/common/GlobalNavBar/GlobalNavBar.module.scss';
+import ROUTE from '@/constants/route';
 import Logo from '@/icons/logo.svg';
 
 import AuthButton from './component/AuthButton/AuthButton';
@@ -16,7 +17,7 @@ export default function GlobalNavBar() {
     <header className={cn('container')}>
       <nav className={cn('navContainer')}>
         <div className={cn('leftWrapper')}>
-          <Link href={'/'}>
+          <Link href={ROUTE.HOME}>
             <Logo width="100%" height="100%" />
           </Link>
           <ul className={cn('menuBox')}>

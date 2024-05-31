@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import Button from '@/components/common/Button';
 import styles from '@/components/common/GlobalNavBar/component/MyInfo/MyInfo.module.scss';
+import ROUTE from '@/constants/route';
 const cn = classNames.bind(styles);
 
 // TODO : 로그인 정보 api 연결 예정
@@ -24,7 +25,7 @@ export default function MyInfoContent() {
       </div>
       <div className={cn('buttonWrapper')}>
         <Button shape="round" color="red">
-          <Link className={cn('myInfoBtn')} href={'/'}>
+          <Link className={cn('myInfoBtn')} href={ROUTE.MY_PAGE}>
             마이페이지
           </Link>
         </Button>
