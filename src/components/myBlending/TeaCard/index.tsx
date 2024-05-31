@@ -1,8 +1,11 @@
 'use client';
 
+import Button from '@/components/common/Button';
 import styles from '@/components/myBlending/TeaCard/TeaCard.module.scss';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
+import { useState } from 'react';
+import CheckIcon from './CheckIcon';
 
 const cn = classNames.bind(styles);
 
@@ -22,9 +25,22 @@ interface TeaCardProps {
 }
 
 export default function TeaCard({ data }: TeaCardProps) {
+  const [picked, setPicked] = useState(false);
+
   return (
-    <div>
-      <Image src={data.imageSource} alt={data.name} width={30} height={30} />
+    <div className={cn('teaCard', picked && 'picked')}>
+      <div className={cn('imgContainer')} onClick={() => setPicked((prev) => !prev)}>
+        <Image src={data.imageSource} alt={data.name} fill objectFit="contain" />
+      </div>
+      <div className={cn('name')}>
+        {data.name.split('(')[0]}
+        <br />
+        {`(${data.name.split('(')[1]}`}
+      </div>
+      <Button shape="round" color="white">
+        설명보기 →
+      </Button>
+      {picked && <CheckIcon className={cn('checkIcon')} />}
     </div>
   );
 }

@@ -14,7 +14,7 @@ const mockData = {
   description: '풍성한 초콜릿과 달콤한 오렌지, 푸에르를 곁들인 축제 간식입니다.',
   sort: 'Pu Erh' as TeaSort,
   taste: ['단맛', '프루티', '쓴맛'] as Taste[],
-  imageSource: '/images/mock/vanila.png',
+  imageSource: '/images/my-blending/vanila.png',
 };
 
 const mockDatas = Array.from({ length: 10 }, (_, i) => ({

@@ -1,0 +1,38 @@
+.teaCard {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  width: 28.5rem;
+  padding: 1.2rem 2rem 2rem 2rem;
+  border: 0.2rem solid $black-1;
+  border-radius: 1.2rem;
+  gap: 1.6rem;
+
+  &.picked {
+    border-color: $orange-5;
+    box-shadow: 0 0.2rem 1.8rem 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .imgContainer {
+    position: relative;
+    width: 100%;
+    height: 28rem;
+    cursor: pointer;
+
+    &:hover {
+      filter: blur(0.1rem) brightness(80%);
+    }
+  }
+
+  .name {
+    text-align: center;
+    @include font(2.2rem, 600, 3rem);
+  }
+
+  .checkIcon {
+    top: -1.2rem;
+    left: 46%;
+    position: absolute;
+  }
+}
