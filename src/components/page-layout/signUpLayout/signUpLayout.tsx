@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
+import Header from '@/components/common/Header/signUpHeader';
 import SignUpForm from '@/components/page-layout/signUpLayout/signUpForm/signUpForm';
-import SignUpHeader from '@/components/page-layout/signUpLayout/signUpHeader/signUpHeader';
 
 import styles from './signUpLayout.module.scss';
 
@@ -11,7 +11,7 @@ export default function SignUpLayout() {
   return (
     <main className={cn('layout')}>
       <div className={cn('container')}>
-        <SignUpHeader />
+        <Header />
         <SignUpForm />
       </div>
     </main>
