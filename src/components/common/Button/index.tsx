@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
 import styles from '@/components/common/Button/Button.module.scss';
 
-const cx = classNames.bind(styles);
+const cn = classNames.bind(styles);
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isCancel?: boolean;
@@ -33,7 +33,7 @@ export default function Button({
 }: SquareButtonProps | RoundButtonProps) {
   return (
     <button
-      className={cx('shape', isCancel ? 'cancel' : 'color')}
+      className={cn('shape', isCancel ? 'cancel' : 'color')}
       style={{ width: `${width}rem`, height: `${height}rem` }}
       {...props}
     >
