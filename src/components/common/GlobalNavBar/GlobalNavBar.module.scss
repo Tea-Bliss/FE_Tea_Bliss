@@ -1,0 +1,45 @@
+.container {
+  padding: 0 4rem;
+  @include tablet {
+    padding: 0 2rem;
+  }
+}
+
+.nav-container {
+  @include flexSort(row, space-between, center, 4rem);
+  padding: 4rem 0;
+}
+
+.left-wrapper {
+  @include flexSort(row, center, center, 4rem);
+
+  svg {
+    width: 13.9rem;
+    height: 4.1rem;
+    @include mobile {
+      width: 10.4rem;
+      height: 3.1rem;
+    }
+  }
+}
+
+.menu-box {
+  @include flexSort(row, center, center, 2rem);
+
+  .menu-item {
+    padding: 0.8rem;
+    color: $black-13;
+    text-align: center;
+    font-feature-settings: 'ss10' on;
+    @include font(1.7rem, 600, 2.4rem);
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.right-wrapper {
+  position: relative;
+  @include flexSort(row, center, center, 1.2rem);
+}
