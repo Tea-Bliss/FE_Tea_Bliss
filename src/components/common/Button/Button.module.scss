@@ -1,0 +1,64 @@
+.square {
+  padding: 1.2rem;
+  border: none;
+  border-radius: 0.4rem;
+  @include font(1.6rem, 600, 2.4rem);
+  color: $black-1;
+  text-align: center;
+  font-feature-settings: 'ss10' on;
+
+  &.red {
+    background-color: $orange-5;
+
+    &:hover {
+      background-color: $orange-3;
+      color: $black-1;
+    }
+
+    &:active {
+      background-color: $orange-6;
+      color: $black-1;
+    }
+
+    &:disabled {
+      background-color: $orange-1;
+      color: $black-6;
+    }
+  }
+
+  &.green {
+    background-color: #8fe65c;
+
+    &:hover {
+      background-color: $green;
+    }
+
+    &:active {
+      background-color: #5ad80e;
+    }
+  }
+
+  &.cancel {
+    background-color: $black-5;
+  }
+}
+
+.round {
+  padding: 0.8rem 1.2rem;
+  border: 0.1rem solid $black-13;
+  border-radius: 2.4rem;
+  @include font(1.3rem, 500, 1.8rem);
+  text-align: center;
+  font-feature-settings: 'ss10' on;
+
+  &.red {
+    border-color: $orange-5;
+    background-color: $orange-1;
+    color: $orange-6;
+  }
+
+  &.cancel {
+    background-color: $black-5;
+    color: $black-1;
+  }
+}
