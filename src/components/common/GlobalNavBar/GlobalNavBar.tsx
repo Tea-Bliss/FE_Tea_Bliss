@@ -14,15 +14,15 @@ const cn = classNames.bind(styles);
 export default function GlobalNavBar() {
   return (
     <header className={cn('container')}>
-      <nav className={cn('nav-container')}>
-        <div className={cn('left-wrapper')}>
+      <nav className={cn('navContainer')}>
+        <div className={cn('leftWrapper')}>
           <Link href={'/'}>
             <Logo width="100%" height="100%" />
           </Link>
-          <ul className={cn('menu-box')}>
+          <ul className={cn('menuBox')}>
             {MENU_ITEM.map((item) => (
               <li key={item.id}>
-                <Link className={cn('menu-item')} href={item.href}>
+                <Link className={cn('menuItem')} href={item.href}>
                   {item.label}
                 </Link>
               </li>
@@ -30,7 +30,7 @@ export default function GlobalNavBar() {
           </ul>
         </div>
 
-        <div className={cn('right-wrapper')}>
+        <div className={cn('rightWrapper')}>
           <AuthButton />
           <Hamburger />
         </div>

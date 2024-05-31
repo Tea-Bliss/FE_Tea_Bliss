@@ -17,19 +17,19 @@ export default function MyInfoContent() {
           src={'/icons/다운로드.jpg'}
           width={105}
           height={105}
-          className={cn('profile-image')}
+          className={cn('profileImage')}
           alt="프로필 이미지"
         />
-        <p className={cn('user-name')}>황준용</p>
+        <p className={cn('userName')}>황준용</p>
       </div>
-      <div className={cn('button-wrapper')}>
+      <div className={cn('buttonWrapper')}>
         <Button shape="round" color="red">
-          <Link className={cn('my-info-btn')} href={'/'}>
+          <Link className={cn('myInfoBtn')} href={'/'}>
             마이페이지
           </Link>
         </Button>
         <Button shape="round" color="white">
-          <p className={cn('my-info-btn')}>로그아웃</p>
+          <p className={cn('myInfoBtn')}>로그아웃</p>
         </Button>
       </div>
     </>

@@ -5,12 +5,15 @@
   }
 }
 
-.nav-container {
+.navContainer {
   @include flexSort(row, space-between, center, 4rem);
   padding: 4rem 0;
+  @include mobile {
+    padding: 2rem 0;
+  }
 }
 
-.left-wrapper {
+.leftWrapper {
   @include flexSort(row, center, center, 4rem);
 
   svg {
@@ -23,10 +26,10 @@
   }
 }
 
-.menu-box {
+.menuBox {
   @include flexSort(row, center, center, 2rem);
 
-  .menu-item {
+  .menuItem {
     padding: 0.8rem;
     color: $black-13;
     text-align: center;
@@ -39,7 +42,7 @@
   }
 }
 
-.right-wrapper {
+.rightWrapper {
   position: relative;
   @include flexSort(row, center, center, 1.2rem);
 }

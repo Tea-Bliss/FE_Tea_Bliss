@@ -5,34 +5,38 @@
   }
 }
 
-.hamburger-menu {
+.hamburgerMenu {
+  display: none;
   padding: 2rem;
   position: fixed;
   top: 0;
   right: 0;
   z-index: 999;
-  width: 50%;
+  width: 100%;
+  max-width: 37.5rem;
   height: 100%;
   background-color: $black-1;
-  transform: translateX(100%);
   transition: transform 0.3s ease;
-  @include flexSort(column, flex-start, flex-start, 3rem);
-  &.show-nav {
+  transform: translateX(100%);
+  &.showNav {
     transform: translateX(0);
+  }
+  @include mobile {
+    @include flexSort(column, flex-start, flex-start, 3rem);
   }
 }
 
-.my-info {
+.myInfo {
   width: 100%;
   @include flexSort(column, center, null, 3rem);
 }
 
-.menu-box {
+.menuBox {
   width: 100%;
-  .menu-item {
+  .menuItem {
     padding: 0.8rem;
     border-bottom: 0.1rem solid $black-5;
-    .menu-link {
+    .menuLink {
       color: $black-13;
       text-align: center;
       font-feature-settings: 'ss10' on;

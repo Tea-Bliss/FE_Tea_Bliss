@@ -13,7 +13,7 @@ interface PopupHeaderProps {
 
 export default function PopupHeader({ toggle }: PopupHeaderProps) {
   return (
-    <div className={cn('popup-header')}>
+    <div className={cn('popupHeader')}>
       <h2>내 정보</h2>
       <button onClick={toggle}>
         <Close />

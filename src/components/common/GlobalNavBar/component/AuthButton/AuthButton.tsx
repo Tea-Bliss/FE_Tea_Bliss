@@ -24,10 +24,10 @@ export default function AuthButton() {
         </>
       ) : (
         <>
-          <Link className={cn('auth-link')} href={'/signin'}>
+          <Link className={cn('authLink')} href={'/signin'}>
             로그인
           </Link>
-          <Link className={cn('auth-link')} href={'/signup'}>
+          <Link className={cn('authLink')} href={'/signup'}>
             회원가입
           </Link>
         </>

@@ -1,20 +1,20 @@
 .container {
+  padding: 2.4rem;
+  border: 0.1rem solid $black-13;
   position: absolute;
   top: 3rem;
   right: 0;
-  border: 0.1rem solid $black-13;
   width: max-content;
   background-color: $black-1;
   border-radius: 0.8rem;
-  padding: 2.4rem;
   @include flexSort(column, center, null, 3.2rem);
 }
 
-.popup-header {
+.popupHeader {
   @include flexSort(row, space-between, center, null);
   h2 {
-    text-align: center;
     color: $black-13;
+    text-align: center;
     @include font(1.8rem, 600, 2.6rem);
   }
 }
@@ -26,10 +26,10 @@
 
 .profile {
   @include flexSort(column, center, center, 1.3rem);
-  .profile-image {
+  .profileImage {
     border-radius: 10.5rem;
   }
-  .user-name {
+  .userName {
     color: $black-13;
     text-align: center;
     font-feature-settings: 'ss10' on;
@@ -37,10 +37,10 @@
   }
 }
 
-.button-wrapper {
+.buttonWrapper {
   @include flexSort(row, center, center, 1.2rem);
 
-  .my-info-btn {
+  .myInfoBtn {
     @include font(1.3rem, 500, 1.8rem);
   }
 }

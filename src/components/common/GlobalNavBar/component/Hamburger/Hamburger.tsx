@@ -29,16 +29,16 @@ export default function Hamburger() {
         </button>
       </div>
 
-      <div className={cn('hamburger-menu', { 'show-nav': showNavMenu })}>
-        <div className={cn('my-info')}>
+      <div className={cn('hamburgerMenu', { showNav: showNavMenu })}>
+        <div className={cn('myInfo')}>
           <PopupHeader toggle={toggleNavMenu} />
           <MyInfoContent />
         </div>
 
-        <ul className={cn('menu-box')}>
+        <ul className={cn('menuBox')}>
           {MENU_ITEM.map((item) => (
-            <li className={cn('menu-item')} key={item.id}>
-              <Link className={cn('menu-link')} href={item.href}>
+            <li className={cn('menuItem')} key={item.id}>
+              <Link className={cn('menuLink')} href={item.href}>
                 {item.label}
               </Link>
             </li>
