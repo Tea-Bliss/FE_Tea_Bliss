@@ -1,7 +1,7 @@
 'use client';
 
 import Button from '@/components/common/Button';
-import styles from '@/components/myBlending/TeaCard/TeaCard.module.scss';
+import styles from '@/components/myBlending/TeaCardList/TeaCard/TeaCard.module.scss';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -29,7 +29,7 @@ export default function TeaCard({ data }: TeaCardProps) {
   const [picked, setPicked] = useState(false);
 
   return (
-    <div className={cn('teaCard', picked && 'picked')}>
+    <li className={cn('teaCard', picked && 'picked')}>
       <div className={cn('imgContainer')} onClick={() => setPicked((prev) => !prev)}>
         <AddRemoveIcon status={picked ? 'minus' : 'plus'} className={cn('addRemoveIcon')} />
         <Image src={data.imageSource} alt={data.name} fill objectFit="contain" className={cn('teaImage')} />
@@ -43,6 +43,6 @@ export default function TeaCard({ data }: TeaCardProps) {
         설명보기 →
       </Button>
       {picked && <CheckIcon className={cn('checkIcon')} />}
-    </div>
+    </li>
   );
 }
