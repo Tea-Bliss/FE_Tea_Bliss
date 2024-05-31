@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import Header from '@/components/common/Header/signUpHeader';
+import Header from '@/components/common/Header/Header';
 import SignUpForm from '@/components/page-layout/signUpLayout/signUpForm/signUpForm';
 
 import styles from './signUpLayout.module.scss';
