@@ -1,15 +1,20 @@
 import styles from '@/app/my-blending/MyBlendingPage.module.scss';
 import classNames from 'classnames/bind';
-import mockImage from '/images/vanila.jpeg';
+import TeaCard from '@/components/myBlending/TeaCard';
 
 const cn = classNames.bind(styles);
 
+type Taste = '신맛' | '플로럴' | '프루티' | '매운맛' | '쓴맛';
+
+type TeaSort = 'Black' | 'Pu Erh' | 'Flavors' | 'Chai' | 'Oolong' | 'White' | 'Green' | 'Herbal' | 'Rooibos' | 'Decaf';
+
 const mockData = {
+  id: 0,
   name: '푸에르초레인지(pu-erh chorange)',
   description: '풍성한 초콜릿과 달콤한 오렌지, 푸에르를 곁들인 축제 간식입니다.',
-  sort: 'Pu Erh',
-  taste: ['단맛', '프루티', '쓴맛'],
-  imageSource: mockImage.src,
+  sort: 'Pu Erh' as TeaSort,
+  taste: ['단맛', '프루티', '쓴맛'] as Taste[],
+  imageSource: '/images/mock/vanila.png',
 };
 
 const mockDatas = Array.from({ length: 10 }, (_, i) => ({
@@ -21,14 +26,18 @@ export default function MyBlendingPage() {
   return (
     <main>
       {/** 분류 섹션 */}
-      <div>
+      <section>
         <ol></ol>
         <ol></ol>
-      </div>
+      </section>
       {/** 카드리스트 섹션 */}
-      <div></div>
+      <section>
+        {mockDatas.map((data) => {
+          return <TeaCard key={data.id} data={data} />;
+        })}
+      </section>
       {/** 조합 섹션 */}
-      <div></div>
+      <section></section>
     </main>
   );
 }
