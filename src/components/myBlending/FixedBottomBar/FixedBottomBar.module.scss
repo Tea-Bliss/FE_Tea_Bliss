@@ -1,0 +1,97 @@
+.bottomBar {
+  @include flexSort(row, space-between, center, null);
+  padding: 2.8rem 4rem;
+  box-shadow: 0 -1rem 2rem rgba(0, 0, 0, 0.1);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background-color: $black-1;
+
+  .dragArea {
+    display: none;
+
+    .dragIcon {
+      margin: 1.2rem 0; /* 상하 여백 설정 */
+      border: 0;
+      width: 2.4rem;
+      height: 0.32rem;
+      background-color: #d9d9d9;
+      border-radius: 0.5rem;
+    }
+  }
+
+  .firstArea {
+    width: 59.1rem;
+    height: 18.1rem;
+  }
+
+  .secondArea {
+    @include flexSort(column, null, null, 2.8rem);
+    width: 32rem;
+
+    .teaName {
+      @include flexSort(column, null, null, 0.8rem);
+
+      .labelName {
+        @include font(1.8rem, 600, 2.6rem);
+      }
+
+      .teaNameInput {
+        padding: 1.2rem 1.6rem;
+        border: 0.12rem solid $black-6;
+        width: 100%;
+        border-radius: 4px;
+        @include font(1.6rem, 400, 2.4rem);
+
+        &:focus {
+          border-color: $orange-5;
+        }
+
+        &::placeholder {
+          color: $black-7;
+        }
+      }
+    }
+
+    .submit {
+      @include flexSort(column, null, null, 0.4rem);
+
+      .message {
+        @include font(1.4rem, 600, 2.2rem);
+      }
+
+      .submitButton {
+        width: 100%;
+      }
+    }
+  }
+
+  @include tablet {
+    @include flexSort(column, null, null, 2.4rem);
+    padding: 2.8rem 2rem;
+
+    .firstArea {
+      width: 100%;
+      height: 18.8rem;
+    }
+
+    .secondArea {
+      width: 100%;
+    }
+  }
+
+  @include mobile {
+    padding: 1.2rem 2rem;
+    border-radius: 2.4rem 2.4rem 0 0;
+
+    .dragArea {
+      display: block;
+    }
+
+    .firstArea {
+      height: 15.167rem;
+    }
+  }
+}

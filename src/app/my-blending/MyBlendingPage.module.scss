@@ -1,0 +1,11 @@
+.main {
+  margin-bottom: 24.4rem;
+
+  @include tablet {
+    margin-bottom: 45.2rem;
+  }
+
+  @include mobile {
+    margin-bottom: 22.367rem;
+  }
+}

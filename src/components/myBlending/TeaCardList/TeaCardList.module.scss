@@ -1,5 +1,4 @@
 .cardList {
-  display: flex;
+  @include flexSort(row, null, null, 1rem 2rem);
   flex-wrap: wrap;
-  gap: 2rem;
 }

@@ -1,12 +1,10 @@
 .teaCard {
-  display: flex;
-  gap: 1.6rem;
-  align-items: center;
-  flex-direction: column;
+  @include flexSort(column, null, center, 1.6rem);
   padding: 1.2rem 2rem 2rem 2rem;
   border: 0.2rem solid $black-1;
   position: relative;
   width: 28.5rem;
+  height: 44.3rem;
   border-radius: 1.2rem;
 
   &.picked {
@@ -48,5 +46,66 @@
     position: absolute;
     top: -1.2rem;
     left: 46%;
+  }
+
+  .moreInfoButton {
+    width: 8.9rem;
+    height: 3.4rem;
+  }
+
+  @include tablet {
+    gap: 1.86rem;
+    padding: 0.96rem 1.6rem 1.6rem 1.6rem;
+    width: 22.9rem;
+    height: 35.9rem;
+
+    .imgContainer {
+      height: 22.9rem;
+
+      .addRemoveIcon {
+        top: 40%;
+        left: 40%;
+      }
+    }
+
+    .name {
+      @include font(1.8rem, 600, 2.6rem);
+    }
+
+    .checkIcon {
+      left: 45%;
+    }
+
+    .moreInfoButton {
+      padding: 0.64rem 0.96rem;
+      width: 7.4rem;
+      height: 2.7rem;
+      @include font(1.1rem, 400, 1.4rem);
+    }
+  }
+
+  @include mobile {
+    gap: 0.887rem;
+    padding: 0.66rem 1.1rem 1.1rem 1.1rem;
+    width: 15.8rem;
+    height: 25.6rem;
+
+    .imgContainer {
+      height: 15.8rem;
+    }
+
+    .name {
+      @include font(1.4rem, 600, 2rem);
+    }
+
+    .checkIcon {
+      left: 44%;
+    }
+
+    .moreInfoButton {
+      padding: 0.44rem 0.66rem;
+      width: 6.7rem;
+      height: 2.3rem;
+    }
   }
 }

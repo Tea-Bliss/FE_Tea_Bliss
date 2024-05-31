@@ -39,7 +39,7 @@ export default function TeaCard({ data }: TeaCardProps) {
         <br />
         {`(${data.name.split('(')[1]}`}
       </div>
-      <Button shape="round" color="white">
+      <Button shape="round" color="white" className={cn('moreInfoButton')}>
         설명보기 →
       </Button>
       {picked && <CheckIcon className={cn('checkIcon')} />}

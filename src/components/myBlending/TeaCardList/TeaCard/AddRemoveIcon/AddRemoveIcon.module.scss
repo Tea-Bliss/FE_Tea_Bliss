@@ -5,8 +5,8 @@
   background-color: $orange-5;
   border-radius: 2rem;
 
-  &.plusIcon::before,
-  &.plusIcon::after {
+  &::before,
+  &::after {
     position: absolute;
     top: 44%;
     left: 44%;
@@ -14,18 +14,41 @@
     content: '';
   }
 
-  &.plusIcon::before {
+  &::before {
     margin-left: -1rem;
     width: 2.5rem;
     height: 0.5rem;
     border-radius: 0.5rem;
   }
 
-  &.plusIcon::after {
+  &::after {
     margin-top: -1rem;
     width: 0.5rem;
     height: 2.5rem;
     border-radius: 0.5rem;
+  }
+
+  @include mobile {
+    width: 3rem;
+    height: 3rem;
+
+    &::before,
+    &::after {
+      top: 43%;
+      left: 43%;
+    }
+
+    &::before {
+      margin-left: -0.8rem;
+      width: 2rem;
+      height: 0.4rem;
+    }
+
+    &::after {
+      margin-top: -0.75rem;
+      width: 0.4rem;
+      height: 2rem;
+    }
   }
 }
 
@@ -36,7 +59,7 @@
   background-color: #b4d7fe;
   border-radius: 2rem;
 
-  &.minusIcon::before {
+  &::before {
     margin-left: -1rem;
     position: absolute;
     top: 44%;
@@ -46,5 +69,18 @@
     background-color: $black-1;
     content: '';
     border-radius: 0.5rem;
+  }
+
+  @include mobile {
+    width: 3rem;
+    height: 3rem;
+
+    &::before {
+      top: 43%;
+      left: 43%;
+      margin-left: -0.8rem;
+      width: 2rem;
+      height: 0.4rem;
+    }
   }
 }
