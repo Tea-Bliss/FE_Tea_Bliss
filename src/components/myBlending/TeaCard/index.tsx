@@ -1,3 +1,5 @@
+'use client';
+
 import styles from '@/components/myBlending/TeaCard/TeaCard.module.scss';
 import classNames from 'classnames/bind';
 
