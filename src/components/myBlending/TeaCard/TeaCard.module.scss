@@ -1,13 +1,13 @@
 .teaCard {
   display: flex;
-  position: relative;
-  flex-direction: column;
+  gap: 1.6rem;
   align-items: center;
-  width: 28.5rem;
+  flex-direction: column;
   padding: 1.2rem 2rem 2rem 2rem;
   border: 0.2rem solid $black-1;
+  position: relative;
+  width: 28.5rem;
   border-radius: 1.2rem;
-  gap: 1.6rem;
 
   &.picked {
     border-color: $orange-5;
@@ -45,8 +45,8 @@
   }
 
   .checkIcon {
+    position: absolute;
     top: -1.2rem;
     left: 46%;
-    position: absolute;
   }
 }
