@@ -7,7 +7,7 @@
   text-align: center;
   font-feature-settings: 'ss10' on;
 
-  .red {
+  &.red {
     background-color: $orange-5;
 
     &:hover {
@@ -26,7 +26,7 @@
     }
   }
 
-  .green {
+  &.green {
     background-color: #8fe65c;
 
     &:hover {
@@ -38,7 +38,7 @@
     }
   }
 
-  .cancel {
+  &.cancel {
     background-color: $black-5;
   }
 }
@@ -51,13 +51,13 @@
   text-align: center;
   font-feature-settings: 'ss10' on;
 
-  .red {
+  &.red {
     border-color: $orange-5;
     background-color: $orange-1;
     color: $orange-6;
   }
 
-  .cancel {
+  &.cancel {
     background-color: $black-5;
     color: $black-1;
   }
