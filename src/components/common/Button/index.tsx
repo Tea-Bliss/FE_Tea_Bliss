@@ -2,7 +2,7 @@
 
 import { ButtonHTMLAttributes } from 'react';
 import classNames from 'classnames/bind';
-import styles from './Button.module.scss';
+import styles from '@/components/common/Button/Button.module.scss';
 
 const cx = classNames.bind(styles);
 
