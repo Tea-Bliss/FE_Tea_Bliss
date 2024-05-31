@@ -8,8 +8,6 @@ const cn = classNames.bind(styles);
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isCancel?: boolean;
-  width: number;
-  height: number;
 }
 
 interface SquareButtonProps extends ButtonProps {
@@ -25,18 +23,13 @@ interface RoundButtonProps extends ButtonProps {
 export default function Button({
   shape,
   color,
-  width,
-  height,
+  className,
   children,
   isCancel = false,
   ...props
 }: SquareButtonProps | RoundButtonProps) {
   return (
-    <button
-      className={cn('shape', isCancel ? 'cancel' : 'color')}
-      style={{ width: `${width}rem`, height: `${height}rem` }}
-      {...props}
-    >
+    <button className={cn(className, shape, isCancel ? 'cancel' : 'color')} {...props}>
       {children}
     </button>
   );
