@@ -6,7 +6,7 @@
   gap: $gap;
 }
 
-@mixin sopoqa($size, $weight, $height) {
+@mixin font($size, $weight, $height) {
   font-size: $size;
   font-style: normal;
   font-weight: $weight;
