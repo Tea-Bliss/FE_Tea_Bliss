@@ -20,13 +20,12 @@ export default forwardRef<HTMLInputElement, RadioInputProps>(function RadioInput
   { content, id, className, checked, onChange, ...props },
   ref
 ) {
-  console.log(checked);
   return (
     <div className={className}>
       <label className={cn('label')} htmlFor={id} onClick={onChange}>
         {checked ? <CheckedBox /> : <UnCheckedBox />}
       </label>
-      <input className={cn('input')} ref={ref} {...props} type="radio" id={id} checked={checked} />
+      <input className={cn('input')} ref={ref} {...props} type="radio" />
       <p>{content}</p>
     </div>
   );
