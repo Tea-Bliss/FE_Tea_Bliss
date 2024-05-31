@@ -1,0 +1,13 @@
+.profile {
+  display: block;
+  @include mobile {
+    display: none;
+  }
+}
+.auth-link {
+  padding: 0.8rem;
+  color: $black-13;
+  text-align: center;
+  font-feature-settings: 'ss10' on;
+  @include font(1.6rem, 400, 2.4rem);
+}
