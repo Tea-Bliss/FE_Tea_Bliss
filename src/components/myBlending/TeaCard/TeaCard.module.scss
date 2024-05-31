@@ -20,8 +20,22 @@
     height: 28rem;
     cursor: pointer;
 
+    .addRemoveIcon {
+      display: none;
+      position: absolute;
+      top: 43%;
+      left: 42%;
+      z-index: 1;
+    }
+
     &:hover {
-      filter: blur(0.1rem) brightness(80%);
+      .teaImage {
+        filter: opacity(40%);
+      }
+
+      .addRemoveIcon {
+        display: block;
+      }
     }
   }
 

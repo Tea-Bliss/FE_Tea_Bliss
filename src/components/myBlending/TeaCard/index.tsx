@@ -6,6 +6,7 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 import { useState } from 'react';
 import CheckIcon from './CheckIcon';
+import AddRemoveIcon from './AddRemoveIcon';
 
 const cn = classNames.bind(styles);
 
@@ -30,7 +31,8 @@ export default function TeaCard({ data }: TeaCardProps) {
   return (
     <div className={cn('teaCard', picked && 'picked')}>
       <div className={cn('imgContainer')} onClick={() => setPicked((prev) => !prev)}>
-        <Image src={data.imageSource} alt={data.name} fill objectFit="contain" />
+        <AddRemoveIcon status={picked ? 'minus' : 'plus'} className={cn('addRemoveIcon')} />
+        <Image src={data.imageSource} alt={data.name} fill objectFit="contain" className={cn('teaImage')} />
       </div>
       <div className={cn('name')}>
         {data.name.split('(')[0]}

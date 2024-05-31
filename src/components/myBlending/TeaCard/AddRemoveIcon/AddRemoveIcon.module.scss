@@ -1,0 +1,50 @@
+.plusIcon {
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  background-color: $orange-5;
+  border-radius: 2rem;
+
+  &.plusIcon::before,
+  &.plusIcon::after {
+    content: '';
+    position: absolute;
+    top: 44%;
+    left: 44%;
+    background-color: $black-1;
+  }
+
+  &.plusIcon::before {
+    width: 2.5rem;
+    height: 0.5rem;
+    margin-left: -1rem;
+    border-radius: 0.5rem;
+  }
+
+  &.plusIcon::after {
+    width: 0.5rem;
+    height: 2.5rem;
+    margin-top: -1rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.minusIcon {
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  background-color: $green;
+  border-radius: 2rem;
+
+  &.minusIcon::before {
+    content: '';
+    position: absolute;
+    top: 44%;
+    left: 44%;
+    background-color: $black-1;
+    width: 2.5rem;
+    height: 0.5rem;
+    margin-left: -1rem;
+    border-radius: 0.5rem;
+  }
+}
