@@ -1,0 +1,46 @@
+.container {
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  border: 0.1rem solid $black-13;
+  width: max-content;
+  background-color: $black-1;
+  border-radius: 0.8rem;
+  padding: 2.4rem;
+  @include flexSort(column, center, null, 3.2rem);
+}
+
+.popup-header {
+  @include flexSort(row, space-between, center, null);
+  h2 {
+    text-align: center;
+    color: $black-13;
+    @include font(1.8rem, 600, 2.6rem);
+  }
+}
+
+.content {
+  padding: 0 1.6rem;
+  @include flexSort(column, center, center, 2rem);
+}
+
+.profile {
+  @include flexSort(column, center, center, 1.3rem);
+  .profile-image {
+    border-radius: 10.5rem;
+  }
+  .user-name {
+    color: $black-13;
+    text-align: center;
+    font-feature-settings: 'ss10' on;
+    @include font(1.6rem, 400, 2.4rem);
+  }
+}
+
+.button-wrapper {
+  @include flexSort(row, center, center, 1.2rem);
+
+  .my-info-btn {
+    @include font(1.3rem, 500, 1.8rem);
+  }
+}
