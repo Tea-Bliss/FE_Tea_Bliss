@@ -29,7 +29,7 @@ export default function Button({
   ...props
 }: SquareButtonProps | RoundButtonProps) {
   return (
-    <button className={cn(className, shape, isCancel ? 'cancel' : 'color')} {...props}>
+    <button className={cn(className, shape, isCancel ? 'cancel' : color)} {...props}>
       {children}
     </button>
   );
