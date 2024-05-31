@@ -1,14 +1,12 @@
-import classNames from 'classnames/bind';
+import Link from 'next/link';
 
-import styles from '@/components/page-layout/signUpLayout/signUpHeader/signUpHeader.module.scss';
+import ROUTE from '@/constants/route';
 import Logo from '@/images/logo.svg';
-
-const cn = classNames.bind(styles);
 
 export default function SignUpHeader() {
   return (
-    <header className={cn('logo')}>
+    <Link href={ROUTE.HOME}>
       <Logo width={338} height={100} />
-    </header>
+    </Link>
   );
 }
