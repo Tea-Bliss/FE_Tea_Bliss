@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 
 import BackdropModal from '@/components/common/modal/BackdropModal/BackdropModal';
