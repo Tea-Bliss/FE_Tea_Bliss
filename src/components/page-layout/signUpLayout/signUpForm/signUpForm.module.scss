@@ -32,7 +32,7 @@
 }
 
 .agree {
-  @include font(1.6rem, 400, null);
+  @include font(2rem, 400, null);
   @include flexSort(null, null, center, 0.8rem);
 }
 

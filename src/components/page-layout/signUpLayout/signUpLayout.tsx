@@ -11,7 +11,7 @@ export default function SignUpLayout() {
   return (
     <main className={cn('layout')}>
       <div className={cn('container')}>
-        <Header />
+        <Header className={cn('header')} />
         <SignUpForm />
       </div>
     </main>

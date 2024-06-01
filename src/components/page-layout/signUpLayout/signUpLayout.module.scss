@@ -1,8 +1,30 @@
 .layout {
   @include flexSort(null, center, null, null);
-  padding: 8.5rem 0;
+  padding: 8.5rem 0 12.2rem 0;
+
+  @include tablet {
+    padding: 10.4rem 0;
+  }
+
+  @include mobile {
+    padding: 6.6rem 2.7rem 11.8rem 2.7rem;
+  }
 }
 
 .container {
-  @include flexSort(column, center, center, 4rem);
+  @include flexSort(column, null, center, 4rem);
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.header {
+  width: 33.9rem;
+  height: 10rem;
+
+  @include mobile {
+    width: 18.8rem;
+    height: 5.5rem;
+  }
 }

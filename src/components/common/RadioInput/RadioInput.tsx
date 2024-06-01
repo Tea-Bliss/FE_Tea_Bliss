@@ -3,8 +3,6 @@ import { ComponentProps, forwardRef } from 'react';
 import classNames from 'classnames/bind';
 
 import styles from '@/components/common/RadioInput/RadioInput.module.scss';
-import CheckedBox from '@/icons/checkedBox.svg';
-import UnCheckedBox from '@/icons/unCheckedBox.svg';
 
 const cn = classNames.bind(styles);
 
@@ -22,11 +20,16 @@ export default forwardRef<HTMLInputElement, RadioInputProps>(function RadioInput
 ) {
   return (
     <div className={className}>
-      <label className={cn('label')} htmlFor={id} onClick={onChange}>
-        {checked ? <CheckedBox /> : <UnCheckedBox />}
-      </label>
-      <input className={cn('input')} ref={ref} {...props} type="radio" />
-      <p>{content}</p>
+      <input
+        className={cn('input')}
+        ref={ref}
+        id={id}
+        checked={checked}
+        {...props}
+        type="checkbox"
+        onChange={onChange}
+      />
+      <label htmlFor={id}>{content}</label>
     </div>
   );
 });
