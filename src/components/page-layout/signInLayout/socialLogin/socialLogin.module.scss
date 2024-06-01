@@ -19,7 +19,7 @@
 
 .kakaoButton,
 .goggleButton {
-  @include flexSort(null, null, center, 6rem);
+  @include flexSort(null, center, center, 6rem);
   padding: 1.6rem 5.8rem;
   width: 100%;
 
