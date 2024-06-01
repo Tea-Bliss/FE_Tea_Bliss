@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import classNames from 'classnames/bind';
 import ReactDOM from 'react-dom';
@@ -20,7 +20,7 @@ const cn = classNames.bind(styles);
 
 interface BackdropModalProps {
   isOpen: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   onClose: () => void;
 }
 
