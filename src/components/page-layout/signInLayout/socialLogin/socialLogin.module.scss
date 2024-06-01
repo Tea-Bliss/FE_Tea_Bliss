@@ -1,0 +1,51 @@
+.section {
+  @include flexSort(column, null, center, 4rem);
+  width: 100%;
+}
+
+.buttonContainer {
+  @include flexSort(column, null, center, 2.4rem);
+  width: 100%;
+}
+
+.buttonContainerTitle {
+  @include font(1.8rem, 600, 2.6rem);
+}
+
+.buttonBox {
+  @include flexSort(column, null, center, 1.2rem);
+  width: 100%;
+}
+
+.kakaoButton,
+.goggleButton {
+  @include flexSort(null, null, center, 6rem);
+  padding: 1.6rem 5.8rem;
+  width: 100%;
+
+  @include font(2.5rem, 600, 2.8rem);
+}
+
+.kakaoButton {
+  border-radius: 0.5rem;
+  background: $kakao;
+}
+
+.goggleButton {
+  border-radius: 0.5rem;
+  border: 1px solid var(--BDS-Grayscale-6, #bfbfbf);
+  background: var(--BDS-Grayscale-1, #fff);
+}
+
+.signUpBox {
+  @include flexSort(null, null, center, 1.5rem);
+}
+
+.signUpContent {
+  @include font(1.4rem, 400, 2rem);
+}
+
+.toSignUp {
+  @include font(1.4rem, 600, 2rem);
+  text-decoration: underline;
+}
