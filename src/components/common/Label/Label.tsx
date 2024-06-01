@@ -1,31 +1,7 @@
-'use client';
-import { ButtonHTMLAttributes } from 'react';
+import { ComponentProps } from 'react';
 
-import classNames from 'classnames/bind';
+interface labelProps extends ComponentProps<'label'> {}
 
-import styles from '@/components/common/Label/Label.module.scss';
-
-import LABEL_TYPE from './constants/labelType';
-
-type tasteType = keyof typeof LABEL_TYPE;
-interface LabelProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isSelected: boolean;
-  taste?: tasteType;
-}
-
-const cn = classNames.bind(styles);
-
-export default function Label({ children, isSelected, taste, ...props }: LabelProps) {
-  return (
-    <button
-      className={cn(
-        'label',
-        { typeSelected: isSelected && !taste },
-        { [`${taste}TasteSelected`]: isSelected && taste }
-      )}
-      {...props}
-    >
-      {children}
-    </button>
-  );
+export default function Label({ children, ...rest }: labelProps) {
+  return <label {...rest}>{children}</label>;
 }
