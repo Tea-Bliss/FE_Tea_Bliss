@@ -1,10 +1,12 @@
 'use client';
 
-import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
+
+import classNames from 'classnames/bind';
 import ReactDOM from 'react-dom';
 
 import styles from '@/components/common/modal/BackdropModal/BackdropModal.module.scss';
+import Close from '@/icons/close.svg';
 
 const cn = classNames.bind(styles);
 
@@ -32,8 +34,10 @@ export default function BackdropModal({ isOpen, children, onClose }: BackdropMod
   return isOpen && modalRoot
     ? ReactDOM.createPortal(
         <div className={cn('back')} onClick={onClose}>
-          <div onClick={(e) => e.stopPropagation()}>
-            <button onClick={onClose}>close</button>
+          <div className={cn('container')} onClick={(e) => e.stopPropagation()}>
+            <button onClick={onClose}>
+              <Close />
+            </button>
             {children}
           </div>
         </div>,
