@@ -25,7 +25,7 @@ interface BackdropModalProps {
 }
 
 export default function BackdropModal({ isOpen, children, onClose }: BackdropModalProps) {
-  const [modalRoot, setModalRoot] = useState<HTMLElement | null>();
+  const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
     setModalRoot(document.getElementById('modal-root'));
@@ -39,17 +39,19 @@ export default function BackdropModal({ isOpen, children, onClose }: BackdropMod
     }
   }, [isOpen]);
 
-  return isOpen && modalRoot
-    ? ReactDOM.createPortal(
-        <div className={cn('back')} onClick={onClose}>
-          <div className={cn('container')} onClick={(e) => e.stopPropagation()}>
-            <button onClick={onClose}>
-              <Close />
-            </button>
-            {children}
-          </div>
-        </div>,
-        modalRoot
-      )
-    : null;
+  return (
+    isOpen &&
+    modalRoot &&
+    ReactDOM.createPortal(
+      <div className={cn('back')} onClick={onClose}>
+        <div className={cn('container')} onClick={(e) => e.stopPropagation()}>
+          <button onClick={onClose}>
+            <Close />
+          </button>
+          {children}
+        </div>
+      </div>,
+      modalRoot
+    )
+  );
 }
