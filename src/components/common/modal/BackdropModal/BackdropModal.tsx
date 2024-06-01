@@ -10,6 +10,14 @@ import Close from '@/icons/close.svg';
 
 const cn = classNames.bind(styles);
 
+/**
+ * 백드롭 모달(기본형) - 모달이 열려있는지 확인하고, 내부 내용을 표시하고, onClose 함수를 사용하여 모달을 닫습니다.
+ * @component
+ * @param isOpen - 모달이 열려있는지 확인
+ * @param children - 모달 내부 내용
+ * @param onClose - 모달을 닫을 때 사용할 함수
+ */
+
 interface BackdropModalProps {
   isOpen: boolean;
   children: React.ReactNode;
