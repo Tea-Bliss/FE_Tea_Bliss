@@ -1,14 +1,14 @@
 'use client';
 
 import Button from '@/components/common/Button';
-import styles from '@/components/myBlending/FixedBottomBar/FixedBottomBar.module.scss';
+import styles from '@/components/page-layout/myBlendingLayout/components/FixedBottomBar/FixedBottomBar.module.scss';
 import classNames from 'classnames/bind';
 
 const cn = classNames.bind(styles);
 
 export default function FixedBottomBar() {
   return (
-    <div className={cn('bottomBar')}>
+    <footer className={cn('bottomBar')}>
       <div className={cn('dragArea')}>
         <hr className={cn('dragIcon')} />
       </div>
@@ -27,6 +27,6 @@ export default function FixedBottomBar() {
           </Button>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

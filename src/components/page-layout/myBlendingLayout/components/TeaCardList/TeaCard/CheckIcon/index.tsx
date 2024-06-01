@@ -1,4 +1,4 @@
-import styles from '@/components/myBlending/TeaCardList/TeaCard/CheckIcon/CheckIcon.module.scss';
+import styles from '@/components/page-layout/myBlendingLayout/components/TeaCardList/TeaCard/CheckIcon/CheckIcon.module.scss';
 import classNames from 'classnames/bind';
 
 const cn = classNames.bind(styles);

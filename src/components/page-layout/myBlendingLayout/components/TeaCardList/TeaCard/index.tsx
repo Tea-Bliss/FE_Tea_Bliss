@@ -1,28 +1,18 @@
 'use client';
 
 import Button from '@/components/common/Button';
-import styles from '@/components/myBlending/TeaCardList/TeaCard/TeaCard.module.scss';
+import styles from '@/components/page-layout/myBlendingLayout/components/TeaCardList/TeaCard/TeaCard.module.scss';
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 import { useState } from 'react';
-import CheckIcon from './CheckIcon';
-import AddRemoveIcon from './AddRemoveIcon';
+import CheckIcon from '@/components/page-layout/myBlendingLayout/components/TeaCardList/TeaCard/CheckIcon';
+import AddRemoveIcon from '@/components/page-layout/myBlendingLayout/components/TeaCardList/TeaCard/AddRemoveIcon';
+import TeaType from '@/components/page-layout/myBlendingLayout/types/teaType';
 
 const cn = classNames.bind(styles);
 
-type Taste = '신맛' | '플로럴' | '프루티' | '매운맛' | '쓴맛';
-
-type TeaSort = 'Black' | 'Pu Erh' | 'Flavors' | 'Chai' | 'Oolong' | 'White' | 'Green' | 'Herbal' | 'Rooibos' | 'Decaf';
-
 interface TeaCardProps {
-  data: {
-    id: number;
-    name: string;
-    description: string;
-    sort: TeaSort;
-    taste: Taste[];
-    imageSource: string;
-  };
+  data: TeaType;
 }
 
 export default function TeaCard({ data }: TeaCardProps) {
