@@ -17,7 +17,14 @@ const cn = classNames.bind(styles);
 
 export default function Label({ children, isSelected, taste, ...props }: LabelProps) {
   return (
-    <button className={cn('label', isSelected && taste ? `${taste}TasteSelected` : 'typeSelected')} {...props}>
+    <button
+      className={cn(
+        'label',
+        { typeSelected: isSelected && !taste },
+        { [`${taste}TasteSelected`]: isSelected && taste }
+      )}
+      {...props}
+    >
       {children}
     </button>
   );
