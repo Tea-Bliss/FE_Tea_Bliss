@@ -3,20 +3,21 @@
 import BlendingLabel from '@/components/common/BlendingLabel/BlendingLabel';
 import styles from '@/components/page-layout/myBlendingLayout/components/SortingMenu/TypeSortingList/TypeSortingList.module.scss';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
 import { TEA_TYPES } from '@/components/page-layout/myBlendingLayout/constants/standards';
+import { useMyBlendingContext } from '@/components/page-layout/myBlendingLayout/contexts/myBlendingContext';
 
 const cn = classNames.bind(styles);
 
 export default function TypeSortingList() {
-  const [selectedTypes, setSelectedTypes] = useState<(typeof TEA_TYPES)[number][]>([]);
+  const { filter, setFilter } = useMyBlendingContext();
 
-  const handleSelect = (type: (typeof selectedTypes)[number]) => {
-    if (selectedTypes.includes(type)) {
-      setSelectedTypes((prev) => [...prev].filter((data) => data !== type));
+  const handleSelect = (type: (typeof TEA_TYPES)[number]) => {
+    if (filter.type.includes(type)) {
+      setFilter((prev) => ({ ...prev, type: prev.type.filter((data) => data !== type) }));
       return;
     }
-    setSelectedTypes((prev) => [...prev, type]);
+
+    setFilter((prev) => ({ ...prev, type: [...prev.type, type] }));
   };
 
   return (
@@ -24,7 +25,7 @@ export default function TypeSortingList() {
       {TEA_TYPES.map((type, index) => {
         return (
           <li key={index}>
-            <BlendingLabel isSelected={selectedTypes.includes(type)} onClick={() => handleSelect(type)}>
+            <BlendingLabel isSelected={filter.type.includes(type)} onClick={() => handleSelect(type)}>
               {type}
             </BlendingLabel>
           </li>

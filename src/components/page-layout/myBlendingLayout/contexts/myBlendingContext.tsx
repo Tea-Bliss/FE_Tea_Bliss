@@ -10,6 +10,7 @@ type Filter = {
 
 interface myBlendingValues {
   teaList: TeaType[];
+  filter: Filter;
   setFilter: Dispatch<SetStateAction<Filter>>;
   selectedTeas: TeaType[];
   setSelectedTeas: Dispatch<SetStateAction<TeaType[]>>;
@@ -19,6 +20,7 @@ interface myBlendingValues {
 
 const defaultValue: myBlendingValues = {
   teaList: [],
+  filter: { type: [], taste: [] },
   setFilter: () => {},
   selectedTeas: [],
   setSelectedTeas: () => {},
@@ -49,25 +51,31 @@ export function MyBlendingProvider({ children }: { children: ReactNode }) {
   const [myTeaName, setMyTeaName] = useState('');
 
   useEffect(() => {
-    if (!filter.type.length && !filter.taste.length) return;
+    if (!filter.type.length && !filter.taste.length) return setTeaList(mockDatas);
 
-    const newList = teaList.filter(
-      (tea) => filter.type.includes(tea.sort) && filter.taste.every((taste) => tea.taste.includes(taste))
+    if (!filter.type.length)
+      return setTeaList(mockDatas.filter((tea) => filter.taste.every((taste) => tea.taste.includes(taste))));
+
+    if (!filter.taste.length) return setTeaList(mockDatas.filter((tea) => filter.type.includes(tea.sort)));
+
+    setTeaList(
+      mockDatas.filter(
+        (tea) => filter.type.includes(tea.sort) && filter.taste.every((taste) => tea.taste.includes(taste))
+      )
     );
-
-    setTeaList(newList);
   }, [filter]);
 
   const value = useMemo(
     () => ({
       teaList,
+      filter,
       setFilter,
       selectedTeas,
       setSelectedTeas,
       myTeaName,
       setMyTeaName,
     }),
-    [teaList, selectedTeas, myTeaName]
+    [teaList, filter, selectedTeas, myTeaName]
   );
 
   return <myBlendingContext.Provider value={value}>{children}</myBlendingContext.Provider>;
