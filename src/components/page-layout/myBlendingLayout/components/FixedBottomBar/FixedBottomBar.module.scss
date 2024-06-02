@@ -1,7 +1,7 @@
 .bottomBar {
   @include flexSort(row, space-between, center, null);
   padding: 2.8rem 4rem;
-  box-shadow: 0 -1rem 2rem rgba(0, 0, 0, 0.1);
+  box-shadow: -0.5rem -0.7rem 2.8rem 0 rgba(0, 0, 0, 0.12);
   position: fixed;
   right: 0;
   bottom: 0;
