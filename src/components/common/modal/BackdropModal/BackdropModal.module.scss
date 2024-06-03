@@ -1,0 +1,15 @@
+.back {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  @include flexSort(column, center, center, null);
+}
+
+.container {
+  padding: 2.8rem;
+  background-color: $black-1;
+  box-shadow: 0rem 0.2rem 1.8rem 0rem rgba(0, 0, 0, 0.3);
+  border-radius: 1.2rem;
+  @include flexSort(column, center, flex-end, null);
+}

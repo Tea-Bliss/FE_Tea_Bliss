@@ -26,6 +26,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={inter.className}>
         <ReactQueryProvider>
+          <div id="modal-root"></div>
           {children}
           <ToastContainer />
         </ReactQueryProvider>
