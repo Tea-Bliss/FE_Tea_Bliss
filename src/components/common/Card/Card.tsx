@@ -21,21 +21,27 @@ interface CardProps {
 
 export default function Card({ href, isMainPageCard, img, title, price, review, scope }: CardProps) {
   return (
-    <section
+    <Link
+      href={href}
       className={cn('cardContainer', {
         mainPageCardContainer: !isMainPageCard,
       })}
     >
-      <Link
-        href={href}
+      <div
         className={cn('imgBox', {
           mainPageImgBox: !isMainPageCard,
         })}
       >
-        <Image src={img} alt="상품" fill />
-        <div className={cn('imgBackground')} />
+        <Image
+          priority
+          src={img}
+          alt="상품"
+          fill
+          sizes="(max-width: 767px) 15.8rem, (max-width: 1279px) 22.9rem, 22.9rem"
+        />
+        {!isMainPageCard && <div className={cn('imgBackground')} />}
         {!isMainPageCard && <Cart fill="white" width={40} height={40} className={cn('cart')} />}
-      </Link>
+      </div>
       <article
         className={cn('cardInfoBox', {
           mainPageCardInfoBox: !isMainPageCard,
@@ -51,6 +57,6 @@ export default function Card({ href, isMainPageCard, img, title, price, review, 
           <p>{`별점 : ${scope}`}</p>
         </div>
       </article>
-    </section>
+    </Link>
   );
 }
