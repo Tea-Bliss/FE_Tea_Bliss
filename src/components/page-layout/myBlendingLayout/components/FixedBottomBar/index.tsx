@@ -3,6 +3,7 @@
 import Button from '@/components/common/Button';
 import styles from '@/components/page-layout/myBlendingLayout/components/FixedBottomBar/FixedBottomBar.module.scss';
 import classNames from 'classnames/bind';
+import BlendingArea from './BlendingArea';
 
 const cn = classNames.bind(styles);
 
@@ -13,7 +14,9 @@ export default function FixedBottomBar() {
         <hr className={cn('dragIcon')} />
       </div>
 
-      <div className={cn('firstArea')}>{/** 티 조합 컴포넌트 추가 예정(스타일 미정으로 공란) */}</div>
+      <div className={cn('firstArea')}>
+        <BlendingArea />
+      </div>
 
       <div className={cn('secondArea')}>
         <div className={cn('teaName')}>
