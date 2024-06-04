@@ -7,6 +7,32 @@
   height: 44.3rem;
   border-radius: 1.2rem;
 
+  &.isFooter {
+    padding: 0;
+    width: 100%;
+    height: auto;
+
+    .imgContainer {
+      height: 15rem;
+
+      .addRemoveIcon {
+        width: 3rem;
+        height: 3rem;
+        top: 40%;
+        left: 40%;
+
+        &::before {
+          margin-left: -0.7rem;
+          width: 1.8rem;
+        }
+      }
+    }
+
+    .name {
+      @include font(1.7rem, 600, 2.4rem);
+    }
+  }
+
   &.picked {
     border-color: $orange-5;
     box-shadow: 0 0.2rem 1.8rem 0 rgba(0, 0, 0, 0.3);
@@ -59,6 +85,30 @@
     width: 22.9rem;
     height: 35.9rem;
 
+    &.isFooter {
+      gap: 0.8rem;
+
+      .imgContainer {
+        height: 14rem;
+
+        .addRemoveIcon {
+          width: 2.5rem;
+          height: 2.5rem;
+          left: 43%;
+
+          &::before {
+            margin-left: -0.65rem;
+            width: 1.6rem;
+            height: 0.35rem;
+          }
+        }
+      }
+
+      .name {
+        @include font(1.2rem, 400, 1.6rem);
+      }
+    }
+
     .imgContainer {
       height: 22.9rem;
 
@@ -89,6 +139,25 @@
     padding: 0.66rem 1.1rem 1.1rem 1.1rem;
     width: 15.8rem;
     height: 25.6rem;
+
+    &.isFooter {
+      height: auto;
+      gap: 0;
+
+      .imgContainer {
+        .addRemoveIcon {
+          width: 2.5rem;
+          height: 2.5rem;
+          left: 40%;
+
+          &::before {
+            margin-left: -0.65rem;
+            width: 1.6rem;
+            height: 0.35rem;
+          }
+        }
+      }
+    }
 
     .imgContainer {
       height: 15.8rem;

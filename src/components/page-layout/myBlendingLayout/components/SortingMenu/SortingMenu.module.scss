@@ -10,7 +10,7 @@
     @include flexSort(column, null, null, 1.2rem);
 
     .buttons {
-      @include flexSort(row, null, center, 1.6rem);
+      @include flexSort(row, null, null, 1.6rem);
 
       .criterion {
         @include font(1.7rem, 600, 2.4rem);

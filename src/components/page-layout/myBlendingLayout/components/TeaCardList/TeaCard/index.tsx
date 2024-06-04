@@ -12,15 +12,17 @@ const cn = classNames.bind(styles);
 
 interface TeaCardProps {
   data: TeaType;
-  picked: boolean;
+  picked?: boolean;
+  isFooter?: boolean;
+  className?: string;
   onClick: (data: TeaType) => void;
 }
 
-export default function TeaCard({ data, picked, onClick }: TeaCardProps) {
+export default function TeaCard({ data, picked, isFooter, className, onClick }: TeaCardProps) {
   return (
-    <li className={cn('teaCard', picked && 'picked')}>
+    <li className={cn('teaCard', isFooter && 'isFooter', picked && 'picked', className)}>
       <div className={cn('imgContainer')} onClick={() => onClick(data)}>
-        <AddRemoveIcon status={picked ? 'minus' : 'plus'} className={cn('addRemoveIcon')} />
+        <AddRemoveIcon status={picked || isFooter ? 'minus' : 'plus'} className={cn('addRemoveIcon')} />
         <Image src={data.imageSource} alt={data.name} fill objectFit="contain" className={cn('teaImage')} />
       </div>
       <div className={cn('name')}>
@@ -28,9 +30,11 @@ export default function TeaCard({ data, picked, onClick }: TeaCardProps) {
         <br />
         {`(${data.name.split('(')[1]}`}
       </div>
-      <Button shape="round" color="white" className={cn('moreInfoButton')}>
-        설명보기 →
-      </Button>
+      {isFooter || (
+        <Button shape="round" color="white" className={cn('moreInfoButton')}>
+          설명보기 →
+        </Button>
+      )}
       {picked && <CheckIcon className={cn('checkIcon')} />}
     </li>
   );

@@ -37,7 +37,7 @@ const mockData = {
   imageSource: '/images/my-blending/vanila.png',
 } as TeaType;
 
-const mockDatas = Array.from({ length: 11 }, (_, i) => ({
+const mockDatas = Array.from({ length: 120 }, (_, i) => ({
   ...mockData,
   id: i + 1,
 }));
