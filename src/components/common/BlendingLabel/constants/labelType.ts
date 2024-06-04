@@ -1,4 +1,5 @@
 const LABEL_TYPE = {
+  sweet: '단맛',
   sour: '신맛',
   flower: '플로럴',
   fruit: '프루티',

@@ -14,6 +14,12 @@
     color: $orange-6;
   }
 
+  &.sweetTasteSelected {
+    border-color: #ff7ec3;
+    background-color: #f9a7d3;
+    color: $black-1;
+  }
+
   &.sourTasteSelected {
     border-color: #d0d34e;
     background-color: #fcff7f;

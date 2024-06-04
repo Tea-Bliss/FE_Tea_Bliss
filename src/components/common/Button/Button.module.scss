@@ -1,11 +1,11 @@
 .square {
   padding: 1.2rem;
   border: none;
-  border-radius: 0.4rem;
-  @include font(1.6rem, 600, 2.4rem);
   color: $black-1;
   text-align: center;
+  border-radius: 0.4rem;
   font-feature-settings: 'ss10' on;
+  @include font(1.6rem, 600, 2.4rem);
 
   &.red {
     background-color: $orange-5;
@@ -46,10 +46,10 @@
 .round {
   padding: 0.8rem 1.2rem;
   border: 0.1rem solid $black-13;
-  border-radius: 2.4rem;
-  @include font(1.3rem, 500, 1.8rem);
   text-align: center;
+  border-radius: 2.4rem;
   font-feature-settings: 'ss10' on;
+  @include font(1.3rem, 500, 1.8rem);
 
   &.red {
     border-color: $orange-5;
