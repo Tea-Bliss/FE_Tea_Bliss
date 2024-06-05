@@ -1,0 +1,5 @@
+.items {
+  @include flexSort(row, null, center, 1.2rem);
+  flex-wrap: wrap;
+  padding-bottom: 1.2rem;
+}
