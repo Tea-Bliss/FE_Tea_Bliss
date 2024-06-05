@@ -17,7 +17,7 @@ interface CheckBoxInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function CheckBoxInput({ item, name, isChecked, handleClick, status, ...props }: CheckBoxInputProps) {
-  const [UIStatus, setUIStatus] = useState('');
+  const [UIStatus, setUIStatus] = useState(name === 'taste' ? 'current' : 'preparing');
   const { register } = useFormContext();
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function CheckBoxInput({ item, name, isChecked, handleClick, stat
         className={cn('input')}
         type="checkbox"
         value={item}
-        disabled={UIStatus === 'preparing'}
+        disabled={UIStatus !== 'current'}
         {...props}
         {...register(name, { required: true })}
       />
@@ -45,7 +45,10 @@ export default function CheckBoxInput({ item, name, isChecked, handleClick, stat
         data-name={name}
         data-item={item}
         className={cn('customInput', isChecked && 'checked', UIStatus !== 'current' && 'unFocused')}
-        onClick={handleClick}
+        onClick={(e) => {
+          if (UIStatus === 'preparing') return;
+          handleClick(e);
+        }}
       >
         {item}
       </label>
