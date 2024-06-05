@@ -1,6 +1,7 @@
 .cardContainer {
   @include flexSort(column, null, null, null);
-  width: 22.9rem;
+  width: 100%;
+
   &:hover {
     .imgBackground {
       background: rgba(0, 0, 0, 0.5);
@@ -12,7 +13,9 @@
       z-index: 2;
     }
   }
+}
 
+.mainPageCardContainer {
   @include tablet {
     @include flexSort(row, null, null, 1.6rem);
     width: 100%;
@@ -20,24 +23,11 @@
   }
 }
 
-.mainPageCardContainer {
-  @include flexSort(column, null, null, null);
-  width: 22.9rem;
-
-  @include tablet {
-    gap: 0;
-    padding: 0;
-  }
-
-  @include mobile {
-    width: 15.8rem;
-  }
-}
-
 .imgBox {
   position: relative;
-  width: 22.9rem;
-  height: 26.8rem;
+  width: 100%;
+  aspect-ratio: 229 / 250;
+  height: auto;
   @include flexSort(null, center, center, null);
 
   .cart,
@@ -53,43 +43,18 @@
     width: 100%;
     height: 100%;
   }
+}
 
+.mainPageImgBox {
   @include tablet {
     width: 12rem;
     height: 9.8rem;
   }
 }
 
-.mainPageImgBox {
-  @include tablet {
-    width: 22.9rem;
-    height: 26.8rem;
-  }
-
-  @include mobile {
-    width: 15.8rem;
-    height: 18.5rem;
-  }
-}
-
 .cardInfoBox {
   padding: 1rem;
   @include flexSort(column, null, null, 1.2rem);
-
-  @include tablet {
-    @include flexSort(column, null, null, 1rem);
-    padding: 0;
-  }
-
-  @include mobile {
-    gap: 1.2rem;
-  }
-}
-
-.mainPageCardInfoBox {
-  @include tablet {
-    padding: 1rem;
-  }
 }
 
 .cardTitleBox {
