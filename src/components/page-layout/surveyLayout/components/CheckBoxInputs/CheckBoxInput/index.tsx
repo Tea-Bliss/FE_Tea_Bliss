@@ -39,7 +39,7 @@ export default function CheckBoxInput({ item, name, isChecked, handleClick, stat
         value={item}
         disabled={UIStatus !== 'current'}
         {...props}
-        {...register(name, { required: true })}
+        {...register(name)}
       />
       <label
         htmlFor={`${name}: ${item}`}
