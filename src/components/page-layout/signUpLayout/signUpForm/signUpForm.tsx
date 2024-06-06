@@ -55,7 +55,6 @@ export default function SignUpForm() {
       router.push(ROUTE.SIGN_IN);
     },
     onError: (error: Error) => {
-      console.log(error);
       if (error.response.data.message === '이미 존재하는 회원 입니다.') {
         setError('email', {
           message: '이미 존재하는 이메일입니다.',
@@ -82,6 +81,8 @@ export default function SignUpForm() {
   const onSubmit = (data: SignUpFormData) => {
     mutation.mutate(data);
   };
+
+  const isButtonDisabled = !isValid || Object.keys(errors).length > 0;
 
   return (
     <form className={cn('formBox')} onSubmit={handleSubmit(onSubmit)}>
@@ -176,7 +177,7 @@ export default function SignUpForm() {
             />
           )}
         />
-        <Button shape="square" color="red" className={cn('button')} disabled={!isValid}>
+        <Button shape="square" color="red" className={cn('button')} disabled={isButtonDisabled}>
           회원가입하기
         </Button>
       </article>
