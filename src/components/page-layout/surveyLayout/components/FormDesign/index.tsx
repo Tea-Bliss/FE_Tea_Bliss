@@ -1,8 +1,9 @@
 import { ReactElement } from 'react';
+
 import classNames from 'classnames/bind';
 
-import FormIcon from '@/components/page-layout/surveyLayout/components/FormIcon';
 import styles from '@/components/page-layout/surveyLayout/components/FormDesign/FormDesign.module.scss';
+import FormIcon from '@/components/page-layout/surveyLayout/components/FormIcon';
 
 const cn = classNames.bind(styles);
 

@@ -1,8 +1,9 @@
 'use client';
 
 import { InputHTMLAttributes, useEffect, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+
 import classNames from 'classnames/bind';
+import { useFormContext } from 'react-hook-form';
 
 import styles from '@/components/page-layout/surveyLayout/components/ButtonInputs/ButtonInput/ButtonInput.module.scss';
 
@@ -26,7 +27,7 @@ export default function ButtonInput({ item, name, isSelected, status, ...props }
     }
 
     setUIStatus(status < 3 ? 'preparing' : status === 3 ? 'current' : 'done');
-  }, [status]);
+  }, [status, name]);
 
   return (
     <div className={cn('item')}>

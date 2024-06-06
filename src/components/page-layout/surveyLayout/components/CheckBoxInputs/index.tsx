@@ -1,8 +1,9 @@
 'use client';
 
 import { InputHTMLAttributes, MouseEvent } from 'react';
-import { useFormContext, useWatch } from 'react-hook-form';
+
 import classNames from 'classnames/bind';
+import { useFormContext, useWatch } from 'react-hook-form';
 
 import CheckBoxInput from '@/components/page-layout/surveyLayout/components/CheckBoxInputs/CheckBoxInput';
 import styles from '@/components/page-layout/surveyLayout/components/CheckBoxInputs/CheckBoxInputs.module.scss';

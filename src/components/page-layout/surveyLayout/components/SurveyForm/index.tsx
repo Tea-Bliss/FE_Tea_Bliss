@@ -1,21 +1,22 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { FormProvider, useForm, useWatch } from 'react-hook-form';
-import classNames from 'classnames/bind';
 
-import FormDesign from '@/components/page-layout/surveyLayout/components/FormDesign';
+import classNames from 'classnames/bind';
+import { FormProvider, useForm, useWatch } from 'react-hook-form';
+
 import Button from '@/components/common/Button';
-import CheckBoxInputs from '@/components/page-layout/surveyLayout/components/CheckBoxInputs';
-import { TASTE_TYPES, TEA_TYPES } from '@/components/page-layout/surveyLayout/constants/teaTypes';
 import ButtonInputs from '@/components/page-layout/surveyLayout/components/ButtonInputs';
+import CheckBoxInputs from '@/components/page-layout/surveyLayout/components/CheckBoxInputs';
+import FormDesign from '@/components/page-layout/surveyLayout/components/FormDesign';
 import styles from '@/components/page-layout/surveyLayout/components/SurveyForm/SurveyForm.module.scss';
+import { TASTE_TYPES, TEA_TYPES } from '@/components/page-layout/surveyLayout/constants/teaTypes';
 
 const cn = classNames.bind(styles);
 
 export default function SurveyForm() {
   const methods = useForm();
-  const { handleSubmit, control } = methods;
+  const { control, handleSubmit } = methods;
   const [status, setStatus] = useState(0);
 
   const tasteValue = useWatch({ control, name: 'taste' });
@@ -40,12 +41,7 @@ export default function SurveyForm() {
 
   return (
     <FormProvider {...methods}>
-      <form
-        className={cn('form')}
-        onSubmit={handleSubmit((data) => {
-          console.log(data);
-        })}
-      >
+      <form className={cn('form')} onSubmit={handleSubmit((data) => console.log(data))}>
         <h1 className={cn('title')}>설문하고 추천받기</h1>
         <FormDesign
           status={status}

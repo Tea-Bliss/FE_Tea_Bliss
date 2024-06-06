@@ -1,8 +1,9 @@
 'use client';
 
 import { InputHTMLAttributes, MouseEventHandler, useEffect, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+
 import classNames from 'classnames/bind';
+import { useFormContext } from 'react-hook-form';
 
 import styles from '@/components/page-layout/surveyLayout/components/CheckBoxInputs/CheckBoxInput/CheckBoxInput.module.scss';
 
@@ -27,7 +28,7 @@ export default function CheckBoxInput({ item, name, isChecked, handleClick, stat
     }
 
     setUIStatus(status < 2 ? 'preparing' : status === 2 ? 'current' : 'done');
-  });
+  }, [name, status]);
 
   return (
     <div className={cn('item')}>
