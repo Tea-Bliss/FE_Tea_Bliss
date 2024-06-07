@@ -1,16 +1,17 @@
 'use client';
-import { ReactNode, useState } from 'react';
+import { HTMLAttributes, ReactNode, useState } from 'react';
 
 import { DropDownContext } from '@/components/common/DropDown/contexts/DropDownContext';
 
 interface DropDownProps {
   children: ReactNode;
   defaultTitle: string;
+  className: string;
   query?: string;
   animation?: boolean;
 }
 
-export default function DropDown({ children, defaultTitle, query, animation = false }: DropDownProps) {
+export default function DropDown({ children, defaultTitle, className, query, animation = false }: DropDownProps) {
   const [selectedItem, setSelectedItem] = useState<string>(defaultTitle);
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -42,5 +43,9 @@ export default function DropDown({ children, defaultTitle, query, animation = fa
     handleDropDown,
   };
 
-  return <DropDownContext.Provider value={contextValue}>{children}</DropDownContext.Provider>;
+  return (
+    <DropDownContext.Provider value={contextValue}>
+      <div className={className}>{children}</div>
+    </DropDownContext.Provider>
+  );
 }
