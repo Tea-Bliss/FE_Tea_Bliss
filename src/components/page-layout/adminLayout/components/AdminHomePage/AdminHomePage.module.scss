@@ -1,0 +1,48 @@
+.category {
+  .categoryTitle {
+    @include flexSort(row, null, center, 1rem);
+    margin-bottom: 1.2rem;
+    @include font(1.6rem, 700, $black-13);
+  }
+  .contents {
+    background-color: $black-1;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 1.2rem;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+
+    .content {
+      border-radius: 0.5rem;
+      padding: 0.5rem 1.5rem;
+      @include font(1.2rem, 400, 2.2rem);
+
+      .number {
+        @include font(1.2rem, 600, 2.2rem);
+      }
+    }
+
+    .orders {
+      background-color: #eff8fb;
+
+      .number {
+        color: #0080ff;
+      }
+    }
+
+    .cancel {
+      background-color: #fbefef;
+
+      .number {
+        color: #fa5858;
+      }
+    }
+
+    @include mobile {
+      grid-template-rows: 1fr;
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+}

@@ -1,5 +1,5 @@
-import AdminLayout from '@/components/page-layout/adminLayout';
+import AdminHomePage from '@/components/page-layout/adminLayout/components/AdminHomePage';
 
 export default function AdminPage() {
-  return <AdminLayout />;
+  return <AdminHomePage />;
 }

@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import classNames from 'classnames/bind';
 
 import styles from '@/components/page-layout/adminLayout/AdminLayout.module.scss';
@@ -6,14 +8,12 @@ import AdminSideBar from '@/components/page-layout/adminLayout/components/AdminS
 
 const cn = classNames.bind(styles);
 
-export default function AdminLayout() {
+export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <AdminSideBar />
-      <div className={cn('layout')}>
-        <AdminHeader />
-        <main className={cn('container')}></main>
-      </div>
+      <AdminHeader />
+      <main className={cn('main')}>{children}</main>
     </>
   );
 }

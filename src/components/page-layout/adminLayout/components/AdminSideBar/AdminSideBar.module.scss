@@ -1,12 +1,12 @@
 .sideBar {
-  width: 18rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
   padding-top: 1.6rem;
   border-right: 0.1rem solid $black-4;
   box-shadow: -0.5rem -0.7rem 1.5rem 0 rgba(0, 0, 0, 0.12);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 18rem;
 
   .logo {
     margin-left: 3rem;
@@ -19,11 +19,15 @@
     .category {
       @include flexSort(row, null, center, 1rem);
       padding: 1.1rem;
-      @include font(1.4rem, 600, 1);
       border-radius: 1.2rem;
+      @include font(1.4rem, 600, 1);
 
       &:hover {
         background-color: $black-4;
+      }
+
+      &:active {
+        background-color: $black-6;
       }
     }
   }
