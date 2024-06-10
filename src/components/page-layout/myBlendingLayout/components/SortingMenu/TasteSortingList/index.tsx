@@ -1,10 +1,11 @@
 'use client';
 
-import BlendingLabel from '@/components/common/BlendingLabel/BlendingLabel';
-import styles from '@/components/page-layout/myBlendingLayout/components/SortingMenu/TasteSortingList/TasteSortingList.module.scss';
 import classNames from 'classnames/bind';
-import { TASTE_TYPES } from '@/components/page-layout/myBlendingLayout/constants/standards';
+
+import BlendingLabel from '@/components/common/BlendingLabel/BlendingLabel';
 import openToast from '@/components/common/Toast/features/openToast';
+import styles from '@/components/page-layout/myBlendingLayout/components/SortingMenu/TasteSortingList/TasteSortingList.module.scss';
+import { TASTE_TYPES } from '@/components/page-layout/myBlendingLayout/constants/standards';
 import { useMyBlendingContext } from '@/components/page-layout/myBlendingLayout/contexts/myBlendingContext';
 
 const cn = classNames.bind(styles);

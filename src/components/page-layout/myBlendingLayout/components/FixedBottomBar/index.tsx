@@ -1,8 +1,9 @@
 'use client';
 
+import classNames from 'classnames/bind';
+
 import Button from '@/components/common/Button';
 import styles from '@/components/page-layout/myBlendingLayout/components/FixedBottomBar/FixedBottomBar.module.scss';
-import classNames from 'classnames/bind';
 
 const cn = classNames.bind(styles);
 
