@@ -1,8 +1,9 @@
 'use client';
 
+import classNames from 'classnames/bind';
+
 import BlendingLabel from '@/components/common/BlendingLabel/BlendingLabel';
 import styles from '@/components/page-layout/myBlendingLayout/components/SortingMenu/TypeSortingList/TypeSortingList.module.scss';
-import classNames from 'classnames/bind';
 import { TEA_TYPES } from '@/components/page-layout/myBlendingLayout/constants/standards';
 import { useMyBlendingContext } from '@/components/page-layout/myBlendingLayout/contexts/myBlendingContext';
 
