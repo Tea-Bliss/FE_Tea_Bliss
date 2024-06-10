@@ -8,10 +8,11 @@ import classNames from 'classnames/bind';
 import Card from '@/components/common/Card/Card';
 import getPagenationItems from '@/components/common/Pagenation/apis/getPagenationItems';
 import Pagination from '@/components/common/Pagenation/Pagenation';
-import FILTER from '@/components/page-layout/productListLayout/constants/filter';
+import { FILTER } from '@/components/page-layout/productListLayout/constants/index';
 import styles from '@/components/page-layout/productListLayout/ProductList/ProductList.module.scss';
+import Img from '@/icons/다운로드.jpg';
 
-import mock from '../constants/mock';
+import FinishedItem from '../types';
 
 const cn = classNames.bind(styles);
 
@@ -20,9 +21,18 @@ export default function ProductList() {
 
   const { data } = useQuery({
     queryKey: ['items', page],
-    queryFn: () => getPagenationItems(page, 5),
+    queryFn: () => getPagenationItems(page, 8),
     placeholderData: keepPreviousData,
   });
+  console.log(data?.length);
+
+  console.log(data);
+
+  const finishedData = data?.map((item: FinishedItem) => ({
+    ...item,
+    href: '/',
+    img: Img,
+  }));
 
   const [selectedFilter, setSelectedFilter] = useState('');
 
@@ -45,19 +55,19 @@ export default function ProductList() {
             </p>
           ))}
         </div>
-        {mock.map((item) => (
+        {finishedData?.map((item: FinishedItem) => (
           <Card
-            key={item.price}
+            key={item.title}
             img={item.img}
             href={item.href}
-            price={item.price}
-            scope={item.scope}
-            review={item.scope}
+            price={item.cost}
+            scope={item.rating}
+            review={item.review}
             title={item.title}
           />
         ))}
       </div>
-      <Pagination currentPage={page} totalPages={data?.totalPages} setPage={setPage} />
+      <Pagination currentPage={page} itemsPerPage={8} totalItems={20} setPage={setPage} />
     </div>
   );
 }

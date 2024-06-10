@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 
 import Link from 'next/link';
 
-import NAV from '@/components/page-layout/productListLayout/constants/nav';
+import { NAV } from '@/components/page-layout/productListLayout/constants/index';
 import styles from '@/components/page-layout/productListLayout/ProductNav/ProductNav.module.scss';
 
 const cn = classNames.bind(styles);
