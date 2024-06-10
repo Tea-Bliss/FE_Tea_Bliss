@@ -24,12 +24,12 @@ export default function Card({ href, isMainPageCard, img, title, price, review, 
     <Link
       href={href}
       className={cn('cardContainer', {
-        mainPageCardContainer: !isMainPageCard,
+        mainPageCardContainer: isMainPageCard,
       })}
     >
       <div
         className={cn('imgBox', {
-          mainPageImgBox: !isMainPageCard,
+          mainPageImgBox: isMainPageCard,
         })}
       >
         <Image
@@ -44,7 +44,7 @@ export default function Card({ href, isMainPageCard, img, title, price, review, 
       </div>
       <article
         className={cn('cardInfoBox', {
-          mainPageCardInfoBox: !isMainPageCard,
+          mainPageCardInfoBox: isMainPageCard,
         })}
       >
         <div className={cn('cardTitleBox')}>
