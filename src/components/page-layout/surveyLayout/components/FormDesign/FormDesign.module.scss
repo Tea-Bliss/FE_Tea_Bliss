@@ -1,0 +1,56 @@
+.layout {
+  width: 100%;
+  color: $black-7;
+
+  .current {
+    color: $black-13;
+  }
+
+  .label {
+    @include flexSort(row, null, center, 1.6rem);
+
+    .labelName {
+      @include font(1.4rem, 400, 2.2rem);
+    }
+  }
+
+  .content {
+    margin-left: 1.2rem;
+    padding-left: 2.8rem;
+    border-left: 0.1rem solid $orange-5;
+    position: relative;
+    color: $black-13;
+
+    &.preparing {
+      border-color: $black-7;
+      color: $black-7;
+    }
+
+    &.done {
+      color: $black-7;
+    }
+
+    ::before {
+      border-left: 0.1rem solid $black-1;
+      position: absolute;
+      top: 0;
+      left: -0.1rem;
+      height: 0.6rem;
+      content: '';
+    }
+
+    ::after {
+      border-left: 0.1rem solid $black-1;
+      position: absolute;
+      bottom: 0;
+      left: -0.1rem;
+      height: 0.6rem;
+      content: '';
+    }
+
+    .description {
+      padding-bottom: 1.2rem;
+      @include font(1.4rem, 400, 2.2rem);
+    }
+  }
+}
