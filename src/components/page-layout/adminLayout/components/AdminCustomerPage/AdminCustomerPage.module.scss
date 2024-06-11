@@ -1,0 +1,72 @@
+.searchBarContainer {
+  margin-bottom: 2rem;
+  position: relative;
+
+  .searchBar {
+    padding: 0 5rem 0 6.4rem;
+    width: 100%;
+    height: 4.8rem;
+    background-color: $black-1;
+    border-radius: 0.5rem;
+  }
+
+  .searchIcon {
+    position: absolute;
+    top: 25%;
+    left: 2rem;
+  }
+}
+
+.userList {
+  @include flexSort(column, null, null, 0);
+  padding: 1.2rem 0;
+  background-color: $black-1;
+  border-radius: 0.5rem;
+
+  .userCount {
+    padding: 0 1.2rem 0 2.4rem;
+    @include font(1.4rem, 400, 3rem);
+
+    .number {
+      @include font(1.4rem, 400, 3rem);
+      color: #1a6dff;
+    }
+  }
+
+  .table {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+
+    .row {
+      display: table-row;
+      cursor: pointer;
+
+      &:last-child .cell {
+        border-bottom: none;
+      }
+    }
+
+    .cell {
+      display: table-cell;
+      padding: 1.5rem 0.8rem;
+      border-bottom: 1px solid #e0e0e0;
+      @include font(1.2rem, 400, 1.2rem);
+
+      &:first-child {
+        padding-left: 2.4rem;
+        width: 6rem;
+      }
+    }
+
+    .header {
+      font-weight: 700;
+      cursor: default;
+
+      .cell {
+        @include font(1.3rem, 600, 1.3rem);
+        color: $black-7;
+      }
+    }
+  }
+}
