@@ -10,7 +10,8 @@ export default interface FinishedItem {
   rate: number;
   season: string;
   createat: Date;
-  isLastPage: false;
+  isLastPage: boolean;
   href: string;
   img: StaticImageData;
+  id: number;
 }

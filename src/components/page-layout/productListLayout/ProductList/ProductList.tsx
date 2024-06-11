@@ -8,8 +8,9 @@ import classNames from 'classnames/bind';
 import Card from '@/components/common/Card/Card';
 import getPagenationItems from '@/components/common/Pagenation/apis/getPagenationItems';
 import Pagination from '@/components/common/Pagenation/Pagenation';
-import { FILTER } from '@/components/page-layout/productListLayout/constants/index';
+import { FILTER, LIMIT } from '@/components/page-layout/productListLayout/constants/index';
 import styles from '@/components/page-layout/productListLayout/ProductList/ProductList.module.scss';
+import ROUTE from '@/constants/route';
 import Img from '@/icons/다운로드.jpg';
 
 import FinishedItem from '../types';
@@ -18,27 +19,23 @@ const cn = classNames.bind(styles);
 
 export default function ProductList() {
   const [page, setPage] = useState(1);
+  const [selectedFilter, setSelectedFilter] = useState('all');
 
   const { data } = useQuery({
-    queryKey: ['items', page],
-    queryFn: () => getPagenationItems(page, 8),
+    queryKey: ['items', page, selectedFilter],
+    queryFn: () => getPagenationItems(selectedFilter, page, LIMIT),
     placeholderData: keepPreviousData,
   });
-  console.log(data?.length);
 
-  console.log(data);
-
-  const finishedData = data?.map((item: FinishedItem) => ({
+  const finishedData = data?.tea?.map((item: FinishedItem) => ({
     ...item,
-    href: '/',
+    href: `${ROUTE.PRODUCT_LIST}/${item.id}`,
     img: Img,
   }));
 
-  const [selectedFilter, setSelectedFilter] = useState('');
-
   const handleFilterClick = (filter: string) => {
     setSelectedFilter(filter);
-    // Todo: api 호출
+    setPage(1);
   };
 
   return (
@@ -47,17 +44,17 @@ export default function ProductList() {
         <div className={cn('filter')}>
           {FILTER.map((filter) => (
             <p
-              key={filter}
-              className={cn({ active: selectedFilter === filter })}
-              onClick={() => handleFilterClick(filter)}
+              key={filter.key}
+              className={cn({ active: selectedFilter === filter.english })}
+              onClick={() => handleFilterClick(filter.english)}
             >
-              {filter}
+              {filter.ko}
             </p>
           ))}
         </div>
         {finishedData?.map((item: FinishedItem) => (
           <Card
-            key={item.title}
+            key={item.id}
             img={item.img}
             href={item.href}
             price={item.cost}
@@ -67,7 +64,7 @@ export default function ProductList() {
           />
         ))}
       </div>
-      <Pagination currentPage={page} itemsPerPage={8} totalItems={20} setPage={setPage} />
+      <Pagination currentPage={page} itemsPerPage={LIMIT} totalItems={data?.size} setPage={setPage} />
     </div>
   );
 }

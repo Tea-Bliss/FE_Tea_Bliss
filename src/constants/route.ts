@@ -10,6 +10,7 @@ const ROUTE = {
   PRODUCT: '/product',
   MY_PAGE: '/my-page',
   REVIEWS: '/reviews',
+  PRODUCT_LIST: '/product/list',
 } as const;
 
 export default ROUTE;
