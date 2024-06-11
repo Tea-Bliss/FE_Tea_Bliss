@@ -16,8 +16,8 @@
     rgba($black-1, 0) 100%
   );
   animation: shimmer 2s infinite;
-  content: '';
 }
+
 @keyframes shimmer {
   100% {
     transform: translateX(100%);
