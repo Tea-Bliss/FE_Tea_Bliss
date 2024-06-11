@@ -3,21 +3,28 @@
   margin-top: 2rem;
 }
 
-.pagination button {
+.button {
   margin: 0 0.5rem;
   padding: 1rem 1.5rem;
-  background: $orange-1;
   color: $black-13;
   cursor: pointer;
+
+  &.active {
+    background: $orange-3;
+  }
 }
 
-.pagination button:disabled {
-  fill: $black-6;
-  cursor: not-allowed;
-}
+.arrow {
+  padding: 1rem;
 
-.pagination button.active {
-  background: $orange-8;
+  &:disabled {
+    fill: $black-6;
+    cursor: not-allowed;
+
+    path {
+      fill: $black-6;
+    }
+  }
 }
 
 .rightArrow {
