@@ -7,6 +7,8 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 
 import styles from '@/components/page-layout/adminLayout/components/AdminCustomerPage/AdminCustomerPage.module.scss';
+import SearchBar from '@/components/page-layout/adminLayout/components/common/SearchBar';
+import Table from '@/components/page-layout/adminLayout/components/common/Table';
 import User from '@/components/page-layout/adminLayout/types/userType';
 
 const cn = classNames.bind(styles);
@@ -56,39 +58,25 @@ export default function AdminCustomerPage() {
   };
 
   return (
-    <div className={cn('container')}>
-      <div className={cn('searchBarContainer')}>
-        <Image src="/icons/search.svg" alt="검색하기" width={24} height={24} className={cn('searchIcon')} />
-        <input className={cn('searchBar')} value={searchValue} onChange={handleChange} onKeyUp={handleEnter} />
-      </div>
+    <>
+      <SearchBar onChange={handleChange} onKeyUp={handleEnter} placeholder="닉네임 또는 이메일을 검색해주세요" />
 
-      <div className={cn('userList')}>
-        <div className={cn('userCount')}>
-          전체 사용자 <span className={cn('number')}>{users.length}</span>명
-        </div>
-        <ul className={cn('table')}>
-          <li className={cn('row', 'header')}>
-            <div className={cn('cell')}>ID</div>
-            <div className={cn('cell')}>닉네임</div>
-            <div className={cn('cell')}>이메일</div>
-            <div className={cn('cell')}>사용자 유형</div>
-            <div className={cn('cell')}>가입일</div>
-            <div className={cn('cell')}>리뷰 수</div>
-            <div className={cn('cell')}>구매 금액</div>
-          </li>
-          {users.map((user) => (
-            <li key={user.id} className={cn('row')}>
-              <div className={cn('cell')}>{user.id}</div>
-              <div className={cn('cell')}>{user.nickName}</div>
-              <div className={cn('cell')}>{user.email}</div>
-              <div className={cn('cell')}>{user.userType}</div>
-              <div className={cn('cell')}>{user.createdAt}</div>
-              <div className={cn('cell')}>{user.reviewCount}</div>
-              <div className={cn('cell')}>{user.purchaseAmount}</div>
-            </li>
-          ))}
-        </ul>
+      <Table
+        fields={['ID', '닉네임', '이메일', '사용자 유형', '가입일', '리뷰 수', '구매 금액']}
+        items={users}
+        name="사용자"
+        unit="명"
+      />
+
+      <div className={cn('pageButtons')}>
+        <Image src="/icons/arrow.svg" alt="이전" width={16} height={16} className={cn('arrow', 'before')} />
+        <div className={cn('pages', 'current')}>1</div>
+        <div className={cn('pages')}>2</div>
+        <div className={cn('pages')}>3</div>
+        <div className={cn('pages')}>4</div>
+        <div className={cn('pages')}>5</div>
+        <Image src="/icons/arrow.svg" alt="다음" width={16} height={16} className={cn('arrow', 'next')} />
       </div>
-    </div>
+    </>
   );
 }

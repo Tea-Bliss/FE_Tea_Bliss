@@ -18,6 +18,8 @@
 
     .category {
       @include flexSort(row, null, center, 1rem);
+      width: 100%;
+      position: relative;
       padding: 1.1rem;
       border-radius: 1.2rem;
       @include font(1.4rem, 600, 1);
@@ -29,6 +31,30 @@
       &:active {
         background-color: $black-6;
       }
+
+      &.sub {
+        padding: 0.8rem 1.1rem 0.8rem 4.1rem;
+        width: 100%;
+      }
+
+      &.current {
+        background-color: $black-4;
+      }
+
+      .subMenuArrow {
+        rotate: 90deg;
+        position: absolute;
+        right: 1rem;
+
+        &.visibleSubMenu {
+          rotate: -90deg;
+        }
+      }
+    }
+
+    .subMenu {
+      @include flexSort(column, null, null, 0.5rem);
+      margin-top: -0.5rem;
     }
   }
 }

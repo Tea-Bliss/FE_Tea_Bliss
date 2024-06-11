@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import styles from '@/components/page-layout/adminLayout/components/AdminHeader/AdminHeader.module.scss';
+import styles from '@/components/page-layout/adminLayout/components/common/AdminHeader/AdminHeader.module.scss';
 
 const cn = classNames.bind(styles);
 

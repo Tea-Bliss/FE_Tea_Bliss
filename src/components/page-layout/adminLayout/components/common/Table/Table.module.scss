@@ -1,0 +1,58 @@
+.container {
+  @include flexSort(column, null, null, 0);
+  padding-top: 1.2rem;
+  background-color: $black-1;
+  border-radius: 0.5rem;
+
+  .count {
+    padding: 0 1.2rem 0 2.4rem;
+    @include font(1.4rem, 400, 3rem);
+
+    .number {
+      @include font(1.4rem, 400, 3rem);
+      color: #1a6dff;
+    }
+  }
+
+  .table {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+
+    .row {
+      display: table-row;
+
+      &:last-child .cell {
+        border-bottom: none;
+      }
+
+      & + .row {
+        cursor: pointer;
+
+        &:hover .cell {
+          background-color: rgba(0, 0, 0, 0.03);
+        }
+      }
+    }
+
+    .cell {
+      display: table-cell;
+      padding: 1.5rem 0.8rem;
+      border-bottom: 1px solid #e0e0e0;
+      @include font(1.2rem, 400, 1.2rem);
+
+      &:first-child {
+        padding-left: 2.4rem;
+      }
+    }
+
+    .header {
+      font-weight: 700;
+
+      .cell {
+        @include font(1.3rem, 600, 1.3rem);
+        color: $black-7;
+      }
+    }
+  }
+}
