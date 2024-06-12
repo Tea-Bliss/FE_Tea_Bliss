@@ -1,3 +1,7 @@
+'use client';
+
+import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react';
+
 import classNames from 'classnames/bind';
 
 import Image from 'next/image';
@@ -9,15 +13,31 @@ import ProductBanner from '@/images/product_banner.jpg';
 
 const cn = classNames.bind(styles);
 
+interface CategoryContextType {
+  category: string;
+  setCategory: Dispatch<SetStateAction<string>>;
+}
+
+const defaultValue: CategoryContextType = {
+  category: '',
+  setCategory: () => {},
+};
+
+export const Category = createContext(defaultValue);
+
 export default function ProductListLayout() {
+  const [category, setCategory] = useState('');
+
   return (
     <main className={cn('main')}>
       <div className={cn('imgBox')}>
         <Image src={ProductBanner} alt="배너" fill />
       </div>
       <div className={cn('container')}>
-        <ProductNav />
-        <ProductList />
+        <Category.Provider value={{ category, setCategory }}>
+          <ProductNav />
+          <ProductList />
+        </Category.Provider>
       </div>
     </main>
   );
