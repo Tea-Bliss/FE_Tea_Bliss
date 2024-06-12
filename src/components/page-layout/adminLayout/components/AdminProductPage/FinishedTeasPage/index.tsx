@@ -4,6 +4,8 @@ import { ChangeEvent, KeyboardEventHandler, useState } from 'react';
 
 import classNames from 'classnames/bind';
 
+import Image from 'next/image';
+
 import styles from '@/components/page-layout/adminLayout/components/AdminProductPage/FinishedTeasPage/FinishedTeasPage.module.scss';
 import SearchBar from '@/components/page-layout/adminLayout/components/common/SearchBar';
 import SortBar from '@/components/page-layout/adminLayout/components/common/SortBar';
@@ -81,13 +83,29 @@ export default function FinishedTeasPage() {
   return (
     <>
       <SortBar standards={['전체', '품절', '숨김', '봄', '여름', '가을', '겨울']} />
-      <SearchBar value={searchValue} onChange={handleChange} onKeyUp={handleEnter} />
+      <SearchBar
+        value={searchValue}
+        onChange={handleChange}
+        onKeyUp={handleEnter}
+        placeholder="한글 이름 또는 영문 이름으로 검색해주세요"
+      />
       <Table
         fields={['ID', '이름', '영문 이름', '가격', '종류', '재고', '상태']}
         items={products}
         name="상품"
         unit="개"
+        path="/admin/product/finished-teas/detail"
       />
+
+      <div className={cn('pageButtons')}>
+        <Image src="/icons/arrow.svg" alt="이전" width={16} height={16} className={cn('arrow', 'before')} />
+        <div className={cn('pages', 'current')}>1</div>
+        <div className={cn('pages')}>2</div>
+        <div className={cn('pages')}>3</div>
+        <div className={cn('pages')}>4</div>
+        <div className={cn('pages')}>5</div>
+        <Image src="/icons/arrow.svg" alt="다음" width={16} height={16} className={cn('arrow', 'next')} />
+      </div>
     </>
   );
 }

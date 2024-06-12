@@ -1,0 +1,42 @@
+.submitButton {
+  display: inline-block;
+  outline: none;
+  width: 6.5rem;
+  height: 3.4rem;
+  background-color: #1a6dff;
+  color: $black-1;
+  border-radius: 0.2rem;
+  @include font(1.3rem, 400, 1.3rem);
+
+  &:hover {
+    background-color: #0053d9;
+  }
+
+  &:active {
+    background-color: #0096f3;
+  }
+
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: #313534;
+  }
+}
+
+.deleteButton {
+  display: inline-block;
+  outline: none;
+  width: 6.5rem;
+  height: 3.4rem;
+  background-color: #fe2e2e;
+  color: $black-1;
+  border-radius: 0.2rem;
+  @include font(1.3rem, 400, 1.3rem);
+
+  &:hover {
+    background-color: #f78181;
+  }
+
+  &:active {
+    background-color: #f6cece;
+  }
+}

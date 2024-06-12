@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { InputHTMLAttributes, useRef, useState } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -12,7 +12,9 @@ const cn = classNames.bind(styles);
 
 const defaultImage = '/images/default_profile.png';
 
-export default function FileInput({ ...props }) {
+interface FileInputProps extends InputHTMLAttributes<HTMLInputElement> {}
+
+export default function FileInput(props: FileInputProps) {
   const [preview, setPreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -34,16 +36,21 @@ export default function FileInput({ ...props }) {
 
   return (
     <div>
-      <label className={cn('previewContainer')}>
-        <Image src={preview || defaultImage} alt="preview" fill objectFit="cover" className={cn('previewImage')} />
-      </label>
+      <div className={cn('previewOuterContainer')}>
+        <div className={cn('previewInnerContainer')}>
+          <Image src={preview || defaultImage} alt="preview" fill objectFit="cover" className={cn('previewImage')} />
+        </div>
+        <button type="button" className={cn('cameraButton')}>
+          <Image src="/icons/camera.svg" alt="이미지 변경" width={20} height={20} />
+        </button>
+      </div>
       <input
-        {...props}
         type="file"
         accept="image/*"
         onChange={handleFileChange}
         className={cn('fileInput')}
         ref={fileInputRef}
+        {...props}
       />
     </div>
   );

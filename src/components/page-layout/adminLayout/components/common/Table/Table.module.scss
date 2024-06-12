@@ -3,6 +3,7 @@
   padding-top: 1.2rem;
   background-color: $black-1;
   border-radius: 0.5rem;
+  position: relative;
 
   .count {
     padding: 0 1.2rem 0 2.4rem;
@@ -53,6 +54,16 @@
         @include font(1.3rem, 600, 1.3rem);
         color: $black-7;
       }
+    }
+  }
+
+  .addButtonLink {
+    position: absolute;
+    top: 1.2rem;
+    right: 2.4rem;
+
+    .addButton {
+      height: 2.5rem;
     }
   }
 }

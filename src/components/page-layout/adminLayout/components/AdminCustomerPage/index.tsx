@@ -66,6 +66,7 @@ export default function AdminCustomerPage() {
         items={users}
         name="사용자"
         unit="명"
+        path="/admin/customer/detail"
       />
 
       <div className={cn('pageButtons')}>
