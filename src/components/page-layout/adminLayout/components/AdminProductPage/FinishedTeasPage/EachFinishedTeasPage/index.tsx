@@ -1,6 +1,9 @@
 'use client';
 
+import { Suspense } from 'react';
+
 import classNames from 'classnames/bind';
+import { FormProvider, useForm, useWatch } from 'react-hook-form';
 
 import { useSearchParams } from 'next/navigation';
 
@@ -9,6 +12,8 @@ import styles from '@/components/page-layout/adminLayout/components/AdminProduct
 import BackButton from '@/components/page-layout/adminLayout/components/common/BackButton';
 import DetailCard from '@/components/page-layout/adminLayout/components/common/DetailCard';
 import SubmitButton from '@/components/page-layout/adminLayout/components/common/SubmitButton';
+import ButtonInputs from '@/components/page-layout/surveyLayout/components/ButtonInputs';
+import { TASTE_TYPES, TEA_TYPES } from '@/components/page-layout/surveyLayout/constants/teaTypes';
 
 const cn = classNames.bind(styles);
 
@@ -47,71 +52,75 @@ const mockProduct = {
 };
 
 export default function EachFinishedTeasPage() {
+  const methods = useForm();
+  const { control, handleSubmit } = methods;
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
 
   return (
-    <>
+    <Suspense>
       <BackButton className={cn('backButton')} />
       <DetailCard title="상품 정보" className={cn('card')}>
-        <form className={cn('form')}>
-          <div className={cn('profile')}>
-            <FileInput />
-          </div>
-          <div className={cn('information')}>
-            <div className={cn('section')}>
-              <div className={cn('field')}>이름</div>
-              <div className={cn('value')}>string</div>
+        <FormProvider {...methods}>
+          <form className={cn('form')}>
+            <div className={cn('profile')}>
+              <FileInput type="product" />
             </div>
-            <div className={cn('section')}>
-              <div className={cn('field')}>영문 이름</div>
-              <div className={cn('value')}>string</div>
-            </div>
-            <div className={cn('section')}>
-              <div className={cn('field')}>종류</div>
-              <div className={cn('value')}>9 종류 중 택1</div>
-            </div>
-            <div className={cn('section')}>
-              <div className={cn('field')}>설명</div>
-              <div className={cn('value')}>string</div>
-            </div>
-            <div className={cn('section')}>
-              <div className={cn('field')}>원재료</div>
-              <div className={cn('value')}>각 재료마다 name, description 입력받음</div>
-            </div>
-            <div className={cn('section')}>
-              <div className={cn('field')}>맛</div>
-              <div className={cn('value')}>6가지 맛 중 3개까지 고를 수 있음. 안고르면 null.</div>
-            </div>
-            <div className={cn('section')}>
-              <div className={cn('field')}>가격</div>
-              <div className={cn('value')}>number. 만원 단위.</div>
-            </div>
-            <div className={cn('section')}>
-              <div className={cn('field')}>카페인 여부</div>
-              <div className={cn('value')}>boolean</div>
-            </div>
-            <div className={cn('section')}>
-              <div className={cn('field')}>계절</div>
-              <div className={cn('value')}>봄, 여름, 가을, 겨울 중 택1</div>
-            </div>
-            <div className={cn('section')}>
-              <div className={cn('field')}>재고</div>
-              <div className={cn('value')}>number. 0이 될 시에 판매 상태가 품절이 됨.</div>
-            </div>
-            <div className={cn('section')}>
-              <div className={cn('field')}>판매 상태</div>
-              <div className={cn('value')}>
-                판매중, 품절, 숨김 중에서 택1 가능. 품절, 숨김의 경우 판매사이트에선 안보임
+            <div className={cn('information')}>
+              <div className={cn('section')}>
+                <div className={cn('field')}>이름</div>
+                <input className={cn('value', 'input')} />
+              </div>
+              <div className={cn('section')}>
+                <div className={cn('field')}>영문 이름</div>
+                <input className={cn('value', 'input')} />
+              </div>
+              <div className={cn('section')}>
+                <div className={cn('field')}>종류</div>
+                <ButtonInputs items={TEA_TYPES} name="type" status={3} />
+              </div>
+              <div className={cn('section')}>
+                <div className={cn('field')}>설명</div>
+                <textarea className={cn('value', 'textarea')} />
+              </div>
+              <div className={cn('section')}>
+                <div className={cn('field')}>원재료</div>
+                <div className={cn('value')}>각 재료마다 name, description 입력받음</div>
+              </div>
+              <div className={cn('section')}>
+                <div className={cn('field')}>맛</div>
+                <div className={cn('value')}>6가지 맛 중 3개까지 고를 수 있음. 안고르면 null.</div>
+              </div>
+              <div className={cn('section')}>
+                <div className={cn('field')}>가격</div>
+                <div className={cn('value')}>number. 만원 단위.</div>
+              </div>
+              <div className={cn('section')}>
+                <div className={cn('field')}>카페인 여부</div>
+                <div className={cn('value')}>boolean</div>
+              </div>
+              <div className={cn('section')}>
+                <div className={cn('field')}>계절</div>
+                <div className={cn('value')}>봄, 여름, 가을, 겨울 중 택1</div>
+              </div>
+              <div className={cn('section')}>
+                <div className={cn('field')}>재고</div>
+                <div className={cn('value')}>number. 0이 될 시에 판매 상태가 품절이 됨.</div>
+              </div>
+              <div className={cn('section')}>
+                <div className={cn('field')}>판매 상태</div>
+                <div className={cn('value')}>
+                  판매중, 품절, 숨김 중에서 택1 가능. 품절, 숨김의 경우 판매사이트에선 안보임
+                </div>
               </div>
             </div>
-          </div>
-          <div className={cn('submitButton')}>
-            <SubmitButton>저장</SubmitButton>
-          </div>
-        </form>
+            <div className={cn('submitButton')}>
+              <SubmitButton>저장</SubmitButton>
+            </div>
+          </form>
+        </FormProvider>
       </DetailCard>
       <SubmitButton isDelete={true}>삭제하기</SubmitButton>
-    </>
+    </Suspense>
   );
 }
