@@ -1,5 +1,7 @@
 'use client';
 
+import { Suspense } from 'react';
+
 import classNames from 'classnames/bind';
 
 import { useSearchParams } from 'next/navigation';
@@ -28,7 +30,7 @@ export default function EachLooseLeafTeasPage() {
   const id = searchParams.get('id');
 
   return (
-    <>
+    <Suspense>
       <BackButton className={cn('backButton')} />
       <DetailCard title="상품 정보" className={cn('card')}>
         <form className={cn('form')}>
@@ -73,6 +75,6 @@ export default function EachLooseLeafTeasPage() {
         </form>
       </DetailCard>
       <SubmitButton isDelete={true}>삭제하기</SubmitButton>
-    </>
+    </Suspense>
   );
 }
