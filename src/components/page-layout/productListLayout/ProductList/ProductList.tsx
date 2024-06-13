@@ -47,6 +47,7 @@ export default function ProductList() {
     ...item,
     href: `${ROUTE.PRODUCT_LIST}/${item.id}`,
     img: Img,
+    koTitle: '제주에서 넘어온 그린티',
   }));
 
   const handleFilterClick = (filter: string) => {
@@ -71,6 +72,7 @@ export default function ProductList() {
           ? Array.from({ length: 8 }).map((_, index) => <Skeleton key={index} className={cn('skeleton')} />)
           : finishedData?.map((item: FinishedItem) => (
               <Card
+                type="productList"
                 key={item.id}
                 img={item.img}
                 href={item.href}
@@ -78,6 +80,7 @@ export default function ProductList() {
                 scope={item.rating}
                 review={item.review}
                 title={item.title}
+                koTitle={item.koTitle}
               />
             ))}
       </div>
