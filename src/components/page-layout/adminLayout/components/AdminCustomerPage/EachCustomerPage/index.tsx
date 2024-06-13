@@ -1,4 +1,5 @@
 'use client';
+import { Suspense } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -27,7 +28,7 @@ export default function EachCustomerPage() {
   const id = searchParams.get('id');
 
   return (
-    <>
+    <Suspense>
       <BackButton className={cn('backButton')} />
       <DetailCard title="회원 정보" className={cn('card')}>
         <form className={cn('form')}>
@@ -88,6 +89,6 @@ export default function EachCustomerPage() {
         </form>
       </DetailCard>
       <SubmitButton isDelete={true}>삭제하기</SubmitButton>
-    </>
+    </Suspense>
   );
 }
