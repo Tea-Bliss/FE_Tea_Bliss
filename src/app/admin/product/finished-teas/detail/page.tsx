@@ -5,7 +5,7 @@ import EachFinishedTeasPage from '@/components/page-layout/adminLayout/component
 export default function FinishedTeasDetail() {
   return (
     <Suspense>
-      <EachFinishedTeasPage />;
+      <EachFinishedTeasPage />
     </Suspense>
   );
 }
