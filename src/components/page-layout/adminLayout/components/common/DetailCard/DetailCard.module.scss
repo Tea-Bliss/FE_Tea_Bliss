@@ -1,0 +1,16 @@
+.container {
+  background-color: $black-1;
+  border-radius: 0.2rem;
+  max-width: 67.6rem;
+
+  .title {
+    border-bottom: 0.1rem solid #eee;
+    height: 5rem;
+    padding: 1.8rem 2.4rem;
+    @include font(1.4rem, 400, 1.4rem);
+  }
+
+  .content {
+    padding: 2.4rem;
+  }
+}
