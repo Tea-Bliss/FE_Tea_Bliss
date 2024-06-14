@@ -13,7 +13,7 @@ export default function MainLayout() {
       <GlobalNavBar />
       <main className={cn('layout')}>
         <div className={cn('container')}>
-          <Carousel cards={cardData} />
+          <Carousel cards={cardData} num={3} />
         </div>
       </main>
     </>

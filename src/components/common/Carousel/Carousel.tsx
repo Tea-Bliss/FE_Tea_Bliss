@@ -24,14 +24,15 @@ interface CarouselProps {
     review: number;
     scope: number;
   }[];
+  num: number;
 }
 
-export default function SingleCarousel({ cards }: CarouselProps) {
+export default function Carousel({ cards, num }: CarouselProps) {
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
-  const cardsPerSlide = 3;
+  const cardsPerSlide = num;
 
   const handlePrevSlide = useCallback(() => {
     const index = current === 0 ? cards.length - cardsPerSlide : current - 1;
@@ -55,14 +56,14 @@ export default function SingleCarousel({ cards }: CarouselProps) {
     };
   }, [handleNextSlide]);
 
-  useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.classList.remove(
-        ...Array.from({ length: cards.length - cardsPerSlide + 1 }, (_, i) => `slide-${i + 1}`)
-      );
-      contentRef.current.classList.add(`slide-${current + 1}`);
-    }
-  }, [current, cards.length, cardsPerSlide, contentRef]);
+  // useEffect(() => {
+  //   if (contentRef.current) {
+  //     contentRef.current.classList.remove(
+  //       ...Array.from({ length: cards.length - cardsPerSlide + 1 }, (_, i) => `slide-${i + 1}`)
+  //     );
+  //     contentRef.current.classList.add(`slide-${current + 1}`);
+  //   }
+  // }, [current, cards.length, cardsPerSlide, contentRef]);
 
   const visibleCards =
     cards.length - current < cardsPerSlide
