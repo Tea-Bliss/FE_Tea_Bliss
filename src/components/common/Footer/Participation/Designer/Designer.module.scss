@@ -1,5 +1,5 @@
 .nameBox {
-  @include flexSort(column, null, null, null);
+  @include flexSort(column, null, null, 1rem);
 
   p {
     @include font(2rem, 700, normal);
