@@ -34,6 +34,7 @@
       width: 15rem;
       color: #757575;
       text-align: right;
+      flex-shrink: 0;
     }
 
     .value {
@@ -44,6 +45,10 @@
       &.input {
         border-bottom: 0.1rem solid rgba(12, 12, 12, 0.12);
       }
+    }
+    .buttonInputs {
+      padding: 1rem 0;
+      margin-left: -1rem;
     }
   }
 }

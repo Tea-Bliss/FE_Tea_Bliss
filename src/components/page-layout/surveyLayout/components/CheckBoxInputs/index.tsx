@@ -11,12 +11,13 @@ import styles from '@/components/page-layout/surveyLayout/components/CheckBoxInp
 const cn = classNames.bind(styles);
 
 interface CheckBoxInputsProps extends InputHTMLAttributes<HTMLInputElement> {
-  items: string[];
+  items: { value: string | number; text: string }[];
   name: string;
   status: number;
+  className?: string;
 }
 
-export default function CheckBoxInputs({ items, name, status, ...props }: CheckBoxInputsProps) {
+export default function CheckBoxInputs({ items, name, status, className, ...props }: CheckBoxInputsProps) {
   const { control, setValue, getValues } = useFormContext();
 
   const checkedValues = useWatch({ control, name });
@@ -55,7 +56,7 @@ export default function CheckBoxInputs({ items, name, status, ...props }: CheckB
   };
 
   return (
-    <div className={cn('items')}>
+    <div className={cn('items', className)}>
       {items.map((item, index) => {
         return (
           <CheckBoxInput

@@ -1,10 +1,9 @@
 'use client';
 
-import { Suspense } from 'react';
-
 import classNames from 'classnames/bind';
-import { FormProvider, useForm, useWatch } from 'react-hook-form';
+import { FormProvider, useFieldArray, useForm, useWatch } from 'react-hook-form';
 
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
 import FileInput from '@/components/common/FileInput';
@@ -13,6 +12,7 @@ import BackButton from '@/components/page-layout/adminLayout/components/common/B
 import DetailCard from '@/components/page-layout/adminLayout/components/common/DetailCard';
 import SubmitButton from '@/components/page-layout/adminLayout/components/common/SubmitButton';
 import ButtonInputs from '@/components/page-layout/surveyLayout/components/ButtonInputs';
+import CheckBoxInputs from '@/components/page-layout/surveyLayout/components/CheckBoxInputs';
 import { TASTE_TYPES, TEA_TYPES } from '@/components/page-layout/surveyLayout/constants/teaTypes';
 
 const cn = classNames.bind(styles);
@@ -52,68 +52,149 @@ const mockProduct = {
 };
 
 export default function EachFinishedTeasPage() {
-  const methods = useForm();
-  const { control, handleSubmit } = methods;
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
 
+  const methods = useForm({
+    defaultValues: {
+      ingredient: [{ name: '', description: '' }],
+    },
+  });
+  const { control, handleSubmit, register } = methods;
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'ingredient',
+  });
+
   return (
-    <Suspense>
+    <>
       <BackButton className={cn('backButton')} />
       <DetailCard title="상품 정보" className={cn('card')}>
         <FormProvider {...methods}>
-          <form className={cn('form')}>
+          <form className={cn('form')} onSubmit={handleSubmit((data) => console.log(data))}>
             <div className={cn('profile')}>
               <FileInput type="product" />
             </div>
+
             <div className={cn('information')}>
               <div className={cn('section')}>
                 <div className={cn('field')}>이름</div>
                 <input className={cn('value', 'input')} />
               </div>
+
               <div className={cn('section')}>
                 <div className={cn('field')}>영문 이름</div>
                 <input className={cn('value', 'input')} />
               </div>
+
               <div className={cn('section')}>
                 <div className={cn('field')}>종류</div>
-                <ButtonInputs items={TEA_TYPES} name="type" status={3} />
+                <ButtonInputs items={TEA_TYPES} name="category" status={3} className={cn('buttonInputs')} />
               </div>
+
               <div className={cn('section')}>
                 <div className={cn('field')}>설명</div>
                 <textarea className={cn('value', 'textarea')} />
               </div>
+
               <div className={cn('section')}>
                 <div className={cn('field')}>원재료</div>
-                <div className={cn('value')}>각 재료마다 name, description 입력받음</div>
+                <div className={cn('ingredients')}>
+                  {fields.map((field, index) => {
+                    return (
+                      <div key={field.id} className={cn('ingredient')}>
+                        <div className={cn('ingredientLabelInputSet')}>
+                          <label className={cn('ingredientLabel')}>이름</label>
+                          <input
+                            {...register(`ingredient.${index}.name`, { required: true })}
+                            className={cn('ingredientInput')}
+                          />
+                        </div>
+                        <div className={cn('ingredientLabelInputSet')}>
+                          <label className={cn('ingredientLabel')}>설명</label>
+                          <input
+                            {...register(`ingredient.${index}.description`, { required: true })}
+                            className={cn('ingredientInput')}
+                          />
+                        </div>
+                        <button type="button" onClick={() => remove(index)} className={cn('removeIngredient')}>
+                          <Image
+                            src="/icons/close.svg"
+                            alt="지우기"
+                            width="8"
+                            height="8"
+                            className={cn('removeIcon')}
+                          />
+                        </button>
+                      </div>
+                    );
+                  })}
+                  <button
+                    type="button"
+                    onClick={() => append({ name: '', description: '' })}
+                    className={cn('addIngredientButton')}
+                  >
+                    추가하기
+                  </button>
+                </div>
               </div>
               <div className={cn('section')}>
                 <div className={cn('field')}>맛</div>
-                <div className={cn('value')}>6가지 맛 중 3개까지 고를 수 있음. 안고르면 null.</div>
+                <CheckBoxInputs items={TASTE_TYPES} name="flavor" status={2} className={cn('checkboxInputs')} />
               </div>
+
               <div className={cn('section')}>
-                <div className={cn('field')}>가격</div>
-                <div className={cn('value')}>number. 만원 단위.</div>
+                <div className={cn('field')}>가격(KRW)</div>
+                <input type="number" className={cn('value', 'input')} />
               </div>
+
               <div className={cn('section')}>
                 <div className={cn('field')}>카페인 여부</div>
-                <div className={cn('value')}>boolean</div>
+                <ButtonInputs
+                  items={[
+                    { value: 'true', text: '카페인 있음' },
+                    { value: 'false', text: '카페인 없음' },
+                  ]}
+                  name="caffeine"
+                  status={3}
+                  className={cn('buttonInputs')}
+                />
               </div>
+
               <div className={cn('section')}>
                 <div className={cn('field')}>계절</div>
-                <div className={cn('value')}>봄, 여름, 가을, 겨울 중 택1</div>
+                <ButtonInputs
+                  items={[
+                    { value: '봄', text: '봄' },
+                    { value: '여름', text: '여름' },
+                    { value: '가을', text: '가을' },
+                    { value: '겨울', text: '겨울' },
+                  ]}
+                  name="season"
+                  status={3}
+                  className={cn('buttonInputs')}
+                />
               </div>
+
               <div className={cn('section')}>
                 <div className={cn('field')}>재고</div>
-                <div className={cn('value')}>number. 0이 될 시에 판매 상태가 품절이 됨.</div>
+                <input type="number" className={cn('value', 'input')} />
               </div>
+
               <div className={cn('section')}>
                 <div className={cn('field')}>판매 상태</div>
-                <div className={cn('value')}>
-                  판매중, 품절, 숨김 중에서 택1 가능. 품절, 숨김의 경우 판매사이트에선 안보임
-                </div>
+                <ButtonInputs
+                  items={[
+                    { value: '판매중', text: '판매중' },
+                    { value: '품절', text: '품절' },
+                  ]}
+                  name="status"
+                  status={3}
+                  className={cn('buttonInputs')}
+                />
               </div>
             </div>
+
             <div className={cn('submitButton')}>
               <SubmitButton>저장</SubmitButton>
             </div>
@@ -121,6 +202,6 @@ export default function EachFinishedTeasPage() {
         </FormProvider>
       </DetailCard>
       <SubmitButton isDelete={true}>삭제하기</SubmitButton>
-    </Suspense>
+    </>
   );
 }

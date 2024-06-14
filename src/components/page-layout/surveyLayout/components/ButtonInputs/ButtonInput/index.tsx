@@ -10,7 +10,7 @@ import styles from '@/components/page-layout/surveyLayout/components/ButtonInput
 const cn = classNames.bind(styles);
 
 interface ButtonInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  item: string;
+  item: { value: string | number; text: string };
   name: string;
   isSelected: boolean;
   status: number;
@@ -35,7 +35,7 @@ export default function ButtonInput({ item, name, isSelected, status, ...props }
         id={`${name}: ${item}`}
         className={cn('input')}
         type="radio"
-        value={item}
+        value={item.value}
         disabled={UIStatus === 'preparing'}
         {...props}
         {...register(name)}
@@ -44,7 +44,7 @@ export default function ButtonInput({ item, name, isSelected, status, ...props }
         htmlFor={`${name}: ${item}`}
         className={cn('customInput', isSelected && 'checked', UIStatus !== 'current' && 'unFocused')}
       >
-        {item}
+        {item.text}
       </label>
     </div>
   );

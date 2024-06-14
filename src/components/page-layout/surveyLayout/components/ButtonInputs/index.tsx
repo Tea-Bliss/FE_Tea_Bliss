@@ -11,18 +11,19 @@ import styles from '@/components/page-layout/surveyLayout/components/ButtonInput
 const cn = classNames.bind(styles);
 
 interface ButtonInputsProps extends InputHTMLAttributes<HTMLInputElement> {
-  items: string[];
+  items: { value: string | number; text: string }[];
   name: string;
   status: number;
+  className?: string;
 }
 
-export default function ButtonInputs({ items, name, status, ...props }: ButtonInputsProps) {
+export default function ButtonInputs({ items, name, status, className, ...props }: ButtonInputsProps) {
   const { control } = useFormContext();
 
   const selectedValue = useWatch({ control, name });
 
   return (
-    <div className={cn('items')}>
+    <div className={cn('items', className)}>
       {items.map((item, index) => {
         return (
           <ButtonInput
