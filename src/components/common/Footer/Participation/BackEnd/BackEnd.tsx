@@ -8,10 +8,12 @@ export default function BackEnd() {
   return (
     <div className={cn('nameBox')}>
       <p>Back-end</p>
-      <a href="https://github.com/lemonticsoul" target="_blank" rel="noopener noreferrer">
-        서제호
-      </a>
-      <a>경문</a>
+      <div className={cn('name')}>
+        <a href="https://github.com/lemonticsoul" target="_blank" rel="noopener noreferrer">
+          서제호
+        </a>
+        <a>문경문</a>
+      </div>
     </div>
   );
 }
