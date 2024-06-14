@@ -1,0 +1,32 @@
+.layout {
+  @include flexSort(row, center, center, 2.9rem);
+}
+
+.container {
+  overflow: hidden;
+  width: 102.2rem;
+  @include flexSort(row, center, flex-start, null);
+}
+
+.content {
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+  @include flexSort(row, center, flex-start, 3rem);
+}
+
+.card {
+  flex: 0 0 33.33%;
+  transition: all 0.5s ease-in-out;
+}
+
+.left {
+  background: rgba(67, 57, 48, 0.2);
+  cursor: pointer;
+  border-radius: 800rem;
+}
+
+.right {
+  background: rgba(67, 57, 48, 0.2);
+  cursor: pointer;
+  border-radius: 800rem;
+}
