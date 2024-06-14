@@ -32,7 +32,7 @@ export default function ButtonInput({ item, name, isSelected, status, ...props }
   return (
     <div className={cn('item')}>
       <input
-        id={`${name}: ${item}`}
+        id={`${name}: ${item.text}`}
         className={cn('input')}
         type="radio"
         value={item.value}
@@ -41,7 +41,7 @@ export default function ButtonInput({ item, name, isSelected, status, ...props }
         {...register(name)}
       />
       <label
-        htmlFor={`${name}: ${item}`}
+        htmlFor={`${name}: ${item.text}`}
         className={cn('customInput', isSelected && 'checked', UIStatus !== 'current' && 'unFocused')}
       >
         {item.text}

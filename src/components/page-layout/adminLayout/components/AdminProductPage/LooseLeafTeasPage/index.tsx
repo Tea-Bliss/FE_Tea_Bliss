@@ -64,7 +64,6 @@ export default function LooseLeafTeasPage() {
         standards={[
           '전체',
           '품절',
-          '숨김',
           '홍차',
           '푸에르 티',
           '차이 티',

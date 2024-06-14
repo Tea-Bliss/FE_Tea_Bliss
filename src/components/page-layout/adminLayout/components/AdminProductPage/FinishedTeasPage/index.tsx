@@ -82,7 +82,7 @@ export default function FinishedTeasPage() {
 
   return (
     <>
-      <SortBar standards={['전체', '품절', '숨김', '봄', '여름', '가을', '겨울']} />
+      <SortBar standards={['전체', '품절', '봄', '여름', '가을', '겨울']} />
       <SearchBar
         value={searchValue}
         onChange={handleChange}

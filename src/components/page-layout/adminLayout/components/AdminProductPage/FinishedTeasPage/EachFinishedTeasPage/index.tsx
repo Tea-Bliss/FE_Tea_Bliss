@@ -57,7 +57,18 @@ export default function EachFinishedTeasPage() {
 
   const methods = useForm({
     defaultValues: {
+      category: undefined,
+      sale: undefined,
+      season: undefined,
+      ko_name: undefined,
+      en_name: undefined,
+      caffeine: undefined,
+      description: undefined,
       ingredient: [{ name: '', description: '' }],
+      img: undefined,
+      inventory: undefined,
+      saleStatus: undefined,
+      flavor: undefined,
     },
   });
   const { control, handleSubmit, register } = methods;
@@ -79,12 +90,12 @@ export default function EachFinishedTeasPage() {
             <div className={cn('information')}>
               <div className={cn('section')}>
                 <div className={cn('field')}>이름</div>
-                <input className={cn('value', 'input')} />
+                <input className={cn('value', 'input')} {...register('ko_name', { required: true })} />
               </div>
 
               <div className={cn('section')}>
                 <div className={cn('field')}>영문 이름</div>
-                <input className={cn('value', 'input')} />
+                <input className={cn('value', 'input')} {...register('en_name', { required: true })} />
               </div>
 
               <div className={cn('section')}>
@@ -94,7 +105,7 @@ export default function EachFinishedTeasPage() {
 
               <div className={cn('section')}>
                 <div className={cn('field')}>설명</div>
-                <textarea className={cn('value', 'textarea')} />
+                <textarea className={cn('value', 'textarea')} {...register('description', { required: true })} />
               </div>
 
               <div className={cn('section')}>
@@ -145,7 +156,7 @@ export default function EachFinishedTeasPage() {
 
               <div className={cn('section')}>
                 <div className={cn('field')}>가격(KRW)</div>
-                <input type="number" className={cn('value', 'input')} />
+                <input type="number" className={cn('value', 'input')} {...register('sale', { required: true })} />
               </div>
 
               <div className={cn('section')}>
@@ -178,7 +189,7 @@ export default function EachFinishedTeasPage() {
 
               <div className={cn('section')}>
                 <div className={cn('field')}>재고</div>
-                <input type="number" className={cn('value', 'input')} />
+                <input type="number" className={cn('value', 'input')} {...register('inventory', { required: true })} />
               </div>
 
               <div className={cn('section')}>
@@ -188,7 +199,7 @@ export default function EachFinishedTeasPage() {
                     { value: '판매중', text: '판매중' },
                     { value: '품절', text: '품절' },
                   ]}
-                  name="status"
+                  name="saleStatus"
                   status={3}
                   className={cn('buttonInputs')}
                 />

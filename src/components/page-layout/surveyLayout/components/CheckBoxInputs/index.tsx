@@ -26,7 +26,9 @@ export default function CheckBoxInputs({ items, name, status, className, ...prop
     e.preventDefault();
     const targetElement = e.target as HTMLLabelElement;
     const field = targetElement.dataset.name!;
-    const value = targetElement.dataset.item!;
+    const value = !isNaN(parseFloat(targetElement.dataset.item!))
+      ? +targetElement.dataset.item!
+      : targetElement.dataset.item!;
     const currentValues = getValues(field);
 
     if (!currentValues) {
@@ -37,7 +39,7 @@ export default function CheckBoxInputs({ items, name, status, className, ...prop
     if (currentValues.includes(value)) {
       setValue(
         field,
-        currentValues.filter((item: string) => item !== value)
+        currentValues.filter((item: string | number) => item !== value)
       );
       return;
     }
@@ -63,7 +65,7 @@ export default function CheckBoxInputs({ items, name, status, className, ...prop
             key={index}
             item={item}
             name={name}
-            isChecked={checkedValues?.includes(item)}
+            isChecked={checkedValues?.includes(item.value)}
             status={status}
             handleClick={handleClick}
             {...props}

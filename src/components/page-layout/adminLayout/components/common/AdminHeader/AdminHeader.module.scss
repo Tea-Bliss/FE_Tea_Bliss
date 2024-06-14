@@ -10,11 +10,6 @@
   height: 5rem;
   background-color: $black-1;
 
-  .categoryTitle {
-    flex-grow: 1;
-    @include font(1.8rem, 700, 1rem);
-  }
-
   .quit {
     padding: 0.4rem 1rem;
     outline: 0.1rem solid $black-5;
