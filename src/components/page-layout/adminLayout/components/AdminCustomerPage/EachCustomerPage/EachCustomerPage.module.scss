@@ -1,0 +1,49 @@
+.backButton {
+  margin-bottom: 2.8rem;
+}
+
+.card {
+  margin-bottom: 2.8rem;
+}
+
+.form {
+  @include flexSort(column, null, null, 2rem);
+
+  .profile {
+    @include flexSort(column, null, center, 1rem);
+
+    .nickName {
+      @include font(1.5rem, 400, 1.5rem);
+    }
+  }
+
+  .submitButton {
+    text-align: right;
+    margin-top: 1rem;
+  }
+}
+
+.information {
+  @include flexSort(column, null, null, 2rem);
+
+  .section {
+    @include flexSort(row, null, center, 3rem);
+
+    .field {
+      @include font(1.4rem, 400, 1.3rem);
+      width: 15rem;
+      color: #757575;
+      text-align: right;
+    }
+
+    .value {
+      @include font(1.4rem, 400, 2.9rem);
+      padding: 0;
+      flex-grow: 1;
+
+      &.input {
+        border-bottom: 0.1rem solid rgba(12, 12, 12, 0.12);
+      }
+    }
+  }
+}

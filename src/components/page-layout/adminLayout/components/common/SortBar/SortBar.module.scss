@@ -1,0 +1,21 @@
+.bar {
+  @include flexSort(row, null, null, 0);
+  margin-bottom: 2rem;
+
+  .standard {
+    padding: 0 1.5rem 1.5rem;
+    border-bottom: 0.2rem solid #e5e7eb;
+    @include font(1.3rem, 400, 1.3rem);
+    cursor: pointer;
+
+    &.vacuum {
+      flex-grow: 1;
+      cursor: default;
+    }
+
+    &.selected {
+      border-color: #1a6dff;
+      color: #1a6dff;
+    }
+  }
+}

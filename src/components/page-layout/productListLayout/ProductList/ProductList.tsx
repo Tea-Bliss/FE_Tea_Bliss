@@ -8,27 +8,34 @@ import classNames from 'classnames/bind';
 import Card from '@/components/common/Card/Card';
 import getPagenationItems from '@/components/common/Pagenation/apis/getPagenationItems';
 import Pagination from '@/components/common/Pagenation/Pagenation';
-import FILTER from '@/components/page-layout/productListLayout/constants/filter';
+import { FILTER, LIMIT } from '@/components/page-layout/productListLayout/constants/index';
 import styles from '@/components/page-layout/productListLayout/ProductList/ProductList.module.scss';
+import ROUTE from '@/constants/route';
+import Img from '@/icons/다운로드.jpg';
 
-import mock from '../constants/mock';
+import FinishedItem from '../types';
 
 const cn = classNames.bind(styles);
 
 export default function ProductList() {
   const [page, setPage] = useState(1);
+  const [selectedFilter, setSelectedFilter] = useState('all');
 
   const { data } = useQuery({
-    queryKey: ['items', page],
-    queryFn: () => getPagenationItems(page, 5),
+    queryKey: ['items', page, selectedFilter],
+    queryFn: () => getPagenationItems(selectedFilter, page, LIMIT),
     placeholderData: keepPreviousData,
   });
 
-  const [selectedFilter, setSelectedFilter] = useState('');
+  const finishedData = data?.tea?.map((item: FinishedItem) => ({
+    ...item,
+    href: `${ROUTE.PRODUCT_LIST}/${item.id}`,
+    img: Img,
+  }));
 
   const handleFilterClick = (filter: string) => {
     setSelectedFilter(filter);
-    // Todo: api 호출
+    setPage(1);
   };
 
   return (
@@ -37,27 +44,27 @@ export default function ProductList() {
         <div className={cn('filter')}>
           {FILTER.map((filter) => (
             <p
-              key={filter}
-              className={cn({ active: selectedFilter === filter })}
-              onClick={() => handleFilterClick(filter)}
+              key={filter.key}
+              className={cn({ active: selectedFilter === filter.english })}
+              onClick={() => handleFilterClick(filter.english)}
             >
-              {filter}
+              {filter.ko}
             </p>
           ))}
         </div>
-        {mock.map((item) => (
+        {finishedData?.map((item: FinishedItem) => (
           <Card
-            key={item.price}
+            key={item.id}
             img={item.img}
             href={item.href}
-            price={item.price}
-            scope={item.scope}
-            review={item.scope}
+            price={item.cost}
+            scope={item.rating}
+            review={item.review}
             title={item.title}
           />
         ))}
       </div>
-      <Pagination currentPage={page} totalPages={data?.totalPages} setPage={setPage} />
+      <Pagination currentPage={page} itemsPerPage={LIMIT} totalItems={data?.size} setPage={setPage} />
     </div>
   );
 }
