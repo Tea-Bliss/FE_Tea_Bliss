@@ -2,7 +2,7 @@ import { ToastContainer } from 'react-toastify';
 
 import type { Metadata } from 'next';
 
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 
 import ReactQueryProvider from '@/components/common/Provider/ReactQueryProvider';
 
@@ -10,7 +10,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import '@/styles/_reset.scss';
 
-const inter = Inter({ subsets: ['latin'] });
+const myFont = localFont({
+  src: '../fonts/02a5628b91717ae7191a2b202a5e93a4.woff',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Tea Bliss',
@@ -24,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={inter.className}>
+      <body className={myFont.className}>
         <ReactQueryProvider>
           <div id="modal-root"></div>
           {children}
