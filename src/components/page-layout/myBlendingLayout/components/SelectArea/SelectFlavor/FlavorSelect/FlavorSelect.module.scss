@@ -1,0 +1,28 @@
+.container {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+
+  .image {
+    opacity: 0.3;
+
+    &.selected {
+      opacity: 1;
+    }
+  }
+
+  .round {
+    position: absolute;
+    background-color: $black-1;
+    border: 0.1rem solid $black-13;
+    width: 1.6305rem;
+    height: 1.6305rem;
+    border-radius: 50%;
+    left: 47.5%;
+    bottom: 8%;
+
+    &.selected {
+      background-color: $black-13;
+    }
+  }
+}

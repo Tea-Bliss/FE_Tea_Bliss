@@ -8,7 +8,6 @@ import ReactQueryProvider from '@/components/common/Provider/ReactQueryProvider'
 import GoogleAnalytics from '@/components/ga/google-analytics';
 
 import 'react-toastify/dist/ReactToastify.css';
-
 import '@/styles/_reset.scss';
 
 const myFont = localFont({
@@ -21,15 +20,11 @@ export const metadata: Metadata = {
   description: '티 블렌딩 사이트',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
       <body className={myFont.className}>
-        {process.env.NEXT_PUBLIC_GA_ID ? <GoogleAnalytics /> : <div>GA환경변수값필요</div>
+        {process.env.NEXT_PUBLIC_GA_ID ? <GoogleAnalytics /> : <div>GA 환경 변수 값 필요</div>}
         <ReactQueryProvider>
           <div id="modal-root"></div>
           {children}

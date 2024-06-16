@@ -2,24 +2,12 @@
   width: 100%;
   padding-right: 4rem;
   padding-left: 4rem;
-  margin-bottom: 25rem;
+  background-color: #fcf8ef;
+  min-height: 100vh;
 
   .container {
     margin: 0 auto;
     width: 100%;
-    min-width: 33.5rem;
     max-width: 120rem;
-  }
-
-  @include tablet {
-    margin-bottom: 46rem;
-    padding-right: 2rem;
-    padding-left: 2rem;
-  }
-
-  @include mobile {
-    margin-bottom: 23rem;
-    padding-right: 1.7rem;
-    padding-left: 1.7rem;
   }
 }

@@ -1,0 +1,42 @@
+.teaList {
+  @include flexSort(column, null, null, 2.3rem);
+  width: 43.7rem;
+  height: 73.8rem;
+  border: 1px solid #181717;
+  padding: 2.8rem 2.1rem 0 1.4rem;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: block;
+  }
+  &::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-button,
+  ::-webkit-scrollbar-thumb {
+    display: none;
+  }
+
+  .title {
+    @include font(2rem, 400, normal);
+    color: #181717;
+    letter-spacing: 0.08rem;
+    padding-left: 1.5rem;
+  }
+
+  .teas {
+    @include flexSort(column, null, null, 1.6rem);
+    padding: 1.4rem 0 1.4rem 1.5rem;
+
+    .tea {
+      @include flexSort(row, null, null, 2.4rem);
+      height: 15.8rem;
+
+      .checkbox {
+        margin-top: 2.5rem;
+      }
+
+      .teaContents {
+        @include flexSort(row, null, null, 1.8rem);
+      }
+    }
+  }
+}

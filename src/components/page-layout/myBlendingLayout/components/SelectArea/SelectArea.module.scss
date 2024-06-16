@@ -1,0 +1,10 @@
+.title {
+  @include font(4rem, 400, normal);
+  color: #181717;
+  letter-spacing: 0.16rem;
+}
+
+.contents {
+  @include flexSort(row, null, center, 6.7rem);
+  padding-left: 4.4rem;
+}
