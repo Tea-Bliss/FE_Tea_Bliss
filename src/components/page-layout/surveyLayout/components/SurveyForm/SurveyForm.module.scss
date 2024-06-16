@@ -1,0 +1,21 @@
+.form {
+  @include flexSort(column, null, null, 8rem);
+
+  .title {
+    @include font(2.8rem, 700, 3.8rem);
+
+    @include mobile {
+      @include font(2.4rem, 700, 3.2rem);
+    }
+  }
+
+  .surveySubmitButton {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 32rem;
+
+    @include tablet {
+      max-width: none;
+    }
+  }
+}

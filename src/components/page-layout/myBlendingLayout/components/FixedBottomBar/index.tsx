@@ -1,10 +1,15 @@
 'use client';
 
+import classNames from 'classnames/bind';
+
 import Button from '@/components/common/Button';
 import styles from '@/components/page-layout/myBlendingLayout/components/FixedBottomBar/FixedBottomBar.module.scss';
+<<<<<<< HEAD
 import classNames from 'classnames/bind';
 import BlendingArea from './BlendingArea';
 import { useEffect, useRef, useState } from 'react';
+=======
+>>>>>>> 3d1265e850c82d80860c74e91236ca5a29c33080
 
 const cn = classNames.bind(styles);
 

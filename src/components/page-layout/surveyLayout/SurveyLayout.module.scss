@@ -1,0 +1,18 @@
+.layout {
+  padding-right: 4rem;
+  padding-left: 4rem;
+  width: 100%;
+
+  .container {
+    margin: 0 auto;
+    padding: 6rem 0;
+    width: 100%;
+    min-width: 33.5rem;
+    max-width: 89.6rem;
+  }
+
+  @include tablet {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+}

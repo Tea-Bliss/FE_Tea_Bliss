@@ -1,9 +1,11 @@
-import TeaCardList from '@/components/page-layout/myBlendingLayout/components/TeaCardList';
-import styles from '@/components/page-layout/myBlendingLayout/MyBlendingLayout.module.scss';
 import classNames from 'classnames/bind';
+
+import GlobalNavBar from '@/components/common/GlobalNavBar/GlobalNavBar';
 import FixedBottomBar from '@/components/page-layout/myBlendingLayout/components/FixedBottomBar';
 import SortingMenu from '@/components/page-layout/myBlendingLayout/components/SortingMenu';
-import GlobalNavBar from '@/components/common/GlobalNavBar/GlobalNavBar';
+import TeaCardList from '@/components/page-layout/myBlendingLayout/components/TeaCardList';
+import styles from '@/components/page-layout/myBlendingLayout/MyBlendingLayout.module.scss';
+
 import { MyBlendingProvider } from './contexts/myBlendingContext';
 
 const cn = classNames.bind(styles);

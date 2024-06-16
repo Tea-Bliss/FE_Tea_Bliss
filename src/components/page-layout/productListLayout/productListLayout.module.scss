@@ -1,0 +1,20 @@
+.main {
+  padding: 0 4rem;
+}
+
+.imgBox {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200/262;
+}
+
+.container {
+  @include flexSort(null, null, null, 11.6rem);
+  padding: 13.2rem 0;
+
+  @include tablet {
+    @include flexSort(column, null, null, 13.2rem);
+    padding: 0;
+  }
+}

@@ -1,0 +1,49 @@
+.item {
+  @include flexSort(row, null, center, 0.8rem);
+  padding: 0.4rem 0.8rem;
+
+  .customInput {
+    position: relative;
+    @include font(1.5rem, 400, 2.4rem);
+    cursor: pointer;
+
+    &.unfocused {
+      color: $black-7;
+    }
+
+    &.customInput::before {
+      border: 0.1rem solid $orange-5;
+      position: absolute;
+      top: 0.3rem;
+      left: -2.5rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      font-size: 1.2rem;
+      line-height: 1.65rem;
+      text-align: center;
+      border-radius: 0.2rem;
+      content: '';
+    }
+
+    &.unFocused::before {
+      border-color: $black-5;
+    }
+
+    &.checked::before {
+      border-color: $orange-5;
+      background-color: $orange-5;
+      color: $black-1;
+      content: '✓';
+    }
+
+    &.checked.unFocused::before {
+      border-color: $black-5;
+      background-color: $black-5;
+    }
+  }
+
+  .input {
+    width: 0.5rem;
+    appearance: none;
+  }
+}

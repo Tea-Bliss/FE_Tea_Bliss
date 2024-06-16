@@ -1,0 +1,31 @@
+.item {
+  .customInput {
+    padding: 0.8rem 1.2rem;
+    border: 0.1rem solid $black-13;
+    color: $black-13;
+    border-radius: 2.4rem;
+    @include font(1.3rem, 500, 1.8rem);
+    cursor: pointer;
+
+    &.unFocused {
+      border-color: $black-5;
+      color: $black-7;
+    }
+
+    &.checked {
+      border-color: $orange-5;
+      background-color: $orange-5;
+      color: $black-1;
+    }
+
+    &.checked.unFocused {
+      border-color: $black-5;
+      background-color: $black-5;
+      color: $black-1;
+    }
+  }
+
+  .input {
+    appearance: none;
+  }
+}

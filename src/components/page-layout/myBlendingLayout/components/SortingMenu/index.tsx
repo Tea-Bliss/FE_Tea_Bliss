@@ -1,7 +1,8 @@
-import styles from '@/components/page-layout/myBlendingLayout/components/SortingMenu/SortingMenu.module.scss';
 import classNames from 'classnames/bind';
+
+import styles from '@/components/page-layout/myBlendingLayout/components/SortingMenu/SortingMenu.module.scss';
 import TasetSortingList from '@/components/page-layout/myBlendingLayout/components/SortingMenu/TasteSortingList';
-import TypeSortingList from './TypeSortingList/indext';
+import TypeSortingList from '@/components/page-layout/myBlendingLayout/components/SortingMenu/TypeSortingList';
 
 const cn = classNames.bind(styles);
 

@@ -6,7 +6,13 @@
   gap: $gap;
 }
 
+@font-face {
+  font-family: 'orelo';
+  src: url('../fonts/02a5628b91717ae7191a2b202a5e93a4.woff');
+}
+
 @mixin font($size, $weight, $height) {
+  font-family: 'orelo';
   font-size: $size;
   font-style: normal;
   font-weight: $weight;
