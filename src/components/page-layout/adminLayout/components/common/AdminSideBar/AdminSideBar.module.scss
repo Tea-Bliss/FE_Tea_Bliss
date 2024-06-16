@@ -1,0 +1,60 @@
+.sideBar {
+  padding-top: 1.6rem;
+  border-right: 0.1rem solid $black-4;
+  box-shadow: -0.5rem -0.7rem 1.5rem 0 rgba(0, 0, 0, 0.12);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 18rem;
+
+  .logo {
+    margin-left: 3rem;
+  }
+
+  .navBar {
+    @include flexSort(column, null, null, 1rem);
+    padding: 1.2rem;
+
+    .category {
+      @include flexSort(row, null, center, 1rem);
+      width: 100%;
+      position: relative;
+      padding: 1.1rem;
+      border-radius: 1.2rem;
+      @include font(1.4rem, 600, 1);
+
+      &:hover {
+        background-color: $black-4;
+      }
+
+      &:active {
+        background-color: $black-6;
+      }
+
+      &.sub {
+        padding: 0.8rem 1.1rem 0.8rem 4.1rem;
+        width: 100%;
+      }
+
+      &.current {
+        background-color: $black-4;
+      }
+
+      .subMenuArrow {
+        rotate: 90deg;
+        position: absolute;
+        right: 1rem;
+
+        &.visibleSubMenu {
+          rotate: -90deg;
+        }
+      }
+    }
+
+    .subMenu {
+      @include flexSort(column, null, null, 0.5rem);
+      margin-top: -0.5rem;
+    }
+  }
+}

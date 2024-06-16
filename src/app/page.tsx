@@ -1,7 +1,11 @@
+import MainLayout from '@/components/page-layout/mainLayout';
+
 export default function Home() {
   return (
     <>
-      <main>메인페이지</main>
+      <main>
+        <MainLayout />
+      </main>
     </>
   );
 }

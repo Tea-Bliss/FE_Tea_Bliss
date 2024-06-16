@@ -1,0 +1,7 @@
+.layout {
+  @include font(1rem, 400, 200);
+}
+
+.container {
+  @include font(3rem, 400, 1);
+}

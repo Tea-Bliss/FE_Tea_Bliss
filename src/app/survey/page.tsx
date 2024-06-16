@@ -1,5 +1,5 @@
 import SurveyLayout from '@/components/page-layout/surveyLayout';
 
-export default function SurveyPage() {
+export default function Survey() {
   return <SurveyLayout />;
 }

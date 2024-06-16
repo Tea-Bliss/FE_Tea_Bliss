@@ -1,0 +1,25 @@
+.pageButtons {
+  @include flexSort(row, center, center, 2rem);
+  padding-top: 2rem;
+
+  .arrow {
+    cursor: pointer;
+
+    &.before {
+      visibility: hidden;
+    }
+
+    &.next {
+      rotate: 180deg;
+    }
+  }
+
+  .pages {
+    @include font(1.4rem, 400, 1.4rem);
+    cursor: pointer;
+
+    &.current {
+      text-decoration: underline;
+    }
+  }
+}
