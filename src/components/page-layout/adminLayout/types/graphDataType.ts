@@ -25,7 +25,7 @@ export interface Metadata {
   timeZone: string;
 }
 
-export interface GraphData {
+export interface GraphDataType {
   dimensionHeaders: DimensionHeader[];
   metricHeaders: MetricHeader[];
   rows: Row[];

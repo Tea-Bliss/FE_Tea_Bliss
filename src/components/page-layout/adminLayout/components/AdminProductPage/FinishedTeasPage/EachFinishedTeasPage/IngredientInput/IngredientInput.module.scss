@@ -1,0 +1,45 @@
+.ingredients {
+  @include flexSort(column, null, null, 2rem);
+  flex-grow: 1;
+
+  .ingredient {
+    @include flexSort(column, null, null, 1rem);
+    position: relative;
+
+    .ingredientInputs {
+      @include flexSort(row, null, null, 1rem);
+    }
+
+    .ingredientInput {
+      @include font(1.2rem, 400, 1.2rem);
+      border-bottom: 0.1rem solid rgba(12, 12, 12, 0.12);
+      flex-grow: 1;
+
+      &:focus {
+        border-color: rgb(29, 138, 222);
+      }
+    }
+
+    .removeIngredient {
+      position: absolute;
+      top: 0.2rem;
+      left: -2.4rem;
+    }
+  }
+
+  .addIngredientButton {
+    flex-shrink: 0;
+    border: 0.1rem solid $black-13;
+    border-radius: 0.5rem;
+    width: 7rem;
+    padding: 0.2rem 0;
+
+    &:hover {
+      background-color: $black-5;
+    }
+
+    &:active {
+      background-color: $black-7;
+    }
+  }
+}

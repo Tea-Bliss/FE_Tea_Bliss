@@ -1,31 +1,21 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { Chart, ChartData, ChartOptions } from 'chart.js/auto';
 import classNames from 'classnames/bind';
 
 import styles from '@/components/page-layout/adminLayout/components/AdminHomePage/Graph/Graph.module.scss';
-import GAReport from '@/components/page-layout/adminLayout/hooks/useGAReport';
-import { GraphData } from '@/components/page-layout/adminLayout/types/graphData';
+import useGAReport from '@/components/page-layout/adminLayout/hooks/useGAReport';
 import formatDateString from '@/components/page-layout/adminLayout/utils/formatDataString';
 
 const cn = classNames.bind(styles);
 
 export default function Graph() {
-  const [graphData, setGraphData] = useState<GraphData>();
   const chartRef = useRef<HTMLCanvasElement>(null);
   const chartInstanceRef = useRef<Chart | null>(null);
 
-  const fetchGAReport = async () => {
-    const result = await GAReport();
-
-    setGraphData(result);
-  };
-
-  useEffect(() => {
-    fetchGAReport();
-  }, []);
+  const { data: graphData } = useGAReport();
 
   useEffect(() => {
     if (!graphData) return;

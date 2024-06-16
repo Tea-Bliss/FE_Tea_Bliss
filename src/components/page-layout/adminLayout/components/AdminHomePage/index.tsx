@@ -13,7 +13,7 @@ export default function AdminHomePage() {
       <section>
         <div className={cn('categoryTitle')}>
           <Image src="/icons/document.svg" alt="주문현황" width="25" height="25" />
-          주문현황
+          주문 현황
         </div>
         <div className={cn('contents', 'orderStatus')}>
           <div className={cn('content', 'orders')}>

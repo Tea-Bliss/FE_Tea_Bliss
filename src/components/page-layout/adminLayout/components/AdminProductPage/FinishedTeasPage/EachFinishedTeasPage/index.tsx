@@ -1,13 +1,13 @@
 'use client';
 
 import classNames from 'classnames/bind';
-import { FormProvider, useFieldArray, useForm, useWatch } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 
-import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
 import FileInput from '@/components/common/FileInput';
 import styles from '@/components/page-layout/adminLayout/components/AdminProductPage/FinishedTeasPage/EachFinishedTeasPage/EachFinishedTeasPage.module.scss';
+import IngredientInput from '@/components/page-layout/adminLayout/components/AdminProductPage/FinishedTeasPage/EachFinishedTeasPage/IngredientInput';
 import BackButton from '@/components/page-layout/adminLayout/components/common/BackButton';
 import DetailCard from '@/components/page-layout/adminLayout/components/common/DetailCard';
 import SubmitButton from '@/components/page-layout/adminLayout/components/common/SubmitButton';
@@ -29,26 +29,7 @@ const mockProduct = {
   category: '홍차',
   status: '판매중',
   stock: 28,
-  ingredient: [
-    {
-      name: '라즈베리',
-      description: '산뜻한 라즈베리 풍미의 깔끔한 홍차로, 캔디 같은 향, 톡 쏘면서 드라이한 마무리가 돋보입니다.',
-    },
-    {
-      name: '딸기',
-      description: '상큼한 딸기 맛이 섞인 실론 블랙티입니다. 달달한 꽃과 딸기 향, 부드러운 목넘김이 특징입니다.',
-    },
-    {
-      name: '블루베리',
-      description:
-        '상큼한 블루베리 맛이 섞인 실론 블랙티입니다. 향이 강하고 약간 달콤하며, 뜨겁게 또는 차갑게 마셔도 좋습니다!',
-    },
-    {
-      name: '블랙베리',
-      description:
-        '달콤하고 상큼한 베리가 가미된 실론 블랙티입니다. 꽃향기와 과일향, 그리고 빵처럼 고소한 향이 어우러집니다.',
-    },
-  ],
+  ingredient: [],
 };
 
 export default function EachFinishedTeasPage() {
@@ -64,18 +45,14 @@ export default function EachFinishedTeasPage() {
       en_name: undefined,
       caffeine: undefined,
       description: undefined,
-      ingredient: [{ name: '', description: '' }],
+      ingredient: undefined,
       img: undefined,
       inventory: undefined,
       saleStatus: undefined,
       flavor: undefined,
     },
   });
-  const { control, handleSubmit, register } = methods;
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: 'ingredient',
-  });
+  const { handleSubmit, register } = methods;
 
   return (
     <>
@@ -110,44 +87,7 @@ export default function EachFinishedTeasPage() {
 
               <div className={cn('section')}>
                 <div className={cn('field')}>원재료</div>
-                <div className={cn('ingredients')}>
-                  {fields.map((field, index) => {
-                    return (
-                      <div key={field.id} className={cn('ingredient')}>
-                        <div className={cn('ingredientLabelInputSet')}>
-                          <label className={cn('ingredientLabel')}>이름</label>
-                          <input
-                            {...register(`ingredient.${index}.name`, { required: true })}
-                            className={cn('ingredientInput')}
-                          />
-                        </div>
-                        <div className={cn('ingredientLabelInputSet')}>
-                          <label className={cn('ingredientLabel')}>설명</label>
-                          <input
-                            {...register(`ingredient.${index}.description`, { required: true })}
-                            className={cn('ingredientInput')}
-                          />
-                        </div>
-                        <button type="button" onClick={() => remove(index)} className={cn('removeIngredient')}>
-                          <Image
-                            src="/icons/close.svg"
-                            alt="지우기"
-                            width="8"
-                            height="8"
-                            className={cn('removeIcon')}
-                          />
-                        </button>
-                      </div>
-                    );
-                  })}
-                  <button
-                    type="button"
-                    onClick={() => append({ name: '', description: '' })}
-                    className={cn('addIngredientButton')}
-                  >
-                    추가하기
-                  </button>
-                </div>
+                <IngredientInput />
               </div>
               <div className={cn('section')}>
                 <div className={cn('field')}>맛</div>
