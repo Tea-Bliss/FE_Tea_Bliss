@@ -12,7 +12,7 @@ export default function BackEnd() {
         <a href="https://github.com/lemonticsoul" target="_blank" rel="noopener noreferrer">
           서제호
         </a>
-        <a>문경문</a>
+        <a>문경민</a>
       </div>
     </div>
   );
