@@ -1,0 +1,18 @@
+.nav {
+  width: 25rem;
+  height: 100%;
+  @include flexSort(column, null, null, 2.4rem);
+  border: 0.1rem solid black;
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  z-index: 2;
+  box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.2);
+  }
+}

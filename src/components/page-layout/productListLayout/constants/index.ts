@@ -1,8 +1,6 @@
-export const NAV = [
-  { name: '카테고리1', href: '/' },
-  { name: '카테고리2', href: '/' },
-  { name: '카테고리3', href: '/' },
-] as const;
+export const seasonNAV = [{ name: '봄' }, { name: '여름' }, { name: '가을' }, { name: '겨울' }] as const;
+
+export const caffeineNAV = [{ name: '카페인' }, { name: '디카페인' }] as const;
 
 export const FILTER = [
   { ko: '추천순', english: 'recommend', key: 1 },
