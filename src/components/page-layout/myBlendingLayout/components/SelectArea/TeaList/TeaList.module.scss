@@ -3,13 +3,13 @@
   width: 43.7rem;
   height: 73.8rem;
   border: 1px solid hsl(0, 2%, 9%);
-  padding: 2.8rem 1.4rem 0;
+  padding: 2.8rem 2.3rem 0 1.4rem;
+  padding-bottom: 0;
   overflow-y: scroll;
+  overflow-x: hidden;
 
-  &::-webkit-scrollbar {
-    display: block;
-  }
-  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar,
+  ::-webkit-scrollbar-track,
   ::-webkit-scrollbar-button,
   ::-webkit-scrollbar-thumb {
     display: none;
@@ -43,9 +43,10 @@
         @include flexSort(row, null, null, 1.8rem);
         border-bottom: 0.1rem solid #181717;
         color: #181717;
+        flex-grow: 1;
 
         .teaTexts {
-          width: 26rem;
+          width: 24.11rem;
 
           .teaNameEng {
             @include font(2.4rem, 400, normal);

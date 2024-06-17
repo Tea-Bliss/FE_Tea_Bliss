@@ -8,7 +8,7 @@
   }
 
   .contents {
-    @include flexSort(row, null, center, 6.6rem);
+    @include flexSort(row, null, flex-end, 6.6rem);
     padding-left: 4.4rem;
   }
 }
