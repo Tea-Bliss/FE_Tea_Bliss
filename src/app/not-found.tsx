@@ -14,7 +14,7 @@ export default function NotFound() {
     <div className={cn('container')}>
       <header className={cn('header')}></header>
       <div className={cn('circle')}>
-        <p className={cn('notFound')}>404 페이지</p>
+        <p className={cn('notFound')}>404</p>
         <Tea className={cn('tea')} />
       </div>
       <div className={cn('buttonContainer')}>
