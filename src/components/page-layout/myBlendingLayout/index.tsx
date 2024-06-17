@@ -13,7 +13,6 @@ const cn = classNames.bind(styles);
 export default function MyBlendingLayout() {
   return (
     <MyBlendingProvider>
-      <GlobalNavBar />
       <main className={cn('layout')}>
         <div className={cn('container')}>
           <section>
