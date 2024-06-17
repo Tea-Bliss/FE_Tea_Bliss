@@ -21,6 +21,10 @@ export default function TeaList() {
       return;
     }
 
+    if (selectedTeas.length >= 3) {
+      return;
+    }
+
     setSelectedTeas((prev) => [...prev, tea]);
   };
 

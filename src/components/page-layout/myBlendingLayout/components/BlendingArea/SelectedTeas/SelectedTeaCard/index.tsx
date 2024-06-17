@@ -16,9 +16,14 @@ interface SelectedTeaCard {
 }
 
 export default function SelectedTeaCard({ tea }: SelectedTeaCard) {
-  const { selectedTeas, setSelectedTeas } = useMyBlendingContext();
+  const { setSelectedTeas } = useMyBlendingContext();
 
-  if (!tea) return <div className={cn('vacantCard')}></div>;
+  if (!tea)
+    return (
+      <div className={cn('vacantCard')}>
+        <Image src="/icons/teabag.svg" alt="vacant-card" width={150} height={150} />
+      </div>
+    );
 
   const handleCardClick = () => {
     setSelectedTeas((prev) => prev.filter((item) => item.id !== tea.id));
@@ -26,18 +31,24 @@ export default function SelectedTeaCard({ tea }: SelectedTeaCard) {
 
   return (
     <div className={cn('card')}>
-      <div className={cn('teaImage')}>
-        <Image src={tea.photo || '/images/my-blending/vanila.png'} alt={tea.name} width={200} height={240} />
+      <div className={cn('teaImageContainer')}>
+        <Image
+          src={tea.photo || '/images/my-blending/vanila.png'}
+          alt={tea.name}
+          width={200}
+          height={240}
+          className={cn('cardImage')}
+        />
         <Image
           src={'/icons/close.svg'}
           alt="카드 제거"
-          width={20}
-          height={20}
+          width={12}
+          height={12}
           className={cn('removeIcon')}
           onClick={handleCardClick}
         />
       </div>
-      <div>
+      <div className={cn('teaContents')}>
         <BlendingLabel category={tea.category} />
         <h3 className={cn('teaNameEng')}>{tea.nameEng}</h3>
         <h4 className={cn('teaName')}>{tea.name}</h4>
