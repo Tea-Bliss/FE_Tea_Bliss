@@ -2,8 +2,8 @@
   @include flexSort(column, null, null, 2.3rem);
   width: 43.7rem;
   height: 73.8rem;
-  border: 1px solid #181717;
-  padding: 2.8rem 2.1rem 0 1.4rem;
+  border: 1px solid hsl(0, 2%, 9%);
+  padding: 2.8rem 1.4rem 0;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -24,18 +24,47 @@
 
   .teas {
     @include flexSort(column, null, null, 1.6rem);
-    padding: 1.4rem 0 1.4rem 1.5rem;
+    padding: 1.4rem 0 0 1.5rem;
 
     .tea {
       @include flexSort(row, null, null, 2.4rem);
       height: 15.8rem;
 
+      &:last-child .teaContents {
+        border-bottom: none;
+      }
+
       .checkbox {
+        flex-shrink: 0;
         margin-top: 2.5rem;
       }
 
       .teaContents {
         @include flexSort(row, null, null, 1.8rem);
+        border-bottom: 0.1rem solid #181717;
+        color: #181717;
+
+        .teaTexts {
+          width: 26rem;
+
+          .teaNameEng {
+            @include font(2.4rem, 400, normal);
+            letter-spacing: -0.0144rem;
+          }
+
+          .teaName {
+            @include font(1.4rem, 400, normal);
+            letter-spacing: -0.0084rem;
+            font-family: GabiaHeuldot;
+            margin: 0.8rem 0;
+          }
+
+          .teaDescription {
+            @include font(1.4rem, 400, 2rem);
+            color: #838080;
+            letter-spacing: -0.0084rem;
+          }
+        }
       }
     }
   }

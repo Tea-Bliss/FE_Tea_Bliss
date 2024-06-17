@@ -8,7 +8,7 @@ const cn = classNames.bind(styles);
 
 export default function SelectArea() {
   return (
-    <section>
+    <section className={cn('container')}>
       <div className={cn('title')}>
         Make your
         <br />

@@ -2,6 +2,7 @@
   @include flexSort(row, center, center, null);
   width: 66.8478rem;
   height: 66.8478rem;
+  flex-shrink: 0;
 
   .roundArea {
     position: relative;
