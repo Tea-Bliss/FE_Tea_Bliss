@@ -1,0 +1,10 @@
+.company {
+  color: #9e9e9e;
+  @include flexSort(column, null, null, null);
+  @include font(1.6rem, 400, normal);
+}
+
+.companyInfo {
+  @include flexSort(null, null, null, 0.4rem);
+  @include font(1.6rem, 400, normal);
+}
