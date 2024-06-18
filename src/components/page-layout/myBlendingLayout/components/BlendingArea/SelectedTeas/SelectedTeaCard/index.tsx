@@ -39,17 +39,12 @@ export default function SelectedTeaCard({ tea }: SelectedTeaCard) {
           height={240}
           className={cn('cardImage')}
         />
-        <Image
-          src={'/icons/close.svg'}
-          alt="카드 제거"
-          width={12}
-          height={12}
-          className={cn('removeIcon')}
-          onClick={handleCardClick}
-        />
+        <button onClick={handleCardClick}>
+          <Image src={'/icons/close.svg'} alt="카드 제거" width={12} height={12} className={cn('removeIcon')} />
+        </button>
       </div>
       <div className={cn('teaContents')}>
-        <BlendingLabel category={tea.category} />
+        <BlendingLabel>{tea.category}</BlendingLabel>
         <h3 className={cn('teaNameEng')}>{tea.nameEng}</h3>
         <h4 className={cn('teaName')}>{tea.name}</h4>
         <p className={cn('teaDescription')}>{tea.explanation}</p>

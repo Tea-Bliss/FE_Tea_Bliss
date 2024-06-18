@@ -13,5 +13,5 @@ interface CheckIconProps {
 }
 
 export default function CheckIcon({ className, checked, onClick }: CheckIconProps) {
-  return <div className={cn('checkbox', checked && 'checked', className)} onClick={onClick}></div>;
+  return <button className={cn('checkbox', checked && 'checked', className)} onClick={onClick}></button>;
 }

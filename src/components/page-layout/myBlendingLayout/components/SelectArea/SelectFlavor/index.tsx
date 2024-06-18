@@ -9,12 +9,12 @@ export default function SelectFlavor() {
   return (
     <div className={cn('selectFlavor')}>
       <div className={cn('roundArea')}>
-        <FlavorSelect flavor={'Floral'} className={cn('floral')} />
-        <FlavorSelect flavor={'Sweet'} className={cn('sweet')} />
-        <FlavorSelect flavor={'Sour'} className={cn('sour')} />
-        <FlavorSelect flavor={'Spicy'} className={cn('spicy')} />
-        <FlavorSelect flavor={'Bitter'} className={cn('bitter')} />
-        <FlavorSelect flavor={'Fruity'} className={cn('fruity')} />
+        <FlavorSelect flavorNumber={0} className={cn('floral')} />
+        <FlavorSelect flavorNumber={1} className={cn('sweet')} />
+        <FlavorSelect flavorNumber={2} className={cn('sour')} />
+        <FlavorSelect flavorNumber={3} className={cn('spicy')} />
+        <FlavorSelect flavorNumber={4} className={cn('bitter')} />
+        <FlavorSelect flavorNumber={5} className={cn('fruity')} />
       </div>
     </div>
   );

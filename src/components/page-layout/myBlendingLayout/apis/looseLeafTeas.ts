@@ -1,5 +1,5 @@
-import axios from 'axios';
+import axiosInstance from '@/apis/axiosInstance';
 
 export const getLooseLeafTeas = () => {
-  return axios.get(`https://teabliss.kro.kr/api/ingredient`);
+  return axiosInstance.get(`ingredient`);
 };

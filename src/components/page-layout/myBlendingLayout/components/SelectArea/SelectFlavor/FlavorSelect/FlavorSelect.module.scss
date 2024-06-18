@@ -1,7 +1,6 @@
 .container {
   display: inline-block;
   position: relative;
-  cursor: pointer;
 
   .image {
     opacity: 0.3;
@@ -23,6 +22,25 @@
 
     &.selected {
       background-color: $black-13;
+    }
+  }
+
+  .name {
+    position: absolute;
+    width: 5.6rem;
+    left: 41%;
+    bottom: -50%;
+    color: #181717;
+    text-align: center;
+    letter-spacing: -0.108px;
+
+    .nameEng {
+      font-family: 'Pretendard Variable' !important;
+      @include font(1.8rem, 700, normal);
+    }
+
+    .nameKor {
+      @include font(1.8rem, 400, normal);
     }
   }
 }

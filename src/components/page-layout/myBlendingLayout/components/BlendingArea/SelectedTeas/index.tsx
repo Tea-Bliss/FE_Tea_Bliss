@@ -13,7 +13,7 @@ export default function SelectedTeas() {
 
   return (
     <div className={cn('cards')}>
-      {Array.from({ length: 3 }, (v, i) => (selectedTeas[i] !== undefined ? selectedTeas[i] : null)).map((tea, i) => {
+      {Array.from({ length: 3 }, (_, i) => (selectedTeas[i] !== undefined ? selectedTeas[i] : null)).map((tea, i) => {
         return <SelectedTeaCard key={i} tea={tea} />;
       })}
     </div>

@@ -43,7 +43,7 @@ export default function TeaList() {
               <div className={cn('teaContents')}>
                 <Image src={tea.photo || '/images/my-blending/vanila.png'} alt={tea.name} width={67} height={67} />
                 <div className={cn('teaTexts')}>
-                  <BlendingLabel category={tea.category} />
+                  <BlendingLabel>{tea.category}</BlendingLabel>
                   <h3 className={cn('teaNameEng')}>{tea.nameEng}</h3>
                   <h4 className={cn('teaName')}>{tea.name}</h4>
                   <p className={cn('teaDescription')}>{tea.explanation}</p>

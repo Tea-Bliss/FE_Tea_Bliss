@@ -3,57 +3,9 @@
   padding: 0.2rem 1rem;
   border: 0.1rem solid $black-13;
   height: 2.4rem;
+  background-color: $black-13;
   font-family: Pretendard !important;
+  color: $black-1;
   border-radius: 2.1rem;
   @include font(1.2rem, 700, 2rem);
-
-  &.Black {
-    border-color: $black-13;
-    background-color: $black-13;
-    color: $black-1;
-  }
-
-  &.Pu-Erh {
-    border-color: #4b0082;
-    background-color: #4b0082;
-    color: $black-6;
-  }
-
-  &.White {
-    background-color: $black-1;
-    color: $black-13;
-  }
-
-  &.Green {
-    border-color: #228b22;
-    background-color: #228b22;
-    color: $black-1;
-  }
-  &.Herbal {
-    border-color: #8a2be2;
-    background-color: #8a2be2;
-    color: $black-1;
-  }
-
-  &.Decaf {
-    border-color: #a9a9a9;
-    background-color: #a9a9a9;
-    color: $black-1;
-  }
-
-  &.Chai {
-    border-color: #d2691e;
-    background-color: #d2691e;
-    color: $black-1;
-  }
-  &.Oolong {
-    border-color: #8b4513;
-    background-color: #8b4513;
-    color: $black-1;
-  }
-  &.Rooibos {
-    border-color: #a52a2a;
-    background-color: #a52a2a;
-    color: $black-1;
-  }
 }
