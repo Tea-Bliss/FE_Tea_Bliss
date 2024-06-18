@@ -23,28 +23,4 @@
       }
     }
   }
-
-  .SubmitButton {
-    padding: 1.9rem 0;
-    border: 0.1rem solid #181717;
-    width: 100%;
-    background: #181717;
-    color: #fcf8ef;
-    letter-spacing: -0.012rem;
-    @include font(2rem, 400, normal);
-
-    &:hover {
-      background: $black-8;
-    }
-
-    &:active {
-      background: $black-9;
-    }
-
-    &:disabled {
-      border-color: $black-6;
-      background: $black-5;
-      color: $black-1;
-    }
-  }
 }
