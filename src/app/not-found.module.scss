@@ -1,0 +1,41 @@
+.container {
+  @include flexSort(column, null, center, null);
+  background-color: #fcf8ef;
+  height: 100vh;
+}
+
+.header {
+  width: 100%;
+  height: 13rem;
+  background-color: #f3ece4;
+}
+
+.circle {
+  width: 100%;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  background-color: #f3ece4;
+  height: 25rem;
+  @include flexSort(null, center, null, null);
+  position: relative;
+}
+
+.notFound {
+  @include font(10rem, 600, normal);
+  z-index: 1;
+}
+
+.tea {
+  position: absolute;
+}
+
+.buttonContainer {
+  width: 100%;
+  max-width: 110rem;
+  @include flexSort(null, space-between, null, null);
+  @include font(3rem, 600, normal);
+}
+
+.link {
+  @include flexSort(null, null, center, 1rem);
+}

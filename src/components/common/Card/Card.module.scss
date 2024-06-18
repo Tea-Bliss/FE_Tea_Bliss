@@ -1,6 +1,7 @@
 .cardContainer {
-  @include flexSort(column, null, null, null);
+  @include flexSort(column, null, null, 4rem);
   width: 100%;
+  cursor: pointer;
 
   &:hover {
     .imgBackground {
@@ -8,29 +9,22 @@
       opacity: 1;
     }
 
-    .cart {
+    .cartImg {
       opacity: 1;
       z-index: 2;
     }
   }
 }
 
-.mainPageCardContainer {
-  @include tablet {
-    @include flexSort(row, null, null, 1.6rem);
-    width: 100%;
-    padding: 1.2rem;
-  }
-}
-
-.imgBox {
-  position: relative;
+.imgContainer {
+  z-index: 3;
   width: 100%;
-  aspect-ratio: 229 / 250;
+  aspect-ratio: 312 / 370;
   height: auto;
+  position: relative;
   @include flexSort(null, center, center, null);
 
-  .cart,
+  .cartImg,
   .imgBackground {
     opacity: 0;
     transition: opacity 0.5s ease-in-out, background 0.5s ease-in-out;
@@ -45,49 +39,49 @@
   }
 }
 
-.mainPageImgBox {
-  @include tablet {
-    width: 12rem;
-    height: 9.8rem;
-  }
-}
-
-.cardInfoBox {
-  padding: 1rem;
-  @include flexSort(column, null, null, 1.2rem);
-}
-
-.cardTitleBox {
-  @include flexSort(column, null, null, 0.4rem);
+.contentContainer {
+  @include flexSort(column, null, null, 1.4rem);
+  padding: 1.4rem 0;
+  border-top: 0.1rem solid $black-13;
+  border-bottom: 0.1rem solid $black-13;
   position: relative;
+
+  &.isBleding {
+    border-bottom: none;
+  }
 }
 
-.title {
-  @include font(2rem, 400, 2.8rem);
+.enTitle {
+  @include font(2.4rem, 400, normal);
+}
 
-  @include mobile {
-    @include font(1.6rem, 400, 2.4rem);
-  }
+.koTitle {
+  @include font(1.4rem, 400, normal);
 }
 
 .price {
-  @include font(2rem, 600, 2.8rem);
+  @include font(3rem, 400, normal);
+  text-align: right;
+}
 
-  @include mobile {
-    @include font(1.6rem, 600, 2.4rem);
-  }
+.description {
+  color: #838080;
+  @include font(1.4rem, 400, normal);
+}
+
+.reviewScopeBox {
+  @include flexSort(null, null, null, 1.2rem);
+  @include font(1.6rem, 400, normal);
+}
+
+.cart {
+  border: 0.1rem solid $black-13;
+  @include font(2.4rem, 400, normal);
+  padding: 1.5rem 0;
+  text-align: center;
 }
 
 .heart {
   position: absolute;
   right: 0;
-}
-
-.reviewScopeBox {
-  @include flexSort(null, null, null, 1.2rem);
-  @include font(2.2rem, 400, 2.2rem);
-
-  @include mobile {
-    @include font(1.8rem, 500, 1.8rem);
-  }
 }

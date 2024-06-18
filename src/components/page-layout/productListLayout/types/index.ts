@@ -14,4 +14,5 @@ export default interface FinishedItem {
   href: string;
   img: StaticImageData;
   id: number;
+  koTitle: string;
 }
