@@ -1,0 +1,6 @@
+.title {
+  height: 4.8rem;
+  color: #181717;
+  letter-spacing: 1.6px;
+  @include font(4rem, 400, normal);
+}

@@ -1,0 +1,13 @@
+.input {
+  padding-bottom: 0.8rem;
+  border-bottom: 0.1rem solid #181717;
+  width: 100%;
+  background-color: #fcf8ef;
+  font-family: 'Pretendard Variable' !important;
+  letter-spacing: -0.0108rem;
+  @include font(1.8rem, 400, normal);
+
+  &::placeholder {
+    color: #8a8a8a;
+  }
+}
