@@ -19,6 +19,7 @@ const mockProduct = {
   explanation: '적당량의 시큼함과 은은한 달콤함. 어린이와 함께 나누기에 완벽한 허브티입니다.',
   flavor: ['단맛', '신맛'],
   category: '허브 티',
+  price: 3000,
   status: '판매중',
   stock: 28,
   photo: '/images/my-blending/vanila.png',
@@ -29,6 +30,7 @@ const mockProducts = [
     id: i,
     name: mockProduct.name,
     name_eng: mockProduct.name_eng,
+    price: mockProduct.price,
     category: mockProduct.category,
     stock: mockProduct.stock,
     status: mockProduct.status,
@@ -62,7 +64,6 @@ export default function LooseLeafTeasPage() {
         standards={[
           '전체',
           '품절',
-          '숨김',
           '홍차',
           '푸에르 티',
           '차이 티',
@@ -81,7 +82,7 @@ export default function LooseLeafTeasPage() {
         placeholder="한글 이름 또는 영문 이름으로 검색해주세요"
       />
       <Table
-        fields={['ID', '이름', '영문 이름', '종류', '재고', '상태']}
+        fields={['ID', '이름', '영문 이름', '가격', '종류', '재고', '상태']}
         items={products}
         name="상품"
         unit="개"

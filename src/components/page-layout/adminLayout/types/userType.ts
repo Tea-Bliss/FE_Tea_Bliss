@@ -1,10 +1,10 @@
-type UserType = '일반회원' | '관리자';
+type Roll = '일반회원' | '관리자';
 
 export default interface User {
   id: number;
-  nickName: string;
+  nickname: string;
   email: string;
-  userType: UserType;
+  roll: Roll;
   createdAt: string;
   reviewCount: number;
   purchaseAmount: number;

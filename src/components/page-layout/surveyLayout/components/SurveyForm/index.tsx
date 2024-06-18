@@ -49,14 +49,26 @@ export default function SurveyForm() {
             {
               labelName: '맛',
               description: '평소 선호하던 맛을 선택해주세요. (중복 가능)',
-              content: <CheckBoxInputs items={[...TASTE_TYPES, '상관없음']} name="taste" status={status} />,
+              content: (
+                <CheckBoxInputs
+                  items={[...TASTE_TYPES, { value: '상관없음', text: '상관없음' }]}
+                  name="taste"
+                  status={status}
+                />
+              ),
             },
             {
               labelName: '가격',
               description: '원하는 가격대를 선택해주세요.',
               content: (
                 <ButtonInputs
-                  items={['10,000원대', '20,000원대', '30,000원대', '50,000원대 이상', '상관없음']}
+                  items={[
+                    { value: '10,000원대', text: '10,000원대' },
+                    { value: '20,000원대', text: '20,000원대' },
+                    { value: '30,000원대', text: '30,000원대' },
+                    { value: '50,000원대 이상', text: '50,000원대 이상' },
+                    { value: '상관없음', text: '상관없음' },
+                  ]}
                   name="price"
                   status={status}
                 />
@@ -65,13 +77,27 @@ export default function SurveyForm() {
             {
               labelName: '원하는 재료',
               description: '선호하는 재료를 선택해주세요. (중복 가능)',
-              content: <CheckBoxInputs items={[...TEA_TYPES, '상관없음']} name="ingredient" status={status} />,
+              content: (
+                <CheckBoxInputs
+                  items={[...TEA_TYPES, { value: '상관없음', text: '상관없음' }]}
+                  name="ingredient"
+                  status={status}
+                />
+              ),
             },
             {
               labelName: '카페인 유무',
               description: '카페인 유무를 선택해주세요.',
               content: (
-                <ButtonInputs items={['카페인 있음', '카페인 없음', '상관없음']} name="caffeine" status={status} />
+                <ButtonInputs
+                  items={[
+                    { value: '카페인 있음', text: '카페인 있음' },
+                    { value: '카페인 없음', text: '카페인 없음' },
+                    { value: '상관없음', text: '상관없음' },
+                  ]}
+                  name="caffeine"
+                  status={status}
+                />
               ),
             },
           ]}

@@ -1,14 +1,20 @@
-.category {
+.container {
+  @include flexSort(column, null, null, 3rem);
+
   .categoryTitle {
     @include flexSort(row, null, center, 1rem);
     margin-bottom: 1.2rem;
     @include font(1.6rem, 700, $black-13);
   }
+
   .contents {
     background-color: $black-1;
     width: 100%;
     padding: 1rem 1.5rem;
     border-radius: 1.2rem;
+  }
+
+  .orderStatus {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: repeat(6, 1fr);
@@ -38,11 +44,6 @@
       .number {
         color: #fa5858;
       }
-    }
-
-    @include mobile {
-      grid-template-rows: 1fr;
-      grid-template-columns: repeat(6, 1fr);
     }
   }
 }

@@ -18,33 +18,14 @@ const mockProduct = {
   en_name: 'berries teas',
   image: '/images/my-blending/vanila.png',
   description: '베리류를 좋아하시나요? 상큼하고 달달한 후르츠베리 티 세트로 일 년 내내 여름을 즐겨보세요.',
-  flavor: ['단맛', '신맛'],
+  flavor: [1, 2],
   price: 14000,
   season: '여름',
   caffeine: true,
   category: '홍차',
-  status: '판매중',
-  stock: 28,
-  ingredient: [
-    {
-      name: '라즈베리',
-      description: '산뜻한 라즈베리 풍미의 깔끔한 홍차로, 캔디 같은 향, 톡 쏘면서 드라이한 마무리가 돋보입니다.',
-    },
-    {
-      name: '딸기',
-      description: '상큼한 딸기 맛이 섞인 실론 블랙티입니다. 달달한 꽃과 딸기 향, 부드러운 목넘김이 특징입니다.',
-    },
-    {
-      name: '블루베리',
-      description:
-        '상큼한 블루베리 맛이 섞인 실론 블랙티입니다. 향이 강하고 약간 달콤하며, 뜨겁게 또는 차갑게 마셔도 좋습니다!',
-    },
-    {
-      name: '블랙베리',
-      description:
-        '달콤하고 상큼한 베리가 가미된 실론 블랙티입니다. 꽃향기와 과일향, 그리고 빵처럼 고소한 향이 어우러집니다.',
-    },
-  ],
+  saleStatus: '판매중',
+  inventory: 28,
+  ingredient: [1, 2, 3],
 };
 
 const mockProducts = [
@@ -54,8 +35,8 @@ const mockProducts = [
     en_name: mockProduct.en_name,
     price: mockProduct.price,
     category: mockProduct.category,
-    stock: mockProduct.stock,
-    status: mockProduct.status,
+    stock: mockProduct.inventory,
+    status: mockProduct.saleStatus,
   })),
 ];
 
@@ -82,7 +63,7 @@ export default function FinishedTeasPage() {
 
   return (
     <>
-      <SortBar standards={['전체', '품절', '숨김', '봄', '여름', '가을', '겨울']} />
+      <SortBar standards={['전체', '품절', '봄', '여름', '가을', '겨울']} />
       <SearchBar
         value={searchValue}
         onChange={handleChange}

@@ -1,0 +1,56 @@
+.dropdown {
+  position: relative;
+}
+
+.textContainer {
+  position: relative;
+  width: 15rem;
+  height: 2.4rem;
+  @include font(1.3rem, 400, 1.3rem);
+  border: 0.1rem solid $black-7;
+  border-radius: 0.2rem;
+  text-align: left;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+}
+
+.dropdownContent {
+  @include flexSort(column, null, null, 0);
+  border: 0.1rem solid $black-6;
+  position: absolute;
+  width: 100%;
+  top: 2.4rem;
+  right: 0rem;
+  background-color: $black-1;
+  border-radius: 0.5rem;
+  z-index: 1;
+}
+
+.dropdownButton {
+  padding: 0.7rem;
+  cursor: pointer;
+  @include font(1.3rem, 400, 1rem);
+
+  &:hover {
+    background-color: $black-6;
+  }
+}
+
+.dropdownArrow {
+  rotate: 90deg;
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+
+  &.visibleDropdown {
+    rotate: -90deg;
+  }
+}
+
+.visibleDropdown {
+  rotate: -90deg;
+}
+
+.input {
+  display: none;
+}

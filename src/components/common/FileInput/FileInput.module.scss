@@ -1,4 +1,4 @@
-.previewOuterContainer {
+.profilePreview {
   position: relative;
   width: 7.2rem;
   height: 7.2rem;
@@ -22,8 +22,70 @@
     background-color: $black-1;
     border-radius: 50%;
   }
+
+  .dropdownContent {
+    @include flexSort(column, null, null, 0);
+    border: 0.1rem solid $black-6;
+    position: absolute;
+    top: 7rem;
+    right: -5.5rem;
+    background-color: $black-1;
+    border-radius: 0.5rem;
+  }
+}
+
+.productPreview {
+  position: relative;
+  width: 22.9rem;
+  height: 26.8rem;
+
+  .previewInnerContainer {
+    overflow: hidden;
+    position: relative;
+    width: 22.9rem;
+    height: 26.8rem;
+    border-radius: 0.5rem;
+  }
+
+  .cameraButton {
+    padding-top: 0.3rem;
+    padding-top: 0.6rem;
+    border: 0.1rem solid $black-6;
+    position: absolute;
+    top: 19rem;
+    right: -2.5rem;
+    width: 5rem;
+    height: 5rem;
+    background-color: $black-1;
+    border-radius: 50%;
+  }
+
+  .cameraImage {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .dropdownContent {
+    @include flexSort(column, null, null, 0);
+    border: 0.1rem solid $black-6;
+    position: absolute;
+    top: 24.5rem;
+    right: -5.5rem;
+    background-color: $black-1;
+    border-radius: 0.5rem;
+  }
 }
 
 .fileInput {
   display: none;
+}
+
+.dropdownButton {
+  padding: 0.7rem;
+  cursor: pointer;
+  @include font(1.3rem, 400, 1rem);
+
+  &:hover {
+    background-color: $black-6;
+  }
 }
