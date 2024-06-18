@@ -1,0 +1,14 @@
+.container {
+  @include flexSort(column, null, null, 7.7rem);
+
+  .title {
+    @include font(4rem, 400, normal);
+    color: #181717;
+    letter-spacing: 0.16rem;
+  }
+
+  .contents {
+    @include flexSort(row, null, flex-end, 6.6rem);
+    padding-left: 4.4rem;
+  }
+}

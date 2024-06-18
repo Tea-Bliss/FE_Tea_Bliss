@@ -1,52 +1,11 @@
 .label {
-  padding: 0 1.2rem;
+  display: inline-block;
+  padding: 0.2rem 1rem;
   border: 0.1rem solid $black-13;
   height: 2.4rem;
-  color: $black-13;
-  border-radius: 1.2rem;
-  font-feature-settings: 'ss10' on;
-  @include flexSort(row, center, center, null);
-  @include font(1.3rem, 500, 1.8rem);
-
-  &.typeSelected {
-    border-color: $orange-6;
-    background-color: $orange-1;
-    color: $orange-6;
-  }
-
-  &.sweetTasteSelected {
-    border-color: #ff7ec3;
-    background-color: #f9a7d3;
-    color: $black-1;
-  }
-
-  &.sourTasteSelected {
-    border-color: #d0d34e;
-    background-color: #fcff7f;
-    color: $black-6;
-  }
-
-  &.flowerTasteSelected {
-    border-color: #de9b35;
-    background-color: #ffcc7f;
-    color: $black-1;
-  }
-
-  &.fruitTasteSelected {
-    border-color: #c9145f;
-    background-color: #ff7fb5;
-    color: $black-1;
-  }
-
-  &.spicyTasteSelected {
-    border-color: #be3213;
-    background-color: #ff967f;
-    color: $black-1;
-  }
-
-  &.bitterTasteSelected {
-    border-color: #2e20ba;
-    background-color: #a9a5d2;
-    color: $black-1;
-  }
+  background-color: $black-13;
+  font-family: Pretendard !important;
+  color: $black-1;
+  border-radius: 2.1rem;
+  @include font(1.2rem, 700, 2rem);
 }

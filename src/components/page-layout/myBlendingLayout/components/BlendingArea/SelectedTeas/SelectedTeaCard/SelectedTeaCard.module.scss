@@ -1,0 +1,59 @@
+.vacantCard {
+  @include flexSort(row, center, center, null);
+  width: 20rem;
+  height: 47.6rem;
+  border: 0.2rem dashed $black-7;
+  border-radius: 1.5rem;
+}
+
+.card {
+  @include flexSort(column, null, null, 4rem);
+  width: 20rem;
+  height: 47.6rem;
+
+  .teaImageContainer {
+    position: relative;
+
+    &:hover {
+      .cardImage {
+        opacity: 0.3;
+      }
+
+      .removeIcon {
+        display: block;
+      }
+    }
+
+    .removeIcon {
+      display: none;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  .teaContents {
+    padding-top: 1.4rem;
+    @include flexSort(column, null, flex-start, 1.4rem);
+    border-top: 0.1rem solid #181717;
+    color: #181717;
+
+    .teaNameEng {
+      @include font(2.4rem, 400, normal);
+      letter-spacing: -0.0144rem;
+    }
+
+    .teaName {
+      @include font(1.4rem, 400, normal);
+      letter-spacing: -0.0084rem;
+      font-family: GabiaHeuldot;
+    }
+
+    .teaDescription {
+      @include font(1.4rem, 400, 2rem);
+      color: #838080;
+      letter-spacing: -0.0084rem;
+    }
+  }
+}

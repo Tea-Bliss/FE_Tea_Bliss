@@ -1,0 +1,50 @@
+.container {
+  @include flexSort(column, null, null, 3.6rem);
+  flex-grow: 1;
+
+  .decideTeaName {
+    @include flexSort(column, null, null, 4rem);
+
+    .teaName {
+      color: #181717;
+      letter-spacing: 0.16rem;
+      @include font(4rem, 400, normal);
+    }
+
+    .teaNameInput {
+      padding-bottom: 0.8rem;
+      border-bottom: 0.1rem solid #181717;
+      background-color: #fcf8ef;
+      letter-spacing: -0.0108rem;
+      @include font(1.8rem, 400, normal);
+
+      &::placeholder {
+        color: #8a8a8a;
+      }
+    }
+  }
+
+  .SubmitButton {
+    padding: 1.9rem 0;
+    border: 0.1rem solid #181717;
+    width: 100%;
+    background: #181717;
+    color: #fcf8ef;
+    letter-spacing: -0.012rem;
+    @include font(2rem, 400, normal);
+
+    &:hover {
+      background: $black-8;
+    }
+
+    &:active {
+      background: $black-9;
+    }
+
+    &:disabled {
+      border-color: $black-6;
+      background: $black-5;
+      color: $black-1;
+    }
+  }
+}
