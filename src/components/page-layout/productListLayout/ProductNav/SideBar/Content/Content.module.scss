@@ -1,0 +1,4 @@
+.box {
+  @include flexSort(column, null, flex-start, 1.2rem);
+  @include font(2rem, 400, 2.4rem);
+}

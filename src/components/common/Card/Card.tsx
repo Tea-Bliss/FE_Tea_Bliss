@@ -1,8 +1,12 @@
+import { MouseEvent } from 'react';
+
 import classNames from 'classnames/bind';
 
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
+import Button from '@/components/common/Button/index';
 import styles from '@/components/common/Card/Card.module.scss';
 import Cart from '@/icons/cart.svg';
 import Heart from '@/icons/heart.svg';
@@ -10,53 +14,76 @@ import Heart from '@/icons/heart.svg';
 const cn = classNames.bind(styles);
 
 interface CardProps {
-  href: string;
-  isMainPageCard?: boolean;
+  onClick?: () => void;
+  type: 'main' | 'productList' | 'blending';
+  href?: string;
   img: StaticImageData;
   title: string;
-  price: number;
-  review: number;
-  scope: number;
+  price?: number;
+  review?: number;
+  scope?: number;
+  koTitle: string;
+  description?: string;
 }
 
-export default function Card({ href, isMainPageCard, img, title, price, review, scope }: CardProps) {
+export default function Card({
+  onClick,
+  description,
+  koTitle,
+  href,
+  type,
+  img,
+  title,
+  price,
+  review,
+  scope,
+}: CardProps) {
+  const router = useRouter();
+
+  const handleCardClick = () => {
+    if (type === 'blending' && typeof onClick === 'function') {
+      onClick();
+    } else {
+      router.push(href as string);
+    }
+  };
+
+  const handleCardImgClick = (e: MouseEvent) => {
+    e.stopPropagation();
+    router.push('/');
+  };
+
   return (
-    <Link
-      href={href}
-      className={cn('cardContainer', {
-        mainPageCardContainer: isMainPageCard,
-      })}
-    >
-      <div
-        className={cn('imgBox', {
-          mainPageImgBox: isMainPageCard,
-        })}
-      >
+    <div onClick={handleCardClick} className={cn('cardContainer')}>
+      <div className={cn('imgContainer')} onClick={handleCardImgClick}>
         <Image
-          priority
           src={img}
-          alt="상품"
+          alt="완제품"
+          priority
           fill
           sizes="(max-width: 767px) 15.8rem, (max-width: 1279px) 22.9rem, 22.9rem"
         />
-        {!isMainPageCard && <div className={cn('imgBackground')} />}
-        {!isMainPageCard && <Cart fill="white" width={40} height={40} className={cn('cart')} />}
+        {type === 'productList' && <div className={cn('imgBackground')} />}
+        {type === 'productList' && <Cart fill="white" width={40} height={40} className={cn('cartImg')} />}
       </div>
-      <article
-        className={cn('cardInfoBox', {
-          mainPageCardInfoBox: isMainPageCard,
-        })}
-      >
-        <div className={cn('cardTitleBox')}>
-          <p className={cn('title')}>{title}</p>
-          <p className={cn('price')}>{`${price}원`}</p>
-          {!isMainPageCard && <Heart className={cn('heart')} />}
-        </div>
-        <div className={cn('reviewScopeBox')}>
-          <p>{`리뷰 개수 : ${review}개`}</p>
-          <p>{`별점 : ${scope}`}</p>
-        </div>
+      <article className={cn('contentContainer', { isBleding: type === 'blending' })}>
+        {type === 'productList' && <Heart className={cn('heart')} />}
+        <p className={cn('enTitle')}>{title}</p>
+        <p className={cn('koTitle')}>{koTitle}</p>
+        {type === 'blending' && <p className={cn('description')}>{description}</p>}
+        {type !== 'blending' && <p className={cn('price')}>{price?.toLocaleString('ko-KR')} ₩</p>}
+        {type !== 'blending' && (
+          <div className={cn('reviewScopeBox')}>
+            <p>{`리뷰개수 : ${review}개`}</p>
+            <p>{`별점 : ${scope}`}</p>
+          </div>
+        )}
       </article>
-    </Link>
+      {type === 'main' && (
+        <Link href="/" className={cn('cart')}>
+          Cart
+        </Link>
+      )}
+    </div>
   );
 }

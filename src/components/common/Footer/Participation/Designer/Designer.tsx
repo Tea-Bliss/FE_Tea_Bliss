@@ -8,7 +8,13 @@ export default function Designer() {
   return (
     <div className={cn('nameBox')}>
       <p>Design</p>
-      <a>조효은</a>
+      <a
+        href="https://maze-wasp-d65.notion.site/Dream-Maker-d1e511f087a84fc5908b1077041f47ef?pvs=4"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        조효은
+      </a>
     </div>
   );
 }

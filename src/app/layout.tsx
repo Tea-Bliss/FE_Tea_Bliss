@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={myFont.className}>
-        {process.env.NEXT_PUBLIC_GA_ID ? <GoogleAnalytics /> : <div>GA환경변수값필요</div>
+        {process.env.NEXT_PUBLIC_GA_ID ? <GoogleAnalytics /> : <div>GA환경변수값필요</div>}
         <ReactQueryProvider>
           <div id="modal-root"></div>
           {children}
