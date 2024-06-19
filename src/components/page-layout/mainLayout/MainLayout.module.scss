@@ -1,7 +1,23 @@
 .layout {
-  @include font(1rem, 400, 200);
+  margin-bottom: 10rem;
+  width: 100%;
+  @include flexSort(column, center, null, null);
+  @include font(1rem, 400, null);
 }
 
 .container {
-  @include font(3rem, 400, 1);
+  @include font(3rem, 400, null);
+}
+
+.mainImg {
+  width: 100%;
+  object-fit: cover;
+}
+
+.title {
+  margin: 8rem auto 8rem auto;
+  color: #181717;
+  text-align: center;
+  letter-spacing: 1.6px;
+  @include font(4rem, 400, normal);
 }

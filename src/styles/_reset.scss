@@ -87,9 +87,9 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 62.5%;
   // font: inherit;
   vertical-align: baseline;
+  font-size: 62.5%;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -106,6 +106,7 @@ section {
   display: block;
 }
 body {
+  background-color: #fcf8ef;
   line-height: 1;
 }
 ol,
@@ -130,8 +131,8 @@ table {
 
 /* additional reset style */
 * {
-  box-sizing: border-box;
   word-break: keep-all;
+  box-sizing: border-box;
 }
 a {
   color: inherit;
@@ -139,15 +140,15 @@ a {
   cursor: pointer;
 }
 input {
-  border: none;
   padding: none;
+  border: none;
 }
 input:focus {
   outline: none;
 }
 button {
-  border: none;
   padding: unset;
+  border: none;
   background-color: unset;
   cursor: pointer;
   &:disabled {
