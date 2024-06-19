@@ -20,12 +20,14 @@
 }
 
 .left {
+  flex-shrink: 0;
   background: rgba(67, 57, 48, 0.2);
   cursor: pointer;
   border-radius: 50%;
 }
 
 .right {
+  flex-shrink: 0;
   background: rgba(67, 57, 48, 0.2);
   cursor: pointer;
   border-radius: 50%;
