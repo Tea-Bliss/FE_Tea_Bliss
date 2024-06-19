@@ -2,7 +2,6 @@ import classNames from 'classnames/bind';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 import styles from '@/components/page-layout/mainLayout/components/MainHeader/MainHeader.module.scss';
 import ROUTE from '@/constants/route';
