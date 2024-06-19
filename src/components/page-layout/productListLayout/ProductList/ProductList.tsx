@@ -43,11 +43,11 @@ export default function ProductList() {
     placeholderData: keepPreviousData,
   });
 
-  const finishedData = data?.tea?.map((item: FinishedItem) => ({
+  const finishedData = data?.tea?.map((item: FinishedItem, idx: number) => ({
     ...item,
-    href: `${ROUTE.PRODUCT_LIST}/${item.id}`,
+    id: idx,
+    href: `${ROUTE.PRODUCT_LIST}/${idx}`,
     img: Img,
-    koTitle: '제주에서 넘어온 그린티',
   }));
 
   const handleFilterClick = (filter: string) => {
@@ -76,11 +76,11 @@ export default function ProductList() {
                 key={item.id}
                 img={item.img}
                 href={item.href}
-                price={item.cost}
+                price={item.price}
                 scope={item.rating}
                 review={item.review}
-                title={item.title}
-                koTitle={item.koTitle}
+                title={item.nameEng}
+                koTitle={item.name}
               />
             ))}
       </div>
