@@ -2,6 +2,8 @@
 
 import classNames from 'classnames/bind';
 
+import MyPageHeader from '@/components/common/MyPageHeader/MyPageHeader';
+import MyPageNav from '@/components/common/MyPageNav/MyPageNav';
 import AddressChange from '@/components/page-layout/myPageLayout/myInfo/components/AddressChange';
 import PasswordChange from '@/components/page-layout/myPageLayout/myInfo/components/PasswordChange';
 import ProfileChange from '@/components/page-layout/myPageLayout/myInfo/components/ProfileChange';
@@ -13,6 +15,8 @@ const cn = classNames.bind(styles);
 export default function MyInfoLayout() {
   return (
     <main className={cn('layout')}>
+      <MyPageHeader />
+      <MyPageNav />
       <MyInfoProvider>
         <div className={cn('container')}>
           <div className={cn('changeArea')}>
