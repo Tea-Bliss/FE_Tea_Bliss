@@ -1,0 +1,55 @@
+.selectFlavor {
+  @include flexSort(row, center, center, null);
+  width: 66.8478rem;
+  height: 66.8478rem;
+  flex-shrink: 0;
+
+  .roundArea {
+    position: relative;
+    width: 48.2178rem;
+    height: 48.1132rem;
+    border: 1px solid #181717;
+    border-radius: 50%;
+  }
+
+  .floral {
+    position: absolute;
+    top: -9.237rem;
+    left: 8rem;
+  }
+
+  .sweet {
+    position: absolute;
+    rotate: 60deg;
+    top: 4.6rem;
+    right: -16rem;
+  }
+
+  .sour {
+    position: absolute;
+    rotate: 120deg;
+    bottom: 4.6rem;
+    right: -16rem;
+  }
+
+  .spicy {
+    position: absolute;
+    rotate: 180deg;
+    bottom: -9.237rem;
+    left: 8.2rem;
+  }
+
+  .bitter {
+    position: absolute;
+    rotate: 240deg;
+    bottom: 4.6rem;
+    left: -16rem;
+  }
+
+  .fruity {
+    position: absolute;
+    rotate: 300deg;
+    top: 4.6rem;
+    left: -16rem;
+  }
+}

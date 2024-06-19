@@ -13,3 +13,16 @@ export interface FinishedTeaType {
   stock: number;
   ingredient: { name: string; description: string }[];
 }
+
+export interface LooseLeafTeaType {
+  id: number;
+  category: '홍차' | '녹차' | '우롱차' | '허브 티' | '푸에르 티' | '차이 티' | '백차' | '루이보스 티' | '디카페인';
+  name: string;
+  nameEng: string;
+  sale: number;
+  inventory: number;
+  saleStatus: '판매중' | '품절';
+  flavor: (1 | 2 | 3 | 4 | 5 | 6)[];
+  explanation: string;
+  photo: string;
+}

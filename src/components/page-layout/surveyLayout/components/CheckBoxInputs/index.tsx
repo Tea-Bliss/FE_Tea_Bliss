@@ -11,12 +11,13 @@ import styles from '@/components/page-layout/surveyLayout/components/CheckBoxInp
 const cn = classNames.bind(styles);
 
 interface CheckBoxInputsProps extends InputHTMLAttributes<HTMLInputElement> {
-  items: string[];
+  items: { value: string | number; text: string }[];
   name: string;
   status: number;
+  className?: string;
 }
 
-export default function CheckBoxInputs({ items, name, status, ...props }: CheckBoxInputsProps) {
+export default function CheckBoxInputs({ items, name, status, className, ...props }: CheckBoxInputsProps) {
   const { control, setValue, getValues } = useFormContext();
 
   const checkedValues = useWatch({ control, name });
@@ -25,7 +26,9 @@ export default function CheckBoxInputs({ items, name, status, ...props }: CheckB
     e.preventDefault();
     const targetElement = e.target as HTMLLabelElement;
     const field = targetElement.dataset.name!;
-    const value = targetElement.dataset.item!;
+    const value = !isNaN(parseFloat(targetElement.dataset.item!))
+      ? +targetElement.dataset.item!
+      : targetElement.dataset.item!;
     const currentValues = getValues(field);
 
     if (!currentValues) {
@@ -36,7 +39,7 @@ export default function CheckBoxInputs({ items, name, status, ...props }: CheckB
     if (currentValues.includes(value)) {
       setValue(
         field,
-        currentValues.filter((item: string) => item !== value)
+        currentValues.filter((item: string | number) => item !== value)
       );
       return;
     }
@@ -55,14 +58,14 @@ export default function CheckBoxInputs({ items, name, status, ...props }: CheckB
   };
 
   return (
-    <div className={cn('items')}>
+    <div className={cn('items', className)}>
       {items.map((item, index) => {
         return (
           <CheckBoxInput
             key={index}
             item={item}
             name={name}
-            isChecked={checkedValues?.includes(item)}
+            isChecked={checkedValues?.includes(item.value)}
             status={status}
             handleClick={handleClick}
             {...props}

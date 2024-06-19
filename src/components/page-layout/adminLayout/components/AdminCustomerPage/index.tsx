@@ -14,9 +14,9 @@ import User from '@/components/page-layout/adminLayout/types/userType';
 const cn = classNames.bind(styles);
 
 const mockUser = {
-  nickName: '티블리스',
+  nickname: '티블리스',
   email: 'teabliss@gmail.com',
-  userType: '일반회원',
+  roll: '일반회원',
   createdAt: '2024-06-10',
   reviewCount: 2,
   purchaseAmount: 6.5,
@@ -25,9 +25,9 @@ const mockUser = {
 const mockUsers = [
   {
     id: 0,
-    nickName: '관리자',
+    nickname: '관리자',
     email: 'cksdyd324@gmail.com',
-    userType: '관리자',
+    roll: '관리자',
     createdAt: '2024-06-06',
     reviewCount: 0,
     purchaseAmount: 0,
@@ -53,7 +53,7 @@ export default function AdminCustomerPage() {
         return;
       }
 
-      setUsers(mockUsers.filter((user) => user.email.includes(searchValue) || user.nickName.includes(searchValue)));
+      setUsers(mockUsers.filter((user) => user.email.includes(searchValue) || user.nickname.includes(searchValue)));
     }
   };
 
