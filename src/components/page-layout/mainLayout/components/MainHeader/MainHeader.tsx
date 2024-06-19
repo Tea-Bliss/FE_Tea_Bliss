@@ -1,19 +1,17 @@
-'use client';
-
 import classNames from 'classnames/bind';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import styles from '@/components/page-layout/mainLayout/components/MainHeader/MainHeader.module.scss';
+import ROUTE from '@/constants/route';
 import RightArrow from '@/icons/rightArrow.svg';
 import Oval from '@/images/Ellipse 10.jpg';
 
 const cn = classNames.bind(styles);
 
 export default function MainHeader() {
-  const router = useRouter();
-
   return (
     <div className={cn('layout')}>
       <div className={cn('container-left')}>
@@ -27,10 +25,10 @@ export default function MainHeader() {
             own tea
           </p>
         </div>
-        <button className={cn('blendingBtn')} type="button" onClick={() => router.push('/my-blending')}>
+        <Link className={cn('blendingBtn')} href={ROUTE.MY_BLENDING}>
           나만의 차 만들기
           <RightArrow fill="#FCF8EF" />
-        </button>
+        </Link>
       </div>
       <div className={cn('container-middle')}>
         <Image className={cn('oval')} src={Oval} alt="타원형 메인 이미지 " />
@@ -57,10 +55,10 @@ export default function MainHeader() {
             recommendations
           </p>
         </div>
-        <button className={cn('recommendBtn')} type="button" onClick={() => router.push('/survey')}>
+        <Link className={cn('recommendBtn')} href={ROUTE.SURVEY}>
           설문참여하고 추천받기
           <RightArrow fill="#000000" />
-        </button>
+        </Link>
       </div>
     </div>
   );
