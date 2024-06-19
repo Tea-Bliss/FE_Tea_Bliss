@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 import styles from '@/components/common/GlobalNavBar/AuthButton/Profile.module.scss';
 import MyInfo from '@/components/common/GlobalNavBar/MyInfo/MyInfo';
-import useOutsideClick from '@/components/page-layout/adminLayout/hooks/useOutsideClick';
+import useOutsideClick from '@/hooks/useOutsideClick';
 
 const cn = classNames.bind(styles);
 
