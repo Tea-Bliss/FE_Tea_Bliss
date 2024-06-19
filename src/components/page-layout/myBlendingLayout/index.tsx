@@ -1,29 +1,27 @@
 import classNames from 'classnames/bind';
 
+import Footer from '@/components/common/Footer/Footer';
 import GlobalNavBar from '@/components/common/GlobalNavBar/GlobalNavBar';
-import FixedBottomBar from '@/components/page-layout/myBlendingLayout/components/FixedBottomBar';
-import SortingMenu from '@/components/page-layout/myBlendingLayout/components/SortingMenu';
-import TeaCardList from '@/components/page-layout/myBlendingLayout/components/TeaCardList';
+import BlendingArea from '@/components/page-layout/myBlendingLayout/components/BlendingArea';
+import SelectArea from '@/components/page-layout/myBlendingLayout/components/SelectArea';
+import { MyBlendingProvider } from '@/components/page-layout/myBlendingLayout/contexts/myBlendingContext';
 import styles from '@/components/page-layout/myBlendingLayout/MyBlendingLayout.module.scss';
-
-import { MyBlendingProvider } from './contexts/myBlendingContext';
 
 const cn = classNames.bind(styles);
 
 export default function MyBlendingLayout() {
   return (
-    <MyBlendingProvider>
-      <main className={cn('layout')}>
-        <div className={cn('container')}>
-          <section>
-            <SortingMenu />
-          </section>
-          <section>
-            <TeaCardList />
-          </section>
-        </div>
-      </main>
-      <FixedBottomBar />
-    </MyBlendingProvider>
+    <>
+      <GlobalNavBar />
+      <MyBlendingProvider>
+        <main className={cn('layout')}>
+          <div className={cn('container')}>
+            <SelectArea />
+            <BlendingArea />
+          </div>
+        </main>
+      </MyBlendingProvider>
+      <Footer />
+    </>
   );
 }

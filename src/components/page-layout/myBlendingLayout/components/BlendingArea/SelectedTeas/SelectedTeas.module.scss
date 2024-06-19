@@ -1,0 +1,3 @@
+.cards {
+  @include flexSort(row, null, null, 2.6rem);
+}

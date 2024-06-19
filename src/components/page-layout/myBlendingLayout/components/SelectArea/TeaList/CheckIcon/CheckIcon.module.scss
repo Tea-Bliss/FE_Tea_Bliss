@@ -1,0 +1,29 @@
+.checkbox {
+  position: relative;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 0.2rem;
+  border: 0.1rem solid $black-13;
+
+  &::after {
+    display: none;
+    border: 0.25rem solid $black-1;
+    border-top: none;
+    border-right: none;
+    position: absolute;
+    top: 15%;
+    left: 12%;
+    width: 0.8rem;
+    height: 0.4rem;
+    content: '';
+    transform: rotate(-45deg);
+  }
+
+  &.checked {
+    background-color: $black-13;
+  }
+
+  &.checked::after {
+    display: block;
+  }
+}

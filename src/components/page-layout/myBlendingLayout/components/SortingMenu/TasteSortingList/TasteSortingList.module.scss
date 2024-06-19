@@ -1,7 +1,0 @@
-.list {
-  @include flexSort(row, null, center, 0.8rem);
-
-  @include mobile {
-    flex-wrap: wrap;
-  }
-}

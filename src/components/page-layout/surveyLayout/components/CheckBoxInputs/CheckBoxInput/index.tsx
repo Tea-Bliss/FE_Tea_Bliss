@@ -10,7 +10,7 @@ import styles from '@/components/page-layout/surveyLayout/components/CheckBoxInp
 const cn = classNames.bind(styles);
 
 interface CheckBoxInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  item: string;
+  item: { value: string | number; text: string };
   name: string;
   isChecked: Boolean;
   handleClick: MouseEventHandler;
@@ -33,25 +33,25 @@ export default function CheckBoxInput({ item, name, isChecked, handleClick, stat
   return (
     <div className={cn('item')}>
       <input
-        id={`${name}: ${item}`}
+        id={`${name}: ${item.text}`}
         className={cn('input')}
         type="checkbox"
-        value={item}
+        value={item.value}
         disabled={UIStatus !== 'current'}
         {...props}
         {...register(name)}
       />
       <label
-        htmlFor={`${name}: ${item}`}
+        htmlFor={`${name}: ${item.text}`}
         data-name={name}
-        data-item={item}
+        data-item={item.value}
         className={cn('customInput', isChecked && 'checked', UIStatus !== 'current' && 'unFocused')}
         onClick={(e) => {
           if (UIStatus === 'preparing') return;
           handleClick(e);
         }}
       >
-        {item}
+        {item.text}
       </label>
     </div>
   );
