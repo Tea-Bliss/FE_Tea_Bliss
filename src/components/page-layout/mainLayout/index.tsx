@@ -15,7 +15,6 @@ const cn = classNames.bind(styles);
 export default function MainLayout() {
   return (
     <div>
-      <GlobalNavBar />
       <main className={cn('layout')}>
         <MainHeader />
         <Image className={cn('mainImg')} src={MainImage} alt="메인 이미지" />
@@ -24,7 +23,6 @@ export default function MainLayout() {
           <Carousel cards={cardData} num={3} />
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
