@@ -1,0 +1,98 @@
+.layout {
+  border-top: 0.1rem solid #181717;
+  width: 100%;
+  // min-width: 120rem;
+  height: 56.4rem;
+  background-color: #fcf8ef;
+  @include flexSort(row, center, center, null);
+}
+
+.container-left {
+  margin-right: 3.3rem;
+  // min-width: 43.7rem;
+  height: 46.4rem;
+  @include flexSort(column, space-between, flex-start, 3.1rem);
+}
+
+.left {
+  height: 100%;
+  @include flexSort(column, space-between, flex-start, null);
+}
+
+.blendingBtn {
+  padding: 1.9rem 12.3rem;
+  width: 100%;
+  background: #181717;
+  color: #fcf8ef;
+  letter-spacing: -0.144px;
+  @include flexSort(row, center, center, 1.2rem);
+  @include font(2.4rem, 700, normal);
+}
+
+.container-middle {
+  padding: 9.9rem 1.7rem;
+  border-right: 0.1rem solid #181717;
+  border-left: 0.1rem solid #181717;
+  height: 100%;
+  @include flexSort(null, center, center, null);
+}
+
+.container-right {
+  margin-left: 3.3rem;
+  // min-width: 43.7rem;
+  height: 46.4rem;
+  @include flexSort(column, space-between, flex-end, 3.1rem);
+}
+
+.right {
+  height: 100%;
+  text-align: right;
+  @include flexSort(column, space-between, flex-end, null);
+}
+
+.recommendBtn {
+  padding: 1.9rem 12.3rem;
+  border: 0.1rem solid #181717;
+  width: 100%;
+  color: #181717;
+  text-align: center;
+  letter-spacing: -0.144px;
+  @include flexSort(row, center, center, 1.2rem);
+  @include font(2.4rem, 700, normal);
+}
+
+.oval {
+  width: 22.6rem;
+  height: 36.7rem;
+}
+
+.title {
+  color: #181717;
+  letter-spacing: 0.28rem;
+  @include font(7rem, 400, normal);
+}
+
+.sub-title {
+  color: #181717;
+  letter-spacing: 0.16rem;
+  @include font(4rem, 400, normal);
+}
+
+.description {
+  @include flexSort(column, null, null, 1.4rem);
+}
+
+.description-en {
+  color: #181717;
+  text-align: right;
+  letter-spacing: -0.0144rem;
+  @include font(2.4rem, 400, normal);
+}
+
+.description-ko {
+  font-family: Pretendard;
+  font-size: 1.4rem;
+  color: #181717;
+  text-align: right;
+  letter-spacing: -0.084px;
+}
