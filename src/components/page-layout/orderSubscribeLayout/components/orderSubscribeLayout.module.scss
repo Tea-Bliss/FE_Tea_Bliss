@@ -1,0 +1,30 @@
+.root {
+  padding-bottom: 7.5rem;
+}
+
+.right {
+  text-align: right;
+}
+
+.selected {
+  color: $black-13;
+}
+
+.cardContainer {
+  background-color: #fcf8ef;
+  @include flexSort(null, center, center, null);
+}
+
+.cardBox {
+  width: 95rem;
+  @include flexSort(column, null, null, 4rem);
+}
+
+.card {
+  padding-bottom: 2rem;
+  border-bottom: 0.1rem solid $black-13;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}

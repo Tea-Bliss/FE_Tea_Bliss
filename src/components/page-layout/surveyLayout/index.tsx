@@ -10,7 +10,6 @@ const cn = classNames.bind(styles);
 export default function SurveyLayout() {
   return (
     <>
-      <GlobalNavBar />
       <main className={cn('layout')}>
         <div className={cn('container')}>
           <SurveyForm />

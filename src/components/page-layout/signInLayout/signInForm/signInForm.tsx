@@ -37,6 +37,7 @@ export default function SignInForm() {
   const mutation = useMutation({
     mutationFn: (data: SignInFormData) => postSignInForm(data),
     onSuccess: (response) => {
+      localStorage.setItem('token', response.headers.authorization);
       router.push(ROUTE.HOME);
     },
     onError: (error: Error) => {

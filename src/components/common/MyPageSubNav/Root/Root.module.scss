@@ -1,0 +1,4 @@
+.nav {
+  background-color: #fcf8ef;
+  @include flexSort(null, center, center, null);
+}

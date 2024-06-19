@@ -10,7 +10,6 @@ const cn = classNames.bind(styles);
 export default function MainLayout() {
   return (
     <>
-      <GlobalNavBar />
       <main className={cn('layout')}>
         <div className={cn('container')}>
           <Carousel cards={cardData} num={3} />
