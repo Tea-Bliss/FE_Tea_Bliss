@@ -1,0 +1,59 @@
+.container {
+  width: 100%;
+  padding: 1rem;
+  @include flexSort(null, null, center, 22.4rem);
+}
+
+.box {
+  @include flexSort(null, null, null, 2rem);
+}
+
+.mainInfo {
+  @include flexSort(column, null, null, 0.8rem);
+}
+
+.nameEngBox {
+  @include flexSort(null, null, center, 1.2rem);
+}
+
+.nameEng {
+  @include font(2.4rem, 400, normal);
+}
+
+.name {
+  @include font(1.4rem, 400, normal);
+}
+
+.detailInfoContainer {
+  @include flexSort(column, null, null, 0.8rem);
+}
+
+.detailInfoBox {
+  @include flexSort(null, null, null, 1rem);
+}
+
+.detailInfoTitle {
+  color: #838080;
+  @include font(1.4rem, 400, normal);
+}
+
+.detailInfoContent {
+  @include font(1.4rem, 400, normal);
+}
+
+.datePriceContainer {
+  @include flexSort(null, null, center, 2rem);
+}
+
+.datePriceBox {
+  @include flexSort(column, null, null, 0.4rem);
+}
+
+.purchaseDate {
+  color: #bfbfbf;
+  @include font(1.4rem, 400, normal);
+}
+
+.price {
+  @include font(1.8rem, 400, normal);
+}

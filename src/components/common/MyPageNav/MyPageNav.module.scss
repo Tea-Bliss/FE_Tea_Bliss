@@ -1,0 +1,27 @@
+.nav {
+  @include flexSort(null, center, center, null);
+  background-color: #fcf8ef;
+  padding-bottom: 13.2rem;
+}
+
+.navBox {
+  @include flexSort(null, null, center, null);
+
+  a {
+    width: 17.9rem;
+    height: 4.8rem;
+    @include font(1.6rem, 700, normal);
+    border: 0.1rem solid $black-6;
+    @include flexSort(null, center, center, null);
+    border-right: 0;
+
+    &:last-child {
+      border-right: 0.1rem solid $black-6;
+    }
+
+    &.selected {
+      background-color: $black-13;
+      color: $black-1;
+    }
+  }
+}

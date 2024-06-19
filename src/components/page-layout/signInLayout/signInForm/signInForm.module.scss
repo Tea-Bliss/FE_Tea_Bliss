@@ -19,7 +19,8 @@
   padding: 1.2rem 1.6rem;
   border-radius: 0.4rem;
   border: 0.1rem solid $black-6;
-  @include font(1.6rem, 400, 2.4rem);
+  font-size: 1.6rem;
+  line-height: 2.4rem;
 }
 
 .label {

@@ -1,0 +1,4 @@
+.box {
+  @include flexSort(column, null, null, 2rem);
+  color: #b0aea7;
+}
