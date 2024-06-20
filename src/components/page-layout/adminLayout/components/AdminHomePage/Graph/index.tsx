@@ -12,33 +12,28 @@ import formatDateString from '@/components/page-layout/adminLayout/utils/formatD
 const cn = classNames.bind(styles);
 
 export default function Graph() {
-  const chartRef = useRef<HTMLCanvasElement>(null);
-  const chartInstanceRef = useRef<Chart | null>(null);
+  const pageViewRef = useRef<HTMLCanvasElement>(null);
+  const activeUserRef = useRef<HTMLCanvasElement>(null);
+  const pageViewChartInstanceRef = useRef<Chart | null>(null);
+  const activeUserChartInstanceRef = useRef<Chart | null>(null);
 
   const { data: graphData } = useGAReport();
 
   useEffect(() => {
     if (!graphData) return;
 
-    if (chartRef.current) {
-      const ctx = chartRef.current.getContext('2d');
+    if (pageViewRef.current && activeUserRef.current) {
+      const ctxPageView = pageViewRef.current.getContext('2d');
+      const ctxActiveUser = activeUserRef.current.getContext('2d');
 
-      if (ctx) {
+      if (ctxPageView && ctxActiveUser) {
         const labels = graphData.rows.map((row) => formatDateString(row.dimensionValues[0].value));
         const activeUsers = graphData.rows.map((row) => parseInt(row.metricValues[0].value, 10));
         const screenPageViews = graphData.rows.map((row) => parseInt(row.metricValues[1].value, 10));
-        const sessions = graphData.rows.map((row) => parseInt(row.metricValues[2].value, 10));
 
-        const chartData: ChartData<'line'> = {
+        const pageViewChartData: ChartData<'line'> = {
           labels,
           datasets: [
-            {
-              label: '방문자',
-              data: activeUsers,
-              borderColor: 'rgba(75, 192, 192, 1)',
-              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-              fill: true,
-            },
             {
               label: '페이지 뷰',
               data: screenPageViews,
@@ -46,11 +41,17 @@ export default function Graph() {
               backgroundColor: 'rgba(153, 102, 255, 0.2)',
               fill: true,
             },
+          ],
+        };
+
+        const activeUserChartData: ChartData<'line'> = {
+          labels,
+          datasets: [
             {
-              label: '세션 수',
-              data: sessions,
-              borderColor: 'rgba(255, 159, 64, 1)',
-              backgroundColor: 'rgba(255, 159, 64, 0.2)',
+              label: '방문자',
+              data: activeUsers,
+              borderColor: 'rgba(75, 192, 192, 1)',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
               fill: true,
             },
           ],
@@ -77,28 +78,47 @@ export default function Graph() {
           },
         };
 
-        if (chartInstanceRef.current) {
-          chartInstanceRef.current.destroy();
+        if (pageViewChartInstanceRef.current) {
+          pageViewChartInstanceRef.current.destroy();
         }
 
-        chartInstanceRef.current = new Chart(ctx, {
+        pageViewChartInstanceRef.current = new Chart(ctxPageView, {
           type: 'line',
-          data: chartData,
+          data: pageViewChartData,
+          options: chartOptions,
+        });
+
+        if (activeUserChartInstanceRef.current) {
+          activeUserChartInstanceRef.current.destroy();
+        }
+
+        activeUserChartInstanceRef.current = new Chart(ctxActiveUser, {
+          type: 'line',
+          data: activeUserChartData,
           options: chartOptions,
         });
       }
     }
 
     return () => {
-      if (chartInstanceRef.current) {
-        chartInstanceRef.current.destroy();
+      if (pageViewChartInstanceRef.current) {
+        pageViewChartInstanceRef.current.destroy();
+      }
+
+      if (activeUserChartInstanceRef.current) {
+        activeUserChartInstanceRef.current.destroy();
       }
     };
   }, [graphData]);
 
   return (
-    <div className={cn('container')}>
-      <canvas ref={chartRef} className={cn('graph')}></canvas>
-    </div>
+    <>
+      <div className={cn('container')}>
+        <canvas ref={pageViewRef} className={cn('graph')}></canvas>
+      </div>
+      <div className={cn('container')}>
+        <canvas ref={activeUserRef} className={cn('graph')}></canvas>
+      </div>
+    </>
   );
 }

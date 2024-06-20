@@ -1,17 +1,18 @@
 .container {
   @include flexSort(column, null, null, 0);
   padding-top: 1.2rem;
+  position: relative;
   background-color: $black-1;
   border-radius: 0.5rem;
-  position: relative;
 
   .count {
     padding: 0 1.2rem 0 2.4rem;
     @include font(1.4rem, 400, 3rem);
 
     .number {
-      @include font(1.4rem, 400, 3rem);
+      font-family: 'Pretendard Variable' !important;
       color: #1a6dff;
+      @include font(1.4rem, 400, 3rem);
     }
   }
 
@@ -40,6 +41,7 @@
       display: table-cell;
       padding: 1.5rem 0.8rem;
       border-bottom: 1px solid #e0e0e0;
+      font-family: 'Pretendard Variable' !important;
       @include font(1.2rem, 400, 1.2rem);
 
       &:first-child {
