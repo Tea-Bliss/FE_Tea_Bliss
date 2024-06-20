@@ -4,10 +4,29 @@
   width: 100%;
   background-color: #fcf8ef;
   font-family: 'Pretendard Variable' !important;
+  color: #181717;
   letter-spacing: -0.0108rem;
   @include font(1.8rem, 400, normal);
 
   &::placeholder {
     color: #8a8a8a;
   }
+
+  &.error {
+    border-color: #a51919;
+    color: #a51919;
+
+    &:focus {
+      border-color: #181717;
+      color: #181717;
+    }
+  }
+}
+
+.errorMessage {
+  margin-top: 0.8rem;
+  font-family: 'Pretendard Variable' !important;
+  color: #a51919;
+  letter-spacing: -0.108px;
+  @include font(1.8rem, 400, normal);
 }

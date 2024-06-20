@@ -1,6 +1,6 @@
 'use client';
 
-import { InputHTMLAttributes, useRef, useState } from 'react';
+import { Dispatch, InputHTMLAttributes, SetStateAction, useState } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -10,18 +10,22 @@ import styles from '@/components/page-layout/myPageLayout/myInfo/components/Prof
 
 const cn = classNames.bind(styles);
 
-interface MyInfoFileInputProps extends InputHTMLAttributes<HTMLInputElement> {}
+interface MyInfoFileInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  defaultImage: string | null;
+  setFn: Dispatch<SetStateAction<File | null | undefined>>;
+}
 
-export default function MyInfoFileInput({ ...props }: MyInfoFileInputProps) {
-  const [preview, setPreview] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+export default function MyInfoFileInput({ defaultImage, setFn, ...props }: MyInfoFileInputProps) {
+  const [preview, setPreview] = useState<string | null>(defaultImage);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files ? e.target.files[0] : null;
     if (file) {
       setPreview(URL.createObjectURL(file));
+      setFn(file);
     } else {
       setPreview(null);
+      setFn(null);
     }
   };
 
@@ -46,7 +50,6 @@ export default function MyInfoFileInput({ ...props }: MyInfoFileInputProps) {
         accept="image/*"
         onChange={handleFileChange}
         className={cn('fileInput')}
-        ref={fileInputRef}
         {...props}
       />
     </div>
