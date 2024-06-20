@@ -20,17 +20,17 @@ export default function RecommendLayout({ name = '미치광이고양이' }: Reco
   return (
     <div className={cn('layout')}>
       <Image src={Banner} alt="설문 결과 배너이미지" />
-      <div>
+      <div className={cn('contents')}>
         <div className={cn('checklist')}>
           <Image src={Checklist} alt="설문 결과" />
           <div className={cn('results')}>
             <SurveyResults name={name} />
           </div>
-          I
         </div>
-      </div>
-      <div>
-        <RecommendList />
+        <div className={cn('line')}></div>
+        <div>
+          <RecommendList />
+        </div>
       </div>
     </div>
   );

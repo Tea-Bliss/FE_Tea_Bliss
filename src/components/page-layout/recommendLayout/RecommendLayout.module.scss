@@ -1,6 +1,10 @@
 .layout {
-  padding-top: 4rem;
+  padding: 4rem 0 10rem 0;
   @include flexSort(column, center, center, 10rem);
+}
+
+.contents {
+  @include flexSort(row, center, center, 4rem);
 }
 
 .checklist {
@@ -11,4 +15,10 @@
   position: absolute;
   top: 12.5rem;
   left: 13rem;
+}
+
+.line {
+  border-left: 0.1rem solid #181717;
+  height: 70rem;
+  margin: 0 2rem;
 }
