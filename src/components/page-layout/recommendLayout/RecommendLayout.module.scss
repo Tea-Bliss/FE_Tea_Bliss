@@ -1,0 +1,14 @@
+.layout {
+  padding-top: 4rem;
+  @include flexSort(column, center, center, 10rem);
+}
+
+.checklist {
+  position: relative;
+}
+
+.results {
+  position: absolute;
+  top: 12.5rem;
+  left: 13rem;
+}
