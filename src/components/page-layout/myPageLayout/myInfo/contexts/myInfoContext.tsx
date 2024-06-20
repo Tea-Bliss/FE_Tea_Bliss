@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, createContext, useContext, useMemo } from 'react';
+import { ReactNode, createContext, useContext, useEffect, useMemo } from 'react';
 
 import openToast from '@/components/common/Toast/features/openToast';
 import useGetMyInfo from '@/components/page-layout/myPageLayout/myInfo/hooks/useGetMyInfo';
@@ -34,7 +34,11 @@ export function MyInfoProvider({ children }: { children: ReactNode }) {
     [data]
   );
 
-  if (isError) return openToast('error', '유저 데이터를 불러오는데 실패했습니다');
+  useEffect(() => {
+    if (isError) {
+      openToast('error', '유저 데이터를 불러오는데 실패했습니다');
+    }
+  }, [isError]);
 
   return <myInfoContext.Provider value={value}>{children}</myInfoContext.Provider>;
 }
