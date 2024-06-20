@@ -20,9 +20,7 @@ export default function SocialLogin() {
   };
 
   const handleGoggleButtonClick = () => {
-    router.push(
-      'http://ec2-3-34-226-82.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000&mode=signin'
-    );
+    router.push('https://teabliss.kro.kr/oauth2/authorization/google?redirect_uri=http://localhost:3000&mode=signin');
   };
 
   return (

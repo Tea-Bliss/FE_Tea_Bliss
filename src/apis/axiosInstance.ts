@@ -12,11 +12,7 @@ axiosInstance.interceptors.request.use(
     const token = localStorage.getItem('token');
 
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-
-    if (config.data instanceof FormData) {
-      config.headers['Content-Type'] = 'multipart/form-data';
+      config.headers.Authorization = token;
     }
 
     return config;
