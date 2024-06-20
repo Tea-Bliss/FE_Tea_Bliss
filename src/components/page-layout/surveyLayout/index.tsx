@@ -1,7 +1,5 @@
 import classNames from 'classnames/bind';
 
-import Footer from '@/components/common/Footer/Footer';
-import GlobalNavBar from '@/components/common/GlobalNavBar/GlobalNavBar';
 import SurveyForm from '@/components/page-layout/surveyLayout/components/SurveyForm';
 import styles from '@/components/page-layout/surveyLayout/SurveyLayout.module.scss';
 
@@ -15,7 +13,6 @@ export default function SurveyLayout() {
           <SurveyForm />
         </div>
       </main>
-      <Footer />
     </>
   );
 }

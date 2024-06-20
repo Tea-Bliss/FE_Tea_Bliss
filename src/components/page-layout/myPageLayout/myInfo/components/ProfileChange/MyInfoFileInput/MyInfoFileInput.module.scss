@@ -1,0 +1,28 @@
+.profile {
+  position: relative;
+  width: 28.4rem;
+  height: 28.4rem;
+
+  &:hover .preview {
+    filter: brightness(0.5);
+  }
+
+  .label {
+    cursor: pointer;
+
+    &:hover .plusIcon {
+      display: block;
+    }
+
+    .plusIcon {
+      display: none;
+      position: absolute;
+      left: 12.2rem;
+      top: 12.2rem;
+    }
+  }
+}
+
+.fileInput {
+  display: none;
+}

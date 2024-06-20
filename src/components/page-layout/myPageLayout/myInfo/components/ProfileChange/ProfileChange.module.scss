@@ -1,0 +1,13 @@
+.profileForm {
+  @include flexSort(row, space-between, null, 0);
+
+  .profileImageContainer {
+    padding: 0 4.8rem;
+  }
+
+  .profileChange {
+    @include flexSort(column, null, null, 4rem);
+    flex-grow: 1;
+    max-width: 38rem;
+  }
+}

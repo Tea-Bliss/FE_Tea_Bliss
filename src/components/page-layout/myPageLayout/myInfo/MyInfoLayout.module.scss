@@ -1,0 +1,29 @@
+.layout {
+  padding: 0 4rem 20.3rem;
+  width: 100%;
+
+  .container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 120rem;
+    @include flexSort(column, null, null, 13.2rem);
+  }
+
+  .changeArea {
+    @include flexSort(column, null, null, 4rem);
+    margin: 0 auto;
+    width: 89.5rem;
+
+    .horizontalHr {
+      width: 100%;
+    }
+
+    .secondSection {
+      @include flexSort(row, null, null, 6.8rem);
+
+      .verticalHr {
+        rotate: 180deg;
+      }
+    }
+  }
+}
