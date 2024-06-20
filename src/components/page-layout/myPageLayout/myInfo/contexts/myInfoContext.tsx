@@ -2,6 +2,7 @@
 
 import { ReactNode, createContext, useContext, useMemo } from 'react';
 
+import openToast from '@/components/common/Toast/features/openToast';
 import useGetMyInfo from '@/components/page-layout/myPageLayout/myInfo/hooks/useGetMyInfo';
 
 interface myInfoValues {
@@ -21,7 +22,7 @@ const defaultValue: myInfoValues = {
 const myInfoContext = createContext(defaultValue);
 
 export function MyInfoProvider({ children }: { children: ReactNode }) {
-  const { data } = useGetMyInfo();
+  const { data, isError } = useGetMyInfo();
 
   const value = useMemo(
     () => ({
@@ -32,6 +33,8 @@ export function MyInfoProvider({ children }: { children: ReactNode }) {
     }),
     [data]
   );
+
+  if (isError) return openToast('error', '유저 데이터를 불러오는데 실패했습니다');
 
   return <myInfoContext.Provider value={value}>{children}</myInfoContext.Provider>;
 }
