@@ -1,0 +1,35 @@
+.layout {
+  @include flexSort(column, center, center, 2.5rem);
+}
+
+.contents {
+  @include flexSort(column, center, flex-start, 4rem);
+}
+
+.title {
+  max-width: 30rem;
+  white-space: nowrap;
+  @include font(2.5rem, 200, normal);
+  @include flexSort(null, null, null, null);
+}
+
+.name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  @include font(2.5rem, 200, normal);
+}
+
+.section {
+  @include flexSort(column, center, flex-start, 1rem);
+}
+
+.sub-title {
+  @include font(2rem, 100, normal);
+}
+
+.results {
+  flex-wrap: wrap;
+  max-width: 30rem;
+  @include flexSort(row, null, flex-start, 1rem);
+}
