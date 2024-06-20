@@ -38,13 +38,13 @@ export default function AddressChange() {
       <MyPageTitle>Address</MyPageTitle>
       <div className={cn('addressInput')}>
         <label htmlFor="basic-address" className={cn('label')}>
-          일반 주소
+          주소
         </label>
         <MyPageInput
           id="basic-address"
-          placeholder="일반 주소를 입력해주세요"
+          placeholder="주소를 입력해주세요"
           {...register('basicAddress', {
-            required: '일반 주소를 입력해주세요',
+            required: '주소를 입력해주세요',
           })}
           isError={Boolean(errors.basicAddress)}
           errorMessage={errors.basicAddress?.message}
@@ -64,9 +64,11 @@ export default function AddressChange() {
           errorMessage={errors.detailAddress?.message}
         />
       </div>
-      <Button shape="square" color="black">
-        주소 변경하기
-      </Button>
+      <div className={cn('buttonContainer')}>
+        <Button shape="square" color="black">
+          주소 변경하기
+        </Button>
+      </div>
     </form>
   );
 }
