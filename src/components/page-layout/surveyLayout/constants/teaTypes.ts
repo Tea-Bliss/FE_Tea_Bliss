@@ -7,7 +7,6 @@ export const TEA_TYPES = [
   { value: '녹차', text: '녹차' },
   { value: '허브 티', text: '허브 티' },
   { value: '루이보스 티', text: '루이보스 티' },
-  { value: '디카페인', text: '디카페인' },
 ];
 
 export const TASTE_TYPES = [

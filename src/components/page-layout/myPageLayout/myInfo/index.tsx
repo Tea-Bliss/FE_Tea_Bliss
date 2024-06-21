@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import MyPageHeader from '@/components/common/MyPageHeader/MyPageHeader';
+import MyPageHeader from '@/components/common/MypageHeader/MypageHeader';
 import MyPageNav from '@/components/common/MyPageNav/MyPageNav';
 import AddressChange from '@/components/page-layout/myPageLayout/myInfo/components/AddressChange';
 import PasswordChange from '@/components/page-layout/myPageLayout/myInfo/components/PasswordChange';
