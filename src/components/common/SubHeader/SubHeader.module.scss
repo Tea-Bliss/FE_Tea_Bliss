@@ -1,0 +1,11 @@
+.header {
+  background-color: #fcf8ef;
+  padding: 4rem 0;
+  @include flexSort(null, center, center, null);
+}
+
+.content {
+  max-width: 120rem;
+  width: 100%;
+  @include font(4rem, 400, normal);
+}
