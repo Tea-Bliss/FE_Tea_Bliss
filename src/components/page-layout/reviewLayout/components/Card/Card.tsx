@@ -13,15 +13,17 @@ interface CardProps {
 }
 
 export default function Card({ data }: CardProps) {
+  const likes = Math.max(1, Math.min(data.likes, 5));
+
   return (
     <div className={cn('container')}>
       <div className={cn('imgBox')}>
         <div className={cn('img')}>
-          <Image src={data.img} alt="상품" fill />
+          <Image src={data.teaImg} alt="상품" fill />
         </div>
         <div className={cn('startContainer')}>
           <div className={cn('starBox')}>
-            {Array.from({ length: data.likes }).map((_, index) => (
+            {Array.from({ length: likes }).map((_, index) => (
               <Star key={index} width={20} height={20} />
             ))}
           </div>
