@@ -2,10 +2,10 @@
   padding: 2.4rem;
   border: 0.1rem solid $black-13;
   position: absolute;
-  top: 3rem;
+  top: 4rem;
   right: 0;
   width: max-content;
-  background-color: $black-1;
+  background-color: #fcf8ef;
   border-radius: 0.8rem;
   @include flexSort(column, center, null, 3.2rem);
 }
@@ -41,6 +41,17 @@
   @include flexSort(row, center, center, 1.2rem);
 
   .myInfoBtn {
+    padding: 0.8rem 1.2rem;
+    border: 0.1rem solid $black-13;
+    text-align: center;
+    border-radius: 2.4rem;
+    font-feature-settings: 'ss10' on;
     @include font(1.3rem, 500, 1.8rem);
+
+    &.red {
+      border-color: $orange-5;
+      background-color: $orange-1;
+      color: $orange-6;
+    }
   }
 }

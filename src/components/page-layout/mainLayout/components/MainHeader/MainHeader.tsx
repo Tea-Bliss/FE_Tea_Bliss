@@ -25,7 +25,7 @@ export default function MainHeader() {
           </p>
         </div>
         <Link className={cn('blendingBtn')} href={ROUTE.MY_BLENDING}>
-          나만의 차 만들기
+          나만의 티 만들기
           <RightArrow fill="#FCF8EF" />
         </Link>
       </div>
