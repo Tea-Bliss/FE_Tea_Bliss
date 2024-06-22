@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image';
 
 export interface CardData {
-  img: StaticImageData;
+  teaImg: StaticImageData;
   id: number;
   title: string;
   contents: string;
