@@ -19,7 +19,6 @@ export default forwardRef<HTMLDivElement, MyInfoProps>(function MyInfo({ toggle 
       <div className={cn('content')}>
         <MyInfoContent />
       </div>
-      z
     </div>
   );
 });
