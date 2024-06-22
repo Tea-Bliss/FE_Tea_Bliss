@@ -25,6 +25,7 @@ type ProfileMutationVariables = {
   data: {
     nickname: string;
     profile: string;
+    role: '관리자' | '일반 회원';
   };
   id: number;
 };

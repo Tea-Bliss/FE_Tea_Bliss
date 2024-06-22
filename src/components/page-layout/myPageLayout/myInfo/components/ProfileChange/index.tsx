@@ -38,7 +38,11 @@ export default function ProfileChange() {
     mode: 'onBlur',
   });
 
-  const handleProfileSubmit = async (formValues: { nickname: string; profile?: string | null }) => {
+  const handleProfileSubmit = async (formValues: {
+    nickname: string;
+    profile?: string | null;
+    role: '관리자' | '일반 회원';
+  }) => {
     if (imageFile) {
       const publicUrl = await uploadImage(imageFile);
 
