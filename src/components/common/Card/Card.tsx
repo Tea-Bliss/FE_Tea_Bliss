@@ -6,7 +6,6 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import Button from '@/components/common/Button/index';
 import styles from '@/components/common/Card/Card.module.scss';
 import Cart from '@/icons/cart.svg';
 import Heart from '@/icons/heart.svg';
