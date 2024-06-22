@@ -1,0 +1,44 @@
+.authButton {
+  @include flexSort(row, null, center, 2rem);
+  position: absolute;
+  top: 1.6rem;
+  right: 0;
+}
+
+.cartWrapper {
+  position: relative;
+
+  .cartItemCount {
+    position: absolute;
+    right: -0.6rem;
+    top: -0.6rem;
+    min-width: 1.8rem;
+    height: 1.8rem;
+    border: 0.1rem solid #fcf8ef;
+    border-radius: 1rem;
+    background-color: #181717;
+    color: #fcf8ef;
+    line-height: 1.4rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+.authLinkWrapper {
+  @include flexSort(row, null, center, 1.6rem);
+}
+
+.authLink {
+  color: #181717;
+  @include font(1.8rem, 400, normal);
+  letter-spacing: 0.0108rem;
+}
+
+.authSeparator::before {
+  content: '';
+  display: inline-block;
+  width: 0.1rem;
+  height: 1.6rem;
+  background-color: #181717;
+  vertical-align: middle;
+}
