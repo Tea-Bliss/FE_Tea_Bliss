@@ -4,7 +4,7 @@ const ROUTE = {
   SIGN_IN: '/sign-in',
   MY_BLENDING: '/my-blending',
   MY_BLENDING_RESULT: '/my-blending/result',
-  PAYMENT: '/payment',
+  CART: '/cart',
   SURVEY: '/survey',
   ADMIN: '/admin',
   PRODUCT: '/product',
