@@ -1,18 +1,28 @@
+'use client';
 import classNames from 'classnames/bind';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 import Button from '@/components/common/Button';
+import { MyInfoProps } from '@/components/common/GlobalNavBar/MyInfo/MyInfo';
 import styles from '@/components/common/GlobalNavBar/MyInfo/MyInfo.module.scss';
 import ROUTE from '@/constants/route';
 import { useUserInfoQuery } from '@/hooks/query/useUserInfoQuery';
 
 const cn = classNames.bind(styles);
 
-export default function MyInfoContent() {
+interface MyInfoContentProps extends MyInfoProps {}
+
+export default function MyInfoContent({ toggle }: MyInfoContentProps) {
   const { data } = useUserInfoQuery();
 
+  const handleLogoutClick = () => {
+    toggle();
+    localStorage.removeItem('token');
+    document.cookie = 'refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    window.location.href = ROUTE.HOME;
+  };
   return (
     <>
       <div className={cn('profile')}>
@@ -37,14 +47,12 @@ export default function MyInfoContent() {
         <p className={cn('userName')}>{data.nickname}</p>
       </div>
       <div className={cn('buttonWrapper')}>
-        <Link className={cn('myInfoBtn')} href={ROUTE.MY_PAGE_MY_INFO}>
-          <Button shape="round" color="red">
-            마이페이지
-          </Button>
+        <Link className={cn('myInfoBtn', 'red')} href={ROUTE.MY_PAGE_MY_INFO} onClick={toggle}>
+          마이페이지
         </Link>
-        <Button shape="round" color="white">
-          <p className={cn('myInfoBtn')}>로그아웃</p>
-        </Button>
+        <button className={cn('myInfoBtn')} type="button" onClick={() => handleLogoutClick()}>
+          로그아웃
+        </button>
       </div>
     </>
   );
