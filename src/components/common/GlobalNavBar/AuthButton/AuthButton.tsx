@@ -1,3 +1,4 @@
+'use client';
 import classNames from 'classnames/bind';
 
 import Link from 'next/link';
@@ -5,12 +6,16 @@ import Link from 'next/link';
 import styles from '@/components/common/GlobalNavBar/AuthButton/AuthButton.module.scss';
 import Profile from '@/components/common/GlobalNavBar/AuthButton/Profile';
 import ROUTE from '@/constants/route';
+import { useUserInfoQuery } from '@/hooks/query/useUserInfoQuery';
 import Cart from '@/icons/cart.svg';
 
 const cn = classNames.bind(styles);
-// TODO: 로그인 여부 확인 로직 구현 예정
+
 export default function AuthButton() {
-  const auth = true;
+  const { data, isLoading } = useUserInfoQuery();
+
+  if (isLoading) return;
+
   return (
     <div className={cn('authButton')}>
       <div className={cn('cartWrapper')}>
@@ -19,7 +24,7 @@ export default function AuthButton() {
           <span className={cn('cartItemCount')}>1</span>
         </Link>
       </div>
-      {auth ? (
+      {data ? (
         <Profile />
       ) : (
         <div className={cn('authLinkWrapper')}>
