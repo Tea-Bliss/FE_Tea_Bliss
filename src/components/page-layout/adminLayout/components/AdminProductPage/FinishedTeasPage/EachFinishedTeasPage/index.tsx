@@ -1,158 +1,87 @@
 'use client';
 
-import classNames from 'classnames/bind';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useState } from 'react';
 
-import { useSearchParams } from 'next/navigation';
+import { notFound, useRouter, useSearchParams } from 'next/navigation';
 
-import FileInput from '@/components/common/FileInput';
-import styles from '@/components/page-layout/adminLayout/components/AdminProductPage/FinishedTeasPage/EachFinishedTeasPage/EachFinishedTeasPage.module.scss';
-import IngredientInput from '@/components/page-layout/adminLayout/components/AdminProductPage/FinishedTeasPage/EachFinishedTeasPage/IngredientInput';
+import openToast from '@/components/common/Toast/features/openToast';
 import BackButton from '@/components/page-layout/adminLayout/components/common/BackButton';
-import DetailCard from '@/components/page-layout/adminLayout/components/common/DetailCard';
+import FinishedTeaForm from '@/components/page-layout/adminLayout/components/common/FinIshedTeaForm';
 import SubmitButton from '@/components/page-layout/adminLayout/components/common/SubmitButton';
-import ButtonInputs from '@/components/page-layout/surveyLayout/components/ButtonInputs';
-import CheckBoxInputs from '@/components/page-layout/surveyLayout/components/CheckBoxInputs';
-import { TASTE_TYPES, TEA_TYPES } from '@/components/page-layout/surveyLayout/constants/teaTypes';
-
-const cn = classNames.bind(styles);
-
-const mockProduct = {
-  ko_name: '후르츠베리 티',
-  en_name: 'berries teas',
-  image: '/images/my-blending/vanila.png',
-  description: '베리류를 좋아하시나요? 상큼하고 달달한 후르츠베리 티 세트로 일 년 내내 여름을 즐겨보세요.',
-  flavor: ['단맛', '신맛'],
-  price: 14000,
-  season: '여름',
-  caffeine: true,
-  category: '홍차',
-  status: '판매중',
-  stock: 28,
-  ingredient: [],
-};
+import {
+  useAdminDeleteTea,
+  useAdminPatchTea,
+  useGetOneTea,
+} from '@/components/page-layout/adminLayout/hooks/useManageTeas';
+import { PatchFinishedTeasType } from '@/components/page-layout/adminLayout/types/productType';
+import { deleteImage, uploadImage } from '@/utils/supabaseUtils';
 
 export default function EachFinishedTeasPage() {
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
 
-  const methods = useForm({
-    defaultValues: {
-      category: undefined,
-      sale: undefined,
-      season: undefined,
-      ko_name: undefined,
-      en_name: undefined,
-      caffeine: undefined,
-      description: undefined,
-      ingredient: undefined,
-      img: undefined,
-      inventory: undefined,
-      saleStatus: undefined,
-      flavor: undefined,
-    },
-  });
-  const { handleSubmit, register } = methods;
+  const router = useRouter();
+  const [imageFile, setImageFile] = useState<File | null | undefined>(undefined);
+
+  if (!id) {
+    notFound();
+  }
+
+  const { data } = useGetOneTea(+id);
+
+  const mutate = useAdminPatchTea();
+
+  const deleteMutate = useAdminDeleteTea();
+
+  const handleFormPost = async (formValues: PatchFinishedTeasType) => {
+    if (imageFile) {
+      const publicUrl = await uploadImage(imageFile);
+
+      if (!publicUrl) return;
+      formValues.img = publicUrl;
+    }
+
+    if (imageFile === null) {
+      formValues.img = null;
+    }
+
+    formValues.caffeine = Boolean(formValues.caffeine);
+
+    mutate.mutate(
+      { data: formValues, id: +id },
+      {
+        onError: async (_, values) => {
+          if (values.data.img) {
+            await deleteImage(values.data.img);
+          }
+
+          openToast('error', '상품 정보 변경에 실패했습니다.');
+        },
+        onSuccess: async (_, values) => {
+          if (values.data.img !== undefined && data?.data.img) {
+            await deleteImage(data?.data.img);
+          }
+
+          openToast('success', '상품 정보가 변경되었습니다');
+          router.push('/admin/product/finished-teas');
+        },
+      }
+    );
+  };
 
   return (
     <>
-      <BackButton className={cn('backButton')} />
-      <DetailCard title="상품 정보" className={cn('card')}>
-        <FormProvider {...methods}>
-          <form className={cn('form')} onSubmit={handleSubmit((data) => console.log(data))}>
-            <div className={cn('profile')}>
-              <FileInput type="product" />
-            </div>
-
-            <div className={cn('information')}>
-              <div className={cn('section')}>
-                <div className={cn('field')}>이름</div>
-                <input className={cn('value', 'input')} {...register('ko_name', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>영문 이름</div>
-                <input className={cn('value', 'input')} {...register('en_name', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>종류</div>
-                <ButtonInputs items={TEA_TYPES} name="category" status={3} className={cn('buttonInputs')} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>설명</div>
-                <textarea className={cn('value', 'textarea')} {...register('description', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>원재료</div>
-                <IngredientInput />
-              </div>
-              <div className={cn('section')}>
-                <div className={cn('field')}>맛</div>
-                <CheckBoxInputs items={TASTE_TYPES} name="flavor" status={2} className={cn('checkboxInputs')} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>가격(KRW)</div>
-                <input type="number" className={cn('value', 'input')} {...register('sale', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>카페인 여부</div>
-                <ButtonInputs
-                  items={[
-                    { value: 'true', text: '카페인 있음' },
-                    { value: 'false', text: '카페인 없음' },
-                  ]}
-                  name="caffeine"
-                  status={3}
-                  className={cn('buttonInputs')}
-                />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>계절</div>
-                <ButtonInputs
-                  items={[
-                    { value: '봄', text: '봄' },
-                    { value: '여름', text: '여름' },
-                    { value: '가을', text: '가을' },
-                    { value: '겨울', text: '겨울' },
-                  ]}
-                  name="season"
-                  status={3}
-                  className={cn('buttonInputs')}
-                />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>재고</div>
-                <input type="number" className={cn('value', 'input')} {...register('inventory', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>판매 상태</div>
-                <ButtonInputs
-                  items={[
-                    { value: '판매중', text: '판매중' },
-                    { value: '품절', text: '품절' },
-                  ]}
-                  name="saleStatus"
-                  status={3}
-                  className={cn('buttonInputs')}
-                />
-              </div>
-            </div>
-
-            <div className={cn('submitButton')}>
-              <SubmitButton>저장</SubmitButton>
-            </div>
-          </form>
-        </FormProvider>
-      </DetailCard>
-      <SubmitButton isDelete={true}>삭제하기</SubmitButton>
+      <BackButton />
+      <FinishedTeaForm defaultValues={data?.data} setImageFile={setImageFile} mutateFn={handleFormPost} />
+      <SubmitButton
+        isDelete={true}
+        onClick={() => {
+          deleteMutate.mutate(+id);
+          router.push('/admin/product/finished-teas');
+        }}
+      >
+        삭제하기
+      </SubmitButton>
     </>
   );
 }

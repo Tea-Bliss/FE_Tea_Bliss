@@ -13,6 +13,9 @@ const nextConfig = {
     includePaths: ['styles'],
     additionalData: `@import "src/styles/globals.scss";`,
   },
+  images: {
+    domains: ['oboomyrmdekomaldptgh.supabase.co', 'github.com'],
+  },
 };
 
 export default nextConfig;

@@ -5,7 +5,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { useSearchParams } from 'next/navigation';
 
-import FileInput from '@/components/common/FileInput';
+import FileInput from '@/components/page-layout/adminLayout/components/common/FileInput';
 import styles from '@/components/page-layout/adminLayout/components/AdminCustomerPage/EachCustomerPage/EachCustomerPage.module.scss';
 import BackButton from '@/components/page-layout/adminLayout/components/common/BackButton';
 import DetailCard from '@/components/page-layout/adminLayout/components/common/DetailCard';

@@ -1,69 +1,66 @@
 'use client';
 
-import { ChangeEvent, KeyboardEventHandler, useState } from 'react';
+import { ChangeEvent, KeyboardEventHandler, useEffect, useState } from 'react';
 
-import classNames from 'classnames/bind';
+import { useSearchParams } from 'next/navigation';
 
-import Image from 'next/image';
-
-import styles from '@/components/page-layout/adminLayout/components/AdminProductPage/FinishedTeasPage/FinishedTeasPage.module.scss';
+import PageButtons from '@/components/page-layout/adminLayout/components/common/PageButtons';
 import SearchBar from '@/components/page-layout/adminLayout/components/common/SearchBar';
 import SortBar from '@/components/page-layout/adminLayout/components/common/SortBar';
 import Table from '@/components/page-layout/adminLayout/components/common/Table';
-
-const cn = classNames.bind(styles);
-
-const mockProduct = {
-  ko_name: '후르츠베리 티',
-  en_name: 'berries teas',
-  image: '/images/my-blending/vanila.png',
-  description: '베리류를 좋아하시나요? 상큼하고 달달한 후르츠베리 티 세트로 일 년 내내 여름을 즐겨보세요.',
-  flavor: [1, 2],
-  price: 14000,
-  season: '여름',
-  caffeine: true,
-  category: '홍차',
-  saleStatus: '판매중',
-  inventory: 28,
-  ingredient: [1, 2, 3],
-};
-
-const mockProducts = [
-  ...Array.from({ length: 10 }, (_, i) => ({
-    id: i,
-    ko_name: mockProduct.ko_name,
-    en_name: mockProduct.en_name,
-    price: mockProduct.price,
-    category: mockProduct.category,
-    stock: mockProduct.inventory,
-    status: mockProduct.saleStatus,
-  })),
-];
+import { useGetAllTeas, useGetTeasSeasonFilter } from '@/components/page-layout/adminLayout/hooks/useManageTeas';
+import { FinishedTeaType } from '@/components/page-layout/adminLayout/types/productType';
 
 export default function FinishedTeasPage() {
-  const [products, setProducts] = useState<(typeof mockProducts)[number][]>(mockProducts);
+  const params = useSearchParams();
+  const season = params.get('season');
+
+  const getFunc = season ? useGetTeasSeasonFilter : useGetAllTeas;
+
+  const [page, setPage] = useState(1);
+  const [products, setProducts] = useState<FinishedTeaType[]>([]);
   const [searchValue, setSearchValue] = useState<string>('');
+
+  const { data } = getFunc({ page: 1, limit: 200, season: season ? season : '' });
+
+  const handleEnter: KeyboardEventHandler = (e) => {
+    if (e.keyCode === 13) {
+      setPage(1);
+
+      if (!searchValue) {
+        setProducts(data?.data.tea);
+        return;
+      }
+
+      setProducts(
+        data?.data?.tea.filter(
+          (product: FinishedTeaType) => product.name.includes(searchValue) || product.nameEng.includes(searchValue)
+        )
+      );
+    }
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
 
-  const handleEnter: KeyboardEventHandler = (e) => {
-    if (e.keyCode === 13) {
-      if (!searchValue) {
-        setProducts(mockProducts);
-        return;
-      }
-
-      setProducts(
-        mockProducts.filter((product) => product.ko_name.includes(searchValue) || product.en_name.includes(searchValue))
-      );
-    }
-  };
+  useEffect(() => {
+    setProducts(data?.data.tea);
+  }, [data]);
 
   return (
     <>
-      <SortBar standards={['전체', '품절', '봄', '여름', '가을', '겨울']} />
+      <SortBar
+        path={'/admin/product/finished-teas'}
+        datas={[
+          { name: '전체', target: null, query: {} },
+          { name: '봄', target: 'spring', query: { season: 'spring' } },
+          { name: '여름', target: 'summer', query: { season: 'summer' } },
+          { name: '가을', target: 'autumn', query: { season: 'autumn' } },
+          { name: '겨울', target: 'winter', query: { season: 'winter' } },
+        ]}
+        currentQuery={season}
+      />
       <SearchBar
         value={searchValue}
         onChange={handleChange}
@@ -72,21 +69,13 @@ export default function FinishedTeasPage() {
       />
       <Table
         fields={['ID', '이름', '영문 이름', '가격', '종류', '재고', '상태']}
-        items={products}
+        items={products?.slice(10 * (page - 1), 10 * page)}
         name="상품"
         unit="개"
-        path="/admin/product/finished-teas/detail"
+        postPath="/admin/product/finished-teas/post"
+        modifyPath="/admin/product/finished-teas/detail"
       />
-
-      <div className={cn('pageButtons')}>
-        <Image src="/icons/arrow.svg" alt="이전" width={16} height={16} className={cn('arrow', 'before')} />
-        <div className={cn('pages', 'current')}>1</div>
-        <div className={cn('pages')}>2</div>
-        <div className={cn('pages')}>3</div>
-        <div className={cn('pages')}>4</div>
-        <div className={cn('pages')}>5</div>
-        <Image src="/icons/arrow.svg" alt="다음" width={16} height={16} className={cn('arrow', 'next')} />
-      </div>
+      <PageButtons currentPage={page} setPage={setPage} size={data?.data.size} />
     </>
   );
 }
