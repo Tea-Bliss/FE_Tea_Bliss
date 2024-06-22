@@ -20,7 +20,6 @@ export default function GlobalNavBar() {
             </Link>
           </h1>
         </div>
-
         <div className={cn('menuWrapper')}>
           <ul className={cn('menuBox')}>
             {MENU_ITEM.map((item) => (
@@ -29,7 +28,6 @@ export default function GlobalNavBar() {
               </li>
             ))}
           </ul>
-
           <AuthButton />
         </div>
       </nav>
