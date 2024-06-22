@@ -1,7 +1,5 @@
 import classNames from 'classnames/bind';
 
-import Footer from '@/components/common/Footer/Footer';
-import GlobalNavBar from '@/components/common/GlobalNavBar/GlobalNavBar';
 import BlendingArea from '@/components/page-layout/myBlendingLayout/components/BlendingArea';
 import SelectArea from '@/components/page-layout/myBlendingLayout/components/SelectArea';
 import { MyBlendingProvider } from '@/components/page-layout/myBlendingLayout/contexts/myBlendingContext';
@@ -11,17 +9,13 @@ const cn = classNames.bind(styles);
 
 export default function MyBlendingLayout() {
   return (
-    <>
-      <GlobalNavBar />
+    <main className={cn('layout')}>
       <MyBlendingProvider>
-        <main className={cn('layout')}>
-          <div className={cn('container')}>
-            <SelectArea />
-            <BlendingArea />
-          </div>
-        </main>
+        <div className={cn('container')}>
+          <SelectArea />
+          <BlendingArea />
+        </div>
       </MyBlendingProvider>
-      <Footer />
-    </>
+    </main>
   );
 }

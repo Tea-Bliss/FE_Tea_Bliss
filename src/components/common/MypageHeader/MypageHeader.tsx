@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import styles from '@/components/common/MyPageHeader/MyPageHeader.module.scss';
+import styles from '@/components/common/MypageHeader/MypageHeader.module.scss';
 
 const cn = classNames.bind(styles);
 

@@ -8,6 +8,7 @@
   }
 
   .contents {
+    @include flexSort(column, null, null, 4rem);
     background-color: $black-1;
     width: 100%;
     padding: 1rem 1.5rem;
@@ -26,6 +27,7 @@
       @include font(1.2rem, 400, 2.2rem);
 
       .number {
+        font-family: 'Pretendard Variable' !important;
         @include font(1.2rem, 600, 2.2rem);
       }
     }

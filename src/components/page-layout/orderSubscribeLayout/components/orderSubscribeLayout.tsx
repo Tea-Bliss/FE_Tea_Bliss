@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import classNames from 'classnames/bind';
 
-import MyPageHeader from '@/components/common/MyPageHeader/MyPageHeader';
+import MyPageHeader from '@/components/common/MypageHeader/MypageHeader';
 import MyPageNav from '@/components/common/MyPageNav/MyPageNav';
 import MyPageSubNav from '@/components/common/MyPageSubNav';
 import styles from '@/components/page-layout/orderSubscribeLayout/components/orderSubscribeLayout.module.scss';
