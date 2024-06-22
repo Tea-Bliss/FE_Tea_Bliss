@@ -1,48 +1,39 @@
 .container {
-  padding: 0 4rem;
-  @include tablet {
-    padding: 0 2rem;
-  }
+  width: 100%;
+  border-bottom: 0.1rem solid #181717;
 }
 
 .navContainer {
-  @include flexSort(row, space-between, center, 4rem);
-  padding: 4rem 0;
-  @include mobile {
-    padding: 2rem 0;
-  }
+  @include flexSort(column, center, center, null);
 }
 
-.leftWrapper {
-  @include flexSort(row, center, center, 4rem);
+.logoWrapper {
+  width: 100%;
+  background-color: #181717;
+  padding: 0.5rem 0;
+  @include flexSort(row, center, center, null);
+}
 
-  svg {
-    width: 13.9rem;
-    height: 4.1rem;
-    @include mobile {
-      width: 10.4rem;
-      height: 3.1rem;
-    }
-  }
+.logo {
+  color: #fcf8ef;
+  @include font(2rem, 400, normal);
+  letter-spacing: 0.08rem;
+}
+
+.menuWrapper {
+  width: 100%;
+  max-width: 120rem;
+  @include flexSort(row, center, center, null);
+  position: relative;
 }
 
 .menuBox {
-  @include flexSort(row, center, center, 2rem);
+  @include flexSort(row, center, center, 4rem);
+  padding: 1.6rem 0;
 
-  .menuItem {
-    padding: 0.8rem;
-    color: $black-13;
-    text-align: center;
-    font-feature-settings: 'ss10' on;
-    @include font(1.7rem, 600, 2.4rem);
+  .menuItem > a {
+    color: #181717;
+    @include font(1.8rem, 400, normal);
+    letter-spacing: -0.0108rem;
   }
-
-  @include mobile {
-    display: none;
-  }
-}
-
-.rightWrapper {
-  position: relative;
-  @include flexSort(row, center, center, 1.2rem);
 }
