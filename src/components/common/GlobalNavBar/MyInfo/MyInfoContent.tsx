@@ -4,7 +4,6 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Button from '@/components/common/Button';
 import { MyInfoProps } from '@/components/common/GlobalNavBar/MyInfo/MyInfo';
 import styles from '@/components/common/GlobalNavBar/MyInfo/MyInfo.module.scss';
 import ROUTE from '@/constants/route';
