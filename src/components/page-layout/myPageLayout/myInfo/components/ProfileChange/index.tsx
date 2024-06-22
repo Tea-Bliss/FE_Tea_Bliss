@@ -20,7 +20,7 @@ const cn = classNames.bind(styles);
 
 export default function ProfileChange() {
   const queryClient = useQueryClient();
-  const { email, nickname, profile } = useMyInfoContext();
+  const { email, nickname, profile, role } = useMyInfoContext();
   const [imageFile, setImageFile] = useState<File | null | undefined>(undefined);
   const mutate = usePatchProfile();
 
@@ -32,7 +32,8 @@ export default function ProfileChange() {
   } = useForm({
     defaultValues: {
       nickname: nickname,
-      profile: undefined,
+      profile: profile,
+      role: role,
     },
     mode: 'onBlur',
   });
@@ -52,14 +53,14 @@ export default function ProfileChange() {
 
     mutate.mutate(formValues, {
       onError: async (error, values) => {
-        if (values.profile) {
+        if (values.profile && values.profile !== profile) {
           await deleteImage(values.profile);
         }
 
         openToast('error', error.message);
       },
       onSuccess: async (_, values) => {
-        if (values.profile !== undefined && profile) {
+        if (values.profile && profile && values.profile !== profile) {
           await deleteImage(profile);
         }
 
@@ -70,8 +71,8 @@ export default function ProfileChange() {
   };
 
   useEffect(() => {
-    reset({ nickname, profile: undefined });
-  }, [nickname, profile, reset]);
+    reset({ nickname, profile, role });
+  }, [nickname, profile, role, reset]);
 
   return (
     <form className={cn('profileForm')} onSubmit={handleSubmit((data) => handleProfileSubmit(data))}>

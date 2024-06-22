@@ -10,6 +10,7 @@ interface myInfoValues {
   nickname: string;
   profile: string | null;
   address: string | null;
+  role: '관리자' | '일반 회원';
 }
 
 const defaultValue: myInfoValues = {
@@ -17,6 +18,7 @@ const defaultValue: myInfoValues = {
   nickname: '',
   profile: null,
   address: null,
+  role: '일반 회원',
 };
 
 const myInfoContext = createContext(defaultValue);
@@ -30,6 +32,7 @@ export function MyInfoProvider({ children }: { children: ReactNode }) {
       nickname: data?.data.data.nickname,
       profile: data?.data.data.profile,
       address: data?.data.data.address,
+      role: data?.data.data.role,
     }),
     [data]
   );
