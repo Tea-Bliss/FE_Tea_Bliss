@@ -13,6 +13,16 @@ const nextConfig = {
     includePaths: ['styles'],
     additionalData: `@import "src/styles/globals.scss";`,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'oboomyrmdekomaldptgh.supabase.co',
+        port: '',
+        pathname: '**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
