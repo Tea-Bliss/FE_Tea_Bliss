@@ -53,15 +53,15 @@ export default function EachFinishedTeasPage() {
       { data: formValues, id: +id },
       {
         onError: async (_, values) => {
-          if (values.data.img) {
+          if (values.data.img && values.data.img !== data?.data.data.img) {
             await deleteImage(values.data.img);
           }
 
           openToast('error', '상품 정보 변경에 실패했습니다.');
         },
         onSuccess: async (_, values) => {
-          if (values.data.img !== undefined && data?.data.img) {
-            await deleteImage(data?.data.img);
+          if (values.data.img && data?.data.data.img && values.data.img !== data?.data.data.img) {
+            await deleteImage(data?.data.data.img);
           }
 
           openToast('success', '상품 정보가 변경되었습니다');

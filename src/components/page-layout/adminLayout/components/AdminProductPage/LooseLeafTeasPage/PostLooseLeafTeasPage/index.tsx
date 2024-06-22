@@ -38,6 +38,7 @@ export default function PostLooseLeafTeasPage() {
           await deleteImage(values.photo);
         }
       },
+
       onSuccess: () => {
         openToast('success', '상품이 추가되었습니다');
         router.push('/admin/product/loose-leaf-teas');

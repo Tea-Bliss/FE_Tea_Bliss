@@ -5,29 +5,22 @@ import { KeyboardEventHandler, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { notFound, useSearchParams } from 'next/navigation';
+import { notFound, useRouter, useSearchParams } from 'next/navigation';
 
+import openToast from '@/components/common/Toast/features/openToast';
 import styles from '@/components/page-layout/adminLayout/components/AdminCustomerPage/EachCustomerPage/EachCustomerPage.module.scss';
 import BackButton from '@/components/page-layout/adminLayout/components/common/BackButton';
 import DetailCard from '@/components/page-layout/adminLayout/components/common/DetailCard';
 import FileInput from '@/components/page-layout/adminLayout/components/common/FileInput';
 import SubmitButton from '@/components/page-layout/adminLayout/components/common/SubmitButton';
-import { useGetOneCustomer } from '@/components/page-layout/adminLayout/hooks/useManageCustomers';
+import { useAdminPutProfile, useGetOneCustomer } from '@/components/page-layout/adminLayout/hooks/useManageCustomers';
 import ButtonInputs from '@/components/page-layout/surveyLayout/components/ButtonInputs';
+import { deleteImage, uploadImage } from '@/utils/supabaseUtils';
 
 const cn = classNames.bind(styles);
 
-const mockUser = {
-  id: 1,
-  nickname: '티블리스',
-  email: 'teabliss@gmail.com',
-  roll: '일반회원',
-  createdAt: '2024-06-10',
-  reviewCount: 2,
-  purchaseAmount: 6.5,
-};
-
 export default function EachCustomerPage() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
   const [imageFile, setImageFile] = useState<File | null | undefined>(undefined);
@@ -37,6 +30,8 @@ export default function EachCustomerPage() {
   }
 
   const { data } = useGetOneCustomer(+id);
+
+  const mutate = useAdminPutProfile();
 
   const methods = useForm({
     defaultValues: {
@@ -54,6 +49,40 @@ export default function EachCustomerPage() {
     }
   };
 
+  const handleProfilePut = async (formValues: any) => {
+    if (imageFile) {
+      const publicUrl = await uploadImage(imageFile);
+
+      if (!publicUrl) return;
+      formValues.profile = publicUrl;
+    }
+
+    if (imageFile === null) {
+      formValues.profile = null;
+    }
+
+    mutate.mutate(
+      { data: formValues, id: +id },
+      {
+        onError: async (_, values) => {
+          if (values.data.profile && values.data.profile !== data?.data.data.profile) {
+            await deleteImage(values.data.profile);
+          }
+
+          openToast('error', '프로필 변경에 실패했습니다.');
+        },
+        onSuccess: async (_, values) => {
+          if (values.data.profile && data?.data.data.profile && values.data.profile !== data?.data.data.profile) {
+            await deleteImage(data?.data.data.profile);
+          }
+
+          openToast('success', '프로필이 변경되었습니다');
+          router.push('/admin/customer');
+        },
+      }
+    );
+  };
+
   useEffect(() => {
     reset({
       profile: data?.data.data.profile,
@@ -67,10 +96,14 @@ export default function EachCustomerPage() {
       <BackButton className={cn('backButton')} />
       <DetailCard title="회원 정보" className={cn('card')}>
         <FormProvider {...methods}>
-          <form className={cn('form')} onSubmit={handleSubmit((data) => console.log(data))} onKeyDown={handleKeyDown}>
+          <form
+            className={cn('form')}
+            onSubmit={handleSubmit((data) => handleProfilePut(data))}
+            onKeyDown={handleKeyDown}
+          >
             <div className={cn('profile')}>
               <FileInput type="profile" defaultImage={data?.data.data.profile} setFn={setImageFile} />
-              <div className={cn('nickName')}>{mockUser.nickname}</div>
+              <div className={cn('nickName')}>{data?.data.data.nickname}</div>
             </div>
             <div className={cn('information')}>
               <div className={cn('section')}>
@@ -78,7 +111,7 @@ export default function EachCustomerPage() {
                 <ButtonInputs
                   items={[
                     { value: '관리자', text: '관리자' },
-                    { value: '일반회원', text: '일반회원' },
+                    { value: '일반 회원', text: '일반 회원' },
                   ]}
                   name="role"
                   status={3}
@@ -87,7 +120,7 @@ export default function EachCustomerPage() {
               </div>
               <div className={cn('section')}>
                 <div className={cn('field')}>이메일</div>
-                <div className={cn('value')}>{mockUser.email}</div>
+                <div className={cn('value')}>{data?.data.data.email}</div>
               </div>
               <div className={cn('section')}>
                 <label className={cn('field')}>닉네임</label>
@@ -109,15 +142,15 @@ export default function EachCustomerPage() {
         <div className={cn('information')}>
           <div className={cn('section')}>
             <div className={cn('field')}>가입일</div>
-            <div className={cn('value')}>{mockUser.createdAt}</div>
+            <div className={cn('value')}>{data?.data.data.createDt}</div>
           </div>
           <div className={cn('section')}>
             <div className={cn('field')}>작성 리뷰 수</div>
-            <div className={cn('value')}>{mockUser.reviewCount}</div>
+            <div className={cn('value')}>{data?.data.data.reviewCount}</div>
           </div>
           <div className={cn('section')}>
             <div className={cn('field')}>구매 금액</div>
-            <div className={cn('value')}>{mockUser.purchaseAmount * 10000}원</div>
+            <div className={cn('value')}>{data?.data.data.purchaseAmount}원</div>
           </div>
         </div>
       </DetailCard>

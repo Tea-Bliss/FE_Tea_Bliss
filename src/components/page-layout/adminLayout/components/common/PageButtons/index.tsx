@@ -20,7 +20,7 @@ export default function PageButtons({ currentPage, size, setPage }: PageButtonsP
       <button onClick={() => setPage(currentPage - 1)} className={cn(currentPage === 1 ? 'invisible' : '')}>
         <Image src="/icons/arrow.svg" alt="이전" width={16} height={16} />
       </button>
-      {Array.from({ length: Math.floor(size / 10) + 1 }, (v, k) => k + 1).map((page) => {
+      {Array.from({ length: Math.ceil(size / 10) }, (v, k) => k + 1).map((page) => {
         return (
           <button
             key={page}
@@ -33,7 +33,7 @@ export default function PageButtons({ currentPage, size, setPage }: PageButtonsP
       })}
       <button
         onClick={() => setPage(currentPage + 1)}
-        className={cn(currentPage === Math.floor(size / 10) + 1 ? 'invisible' : '')}
+        className={cn(size === 0 ? 'invisible' : currentPage === Math.ceil(size / 10) ? 'invisible' : '')}
       >
         <Image src="/icons/arrow.svg" alt="다음" width={16} height={16} className={cn('nextArrow')} />
       </button>

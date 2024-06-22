@@ -13,6 +13,7 @@
     @include flexSort(column, null, center, 1rem);
 
     .nickName {
+      font-family: 'Pretendard Variable' !important;
       @include font(1.5rem, 400, 1.5rem);
     }
   }
@@ -41,6 +42,7 @@
       @include font(1.4rem, 400, 2.9rem);
       padding: 0;
       flex-grow: 1;
+      font-family: 'Pretendard Variable' !important;
 
       &.input {
         border-bottom: 0.1rem solid rgba(12, 12, 12, 0.12);

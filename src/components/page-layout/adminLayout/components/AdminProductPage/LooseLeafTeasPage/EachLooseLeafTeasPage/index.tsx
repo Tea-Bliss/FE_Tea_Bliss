@@ -53,15 +53,16 @@ export default function EachLooseLeafTeasPage() {
 
     mutate.mutate(formValues, {
       onError: async (_, values) => {
-        if (values.photo) {
+        if (values.photo && values.photo !== data?.data.data.photo) {
           await deleteImage(values.photo);
         }
 
         openToast('error', '상품 정보 변경에 실패했습니다.');
       },
+
       onSuccess: async (_, values) => {
-        if (values.photo !== undefined && data?.data.photo) {
-          await deleteImage(data?.data.photo);
+        if (values.photo && data?.data.data.photo && values.photo !== data?.data.data.photo) {
+          await deleteImage(data?.data.data.photo);
         }
 
         openToast('success', '상품 정보가 변경되었습니다');

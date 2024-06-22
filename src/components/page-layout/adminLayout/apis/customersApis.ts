@@ -12,7 +12,3 @@ export const getOneCustomer = (id: number) => {
 export const putCustomerProfile = (data: { nickname: string; profile: string }, id: number) => {
   return axiosInstance.put(`admin/edit/${id}`, data);
 };
-
-export const putCustomerPassword = (data: { newPassword: string; newPasswordCheck: string }, id: number) => {
-  return axiosInstance.put(`admin/password/${id}`, data);
-};
