@@ -2,10 +2,9 @@
 
 import classNames from 'classnames/bind';
 
+import { MyInfoProps } from '@/components/common/GlobalNavBar/MyInfo/MyInfo';
 import styles from '@/components/common/GlobalNavBar/MyInfo/MyInfo.module.scss';
 import Close from '@/icons/close.svg';
-
-import { MyInfoProps } from './MyInfo';
 
 const cn = classNames.bind(styles);
 

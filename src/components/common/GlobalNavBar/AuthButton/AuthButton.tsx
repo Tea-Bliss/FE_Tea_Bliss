@@ -14,7 +14,7 @@ const cn = classNames.bind(styles);
 export default function AuthButton() {
   const { data, isLoading } = useUserInfoQuery();
 
-  if (isLoading) return;
+  if (isLoading) return <div className={cn('authButton')}>...Loading</div>;
 
   return (
     <div className={cn('authButton')}>

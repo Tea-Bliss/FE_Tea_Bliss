@@ -17,7 +17,7 @@ export default forwardRef<HTMLDivElement, MyInfoProps>(function MyInfo({ toggle 
     <div className={cn('container')} ref={ref}>
       <PopupHeader toggle={toggle} />
       <div className={cn('content')}>
-        <MyInfoContent />
+        <MyInfoContent toggle={toggle} />
       </div>
     </div>
   );

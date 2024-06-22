@@ -1,12 +1,10 @@
 'use client';
 import { useRef, useState } from 'react';
 
-import { useQuery } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 
 import Image from 'next/image';
 
-import { getUserInfo } from '@/apis/getUserInfo';
 import styles from '@/components/common/GlobalNavBar/AuthButton/Profile.module.scss';
 import MyInfo from '@/components/common/GlobalNavBar/MyInfo/MyInfo';
 import { useUserInfoQuery } from '@/hooks/query/useUserInfoQuery';
@@ -23,6 +21,7 @@ export default function Profile() {
   const toggleMyInfo = () => {
     setShowMyInfo((prev) => !prev);
   };
+
   useOutsideClick(ref, toggleMyInfo, toggleRef);
 
   return (
