@@ -10,7 +10,10 @@
   border: 0.1rem solid $black-7;
   border-radius: 0.2rem;
   text-align: left;
-  padding: 0.45rem 1rem;
+  padding: 0.45rem 3rem 0.4rem 0.7rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -28,7 +31,7 @@
 
 .dropdownButton {
   padding: 0.7rem;
-  cursor: pointer;
+  text-align: left;
   @include font(1.3rem, 400, 1rem);
 
   &:hover {

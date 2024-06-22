@@ -1,4 +1,5 @@
 .backButton {
   @include flexSort(row, null, center, 0.6rem);
+  margin-bottom: 2.8rem;
   @include font(1.4rem, 500, 1.4rem);
 }

@@ -14,14 +14,7 @@ const nextConfig = {
     additionalData: `@import "src/styles/globals.scss";`,
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'oboomyrmdekomaldptgh.supabase.co',
-        port: '',
-        pathname: '**',
-      },
-    ],
+    domains: ['oboomyrmdekomaldptgh.supabase.co', 'github.com'],
   },
 };
 

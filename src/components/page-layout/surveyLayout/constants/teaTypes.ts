@@ -1,12 +1,13 @@
 export const TEA_TYPES = [
-  { value: '홍차', text: '홍차' },
-  { value: '푸에르 티', text: '푸에르 티' },
-  { value: '차이 티', text: '차이 티' },
-  { value: '우롱차', text: '우롱차' },
-  { value: '백차', text: '백차' },
-  { value: '녹차', text: '녹차' },
-  { value: '허브 티', text: '허브 티' },
-  { value: '루이보스 티', text: '루이보스 티' },
+  { value: 'Black', text: '홍차' },
+  { value: 'Pu Erh', text: '푸에르 티' },
+  { value: 'Chai', text: '차이 티' },
+  { value: 'Oolong', text: '우롱차' },
+  { value: 'White', text: '백차' },
+  { value: 'Green', text: '녹차' },
+  { value: 'Herbal', text: '허브 티' },
+  { value: 'Rooibos', text: '루이보스 티' },
+  { value: 'Decaf', text: '디카페인' },
 ];
 
 export const TASTE_TYPES = [

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useQueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
@@ -28,6 +28,7 @@ export default function ProfileChange() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       nickname: nickname,
@@ -68,6 +69,10 @@ export default function ProfileChange() {
     });
   };
 
+  useEffect(() => {
+    reset({ nickname, profile: undefined });
+  }, [nickname, profile, reset]);
+
   return (
     <form className={cn('profileForm')} onSubmit={handleSubmit((data) => handleProfileSubmit(data))}>
       <div className={cn('profileImageContainer')}>
@@ -84,7 +89,6 @@ export default function ProfileChange() {
                 maxLength: (value) => value.length < 10 || '10자 이하로 입력해주세요',
               },
             })}
-            defaultValue={nickname}
             isError={Boolean(errors.nickname)}
             errorMessage={errors.nickname?.message}
           />

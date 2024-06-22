@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import classNames from 'classnames/bind';
 import { useForm } from 'react-hook-form';
 
@@ -20,6 +22,7 @@ export default function AddressChange() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       basicAddress: address?.includes('/') ? address?.split('/')[0] : address || '',
@@ -32,6 +35,13 @@ export default function AddressChange() {
     const newFormValues = { address: `${formValues.basicAddress}/${formValues.detailAddress}` };
     mutate.mutate(newFormValues);
   };
+
+  useEffect(() => {
+    reset({
+      basicAddress: address?.includes('/') ? address?.split('/')[0] : address || '',
+      detailAddress: address?.includes('/') ? address?.split('/')[1] : '',
+    });
+  }, [reset, address]);
 
   return (
     <form className={cn('addressForm')} onSubmit={handleSubmit((data) => handleAddressSubmit(data))}>
