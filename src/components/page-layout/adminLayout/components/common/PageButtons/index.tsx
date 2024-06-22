@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 import classNames from 'classnames/bind';
 
 import Image from 'next/image';
@@ -7,21 +9,34 @@ import styles from '@/components/page-layout/adminLayout/components/common/PageB
 const cn = classNames.bind(styles);
 
 interface PageButtonsProps {
-  path: string;
   currentPage: number;
-  season?: string;
+  setPage: Dispatch<SetStateAction<number>>;
+  size: number;
 }
 
-export default function PageButtons({ path, currentPage, season }: PageButtonsProps) {
+export default function PageButtons({ currentPage, size, setPage }: PageButtonsProps) {
   return (
     <div className={cn('pageButtons')}>
-      <Image src="/icons/arrow.svg" alt="이전" width={16} height={16} className={cn('arrow', 'before')} />
-      <div className={cn('pages', 'current')}>1</div>
-      <div className={cn('pages')}>2</div>
-      <div className={cn('pages')}>3</div>
-      <div className={cn('pages')}>4</div>
-      <div className={cn('pages')}>5</div>
-      <Image src="/icons/arrow.svg" alt="다음" width={16} height={16} className={cn('arrow', 'next')} />
+      <button onClick={() => setPage(currentPage - 1)} className={cn(currentPage === 1 ? 'invisible' : '')}>
+        <Image src="/icons/arrow.svg" alt="이전" width={16} height={16} />
+      </button>
+      {Array.from({ length: Math.floor(size / 10) + 1 }, (v, k) => k + 1).map((page) => {
+        return (
+          <button
+            key={page}
+            className={cn('pages', currentPage === page ? 'current' : '')}
+            onClick={() => setPage(page)}
+          >
+            {page}
+          </button>
+        );
+      })}
+      <button
+        onClick={() => setPage(currentPage - 1)}
+        className={cn(currentPage === Math.floor(size / 10) + 1 ? 'invisible' : '')}
+      >
+        <Image src="/icons/arrow.svg" alt="다음" width={16} height={16} className={cn('nextArrow')} />
+      </button>
     </div>
   );
 }

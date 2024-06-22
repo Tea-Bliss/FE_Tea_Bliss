@@ -40,6 +40,7 @@
 
       &.input {
         border-bottom: 0.1rem solid rgba(12, 12, 12, 0.12);
+        font-family: 'Pretendard Variable' !important;
 
         &:focus {
           border-color: rgb(29, 138, 222);
@@ -53,6 +54,7 @@
         padding: 0.7rem 1.5rem;
         min-height: 8rem;
         max-height: 15rem;
+        font-family: 'Pretendard Variable' !important;
 
         &:focus {
           outline: 0.1rem solid rgb(29, 138, 222);

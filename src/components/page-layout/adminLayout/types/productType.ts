@@ -25,7 +25,7 @@ export interface PostFinishedTeasType {
   caffeine?: boolean;
   ingredient?: number[];
   description?: string;
-  img?: string;
+  img?: string | null;
   inventory?: number;
   saleStatus?: '판매중' | '품절';
   flavor?: (1 | 2 | 3 | 4 | 5 | 6)[];
@@ -40,7 +40,7 @@ export interface PatchFinishedTeasType {
   caffeine?: boolean;
   ingredient?: number[];
   description?: string;
-  img?: string;
+  img?: string | null;
   inventory?: number;
   saleStatus?: '판매중' | '품절';
   flavor?: (1 | 2 | 3 | 4 | 5 | 6)[];
@@ -56,7 +56,7 @@ export interface LooseLeafTeaType {
   saleStatus?: '판매중' | '품절';
   flavor?: string;
   explanation?: string;
-  photo?: string;
+  photo?: string | null;
 }
 
 export interface PostOrPutLooseLeafTeaType {
@@ -68,5 +68,5 @@ export interface PostOrPutLooseLeafTeaType {
   saleStatus?: '판매중' | '품절';
   flavor?: string;
   explanation?: string;
-  photo?: string;
+  photo?: string | null;
 }

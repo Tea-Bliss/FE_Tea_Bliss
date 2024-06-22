@@ -14,7 +14,7 @@ const nextConfig = {
     additionalData: `@import "src/styles/globals.scss";`,
   },
   images: {
-    domains: ['oboomyrmdekomaldptgh.supabase.co'],
+    domains: ['oboomyrmdekomaldptgh.supabase.co', 'github.com'],
   },
 };
 

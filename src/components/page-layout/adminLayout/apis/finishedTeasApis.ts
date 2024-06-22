@@ -15,7 +15,7 @@ export const getOneTea = (id: number) => {
 };
 
 export const postTea = (data: PostFinishedTeasType) => {
-  return axiosInstance.post('tea/submit', data);
+  return axiosInstance.post('tea/summit', data);
 };
 
 export const patchTea = (data: PatchFinishedTeasType, id: number) => {

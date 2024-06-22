@@ -3,8 +3,8 @@
 import classNames from 'classnames/bind';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import FileInput from '@/components/common/FileInput';
 import DetailCard from '@/components/page-layout/adminLayout/components/common/DetailCard';
+import FileInput from '@/components/page-layout/adminLayout/components/common/FileInput';
 import styles from '@/components/page-layout/adminLayout/components/common/LooseLeafTeaForm/LooseLeafTeaForm.module.scss';
 import SubmitButton from '@/components/page-layout/adminLayout/components/common/SubmitButton';
 import ButtonInputs from '@/components/page-layout/surveyLayout/components/ButtonInputs';

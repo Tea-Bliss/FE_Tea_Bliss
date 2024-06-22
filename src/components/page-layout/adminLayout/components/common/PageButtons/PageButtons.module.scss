@@ -2,16 +2,14 @@
   @include flexSort(row, center, center, 2rem);
   padding-top: 2rem;
 
-  .arrow {
-    cursor: pointer;
+  .invisible {
+    display: none;
+  }
 
-    &.before {
-      visibility: hidden;
-    }
-
-    &.next {
-      rotate: 180deg;
-    }
+  .nextArrow {
+    position: relative;
+    rotate: 180deg;
+    top: 0.09rem;
   }
 
   .pages {

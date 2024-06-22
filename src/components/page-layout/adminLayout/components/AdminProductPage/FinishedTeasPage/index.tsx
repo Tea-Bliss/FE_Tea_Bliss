@@ -4,24 +4,41 @@ import { ChangeEvent, KeyboardEventHandler, useEffect, useState } from 'react';
 
 import { useSearchParams } from 'next/navigation';
 
+import PageButtons from '@/components/page-layout/adminLayout/components/common/PageButtons';
+import SearchBar from '@/components/page-layout/adminLayout/components/common/SearchBar';
 import SortBar from '@/components/page-layout/adminLayout/components/common/SortBar';
 import Table from '@/components/page-layout/adminLayout/components/common/Table';
-
-import { useGetAllTeas, useGetTeasSeasonFilter } from '../../../hooks/useManageTeas';
-import { FinishedTeaType } from '../../../types/productType';
-import PageButtons from '../../common/PageButtons';
+import { useGetAllTeas, useGetTeasSeasonFilter } from '@/components/page-layout/adminLayout/hooks/useManageTeas';
+import { FinishedTeaType } from '@/components/page-layout/adminLayout/types/productType';
 
 export default function FinishedTeasPage() {
   const params = useSearchParams();
   const season = params.get('season');
-  const page = params.get('page');
 
   const getFunc = season ? useGetTeasSeasonFilter : useGetAllTeas;
 
+  const [page, setPage] = useState(1);
   const [products, setProducts] = useState<FinishedTeaType[]>([]);
   const [searchValue, setSearchValue] = useState<string>('');
 
-  const { data } = getFunc({ page: +page!, limit: 10, season: season ? season : '' });
+  const { data } = getFunc({ page: 1, limit: 200, season: season ? season : '' });
+
+  const handleEnter: KeyboardEventHandler = (e) => {
+    if (e.keyCode === 13) {
+      setPage(1);
+
+      if (!searchValue) {
+        setProducts(data?.data.tea);
+        return;
+      }
+
+      setProducts(
+        data?.data?.tea.filter(
+          (product: FinishedTeaType) => product.name.includes(searchValue) || product.nameEng.includes(searchValue)
+        )
+      );
+    }
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -33,15 +50,32 @@ export default function FinishedTeasPage() {
 
   return (
     <>
-      <SortBar standards={['전체', '봄', '여름', '가을', '겨울']} />
+      <SortBar
+        path={'/admin/product/finished-teas'}
+        datas={[
+          { name: '전체', target: null, query: {} },
+          { name: '봄', target: 'spring', query: { season: 'spring' } },
+          { name: '여름', target: 'summer', query: { season: 'summer' } },
+          { name: '가을', target: 'autumn', query: { season: 'autumn' } },
+          { name: '겨울', target: 'winter', query: { season: 'winter' } },
+        ]}
+        currentQuery={season}
+      />
+      <SearchBar
+        value={searchValue}
+        onChange={handleChange}
+        onKeyUp={handleEnter}
+        placeholder="한글 이름 또는 영문 이름으로 검색해주세요"
+      />
       <Table
         fields={['ID', '이름', '영문 이름', '가격', '종류', '재고', '상태']}
-        items={products}
+        items={products?.slice(10 * (page - 1), 10 * page)}
         name="상품"
         unit="개"
-        path="/admin/product/finished-teas/post"
+        postPath="/admin/product/finished-teas/post"
+        modifyPath="/admin/product/finished-teas/detail"
       />
-      <PageButtons />
+      <PageButtons currentPage={page} setPage={setPage} size={data?.data.size} />
     </>
   );
 }
