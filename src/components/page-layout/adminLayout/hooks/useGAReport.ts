@@ -23,9 +23,17 @@ async function GAReport() {
 
     {
       dimensions: [{ name: 'date' }],
-      metrics: [{ name: 'activeUsers' }, { name: 'screenPageViews' }, { name: 'sessions' }],
-      dateRanges: [{ startDate: '2024-06-10', endDate: 'today' }],
+      metrics: [{ name: 'activeUsers' }, { name: 'screenPageViews' }],
+      dateRanges: [{ startDate: '11daysAgo', endDate: 'today' }],
       keepEmptyRows: true,
+      orderBys: [
+        {
+          dimension: {
+            dimensionName: 'date',
+            orderType: 'NUMERIC',
+          },
+        },
+      ],
     },
 
     {

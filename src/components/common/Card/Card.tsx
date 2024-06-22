@@ -22,7 +22,7 @@ interface CardProps {
   price?: number;
   review?: number;
   scope?: number;
-  koTitle: string;
+  koTitle?: string;
   description?: string;
 }
 

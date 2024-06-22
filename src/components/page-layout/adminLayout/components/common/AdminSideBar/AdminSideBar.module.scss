@@ -7,6 +7,7 @@
   bottom: 0;
   left: 0;
   width: 18rem;
+  background-color: $black-1;
 
   .logo {
     margin-left: 3rem;
@@ -18,9 +19,9 @@
 
     .category {
       @include flexSort(row, null, center, 1rem);
-      width: 100%;
-      position: relative;
       padding: 1.1rem;
+      position: relative;
+      width: 100%;
       border-radius: 1.2rem;
       @include font(1.4rem, 600, 1);
 
@@ -42,9 +43,9 @@
       }
 
       .subMenuArrow {
-        rotate: 90deg;
         position: absolute;
         right: 1rem;
+        rotate: 90deg;
 
         &.visibleSubMenu {
           rotate: -90deg;
