@@ -1,5 +1,7 @@
 'use client';
 
+import { Dispatch, KeyboardEventHandler, SetStateAction, useEffect } from 'react';
+
 import classNames from 'classnames/bind';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -13,28 +15,47 @@ import { TASTE_TYPES, TEA_TYPES } from '@/components/page-layout/surveyLayout/co
 
 const cn = classNames.bind(styles);
 
-export default function LooseLeafTeaForm() {
+interface LooseLeafTeaForm {
+  defaultValues?: any;
+  mutateFn: any;
+  setImageFile: Dispatch<SetStateAction<File | null | undefined>>;
+}
+
+export default function LooseLeafTeaForm({ defaultValues, mutateFn, setImageFile }: LooseLeafTeaForm) {
   const methods = useForm({
-    defaultValues: {
-      category: undefined,
-      name: undefined,
-      nameEng: undefined,
-      sale: undefined,
-      inventory: undefined,
-      saleStatus: undefined,
-      flavor: undefined,
-      explanation: undefined,
-      photo: undefined,
-    },
+    defaultValues: defaultValues
+      ? defaultValues
+      : {
+          category: undefined,
+          name: undefined,
+          nameEng: undefined,
+          sale: undefined,
+          inventory: undefined,
+          saleStatus: undefined,
+          flavor: undefined,
+          explanation: undefined,
+          photo: undefined,
+        },
   });
-  const { control, handleSubmit, register } = methods;
+
+  const { handleSubmit, register, reset } = methods;
+
+  const handleKeyDown: KeyboardEventHandler<HTMLFormElement> = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  };
+
+  useEffect(() => {
+    reset(defaultValues);
+  }, [defaultValues, reset]);
 
   return (
     <DetailCard title="상품 정보" className={cn('card')}>
       <FormProvider {...methods}>
-        <form className={cn('form')} onSubmit={handleSubmit((data) => console.log(data))}>
+        <form className={cn('form')} onSubmit={handleSubmit((data) => mutateFn(data))} onKeyDown={handleKeyDown}>
           <div className={cn('profile')}>
-            <FileInput type="product" />
+            <FileInput type="product" defaultImage={defaultValues?.photo} setFn={setImageFile} />
           </div>
 
           <div className={cn('information')}>
@@ -46,6 +67,11 @@ export default function LooseLeafTeaForm() {
             <div className={cn('section')}>
               <div className={cn('field')}>영문 이름</div>
               <input className={cn('value', 'input')} {...register('nameEng', { required: true })} />
+            </div>
+
+            <div className={cn('section')}>
+              <div className={cn('field')}>가격(KRW)</div>
+              <input type="number" className={cn('value', 'input')} {...register('sale', { required: true })} />
             </div>
 
             <div className={cn('section')}>

@@ -32,7 +32,7 @@ export default function PageButtons({ currentPage, size, setPage }: PageButtonsP
         );
       })}
       <button
-        onClick={() => setPage(currentPage - 1)}
+        onClick={() => setPage(currentPage + 1)}
         className={cn(currentPage === Math.floor(size / 10) + 1 ? 'invisible' : '')}
       >
         <Image src="/icons/arrow.svg" alt="다음" width={16} height={16} className={cn('nextArrow')} />

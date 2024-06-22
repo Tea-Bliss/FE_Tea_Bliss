@@ -68,7 +68,8 @@ export default function FinishedTeasPage() {
         placeholder="한글 이름 또는 영문 이름으로 검색해주세요"
       />
       <Table
-        fields={['ID', '이름', '영문 이름', '가격', '종류', '재고', '상태']}
+        fields={['ID', '이름', '영문 이름', '가격', '종류', '계절']}
+        keys={['id', 'name', 'nameEng', 'price', 'category', 'season']}
         items={products?.slice(10 * (page - 1), 10 * page)}
         name="상품"
         unit="개"

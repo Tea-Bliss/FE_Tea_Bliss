@@ -33,7 +33,7 @@ export default function EachFinishedTeasPage() {
 
   const deleteMutate = useAdminDeleteTea();
 
-  const handleFormPost = async (formValues: PatchFinishedTeasType) => {
+  const handleFormPatch = async (formValues: PatchFinishedTeasType) => {
     if (imageFile) {
       const publicUrl = await uploadImage(imageFile);
 
@@ -46,6 +46,8 @@ export default function EachFinishedTeasPage() {
     }
 
     formValues.caffeine = Boolean(formValues.caffeine);
+    formValues.inventory = +formValues.inventory;
+    formValues.price = +formValues.price;
 
     mutate.mutate(
       { data: formValues, id: +id },
@@ -72,7 +74,7 @@ export default function EachFinishedTeasPage() {
   return (
     <>
       <BackButton />
-      <FinishedTeaForm defaultValues={data?.data} setImageFile={setImageFile} mutateFn={handleFormPost} />
+      <FinishedTeaForm defaultValues={data?.data} setImageFile={setImageFile} mutateFn={handleFormPatch} />
       <SubmitButton
         isDelete={true}
         onClick={() => {

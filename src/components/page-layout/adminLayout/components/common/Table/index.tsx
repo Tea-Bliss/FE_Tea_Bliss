@@ -15,9 +15,10 @@ interface TableProps {
   unit: string;
   postPath: string;
   modifyPath: string;
+  keys: string[];
 }
 
-export default function Table({ fields, items, name, unit, postPath, modifyPath }: TableProps) {
+export default function Table({ fields, items, name, unit, postPath, modifyPath, keys }: TableProps) {
   return (
     <div className={cn('container')}>
       <div className={cn('count')}>
@@ -36,10 +37,10 @@ export default function Table({ fields, items, name, unit, postPath, modifyPath 
         </div>
         {items?.map((item) => (
           <Link href={{ pathname: modifyPath, query: { id: item?.id } }} key={item?.id} className={cn('row')}>
-            {Object.keys(item).map((key) => {
+            {keys?.map((key) => {
               return (
                 <div key={key} className={cn('cell')}>
-                  {key === 'flavor' ? '' : item[key as keyof typeof item]}
+                  {item[key]}
                 </div>
               );
             })}
