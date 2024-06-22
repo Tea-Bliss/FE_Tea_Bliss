@@ -33,7 +33,7 @@ export function MyBlendingProvider({ children }: { children: ReactNode }) {
   const [selectedTeas, setSelectedTeas] = useState<LooseLeafTeaType[]>([]);
   const [myTeaName, setMyTeaName] = useState('');
 
-  const { data } = useGetLooseLeafTeas();
+  const { data, error } = useGetLooseLeafTeas();
 
   useEffect(() => {
     setTeaList(

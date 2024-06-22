@@ -10,7 +10,7 @@ import Image from 'next/image';
 import DropDown from '@/components/common/DropDown/DropDown';
 import DropDownContent from '@/components/common/DropDown/DropDownContent';
 import CustomDropDownTrigger from '@/components/common/FileInput/CustomDropDownTrigger';
-import styles from '@/components/page-layout/adminLayout/components/AdminProductPage/FinishedTeasPage/EachFinishedTeasPage/IngredientInput/DropDownInput/DropDownInput.module.scss';
+import styles from '@/components/page-layout/adminLayout/components/common/FinIshedTeaForm/IngredientInput/DropDownInput/DropDownInput.module.scss';
 import { LooseLeafTeaType } from '@/components/page-layout/adminLayout/types/productType';
 
 const cn = classNames.bind(styles);

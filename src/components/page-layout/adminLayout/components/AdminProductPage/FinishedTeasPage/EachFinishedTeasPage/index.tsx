@@ -1,157 +1,19 @@
 'use client';
 
-import classNames from 'classnames/bind';
-import { FormProvider, useForm } from 'react-hook-form';
-
 import { useSearchParams } from 'next/navigation';
 
-import FileInput from '@/components/common/FileInput';
-import styles from '@/components/page-layout/adminLayout/components/AdminProductPage/FinishedTeasPage/EachFinishedTeasPage/EachFinishedTeasPage.module.scss';
-import IngredientInput from '@/components/page-layout/adminLayout/components/AdminProductPage/FinishedTeasPage/EachFinishedTeasPage/IngredientInput';
 import BackButton from '@/components/page-layout/adminLayout/components/common/BackButton';
-import DetailCard from '@/components/page-layout/adminLayout/components/common/DetailCard';
+import FinishedTeaForm from '@/components/page-layout/adminLayout/components/common/FinIshedTeaForm';
 import SubmitButton from '@/components/page-layout/adminLayout/components/common/SubmitButton';
-import ButtonInputs from '@/components/page-layout/surveyLayout/components/ButtonInputs';
-import CheckBoxInputs from '@/components/page-layout/surveyLayout/components/CheckBoxInputs';
-import { TASTE_TYPES, TEA_TYPES } from '@/components/page-layout/surveyLayout/constants/teaTypes';
-
-const cn = classNames.bind(styles);
-
-const mockProduct = {
-  ko_name: '후르츠베리 티',
-  en_name: 'berries teas',
-  image: '/images/my-blending/vanila.png',
-  description: '베리류를 좋아하시나요? 상큼하고 달달한 후르츠베리 티 세트로 일 년 내내 여름을 즐겨보세요.',
-  flavor: ['단맛', '신맛'],
-  price: 14000,
-  season: '여름',
-  caffeine: true,
-  category: '홍차',
-  status: '판매중',
-  stock: 28,
-  ingredient: [],
-};
 
 export default function EachFinishedTeasPage() {
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
 
-  const methods = useForm({
-    defaultValues: {
-      category: undefined,
-      sale: undefined,
-      season: undefined,
-      ko_name: undefined,
-      en_name: undefined,
-      caffeine: undefined,
-      description: undefined,
-      ingredient: undefined,
-      img: undefined,
-      inventory: undefined,
-      saleStatus: undefined,
-      flavor: undefined,
-    },
-  });
-  const { handleSubmit, register } = methods;
-
   return (
     <>
-      <BackButton className={cn('backButton')} />
-      <DetailCard title="상품 정보" className={cn('card')}>
-        <FormProvider {...methods}>
-          <form className={cn('form')} onSubmit={handleSubmit((data) => console.log(data))}>
-            <div className={cn('profile')}>
-              <FileInput type="product" />
-            </div>
-
-            <div className={cn('information')}>
-              <div className={cn('section')}>
-                <div className={cn('field')}>이름</div>
-                <input className={cn('value', 'input')} {...register('ko_name', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>영문 이름</div>
-                <input className={cn('value', 'input')} {...register('en_name', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>종류</div>
-                <ButtonInputs items={TEA_TYPES} name="category" status={3} className={cn('buttonInputs')} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>설명</div>
-                <textarea className={cn('value', 'textarea')} {...register('description', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>원재료</div>
-                <IngredientInput />
-              </div>
-              <div className={cn('section')}>
-                <div className={cn('field')}>맛</div>
-                <CheckBoxInputs items={TASTE_TYPES} name="flavor" status={2} className={cn('checkboxInputs')} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>가격(KRW)</div>
-                <input type="number" className={cn('value', 'input')} {...register('sale', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>카페인 여부</div>
-                <ButtonInputs
-                  items={[
-                    { value: 'true', text: '카페인 있음' },
-                    { value: 'false', text: '카페인 없음' },
-                  ]}
-                  name="caffeine"
-                  status={3}
-                  className={cn('buttonInputs')}
-                />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>계절</div>
-                <ButtonInputs
-                  items={[
-                    { value: '봄', text: '봄' },
-                    { value: '여름', text: '여름' },
-                    { value: '가을', text: '가을' },
-                    { value: '겨울', text: '겨울' },
-                  ]}
-                  name="season"
-                  status={3}
-                  className={cn('buttonInputs')}
-                />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>재고</div>
-                <input type="number" className={cn('value', 'input')} {...register('inventory', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>판매 상태</div>
-                <ButtonInputs
-                  items={[
-                    { value: '판매중', text: '판매중' },
-                    { value: '품절', text: '품절' },
-                  ]}
-                  name="saleStatus"
-                  status={3}
-                  className={cn('buttonInputs')}
-                />
-              </div>
-            </div>
-
-            <div className={cn('submitButton')}>
-              <SubmitButton>저장</SubmitButton>
-            </div>
-          </form>
-        </FormProvider>
-      </DetailCard>
+      <BackButton />
+      <FinishedTeaForm />
       <SubmitButton isDelete={true}>삭제하기</SubmitButton>
     </>
   );

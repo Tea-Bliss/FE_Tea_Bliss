@@ -16,10 +16,12 @@
 
   .pages {
     @include font(1.4rem, 400, 1.4rem);
+    font-family: 'Pretendard Varible' !important;
     cursor: pointer;
 
     &.current {
       text-decoration: underline;
+      font-weight: 700;
     }
   }
 }

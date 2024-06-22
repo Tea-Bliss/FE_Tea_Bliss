@@ -1,6 +1,6 @@
 'use client';
 
-import { Dispatch, InputHTMLAttributes, SetStateAction, useState } from 'react';
+import { Dispatch, InputHTMLAttributes, SetStateAction, useEffect, useState } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -28,6 +28,10 @@ export default function MyInfoFileInput({ defaultImage, setFn, ...props }: MyInf
       setFn(null);
     }
   };
+
+  useEffect(() => {
+    setPreview(defaultImage);
+  }, [defaultImage]);
 
   return (
     <div>

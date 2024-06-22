@@ -20,7 +20,7 @@ export default function Table({ fields, items, name, unit, path }: TableProps) {
   return (
     <div className={cn('container')}>
       <div className={cn('count')}>
-        {`전체 ${name}`} <span className={cn('number')}>{items.length}</span>
+        {`전체 ${name}`} <span className={cn('number')}>{items?.length}</span>
         {`${unit}`}
       </div>
       <div className={cn('table')}>
@@ -33,8 +33,8 @@ export default function Table({ fields, items, name, unit, path }: TableProps) {
             );
           })}
         </div>
-        {items.map((item) => (
-          <Link href={{ pathname: path, query: { id: item.id } }} key={item.id} className={cn('row')}>
+        {items?.map((item) => (
+          <Link href={{ pathname: path, query: { id: item?.id } }} key={item?.id} className={cn('row')}>
             {Object.keys(item).map((key) => {
               return (
                 <div key={key} className={cn('cell')}>

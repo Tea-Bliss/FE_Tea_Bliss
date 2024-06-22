@@ -5,8 +5,8 @@ import { useFieldArray, useFormContext } from 'react-hook-form';
 
 import Image from 'next/image';
 
-import DropDownInput from '@/components/page-layout/adminLayout/components/AdminProductPage/FinishedTeasPage/EachFinishedTeasPage/IngredientInput/DropDownInput';
-import styles from '@/components/page-layout/adminLayout/components/AdminProductPage/FinishedTeasPage/EachFinishedTeasPage/IngredientInput/IngredientInput.module.scss';
+import DropDownInput from '@/components/page-layout/adminLayout/components/common/FinIshedTeaForm/IngredientInput/DropDownInput';
+import styles from '@/components/page-layout/adminLayout/components/common/FinIshedTeaForm/IngredientInput/IngredientInput.module.scss';
 
 const cn = classNames.bind(styles);
 

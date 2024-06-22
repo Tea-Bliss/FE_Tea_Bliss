@@ -45,19 +45,6 @@ export default function LooseLeafTeasPage() {
     setSearchValue(e.target.value);
   };
 
-  const handleEnter: KeyboardEventHandler = (e) => {
-    if (e.keyCode === 13) {
-      if (!searchValue) {
-        setProducts(mockProducts);
-        return;
-      }
-
-      setProducts(
-        mockProducts.filter((product) => product.name.includes(searchValue) || product.name_eng.includes(searchValue))
-      );
-    }
-  };
-
   return (
     <>
       <SortBar
@@ -75,18 +62,12 @@ export default function LooseLeafTeasPage() {
           '디카페인',
         ]}
       />
-      <SearchBar
-        value={searchValue}
-        onChange={handleChange}
-        onKeyUp={handleEnter}
-        placeholder="한글 이름 또는 영문 이름으로 검색해주세요"
-      />
       <Table
         fields={['ID', '이름', '영문 이름', '가격', '종류', '재고', '상태']}
         items={products}
         name="상품"
         unit="개"
-        path="/admin/product/loose-leaf-teas/detail"
+        path="/admin/product/loose-leaf-teas/post"
       />
 
       <div className={cn('pageButtons')}>
