@@ -1,8 +1,6 @@
 import { StaticImageData } from 'next/image';
 
 export default interface FinishedItem {
-  title: string;
-  cost: number;
   category: string;
   review: number;
   sale: number;
@@ -10,9 +8,12 @@ export default interface FinishedItem {
   rate: number;
   season: string;
   createat: Date;
-  isLastPage: boolean;
   href: string;
   img: StaticImageData;
   id: number;
-  koTitle: string;
+  price: number;
+  caffeine: boolean;
+  name: string;
+  nameEng: string;
+  lastPage: boolean;
 }
