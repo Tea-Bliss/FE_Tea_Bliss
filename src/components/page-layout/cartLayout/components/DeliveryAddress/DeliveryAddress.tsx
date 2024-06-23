@@ -2,7 +2,7 @@
 import classNames from 'classnames/bind';
 
 import Button from '@/components/common/Button';
-import styles from '@/components/page-layout/CartLayout/components/DeliveryAddress/DeliveryAddress.module.scss';
+import styles from '@/components/page-layout/cartLayout/components/DeliveryAddress/DeliveryAddress.module.scss';
 import { useUserInfoQuery } from '@/hooks/query/useUserInfoQuery';
 import Location from '@/icons/location.svg';
 
