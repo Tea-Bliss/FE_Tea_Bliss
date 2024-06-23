@@ -1,0 +1,11 @@
+.quantity {
+  @include flexSort(row, null, center, 1.6rem);
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.4rem;
+  border: 0.1rem solid $black-5;
+}
+
+.quantityNumber {
+  color: $black-13;
+  @include font(1.6rem, 400, 2.4rem);
+}
