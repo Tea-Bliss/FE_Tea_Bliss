@@ -8,7 +8,7 @@ export const patchPassword = (data: { oldPassword: string; newPassword: string; 
   return axiosInstance.patch('member/password', data);
 };
 
-export const patchProfile = (data: { nickname?: string; profile?: string | null }) => {
+export const patchProfile = (data: { nickname?: string; profile?: string | null; role: '관리자' | '일반 회원' }) => {
   return axiosInstance.patch('member/edit', data);
 };
 

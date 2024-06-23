@@ -9,10 +9,9 @@ export const getOneCustomer = (id: number) => {
   return axiosInstance.get(`admin/${id}`);
 };
 
-export const putCustomerProfile = (data: { nickname: string; profile: string }, id: number) => {
+export const putCustomerProfile = (
+  data: { nickname: string; profile: string; role: '관리자' | '일반 회원' },
+  id: number
+) => {
   return axiosInstance.put(`admin/edit/${id}`, data);
-};
-
-export const putCustomerPassword = (data: { newPassword: string; newPasswordCheck: string }, id: number) => {
-  return axiosInstance.put(`admin/password/${id}`, data);
 };

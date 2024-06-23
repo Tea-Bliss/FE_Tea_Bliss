@@ -10,7 +10,7 @@ import {
 } from '@/components/page-layout/adminLayout/apis/looseLeafTeasApis';
 import { PostOrPutLooseLeafTeaType } from '@/components/page-layout/adminLayout/types/productType';
 
-export const useGetIngredients = (query: { category?: string; page: number; limit: number }) => {
+export const useGetIngredients = (query: { category?: string | null; page: number; limit: number }) => {
   return useQuery({
     queryKey: ['admin', 'loose-leaf-teas', query],
     queryFn: () => getIngredients(query),
