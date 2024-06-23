@@ -53,7 +53,7 @@ export default function FileInput({ type, defaultImage, setFn, ...props }: FileI
       <div className={cn(type === 'profile' ? 'profilePreview' : 'productPreview')}>
         <div className={cn('previewInnerContainer')}>
           <Image
-            src={preview === '~~' ? initialImage : preview || initialImage}
+            src={preview?.startsWith('/') || preview?.startsWith('http') ? preview : initialImage}
             alt="preview"
             fill
             style={{ objectFit: 'cover' }}
