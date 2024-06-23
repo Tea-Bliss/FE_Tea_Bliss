@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 
@@ -13,7 +15,6 @@ import { FILTER, LIMIT } from '@/components/page-layout/productListLayout/consta
 import styles from '@/components/page-layout/productListLayout/ProductList/ProductList.module.scss';
 import FinishedItem from '@/components/page-layout/productListLayout/types/index';
 import ROUTE from '@/constants/route';
-import Img from '@/icons/다운로드.jpg';
 
 const cn = classNames.bind(styles);
 
@@ -24,30 +25,32 @@ export default function ProductList() {
   const page = Number(searchParams.get('page')) || 1;
   const selectedFilter = searchParams.get('filter') || 'all';
 
+  const caffeine = searchParams.get('caffeine') || null;
+
+  const season = searchParams.get('season') || null;
+
   const setPage = (newPage: number) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', newPage.toString());
-    router.push(`${pathname}?${params}`);
+    router.replace(`${pathname}?${params}`);
   };
 
   const setSelectedFilter = (filter: string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', '1');
     params.set('filter', filter);
-    router.push(`${pathname}?${params}`);
+    router.replace(`${pathname}?${params}`);
   };
 
   const { data, isLoading } = useQuery({
-    queryKey: ['items', page, selectedFilter],
-    queryFn: () => getPagenationItems(selectedFilter, page, LIMIT),
+    queryKey: ['items', page, selectedFilter, caffeine, season],
+    queryFn: () => getPagenationItems(selectedFilter, page, LIMIT, caffeine, season),
     placeholderData: keepPreviousData,
   });
 
   const finishedData = data?.tea?.map((item: FinishedItem) => ({
     ...item,
     href: `${ROUTE.PRODUCT_LIST}/${item.id}`,
-    img: Img,
-    koTitle: '제주에서 넘어온 그린티',
   }));
 
   const handleFilterClick = (filter: string) => {
@@ -76,11 +79,11 @@ export default function ProductList() {
                 key={item.id}
                 img={item.img}
                 href={item.href}
-                price={item.cost}
+                price={item.price}
                 scope={item.rating}
                 review={item.review}
-                title={item.title}
-                koTitle={item.koTitle}
+                title={item.nameEng}
+                koTitle={item.name}
               />
             ))}
       </div>

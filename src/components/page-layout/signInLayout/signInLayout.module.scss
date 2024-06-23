@@ -1,4 +1,5 @@
 .layout {
+  background-color: $black-1;
   @include flexSort(null, center, null, null);
   padding: 8.5rem 0 12.2rem 0;
 

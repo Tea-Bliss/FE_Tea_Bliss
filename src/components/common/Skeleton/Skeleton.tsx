@@ -5,7 +5,7 @@ import SkeletonProps from '@/components/common/Skeleton/types/index';
 
 const cn = classNames.bind(styles);
 
-export default function PostSkeleton({ className }: SkeletonProps) {
+export default function Skeleton({ className }: SkeletonProps) {
   return (
     <div className={cn('Container', className)}>
       <div className={cn('skeleton')} />
