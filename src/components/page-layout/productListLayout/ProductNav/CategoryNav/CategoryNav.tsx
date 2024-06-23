@@ -1,4 +1,9 @@
+'use client';
+
 import classNames from 'classnames/bind';
+
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import styles from '@/components/page-layout/productListLayout/ProductNav/CategoryNav/CategoryNav.module.scss';
 import SideBar from '@/components/page-layout/productListLayout/ProductNav/SideBar/index';
@@ -14,13 +19,9 @@ export default function CategoryNav() {
         <SideBar.Title>계절</SideBar.Title>
         <SideBar.Content className={cn('button')}>
           {seasonNAV.map((Category) => (
-            <button
-              // onClick={() => setCategory(Category.name)}
-              key={Category.name}
-              // className={cn({ button: Category.name === category })}
-            >
+            <Link href={Category.href} key={Category.name}>
               {Category.name}
-            </button>
+            </Link>
           ))}
         </SideBar.Content>
       </SideBar.Container>
@@ -28,13 +29,9 @@ export default function CategoryNav() {
         <SideBar.Title>계절</SideBar.Title>
         <SideBar.Content>
           {caffeineNAV.map((Category) => (
-            <button
-              // onClick={() => setCategory(Category.name)}
-              key={Category.name}
-              // className={cn({ button: Category.name === category })}
-            >
+            <Link href={Category.href} key={Category.name}>
               {Category.name}
-            </button>
+            </Link>
           ))}
         </SideBar.Content>
       </SideBar.Container>

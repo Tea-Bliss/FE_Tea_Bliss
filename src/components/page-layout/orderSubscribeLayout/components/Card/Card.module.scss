@@ -1,7 +1,8 @@
 .container {
   width: 100%;
   padding: 1rem;
-  @include flexSort(null, null, center, 22.4rem);
+  @include flexSort(null, space-between, center, null);
+  position: relative;
 }
 
 .box {
@@ -9,7 +10,7 @@
 }
 
 .mainInfo {
-  @include flexSort(column, null, null, 0.8rem);
+  @include flexSort(column, null, null, 1.2rem);
 }
 
 .nameEngBox {
@@ -17,15 +18,15 @@
 }
 
 .nameEng {
-  @include font(2.4rem, 400, normal);
+  font-size: 2.4rem;
 }
 
 .name {
-  @include font(1.4rem, 400, normal);
+  font-size: 1.4rem;
 }
 
 .detailInfoContainer {
-  @include flexSort(column, null, null, 0.8rem);
+  @include flexSort(column, null, null, 1.2rem);
 }
 
 .detailInfoBox {
@@ -34,11 +35,11 @@
 
 .detailInfoTitle {
   color: #838080;
-  @include font(1.4rem, 400, normal);
+  font-size: 1.4rem;
 }
 
 .detailInfoContent {
-  @include font(1.4rem, 400, normal);
+  font-size: 1.4rem;
 }
 
 .datePriceContainer {
@@ -46,14 +47,21 @@
 }
 
 .datePriceBox {
-  @include flexSort(column, null, null, 0.4rem);
+  @include flexSort(column, null, null, 0.8rem);
 }
 
 .purchaseDate {
   color: #bfbfbf;
-  @include font(1.4rem, 400, normal);
+  font-size: 1.4rem;
 }
 
 .price {
-  @include font(1.8rem, 400, normal);
+  font-size: 1.8rem;
+}
+
+.close {
+  position: absolute;
+  cursor: pointer;
+  right: 0;
+  top: 0;
 }
