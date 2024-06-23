@@ -25,7 +25,7 @@ export default function MyInfoContent({ toggle }: MyInfoContentProps) {
   return (
     <>
       <div className={cn('profile')}>
-        {data.profile ? (
+        {data?.profile ? (
           <Image
             src={data.profile}
             width={105}
@@ -43,7 +43,7 @@ export default function MyInfoContent({ toggle }: MyInfoContentProps) {
             alt="기본 프로필 이미지"
           />
         )}
-        <p className={cn('userName')}>{data.nickname}</p>
+        <p className={cn('userName')}>{data?.nickname}</p>
       </div>
       <div className={cn('buttonWrapper')}>
         <Link className={cn('myInfoBtn', 'red')} href={ROUTE.MY_PAGE_MY_INFO} onClick={toggle}>
