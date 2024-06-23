@@ -22,6 +22,10 @@
 .information {
   @include flexSort(column, null, null, 2rem);
 
+  &.saleInformation + .saleInformation {
+    margin-top: 1rem;
+  }
+
   .section {
     @include flexSort(row, null, center, 3rem);
 
@@ -31,16 +35,17 @@
       width: 7rem;
       color: #757575;
       text-align: right;
+      font-family: 'Pretendard Variable' !important;
     }
 
     .value {
       @include font(1.4rem, 400, 2.9rem);
       padding: 0;
       flex-grow: 1;
+      font-family: 'Pretendard Variable' !important;
 
       &.input {
         border-bottom: 0.1rem solid rgba(12, 12, 12, 0.12);
-        font-family: 'Pretendard Variable' !important;
 
         &:focus {
           border-color: rgb(29, 138, 222);

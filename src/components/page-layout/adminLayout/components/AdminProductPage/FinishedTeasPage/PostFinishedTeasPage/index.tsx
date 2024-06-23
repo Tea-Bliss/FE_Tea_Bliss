@@ -30,9 +30,11 @@ export default function PostFinishedTeasPage() {
     }
 
     formValues.caffeine = Boolean(formValues.caffeine);
+    formValues.inventory = +formValues.inventory;
+    formValues.price = +formValues.price;
 
     mutate.mutate(formValues, {
-      onError: async (error, values) => {
+      onError: async (_, values) => {
         if (values.img) {
           await deleteImage(values.img);
         }

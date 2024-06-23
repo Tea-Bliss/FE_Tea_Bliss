@@ -4,7 +4,6 @@ import openToast from '@/components/common/Toast/features/openToast';
 import {
   getCustomers,
   getOneCustomer,
-  putCustomerPassword,
   putCustomerProfile,
 } from '@/components/page-layout/adminLayout/apis/customersApis';
 
@@ -26,6 +25,7 @@ type ProfileMutationVariables = {
   data: {
     nickname: string;
     profile: string;
+    role: '관리자' | '일반 회원';
   };
   id: number;
 };
@@ -38,26 +38,6 @@ export const useAdminPutProfile = () => {
     },
     onSuccess: () => {
       openToast('success', '프로필이 변경되었습니다');
-    },
-  });
-};
-
-type PasswordMutationVariables = {
-  data: {
-    newPassword: string;
-    newPasswordCheck: string;
-  };
-  id: number;
-};
-
-export const useAdminPutPassword = () => {
-  return useMutation({
-    mutationFn: async ({ data, id }: PasswordMutationVariables) => await putCustomerPassword(data, id),
-    onError: () => {
-      openToast('error', '비밀번호 변경에 실패하였습니다');
-    },
-    onSuccess: () => {
-      openToast('success', '비밀번호가 변경되었습니다');
     },
   });
 };

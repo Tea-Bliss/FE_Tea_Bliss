@@ -9,7 +9,8 @@ import {
 
 export const usePatchProfile = () => {
   return useMutation({
-    mutationFn: async (data: { nickname: string; profile?: string | null }) => await patchProfile(data),
+    mutationFn: async (data: { nickname: string; profile?: string | null; role: '관리자' | '일반 회원' }) =>
+      await patchProfile(data),
   });
 };
 

@@ -21,10 +21,10 @@ export default function LooseLeafTeasPage() {
   const category = params.get('category');
 
   const [page, setPage] = useState(1);
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<any>(undefined);
   const [searchValue, setSearchValue] = useState<string>('');
 
-  const { data } = useGetIngredients({ page: 1, limit: 200 });
+  const { data } = useGetIngredients({ page: 1, limit: 200, category });
 
   const handleEnter: KeyboardEventHandler = (e) => {
     if (e.keyCode === 13) {
@@ -37,7 +37,7 @@ export default function LooseLeafTeasPage() {
 
       setProducts(
         data?.data?.data.filter(
-          (product: any) => product.name.includes(searchValue) || product.nameEng.includes(searchValue)
+          (product: any) => product.name?.includes(searchValue) || product.nameEng?.includes(searchValue)
         )
       );
     }
@@ -47,9 +47,9 @@ export default function LooseLeafTeasPage() {
     setSearchValue(e.target.value);
   };
 
-  // useEffect(() => {
-  //   setProducts(data?.data.data);
-  // }, [data]);
+  useEffect(() => {
+    setProducts(data?.data.data);
+  }, [data]);
 
   return (
     <>
@@ -84,6 +84,7 @@ export default function LooseLeafTeasPage() {
         unit="개"
         postPath="/admin/product/loose-leaf-teas/post"
         modifyPath="/admin/product/loose-leaf-teas/detail"
+        keys={['id', 'name', 'nameEng', 'sale', 'category', 'inventory', 'saleStatus']}
       />
 
       <PageButtons currentPage={page} setPage={setPage} size={data?.data.data.length} />
