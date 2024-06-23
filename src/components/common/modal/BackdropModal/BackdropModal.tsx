@@ -22,9 +22,10 @@ interface BackdropModalProps {
   isOpen: boolean;
   children: ReactNode;
   onClose: () => void;
+  closeBtn?: boolean;
 }
 
-export default function BackdropModal({ isOpen, children, onClose }: BackdropModalProps) {
+export default function BackdropModal({ isOpen, children, onClose, closeBtn = true }: BackdropModalProps) {
   const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -45,9 +46,11 @@ export default function BackdropModal({ isOpen, children, onClose }: BackdropMod
     ReactDOM.createPortal(
       <div className={cn('back')} onClick={onClose}>
         <div className={cn('container')} onClick={(e) => e.stopPropagation()}>
-          <button onClick={onClose}>
-            <Close />
-          </button>
+          {closeBtn && (
+            <button onClick={onClose}>
+              <Close width={20} height={20} stroke={'#181717'} />
+            </button>
+          )}
           {children}
         </div>
       </div>,
