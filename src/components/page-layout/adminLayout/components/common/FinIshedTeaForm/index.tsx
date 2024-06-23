@@ -62,7 +62,7 @@ export default function FinishedTeaForm({ defaultValues, mutateFn, setImageFile 
     <>
       <DetailCard title="상품 정보" className={cn('card')}>
         <FormProvider {...methods}>
-          <form className={cn('form')} onSubmit={handleSubmit((data) => console.log(data))} onKeyDown={handleKeyDown}>
+          <form className={cn('form')} onSubmit={handleSubmit((data) => mutateFn(data))} onKeyDown={handleKeyDown}>
             <div className={cn('profile')}>
               <FileInput type="product" defaultImage={defaultValues?.img} setFn={setImageFile} />
             </div>
