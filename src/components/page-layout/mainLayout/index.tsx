@@ -4,8 +4,6 @@ import Image from 'next/image';
 
 import { cardData } from '@/components/common/Carousel/cardData';
 import Carousel from '@/components/common/Carousel/Carousel';
-import Footer from '@/components/common/Footer/Footer';
-import GlobalNavBar from '@/components/common/GlobalNavBar/GlobalNavBar';
 import MainHeader from '@/components/page-layout/mainLayout/components/MainHeader/MainHeader';
 import styles from '@/components/page-layout/mainLayout/MainLayout.module.scss';
 import MainImage from '@/images/main.png';

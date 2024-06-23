@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center"><img src="https://github.com/Tea-Bliss/FE_Tea_Bliss/assets/113810508/0b668e13-b234-4105-aeaf-7eb55b34eb22" alt="Tea Bliss" width="200" height="200"></p><br>
+<br>
 
-## Getting Started
+# Tea Bliss - 블랜딩 티(커머스)
 
-First, run the development server:
+- 개발 기간 : 2024.06.13 ~ 2024.06.25
+- 배포 주소 :
 
-```bash
+**개발 모드로 실행하기**
+
+```
+git clone
+
+npm install
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 📂 프로젝트 소개
 
-## Learn More
+**Tea Bliss는 블랜딩된 차를 구매할 수 있고 각자가 원하는 재료로 블랜딩 된 차를 만들 수 커머스 서비스 입니다.**
 
-To learn more about Next.js, take a look at the following resources:
+- 다양한 블랜딩 차를 구매할 수 있는 서비스 입니다.
+- 자신만의 티를 만들고 싶은 사람들의 욕구를 채워줄 수 있는 서비스 입니다.
+  <br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---

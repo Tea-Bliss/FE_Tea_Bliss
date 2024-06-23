@@ -4,9 +4,9 @@ import { useState } from 'react';
 
 import classNames from 'classnames/bind';
 
-import MyPageHeader from '@/components/common/MypageHeader/MypageHeader';
 import MyPageNav from '@/components/common/MyPageNav/MyPageNav';
 import MyPageSubNav from '@/components/common/MyPageSubNav';
+import SubHeader from '@/components/common/SubHeader/SubHeader';
 import styles from '@/components/page-layout/orderSubscribeLayout/components/orderSubscribeLayout.module.scss';
 import Img from '@/icons/다운로드.jpg';
 
@@ -70,7 +70,7 @@ export default function OrderSubscribeLayout() {
 
   return (
     <>
-      <MyPageHeader />
+      <SubHeader>My page</SubHeader>
       <MyPageNav />
       <MyPageSubNav.Root className={cn('root')}>
         <MyPageSubNav.Container>
