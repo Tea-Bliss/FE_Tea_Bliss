@@ -1,0 +1,28 @@
+.deliveryAddress {
+  @include flexSort(column, null, null, 1.2rem);
+  padding: 1.6rem;
+  border-width: 0.1rem 0.1rem 0;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-color: $black-4;
+}
+
+.addressHeader {
+  @include flexSort(column, center, flex-start, 2.1rem);
+  width: 100%;
+}
+
+.locationIcon {
+  @include flexSort(row, center, center, 0.8rem);
+}
+
+.addressTitle {
+  color: $black-13;
+  @include font(1.7rem, 400, 2.4rem);
+}
+
+.addressDetails {
+  color: $black-13;
+  @include font(1.7rem, 400, 2.4rem);
+}
