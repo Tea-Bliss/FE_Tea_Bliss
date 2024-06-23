@@ -38,7 +38,7 @@ export default function MyInfoFileInput({ defaultImage, setFn, ...props }: MyInf
       <div className={cn('profile')}>
         <label htmlFor="image" className={cn('label')}>
           <Image
-            src={preview || '/images/default_profile.png'}
+            src={preview === '~~' ? '/images/default_profile.png' : preview || '/images/default_profile.png'}
             alt="preview"
             fill
             style={{ objectFit: 'cover' }}

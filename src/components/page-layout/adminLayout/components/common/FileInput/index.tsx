@@ -52,7 +52,12 @@ export default function FileInput({ type, defaultImage, setFn, ...props }: FileI
     <div>
       <div className={cn(type === 'profile' ? 'profilePreview' : 'productPreview')}>
         <div className={cn('previewInnerContainer')}>
-          <Image src={preview || initialImage} alt="preview" fill style={{ objectFit: 'cover' }} />
+          <Image
+            src={preview === '~~' ? initialImage : preview || initialImage}
+            alt="preview"
+            fill
+            style={{ objectFit: 'cover' }}
+          />
         </div>
 
         <DropDown className={cn('dropdown')} animation={true} defaultTitle="">
