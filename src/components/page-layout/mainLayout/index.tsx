@@ -1,9 +1,10 @@
+'use client';
+
 import { useQuery } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 
 import Image from 'next/image';
 
-import { cardData } from '@/components/common/Carousel/cardData';
 import Carousel from '@/components/common/Carousel/Carousel';
 import MainHeader from '@/components/page-layout/mainLayout/components/MainHeader/MainHeader';
 import styles from '@/components/page-layout/mainLayout/MainLayout.module.scss';
