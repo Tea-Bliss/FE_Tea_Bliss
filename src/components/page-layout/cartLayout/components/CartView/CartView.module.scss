@@ -1,0 +1,21 @@
+.container {
+  @include flexSort(column, flex-start, flex-start, 1.2rem);
+  flex: 1 0 0;
+}
+
+.accordionContainer {
+  @include flexSort(column, center, flex-start, 1.2rem);
+  width: 100%;
+
+  .trigger {
+    width: 100%;
+    border-top: 0.1rem solid $black-13;
+    padding: 1.6rem 0;
+    @include flexSort(row, space-between, center, 1.2rem);
+    @include font(2rem, 400, 2.8rem);
+  }
+
+  .content {
+    width: 100%;
+  }
+}
