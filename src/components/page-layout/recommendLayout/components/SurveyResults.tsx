@@ -18,7 +18,19 @@ interface SurveyResultsProps {
 }
 
 export default function SurveyResults({ name, taste, sale, category, caffeine, surveyId }: SurveyResultsProps) {
-  const { data } = useGetSurveyResults(surveyId);
+  // const { data } = useGetSurveyResults(surveyId);
+  const data = [
+    {
+      status: 200,
+      message: 'Success',
+      data: {
+        taste: 1,
+        sale: 10000,
+        category: 'earl grey',
+        caffeine: 'Y',
+      },
+    },
+  ];
 
   return (
     <div className={cn('layout')}>
@@ -30,7 +42,7 @@ export default function SurveyResults({ name, taste, sale, category, caffeine, s
           <h3 className={cn('sub-title')}>맛</h3>
           <div className={cn('results')}>
             {data?.map((item) => (
-              <BlendingLabel key={item.taste}>{item.taste}</BlendingLabel>
+              <BlendingLabel key={item.data.taste}>{item.data.taste}</BlendingLabel>
             ))}
           </div>
         </div>
@@ -38,7 +50,7 @@ export default function SurveyResults({ name, taste, sale, category, caffeine, s
           <h3 className={cn('sub-title')}>가격</h3>
           <div className={cn('results')}>
             {data?.map((item) => (
-              <BlendingLabel key={item.sale}>{item.sale}</BlendingLabel>
+              <BlendingLabel key={item.data.sale}>{item.data.sale}</BlendingLabel>
             ))}
           </div>
         </div>
@@ -46,7 +58,7 @@ export default function SurveyResults({ name, taste, sale, category, caffeine, s
           <h3 className={cn('sub-title')}>선호하는 재료</h3>
           <div className={cn('results')}>
             {data?.map((item) => (
-              <BlendingLabel key={item.category}>{item.category}</BlendingLabel>
+              <BlendingLabel key={item.data.category}>{item.data.category}</BlendingLabel>
             ))}
           </div>
         </div>
@@ -54,7 +66,7 @@ export default function SurveyResults({ name, taste, sale, category, caffeine, s
           <h3 className={cn('sub-title')}>카페인 유무</h3>
           <div className={cn('results')}>
             {data?.map((item) => (
-              <BlendingLabel key={item.caffeine}>{item.caffeine}</BlendingLabel>
+              <BlendingLabel key={item.data.caffeine}>{item.data.caffeine}</BlendingLabel>
             ))}
           </div>
         </div>
