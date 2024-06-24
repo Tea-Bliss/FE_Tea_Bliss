@@ -11,7 +11,7 @@ import OrderProductItem from '../OrderProductItem/OrderProductItem';
 
 const cn = classNames.bind(styles);
 export default function OrderProduct() {
-  const orderProductItem = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('selectedItems')!) : [];
+  const orderProductItem = typeof window !== 'undefined' && JSON.parse(localStorage.getItem('selectedItems') || '[]');
   return (
     <Accordion className={cn('accordionContainer')}>
       <AccordionTrigger className={cn('trigger')} value="item1">

@@ -55,9 +55,10 @@ export default function PaymentSummary({ selectedPayment }: PaymentSummaryProps)
       payMethod: selectedPayment,
       customer: {
         customerId: data?.data.data.email,
-        email: data?.data.data.email,
         fullName: data?.data.data.nickname,
+        email: data?.data.data.email,
         address: { addressLine1: data?.data.data.address!, addressLine2: '' },
+        zipcode: '12345',
       },
       products: transformedItems,
       shippingAddress: { addressLine1: data?.data.data.address!, addressLine2: '' },
