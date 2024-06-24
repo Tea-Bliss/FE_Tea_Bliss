@@ -1,0 +1,14 @@
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  background-color: #fcf8ef;
+  padding-bottom: 8rem;
+}
+
+.title {
+  color: $black-13;
+  padding: 4rem 0 7.7rem;
+  text-align: left;
+  @include font(4rem, 400, 'normal');
+  letter-spacing: 0.16rem;
+}
