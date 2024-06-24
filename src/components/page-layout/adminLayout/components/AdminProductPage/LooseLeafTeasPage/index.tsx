@@ -85,6 +85,7 @@ export default function LooseLeafTeasPage() {
         postPath="/admin/product/loose-leaf-teas/post"
         modifyPath="/admin/product/loose-leaf-teas/detail"
         keys={['id', 'name', 'nameEng', 'sale', 'category', 'inventory', 'saleStatus']}
+        totalCount={data?.data.data.length}
       />
 
       <PageButtons currentPage={page} setPage={setPage} size={data?.data.data.length} />
