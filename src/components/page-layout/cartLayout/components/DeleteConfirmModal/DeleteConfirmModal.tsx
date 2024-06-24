@@ -8,17 +8,25 @@ const cn = classNames.bind(styles);
 interface DeleteConfirmModalProps {
   isModalOpen: boolean;
   closeModal: () => void;
+  onConfirm: () => void;
+  message: string;
 }
-export default function DeleteConfirmModal({ isModalOpen, closeModal }: DeleteConfirmModalProps) {
+
+export default function DeleteConfirmModal({ isModalOpen, closeModal, onConfirm, message }: DeleteConfirmModalProps) {
+  const handleConfirm = () => {
+    onConfirm();
+    closeModal();
+  };
+
   return (
     <BackdropModal isOpen={isModalOpen} onClose={closeModal} closeBtn={false}>
       <div className={cn('container')}>
-        <div className={cn('title')}>상품을 삭제하시겠습니까?</div>
+        <div className={cn('title')}>{message}</div>
         <div className={cn('confirmButtonWrapper')}>
           <button className={cn('confirmButton')} type="button" onClick={closeModal}>
             취소
           </button>
-          <button className={cn('confirmButton', 'confirm')} type="button">
+          <button className={cn('confirmButton', 'confirm')} type="button" onClick={handleConfirm}>
             확인
           </button>
         </div>
