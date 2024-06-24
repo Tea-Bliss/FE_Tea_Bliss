@@ -11,11 +11,11 @@ import { LooseLeafTeaType } from '@/components/page-layout/myBlendingLayout/type
 
 const cn = classNames.bind(styles);
 
-interface SelectedTeaCard {
+interface SelectedTeaCardProps {
   tea: LooseLeafTeaType | null;
 }
 
-export default function SelectedTeaCard({ tea }: SelectedTeaCard) {
+export default function SelectedTeaCard({ tea }: SelectedTeaCardProps) {
   const { setSelectedTeas } = useMyBlendingContext();
 
   if (!tea)

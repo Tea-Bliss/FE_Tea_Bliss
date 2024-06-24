@@ -42,8 +42,8 @@ export default function ReviewModal({ role, data }: ReviewModalProps) {
         </div>
 
         <div className={cn('inputArea')}>
-          <input className={cn('titleInput')} />
-          <textarea className={cn('textarea')} />
+          <input className={cn('titleInput')} placeholder="리뷰 제목을 작성해주세요" />
+          <textarea className={cn('textarea')} placeholder="리뷰를 작성해주세요" />
         </div>
       </div>
 

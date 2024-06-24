@@ -27,7 +27,9 @@ export default function AdminCustomerPage() {
       }
 
       setUsers(
-        data?.data?.data.filter((user: any) => user.email.includes(searchValue) || user.nickname.includes(searchValue))
+        data?.data?.data.filter(
+          (user: any) => user?.email?.includes(searchValue) || user?.nickname?.includes(searchValue)
+        )
       );
     }
   };

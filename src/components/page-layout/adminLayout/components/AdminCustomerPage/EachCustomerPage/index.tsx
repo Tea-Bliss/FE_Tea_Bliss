@@ -50,6 +50,11 @@ export default function EachCustomerPage() {
   };
 
   const handleProfilePut = async (formValues: any) => {
+    if (!data) {
+      openToast('error', '유저 정보를 불러오지 못해 수정이 불가능합니다.');
+      return;
+    }
+
     if (imageFile) {
       const publicUrl = await uploadImage(imageFile);
 
