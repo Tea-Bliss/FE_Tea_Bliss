@@ -6,13 +6,13 @@ import classNames from 'classnames/bind';
 
 import { useSearchParams } from 'next/navigation';
 
+import Loader from '@/components/common/Loader';
 import styles from '@/components/page-layout/adminLayout/components/AdminProductPage/LooseLeafTeasPage/LooseLeafTeasPage.module.scss';
+import PageButtons from '@/components/page-layout/adminLayout/components/common/PageButtons';
 import SearchBar from '@/components/page-layout/adminLayout/components/common/SearchBar';
 import SortBar from '@/components/page-layout/adminLayout/components/common/SortBar';
 import Table from '@/components/page-layout/adminLayout/components/common/Table';
-
-import { useGetIngredients } from '../../../hooks/useManageIngredients';
-import PageButtons from '../../common/PageButtons';
+import { useGetIngredients } from '@/components/page-layout/adminLayout/hooks/useManageIngredients';
 
 const cn = classNames.bind(styles);
 
@@ -24,7 +24,7 @@ export default function LooseLeafTeasPage() {
   const [products, setProducts] = useState<any>(undefined);
   const [searchValue, setSearchValue] = useState<string>('');
 
-  const { data } = useGetIngredients({ page: 1, limit: 200, category });
+  const { data, isLoading } = useGetIngredients({ page: 1, limit: 200, category });
 
   const handleEnter: KeyboardEventHandler = (e) => {
     if (e.keyCode === 13) {
@@ -77,18 +77,23 @@ export default function LooseLeafTeasPage() {
         placeholder="한글 이름 또는 영문 이름으로 검색해주세요"
       />
 
-      <Table
-        fields={['ID', '이름', '영문 이름', '가격', '종류', '재고', '상태']}
-        items={products?.slice(10 * (page - 1), 10 * page)}
-        name="상품"
-        unit="개"
-        postPath="/admin/product/loose-leaf-teas/post"
-        modifyPath="/admin/product/loose-leaf-teas/detail"
-        keys={['id', 'name', 'nameEng', 'sale', 'category', 'inventory', 'saleStatus']}
-        totalCount={products?.length}
-      />
-
-      <PageButtons currentPage={page} setPage={setPage} size={products?.length} />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Table
+            fields={['ID', '이름', '영문 이름', '가격', '종류', '재고', '상태']}
+            items={products?.slice(10 * (page - 1), 10 * page)}
+            name="상품"
+            unit="개"
+            postPath="/admin/product/loose-leaf-teas/post"
+            modifyPath="/admin/product/loose-leaf-teas/detail"
+            keys={['id', 'name', 'nameEng', 'sale', 'category', 'inventory', 'saleStatus']}
+            totalCount={products?.length}
+          />
+          <PageButtons currentPage={page} setPage={setPage} size={products?.length} />
+        </>
+      )}
     </>
   );
 }

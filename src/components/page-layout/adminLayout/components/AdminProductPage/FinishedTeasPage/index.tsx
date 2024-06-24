@@ -4,6 +4,7 @@ import { ChangeEvent, KeyboardEventHandler, useEffect, useState } from 'react';
 
 import { useSearchParams } from 'next/navigation';
 
+import Loader from '@/components/common/Loader';
 import PageButtons from '@/components/page-layout/adminLayout/components/common/PageButtons';
 import SearchBar from '@/components/page-layout/adminLayout/components/common/SearchBar';
 import SortBar from '@/components/page-layout/adminLayout/components/common/SortBar';
@@ -21,7 +22,7 @@ export default function FinishedTeasPage() {
   const [products, setProducts] = useState<FinishedTeaType[]>([]);
   const [searchValue, setSearchValue] = useState<string>('');
 
-  const { data } = getFunc({ page: 1, limit: 200, season: season ? season : '' });
+  const { data, isLoading } = getFunc({ page: 1, limit: 200, season: season ? season : '' });
 
   const handleEnter: KeyboardEventHandler = (e) => {
     if (e.keyCode === 13) {
@@ -61,23 +62,31 @@ export default function FinishedTeasPage() {
         ]}
         currentQuery={season}
       />
+
       <SearchBar
         value={searchValue}
         onChange={handleChange}
         onKeyUp={handleEnter}
         placeholder="한글 이름 또는 영문 이름으로 검색해주세요"
       />
-      <Table
-        fields={['ID', '이름', '영문 이름', '가격', '종류', '계절']}
-        keys={['id', 'name', 'nameEng', 'price', 'category', 'season']}
-        items={products?.slice(10 * (page - 1), 10 * page)}
-        name="상품"
-        unit="개"
-        postPath="/admin/product/finished-teas/post"
-        modifyPath="/admin/product/finished-teas/detail"
-        totalCount={products?.length}
-      />
-      <PageButtons currentPage={page} setPage={setPage} size={products?.length} />
+
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Table
+            fields={['ID', '이름', '영문 이름', '가격', '종류', '계절']}
+            keys={['id', 'name', 'nameEng', 'price', 'category', 'season']}
+            items={products?.slice(10 * (page - 1), 10 * page)}
+            name="상품"
+            unit="개"
+            postPath="/admin/product/finished-teas/post"
+            modifyPath="/admin/product/finished-teas/detail"
+            totalCount={products?.length}
+          />
+          <PageButtons currentPage={page} setPage={setPage} size={products?.length} />
+        </>
+      )}
     </>
   );
 }
