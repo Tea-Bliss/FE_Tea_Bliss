@@ -5,6 +5,7 @@ import { Dispatch, KeyboardEventHandler, SetStateAction, useEffect } from 'react
 import classNames from 'classnames/bind';
 import { FormProvider, useForm } from 'react-hook-form';
 
+import openToast from '@/components/common/Toast/features/openToast';
 import DetailCard from '@/components/page-layout/adminLayout/components/common/DetailCard';
 import FileInput from '@/components/page-layout/adminLayout/components/common/FileInput';
 import styles from '@/components/page-layout/adminLayout/components/common/FinIshedTeaForm/FinishedTeaForm.module.scss';
@@ -62,7 +63,19 @@ export default function FinishedTeaForm({ defaultValues, mutateFn, setImageFile 
     <>
       <DetailCard title="상품 정보" className={cn('card')}>
         <FormProvider {...methods}>
-          <form className={cn('form')} onSubmit={handleSubmit((data) => mutateFn(data))} onKeyDown={handleKeyDown}>
+          <form
+            className={cn('form')}
+            onSubmit={handleSubmit((data) => {
+              const flavors = data?.flavor;
+
+              if (flavors?.length && flavors?.length < 4) {
+                mutateFn(data);
+              } else {
+                openToast('error', '맛은 최소 1개부터 3개까지 골라주세요.');
+              }
+            })}
+            onKeyDown={handleKeyDown}
+          >
             <div className={cn('profile')}>
               <FileInput type="product" defaultImage={defaultValues?.img} setFn={setImageFile} />
             </div>

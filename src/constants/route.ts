@@ -5,6 +5,7 @@ const ROUTE = {
   MY_BLENDING: '/my-blending',
   MY_BLENDING_RESULT: '/my-blending/result',
   CART: '/cart',
+  ORDER: '/order',
   SURVEY: '/survey',
   ADMIN: '/admin',
   PRODUCT: '/product',

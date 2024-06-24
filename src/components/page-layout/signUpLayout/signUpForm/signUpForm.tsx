@@ -51,7 +51,6 @@ export default function SignUpForm() {
   const mutation = useMutation({
     mutationFn: (data: SignUpFormData) => postSignUpForm(data),
     onSuccess: (response) => {
-      console.log(response);
       router.push(ROUTE.SIGN_IN);
     },
     onError: (error: Error) => {

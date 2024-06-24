@@ -4,7 +4,6 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Button from '@/components/common/Button';
 import { MyInfoProps } from '@/components/common/GlobalNavBar/MyInfo/MyInfo';
 import styles from '@/components/common/GlobalNavBar/MyInfo/MyInfo.module.scss';
 import ROUTE from '@/constants/route';
@@ -26,9 +25,9 @@ export default function MyInfoContent({ toggle }: MyInfoContentProps) {
   return (
     <>
       <div className={cn('profile')}>
-        {data.profile ? (
+        {data?.data.data.profile ? (
           <Image
-            src={data.profile}
+            src={data.data.data.profile}
             width={105}
             height={105}
             className={cn('profileImage')}
@@ -44,7 +43,7 @@ export default function MyInfoContent({ toggle }: MyInfoContentProps) {
             alt="기본 프로필 이미지"
           />
         )}
-        <p className={cn('userName')}>{data.nickname}</p>
+        <p className={cn('userName')}>{data?.data.data.nickname}</p>
       </div>
       <div className={cn('buttonWrapper')}>
         <Link className={cn('myInfoBtn', 'red')} href={ROUTE.MY_PAGE_MY_INFO} onClick={toggle}>

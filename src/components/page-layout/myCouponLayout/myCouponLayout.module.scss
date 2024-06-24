@@ -1,0 +1,23 @@
+.root {
+  padding-bottom: 7.5rem;
+}
+
+.right {
+  text-align: right;
+}
+
+.selected {
+  color: $black-13;
+}
+
+.couponContainer {
+  @include flexSort(null, center, center, null);
+  padding-bottom: 10rem;
+}
+
+.couponBox {
+  display: grid;
+  width: 95rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
