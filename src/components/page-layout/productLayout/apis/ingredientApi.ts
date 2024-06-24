@@ -1,4 +1,4 @@
-import { axiosAnotherInstance } from '@/apis/axiosInstance';
+import { axiosInstance } from '@/apis/axiosInstance';
 
 interface getIngredientType {
   data: {
@@ -8,7 +8,7 @@ interface getIngredientType {
   };
 }
 const getIngredient = async (id: number) => {
-  return await axiosAnotherInstance.get<getIngredientType>(`/ingredient/{id}?id=${id}`);
+  return await axiosInstance.get<getIngredientType>(`/ingredient/{id}?id=${id}`);
 };
 
 export default getIngredient;

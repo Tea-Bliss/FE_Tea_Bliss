@@ -1,4 +1,4 @@
-import { axiosAnotherInstance } from '@/apis/axiosInstance';
+import { axiosInstance } from '@/apis/axiosInstance';
 
 interface getTeaDetailType {
   id: number;
@@ -12,7 +12,7 @@ interface getTeaDetailType {
 }
 
 const getTeaDetail = async (id: string) => {
-  return await axiosAnotherInstance.get<getTeaDetailType>(`/tea/findtea/${id}`);
+  return await axiosInstance.get<getTeaDetailType>(`/tea/findtea/${id}`);
 };
 
 export default getTeaDetail;
