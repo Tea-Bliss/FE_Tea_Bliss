@@ -34,6 +34,11 @@ export default function EachFinishedTeasPage() {
   const deleteMutate = useAdminDeleteTea();
 
   const handleFormPatch = async (formValues: PatchFinishedTeasType) => {
+    if (!data) {
+      openToast('error', '상품 정보를 불러오지 못해 수정이 불가능합니다.');
+      return;
+    }
+
     if (imageFile) {
       const publicUrl = await uploadImage(imageFile);
 
@@ -78,8 +83,19 @@ export default function EachFinishedTeasPage() {
       <SubmitButton
         isDelete={true}
         onClick={() => {
-          deleteMutate.mutate(+id);
-          router.push('/admin/product/finished-teas');
+          if (!data) {
+            openToast('error', '상품 정보를 불러오지 못해 삭제가 불가능합니다.');
+            return;
+          }
+
+          deleteMutate.mutate(+id, {
+            onSuccess: async () => {
+              if (data?.data.img) {
+                await deleteImage(data?.data.img);
+              }
+              router.push('/admin/product/finished-teas');
+            },
+          });
         }}
       >
         삭제하기

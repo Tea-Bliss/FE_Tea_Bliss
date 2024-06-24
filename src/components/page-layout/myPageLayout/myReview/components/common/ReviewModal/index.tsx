@@ -26,10 +26,10 @@ export default function ReviewModal({ role, data }: ReviewModalProps) {
       <div className={cn('contents')}>
         <div className={cn('productInfo')}>
           <p className={cn('grayText')}>판매완료</p>
-          <h2 className={cn('productTitle')}>{data.title}</h2>
+          <h2 className={cn('productTitle')}>{data.name}</h2>
           <div className={cn('dayAndQuantity')}>
-            <span className={cn('grayText')}>{data.createDt.split(' ')[0]}</span>
-            <span className={cn('grayText')}>{`구매 수량: ${data.purchaseQuantity}`}</span>
+            <span className={cn('grayText')}>{data.paidAt.split(' ')[0]}</span>
+            <span className={cn('grayText')}>{`구매 수량: ${data.quantity}`}</span>
           </div>
         </div>
 
@@ -42,8 +42,8 @@ export default function ReviewModal({ role, data }: ReviewModalProps) {
         </div>
 
         <div className={cn('inputArea')}>
-          <input className={cn('titleInput')} />
-          <textarea className={cn('textarea')} />
+          <input className={cn('titleInput')} placeholder="리뷰 제목을 작성해주세요" />
+          <textarea className={cn('textarea')} placeholder="리뷰를 작성해주세요" />
         </div>
       </div>
 
