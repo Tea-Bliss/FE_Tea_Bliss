@@ -14,10 +14,11 @@ interface SurveyResultsProps {
   sale: number;
   category: string;
   caffeine: string;
+  surveyId: string;
 }
 
-export default function SurveyResults({ name, taste, sale, category, caffeine }: SurveyResultsProps) {
-  const { data } = useGetSurveyResults({ taste, sale, category, caffeine });
+export default function SurveyResults({ name, taste, sale, category, caffeine, surveyId }: SurveyResultsProps) {
+  const { data } = useGetSurveyResults(surveyId);
 
   return (
     <div className={cn('layout')}>

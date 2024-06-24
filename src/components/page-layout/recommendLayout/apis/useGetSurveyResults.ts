@@ -3,11 +3,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { getSurveyResults } from './getSurveyResults';
 
-const useGetSurveyResults = (params: { taste: string; sale: number; category: string; caffeine: string }) => {
+const useGetSurveyResults = (surveyId: string) => {
   return useQuery({
-    queryKey: ['results', params],
+    queryKey: ['results', surveyId],
     queryFn: async () => {
-      const response = await getSurveyResults(params);
+      const response = await getSurveyResults(surveyId);
       return response.data;
     },
   });

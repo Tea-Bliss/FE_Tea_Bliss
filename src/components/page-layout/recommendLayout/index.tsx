@@ -16,9 +16,10 @@ const cn = classNames.bind(styles);
 
 interface RecommendLayoutProps {
   name: string;
+  surveyId: string;
 }
 
-export default function RecommendLayout({ name = '유저' }: RecommendLayoutProps) {
+export default function RecommendLayout({ name = '유저', surveyId }: RecommendLayoutProps) {
   const nickname = useUserInfoQuery();
 
   return (
@@ -28,12 +29,12 @@ export default function RecommendLayout({ name = '유저' }: RecommendLayoutProp
         <div className={cn('checklist')}>
           <Image src={Checklist} alt="설문 결과" />
           <div className={cn('results')}>
-            <SurveyResults name={nickname.data?.data.data.nickname} />
+            <SurveyResults name={nickname.data?.data.data.nickname} surveyId={surveyId} />
           </div>
         </div>
         <div className={cn('line')}></div>
         <div>
-          <RecommendList />
+          <RecommendList surveyId={surveyId} />
         </div>
       </div>
     </div>
