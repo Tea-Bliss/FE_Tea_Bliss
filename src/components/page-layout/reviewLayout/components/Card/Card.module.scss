@@ -1,0 +1,44 @@
+.container {
+  width: 100%;
+  height: 100%;
+  border: 0.1rem solid #181717;
+  padding: 1.4rem;
+  @include flexSort(column, null, null, 1rem);
+}
+
+.imgBox {
+  @include flexSort(null, space-between, null, 1rem);
+}
+
+.img {
+  position: relative;
+  width: 90%;
+  height: auto;
+  aspect-ratio: 1/1;
+}
+
+.startContainer {
+  @include flexSort(column, null, null, 1rem);
+}
+
+.starBox {
+  @include flexSort(null, null, null, 0.1rem);
+}
+
+.contents {
+  font-size: 1.2rem;
+}
+
+.titleBox {
+  @include flexSort(column, null, null, 1rem);
+}
+
+.title {
+  color: var(--tb-color-v-2-main-m-75, #a0a0a0);
+  @include font(1.8rem, 400, normal);
+}
+
+.date {
+  font-size: 1.2rem;
+  color: #bfbfbf;
+}

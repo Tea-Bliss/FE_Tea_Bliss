@@ -2,6 +2,7 @@
 
 import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffect, useMemo, useState } from 'react';
 
+import openToast from '@/components/common/Toast/features/openToast';
 import { useGetLooseLeafTeas } from '@/components/page-layout/myBlendingLayout/hooks/useGetLooseLeafTeas';
 import { FlavorTypeEng, LooseLeafTeaType } from '@/components/page-layout/myBlendingLayout/types/teaType';
 
@@ -33,7 +34,13 @@ export function MyBlendingProvider({ children }: { children: ReactNode }) {
   const [selectedTeas, setSelectedTeas] = useState<LooseLeafTeaType[]>([]);
   const [myTeaName, setMyTeaName] = useState('');
 
-  const { data } = useGetLooseLeafTeas();
+  const { data, isError } = useGetLooseLeafTeas();
+
+  useEffect(() => {
+    if (isError) {
+      openToast('error', '티 재료를 불러오는데 실패했습니다');
+    }
+  }, [isError]);
 
   useEffect(() => {
     setTeaList(

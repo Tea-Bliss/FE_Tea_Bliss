@@ -1,0 +1,8 @@
+.container {
+  height: 100vh;
+  @include flexSort(column, null, null, null);
+}
+
+.box {
+  flex: 1;
+}

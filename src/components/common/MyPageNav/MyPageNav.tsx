@@ -15,8 +15,6 @@ export default function MyPageNav() {
 
   const lastPathname = pathname.split('/')[2];
 
-  console.log(lastPathname);
-
   return (
     <nav className={cn('nav')}>
       <div className={cn('navBox')}>

@@ -30,7 +30,7 @@ export default function ButtonInputs({ items, name, status, className, ...props 
             key={index}
             item={item}
             name={name}
-            isSelected={selectedValue === item.value || false}
+            isSelected={String(selectedValue) === String(item.value) || false}
             status={status}
             {...props}
           />

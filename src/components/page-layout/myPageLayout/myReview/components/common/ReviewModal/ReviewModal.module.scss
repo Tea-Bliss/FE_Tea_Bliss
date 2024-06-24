@@ -1,0 +1,115 @@
+.modal {
+  @include flexSort(column, null, null, 4rem);
+  width: 73rem;
+
+  .modalTitle {
+    color: #181717;
+    letter-spacing: -0.144px;
+    @include font(2.4rem, 700, 2.9rem);
+  }
+
+  .contents {
+    @include flexSort(column, null, null, 2rem);
+
+    .grayText {
+      color: #bfbfbf;
+      font-family: Pretendard !important;
+      letter-spacing: -0.6px;
+      @include font(1.3rem, 400, 1.8rem);
+    }
+
+    .productInfo {
+      @include flexSort(column, null, null, 0.8rem);
+
+      .productTitle {
+        color: #181717;
+        letter-spacing: -0.144px;
+        @include font(2.4rem, 600, 2.8rem);
+      }
+
+      .dayAndQuantity {
+        @include flexSort(row, null, null, 2.4rem);
+        position: relative;
+        width: 20rem;
+
+        &::before {
+          display: block;
+          border: 0.1rem solid #bfbfbf;
+          border-top: none;
+          border-right: none;
+          border-bottom: none;
+          position: absolute;
+          top: 10%;
+          left: 35%;
+          width: 1rem;
+          height: 1.2rem;
+          content: '';
+        }
+      }
+    }
+
+    .ratingArea {
+      @include flexSort(column, null, null, 1rem);
+
+      .rating {
+        @include flexSort(row, null, center, 0.5rem);
+
+        .ratingText {
+          font-family: Pretendard !important;
+          letter-spacing: -0.6px;
+          @include font(2.4rem, 700, 3.4rem);
+        }
+      }
+    }
+
+    .inputArea {
+      @include flexSort(column, null, null, 1.7rem);
+      padding: 1.8rem 2.5rem;
+      width: 100%;
+      min-height: 15.8rem;
+      background-color: #f4f7f4;
+      border: 0.1rem solid #e8e8e8;
+      border-radius: 0.6rem;
+
+      .titleInput {
+        background-color: #f4f7f4;
+        padding: 1.325rem 2.5rem 1.375rem 0.7rem;
+        color: var(--point-color, #181717);
+        font-family: Pretendard !important;
+        letter-spacing: -0.6px;
+        border-bottom: 0.1rem solid #e8e8e8;
+        @include font(2rem, 700, 1.8rem);
+      }
+
+      .textarea {
+        resize: vertical;
+        min-height: 5.4rem;
+        max-height: 8.7rem;
+        font-family: Pretendard !important;
+        border: none;
+        background-color: #f4f7f4;
+        letter-spacing: -0.6px;
+        @include font(1.4rem, 400, 1.8rem);
+
+        &::-webkit-scrollbar,
+        ::-webkit-scrollbar-track,
+        ::-webkit-scrollbar-button,
+        ::-webkit-scrollbar-thumb {
+          display: none;
+        }
+
+        &:focus {
+          outline-color: #e8e8e8;
+        }
+      }
+    }
+  }
+
+  .buttonContainer {
+    @include flexSort(column, null, flex-end, 0);
+
+    .button {
+      width: 38rem;
+    }
+  }
+}

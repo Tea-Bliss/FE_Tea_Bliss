@@ -1,6 +1,16 @@
-export const seasonNAV = [{ name: '봄' }, { name: '여름' }, { name: '가을' }, { name: '겨울' }] as const;
+import ROUTE from '@/constants/route';
 
-export const caffeineNAV = [{ name: '카페인' }, { name: '디카페인' }] as const;
+export const seasonNAV = [
+  { name: '봄', href: `${ROUTE.PRODUCT_LIST}?page=1&filter=season&season=spring` },
+  { name: '여름', href: `${ROUTE.PRODUCT_LIST}?page=1&filter=season&season=summer` },
+  { name: '가을', href: `${ROUTE.PRODUCT_LIST}?page=1&filter=season&season=autumn` },
+  { name: '겨울', href: `${ROUTE.PRODUCT_LIST}?page=1&filter=season&season=winter` },
+] as const;
+
+export const caffeineNAV = [
+  { name: '카페인', href: `${ROUTE.PRODUCT_LIST}?page=1&filter=caffeine&caffeine=true` },
+  { name: '디카페인', href: `${ROUTE.PRODUCT_LIST}?page=1&filter=caffeine&caffeine=false` },
+] as const;
 
 export const FILTER = [
   { ko: '추천순', english: 'recommend', key: 1 },

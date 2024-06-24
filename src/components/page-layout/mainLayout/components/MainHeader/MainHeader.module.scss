@@ -1,15 +1,16 @@
 .layout {
-  border-top: 0.1rem solid #181717;
   width: 100%;
-  // min-width: 120rem;
+  max-width: 120rem;
   height: 56.4rem;
+  margin: 0 auto;
   background-color: #fcf8ef;
-  @include flexSort(row, center, center, null);
+  @include flexSort(row, null, center, null);
 }
 
 .container-left {
   margin-right: 3.3rem;
-  // min-width: 43.7rem;
+  width: 100%;
+  max-width: 43.7rem;
   height: 46.4rem;
   @include flexSort(column, space-between, flex-start, 3.1rem);
 }
@@ -20,7 +21,8 @@
 }
 
 .blendingBtn {
-  padding: 1.9rem 12.3rem;
+  white-space: nowrap;
+  padding: 1.9rem 0;
   width: 100%;
   background: #181717;
   color: #fcf8ef;
@@ -39,7 +41,8 @@
 
 .container-right {
   margin-left: 3.3rem;
-  // min-width: 43.7rem;
+  max-width: 43.7rem;
+  width: 100%;
   height: 46.4rem;
   @include flexSort(column, space-between, flex-end, 3.1rem);
 }
@@ -51,12 +54,13 @@
 }
 
 .recommendBtn {
-  padding: 1.9rem 12.3rem;
+  white-space: nowrap;
+  padding: 1.9rem 0;
   border: 0.1rem solid #181717;
   width: 100%;
   color: #181717;
   text-align: center;
-  letter-spacing: -0.144px;
+  letter-spacing: -0.0144rem;
   @include flexSort(row, center, center, 1.2rem);
   @include font(2.4rem, 700, normal);
 }
@@ -68,6 +72,7 @@
 
 .title {
   color: #181717;
+  -webkit-text-stroke-width: 0.05rem;
   letter-spacing: 0.28rem;
   @include font(7rem, 400, normal);
 }
@@ -76,6 +81,7 @@
   color: #181717;
   letter-spacing: 0.16rem;
   @include font(4rem, 400, normal);
+  -webkit-text-stroke-width: 0.02rem;
 }
 
 .description {
@@ -83,6 +89,7 @@
 }
 
 .description-en {
+  -webkit-text-stroke-width: 0.02rem;
   color: #181717;
   text-align: right;
   letter-spacing: -0.0144rem;
@@ -94,5 +101,7 @@
   font-size: 1.4rem;
   color: #181717;
   text-align: right;
-  letter-spacing: -0.084px;
+  line-height: normal;
+  -webkit-text-stroke-width: 0.02rem;
+  letter-spacing: -0.0084rem;
 }

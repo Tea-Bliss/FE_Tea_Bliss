@@ -78,6 +78,7 @@ export default function Carousel({ cards, num }: CarouselProps) {
           {visibleCards.map((card, index) => (
             <div className={cn('card')} key={index}>
               <Card
+                type="main"
                 href={card.href}
                 img={card.img}
                 title={card.title}

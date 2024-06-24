@@ -18,15 +18,10 @@ interface CheckBoxInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function CheckBoxInput({ item, name, isChecked, handleClick, status, ...props }: CheckBoxInputProps) {
-  const [UIStatus, setUIStatus] = useState(name === 'taste' ? 'current' : 'preparing');
+  const [UIStatus, setUIStatus] = useState('');
   const { register } = useFormContext();
 
   useEffect(() => {
-    if (name === 'taste') {
-      setUIStatus(status > 0 ? 'done' : 'current');
-      return;
-    }
-
     setUIStatus(status < 2 ? 'preparing' : status === 2 ? 'current' : 'done');
   }, [name, status]);
 

@@ -1,0 +1,25 @@
+.pageButtons {
+  @include flexSort(row, center, center, 2rem);
+  padding-top: 2rem;
+
+  .invisible {
+    display: none;
+  }
+
+  .nextArrow {
+    position: relative;
+    rotate: 180deg;
+    top: 0.09rem;
+  }
+
+  .pages {
+    @include font(1.4rem, 400, 1.4rem);
+    font-family: 'Pretendard Varible' !important;
+    cursor: pointer;
+
+    &.current {
+      text-decoration: underline;
+      font-weight: 700;
+    }
+  }
+}

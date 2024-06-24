@@ -35,12 +35,7 @@ export default function ResultArea() {
       <Link
         href={{ pathname: '/my-blending/result', query: { id: selectedTeas.map((tea) => tea.id), name: myTeaName } }}
       >
-        <Button
-          shape="square"
-          color="red"
-          className={cn('SubmitButton')}
-          disabled={!myTeaName || selectedTeas.length < 2}
-        >
+        <Button shape="square" color="black" disabled={!myTeaName || selectedTeas.length < 2}>
           나만의 티 만들기
         </Button>
       </Link>

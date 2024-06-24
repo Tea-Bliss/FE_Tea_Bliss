@@ -1,46 +1,19 @@
 'use client';
 
-import { ChangeEvent, KeyboardEventHandler, useState } from 'react';
+import { ChangeEvent, KeyboardEventHandler, useEffect, useState } from 'react';
 
-import classNames from 'classnames/bind';
-
-import Image from 'next/image';
-
-import styles from '@/components/page-layout/adminLayout/components/AdminCustomerPage/AdminCustomerPage.module.scss';
+import PageButtons from '@/components/page-layout/adminLayout/components/common/PageButtons';
 import SearchBar from '@/components/page-layout/adminLayout/components/common/SearchBar';
 import Table from '@/components/page-layout/adminLayout/components/common/Table';
+import { useGetCustomers } from '@/components/page-layout/adminLayout/hooks/useManageCustomers';
 import User from '@/components/page-layout/adminLayout/types/userType';
 
-const cn = classNames.bind(styles);
-
-const mockUser = {
-  nickname: '티블리스',
-  email: 'teabliss@gmail.com',
-  roll: '일반회원',
-  createdAt: '2024-06-10',
-  reviewCount: 2,
-  purchaseAmount: 6.5,
-};
-
-const mockUsers = [
-  {
-    id: 0,
-    nickname: '관리자',
-    email: 'cksdyd324@gmail.com',
-    roll: '관리자',
-    createdAt: '2024-06-06',
-    reviewCount: 0,
-    purchaseAmount: 0,
-  },
-  ...Array.from({ length: 9 }, (_, i) => ({
-    id: i + 1,
-    ...mockUser,
-  })),
-] as User[];
-
 export default function AdminCustomerPage() {
-  const [users, setUsers] = useState<User[]>(mockUsers);
+  const [page, setPage] = useState(1);
+  const [users, setUsers] = useState<User[]>([]);
   const [searchValue, setSearchValue] = useState<string>('');
+
+  const { data } = useGetCustomers({ page: 1, limit: 100 });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -49,35 +22,41 @@ export default function AdminCustomerPage() {
   const handleEnter: KeyboardEventHandler = (e) => {
     if (e.keyCode === 13) {
       if (!searchValue) {
-        setUsers(mockUsers);
+        setUsers(data?.data?.data);
         return;
       }
 
-      setUsers(mockUsers.filter((user) => user.email.includes(searchValue) || user.nickname.includes(searchValue)));
+      setUsers(
+        data?.data?.data.filter((user: any) => user.email.includes(searchValue) || user.nickname.includes(searchValue))
+      );
     }
   };
 
+  useEffect(() => {
+    setUsers(data?.data.data);
+  }, [data]);
+
   return (
     <>
-      <SearchBar onChange={handleChange} onKeyUp={handleEnter} placeholder="닉네임 또는 이메일을 검색해주세요" />
+      <SearchBar
+        value={searchValue}
+        onChange={handleChange}
+        onKeyUp={handleEnter}
+        placeholder="닉네임 또는 이메일을 검색해주세요"
+      />
 
       <Table
         fields={['ID', '닉네임', '이메일', '사용자 유형', '가입일', '리뷰 수', '구매 금액']}
-        items={users}
+        keys={['id', 'nickname', 'email', 'role', 'createDt', 'reviewCount', 'purchaseAmount']}
+        items={users?.slice(10 * (page - 1), 10 * page)}
         name="사용자"
         unit="명"
-        path="/admin/customer/detail"
+        postPath="/admin/customer/detail"
+        modifyPath="/admin/customer/detail"
+        totalCount={data?.data.data.length}
       />
 
-      <div className={cn('pageButtons')}>
-        <Image src="/icons/arrow.svg" alt="이전" width={16} height={16} className={cn('arrow', 'before')} />
-        <div className={cn('pages', 'current')}>1</div>
-        <div className={cn('pages')}>2</div>
-        <div className={cn('pages')}>3</div>
-        <div className={cn('pages')}>4</div>
-        <div className={cn('pages')}>5</div>
-        <Image src="/icons/arrow.svg" alt="다음" width={16} height={16} className={cn('arrow', 'next')} />
-      </div>
+      <PageButtons currentPage={page} setPage={setPage} size={data?.data.data.length} />
     </>
   );
 }

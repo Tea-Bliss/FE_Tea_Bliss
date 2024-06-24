@@ -1,0 +1,27 @@
+.container {
+  @include flexSort(null, center, center, null);
+  padding: 0 0 10rem 0;
+}
+
+.box {
+  max-width: 120rem;
+  width: 100%;
+  @include flexSort(column, null, null, 4rem);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.gridbox {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.8rem;
+}
+
+.skeleton {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+}

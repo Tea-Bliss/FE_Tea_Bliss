@@ -1,112 +1,89 @@
 'use client';
 
-import classNames from 'classnames/bind';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useState } from 'react';
 
-import { useSearchParams } from 'next/navigation';
+import { notFound, useRouter, useSearchParams } from 'next/navigation';
 
-import FileInput from '@/components/common/FileInput';
-import styles from '@/components/page-layout/adminLayout/components/AdminProductPage/LooseLeafTeasPage/EachLooseLeafTeasPage/EachLooseLeafTeasPage.module.scss';
+import openToast from '@/components/common/Toast/features/openToast';
 import BackButton from '@/components/page-layout/adminLayout/components/common/BackButton';
-import DetailCard from '@/components/page-layout/adminLayout/components/common/DetailCard';
+import LooseLeafTeaForm from '@/components/page-layout/adminLayout/components/common/LooseLeafTeaForm';
 import SubmitButton from '@/components/page-layout/adminLayout/components/common/SubmitButton';
-import ButtonInputs from '@/components/page-layout/surveyLayout/components/ButtonInputs';
-import CheckBoxInputs from '@/components/page-layout/surveyLayout/components/CheckBoxInputs';
-import { TASTE_TYPES, TEA_TYPES } from '@/components/page-layout/surveyLayout/constants/teaTypes';
-
-const cn = classNames.bind(styles);
-
-const mockProduct = {
-  name: '산딸기',
-  name_eng: 'wild strawberry',
-  explanation: '적당량의 시큼함과 은은한 달콤함. 어린이와 함께 나누기에 완벽한 허브티입니다.',
-  flavor: ['단맛', '신맛'],
-  category: '허브 티',
-  status: '판매중',
-  stock: 28,
-  photo: '/images/my-blending/vanila.png',
-};
+import {
+  useAdminDeleteIngredient,
+  useAdminPutIngredient,
+  useGetOneIngredient,
+} from '@/components/page-layout/adminLayout/hooks/useManageIngredients';
+import processIngredientData from '@/components/page-layout/adminLayout/utils/processIngredientData';
+import { deleteImage, uploadImage } from '@/utils/supabaseUtils';
 
 export default function EachLooseLeafTeasPage() {
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
 
-  const methods = useForm({
-    defaultValues: {
-      category: undefined,
-      name: undefined,
-      nameEng: undefined,
-      sale: undefined,
-      inventory: undefined,
-      saleStatus: undefined,
-      flavor: undefined,
-      explanation: undefined,
-      photo: undefined,
-    },
-  });
-  const { control, handleSubmit, register } = methods;
+  const router = useRouter();
+  const [imageFile, setImageFile] = useState<File | null | undefined>(undefined);
+
+  if (!id) {
+    notFound();
+  }
+
+  const { data } = useGetOneIngredient(+id);
+
+  const newData = processIngredientData(data?.data.data);
+
+  const mutate = useAdminPutIngredient();
+
+  const deleteMutate = useAdminDeleteIngredient();
+
+  const handleFormPut = async (formValues: any) => {
+    if (imageFile) {
+      const publicUrl = await uploadImage(imageFile);
+
+      if (!publicUrl) return;
+      formValues.photo = publicUrl;
+    }
+
+    if (imageFile === null) {
+      formValues.photo = null;
+    }
+
+    formValues.flavor = formValues.flavor.join(',');
+    formValues.inventory = +formValues.inventory;
+    formValues.sale = +formValues.sale;
+
+    mutate.mutate(formValues, {
+      onError: async (_, values) => {
+        if (values.photo && values.photo !== data?.data.data.photo) {
+          await deleteImage(values.photo);
+        }
+
+        openToast('error', '상품 정보 변경에 실패했습니다.');
+      },
+
+      onSuccess: async (_, values) => {
+        if (values.photo && data?.data.data.photo && values.photo !== data?.data.data.photo) {
+          await deleteImage(data?.data.data.photo);
+        }
+
+        openToast('success', '상품 정보가 변경되었습니다');
+        router.push('/admin/product/loose-leaf-teas');
+      },
+    });
+  };
 
   return (
     <>
-      <BackButton className={cn('backButton')} />
-      <DetailCard title="상품 정보" className={cn('card')}>
-        <FormProvider {...methods}>
-          <form className={cn('form')} onSubmit={handleSubmit((data) => console.log(data))}>
-            <div className={cn('profile')}>
-              <FileInput type="product" />
-            </div>
-
-            <div className={cn('information')}>
-              <div className={cn('section')}>
-                <div className={cn('field')}>이름</div>
-                <input className={cn('value', 'input')} {...register('name', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>영문 이름</div>
-                <input className={cn('value', 'input')} {...register('nameEng', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>종류</div>
-                <ButtonInputs items={TEA_TYPES} name="category" status={3} className={cn('buttonInputs')} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>설명</div>
-                <textarea className={cn('value', 'textarea')} {...register('explanation', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>맛</div>
-                <CheckBoxInputs items={TASTE_TYPES} name="flavor" status={2} className={cn('checkboxInputs')} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>재고</div>
-                <input type="number" className={cn('value', 'input')} {...register('inventory', { required: true })} />
-              </div>
-
-              <div className={cn('section')}>
-                <div className={cn('field')}>판매 상태</div>
-                <ButtonInputs
-                  items={[
-                    { value: '판매중', text: '판매중' },
-                    { value: '품절', text: '품절' },
-                  ]}
-                  name="saleStatus"
-                  status={3}
-                  className={cn('buttonInputs')}
-                />
-              </div>
-            </div>
-            <div className={cn('submitButton')}>
-              <SubmitButton>저장</SubmitButton>
-            </div>
-          </form>
-        </FormProvider>
-      </DetailCard>
-      <SubmitButton isDelete={true}>삭제하기</SubmitButton>
+      <BackButton />
+      <LooseLeafTeaForm defaultValues={newData} mutateFn={handleFormPut} setImageFile={setImageFile} />
+      <SubmitButton
+        isDelete={true}
+        onClick={() => {
+          deleteMutate.mutate(+id);
+          router.push('/admin/product/loose-leaf-teas');
+        }}
+      >
+        삭제하기
+      </SubmitButton>
     </>
   );
 }

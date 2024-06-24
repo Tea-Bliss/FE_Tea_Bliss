@@ -5,52 +5,82 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 
+import { useRouter } from 'next/navigation';
+
 import Button from '@/components/common/Button';
 import ButtonInputs from '@/components/page-layout/surveyLayout/components/ButtonInputs';
 import CheckBoxInputs from '@/components/page-layout/surveyLayout/components/CheckBoxInputs';
 import FormDesign from '@/components/page-layout/surveyLayout/components/FormDesign';
 import styles from '@/components/page-layout/surveyLayout/components/SurveyForm/SurveyForm.module.scss';
 import { TASTE_TYPES, TEA_TYPES } from '@/components/page-layout/surveyLayout/constants/teaTypes';
+import { usePostSurvey } from '@/components/page-layout/surveyLayout/hooks/usePostSurvey';
 
 const cn = classNames.bind(styles);
 
 export default function SurveyForm() {
+  const router = useRouter();
   const methods = useForm();
   const { control, handleSubmit } = methods;
   const [status, setStatus] = useState(0);
 
+  const mutate = usePostSurvey();
+
   const tasteValue = useWatch({ control, name: 'taste' });
-  const priceValue = useWatch({ control, name: 'price' });
-  const ingredientValue = useWatch({ control, name: 'ingredient' });
+  const saleValue = useWatch({ control, name: 'sale' });
+  const categoryValue = useWatch({ control, name: 'category' });
   const caffeineValue = useWatch({ control, name: 'caffeine' });
 
   useEffect(() => {
     if (tasteValue && status === 0) {
       setStatus(1);
     }
-    if (priceValue && status === 1) {
+    if (saleValue && status === 1) {
       setStatus(2);
     }
-    if (ingredientValue && status === 2) {
+    if (categoryValue && status === 2) {
       setStatus(3);
     }
     if (caffeineValue && status === 3) {
       setStatus(4);
     }
-  }, [tasteValue, priceValue, ingredientValue, caffeineValue, status]);
+  }, [tasteValue, saleValue, categoryValue, caffeineValue, status]);
+
+  const handleSurveyPost = async (formData: any) => {
+    formData.category = formData.category.join(',');
+
+    for (const key in formData) {
+      if (formData[key] === '상관없음') {
+        formData[key] = null;
+      }
+    }
+
+    if (formData.sale) {
+      formData.sale = +formData.sale;
+    }
+
+    if (formData.taste) {
+      formData.taste = +formData.taste;
+    }
+
+    mutate.mutate(formData, {
+      onSuccess: () => {
+        router.push('/recommend');
+      },
+    });
+  };
 
   return (
     <FormProvider {...methods}>
-      <form className={cn('form')} onSubmit={handleSubmit((data) => console.log(data))}>
+      <form className={cn('form')} onSubmit={handleSubmit((data) => handleSurveyPost(data))}>
         <h1 className={cn('title')}>설문하고 추천받기</h1>
         <FormDesign
           status={status}
           items={[
             {
               labelName: '맛',
-              description: '평소 선호하던 맛을 선택해주세요. (중복 가능)',
+              description: '평소 선호하던 맛을 선택해주세요.',
               content: (
-                <CheckBoxInputs
+                <ButtonInputs
                   items={[...TASTE_TYPES, { value: '상관없음', text: '상관없음' }]}
                   name="taste"
                   status={status}
@@ -63,13 +93,13 @@ export default function SurveyForm() {
               content: (
                 <ButtonInputs
                   items={[
-                    { value: '10,000원대', text: '10,000원대' },
-                    { value: '20,000원대', text: '20,000원대' },
-                    { value: '30,000원대', text: '30,000원대' },
-                    { value: '50,000원대 이상', text: '50,000원대 이상' },
+                    { value: 10000, text: '10,000원대' },
+                    { value: 20000, text: '20,000원대' },
+                    { value: 30000, text: '30,000원대' },
+                    { value: 50000, text: '50,000원대 이상' },
                     { value: '상관없음', text: '상관없음' },
                   ]}
-                  name="price"
+                  name="sale"
                   status={status}
                 />
               ),
@@ -80,7 +110,7 @@ export default function SurveyForm() {
               content: (
                 <CheckBoxInputs
                   items={[...TEA_TYPES, { value: '상관없음', text: '상관없음' }]}
-                  name="ingredient"
+                  name="category"
                   status={status}
                 />
               ),
@@ -91,8 +121,8 @@ export default function SurveyForm() {
               content: (
                 <ButtonInputs
                   items={[
-                    { value: '카페인 있음', text: '카페인 있음' },
-                    { value: '카페인 없음', text: '카페인 없음' },
+                    { value: 'Y', text: '카페인 있음' },
+                    { value: 'N', text: '카페인 없음' },
                     { value: '상관없음', text: '상관없음' },
                   ]}
                   name="caffeine"
@@ -104,9 +134,9 @@ export default function SurveyForm() {
         />
         <Button
           shape="square"
-          color="red"
+          color="black"
           className={cn('surveySubmitButton')}
-          disabled={!(tasteValue?.length && priceValue && ingredientValue?.length && caffeineValue)}
+          disabled={!(tasteValue?.length && saleValue && categoryValue?.length && caffeineValue)}
         >
           추천받기
         </Button>
