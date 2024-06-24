@@ -37,7 +37,11 @@ export default function MyReviewCard({ status, className, data }: MyReivewCardPr
           <p className={cn('grayText')}>판매완료</p>
           <h2 className={cn('productTitle')}>{data?.name}</h2>
           <div className={cn('dayAndQuantity')}>
-            <span className={cn('grayText')}>{data?.paidAt?.split(' ')[0]}</span>
+            <span className={cn('grayText')}>
+              {status === '작성 전'
+                ? `구매일: ${data?.paidAt?.split(' ')[0]}`
+                : `작성일: ${data?.createDt?.split(' ')[0]}`}
+            </span>
             <span className={cn('grayText')}>{`구매 수량: ${data?.quantity}`}</span>
           </div>
         </div>
@@ -67,7 +71,7 @@ export default function MyReviewCard({ status, className, data }: MyReivewCardPr
         </div>
       </div>
       <BackdropModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <ReviewModal role={status === '작성 전' ? '생성' : '수정'} data={data} />
+        <ReviewModal role={status === '작성 전' ? '생성' : '수정'} data={data} onClose={() => setIsModalOpen(false)} />
       </BackdropModal>
     </div>
   );

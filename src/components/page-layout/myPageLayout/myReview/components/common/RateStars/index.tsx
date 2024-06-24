@@ -1,6 +1,6 @@
 'use client';
 
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -22,13 +22,19 @@ export default function RateStars({ rate, where, setRate }: RateStars) {
       {Array.from({ length: 5 }).map((_, index) => {
         return (
           <div key={index} className={cn('star')}>
-            {setRate && index === 0 && <button className={cn('setZero')} onClick={() => setRate(0)}></button>}
-            {setRate && <button className={cn('left')} onClick={() => setRate((index + 0.5) as likesType)}></button>}
+            {setRate && index === 0 && (
+              <button type="button" className={cn('setZero')} onClick={() => setRate(0)}></button>
+            )}
+            {setRate && (
+              <button type="button" className={cn('left')} onClick={() => setRate((index + 0.5) as likesType)}></button>
+            )}
             <StarImage
               status={rate <= index ? 'empty' : rate >= index + 1 ? 'full' : 'half'}
               width={where === 'page' ? 14 : 36}
             />
-            {setRate && <button className={cn('right')} onClick={() => setRate((index + 1) as likesType)}></button>}
+            {setRate && (
+              <button type="button" className={cn('right')} onClick={() => setRate((index + 1) as likesType)}></button>
+            )}
           </div>
         );
       })}
