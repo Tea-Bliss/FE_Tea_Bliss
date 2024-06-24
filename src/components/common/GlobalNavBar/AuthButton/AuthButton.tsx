@@ -26,7 +26,7 @@ export default function AuthButton() {
 
   return (
     <div className={cn('authButton')}>
-      {data ? (
+      {data?.data.data ? (
         <>
           <div className={cn('cartWrapper')}>
             <Link href={ROUTE.CART}>
@@ -35,6 +35,11 @@ export default function AuthButton() {
             </Link>
           </div>
           <Profile />
+          {data.data.data.role !== '일반 회원' && (
+            <Link href={ROUTE.ADMIN} className={cn('admin')}>
+              관리자
+            </Link>
+          )}
         </>
       ) : (
         <div className={cn('authLinkWrapper')}>
