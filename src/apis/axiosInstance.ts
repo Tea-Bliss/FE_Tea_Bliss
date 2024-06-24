@@ -11,8 +11,8 @@ export const axiosInstance = axios.create({
   },
 });
 
-export const axiosAnotherInstance = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}`,
+export const axiosSubInstance = axios.create({
+  baseURL: `${process.env.NEXT_PUBLIC_API_SUB_URL}`,
   headers: {
     'Content-type': 'application/json',
   },
