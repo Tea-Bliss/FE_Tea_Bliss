@@ -1,4 +1,4 @@
-import axiosInstance from '@/apis/axiosInstance';
+import { axiosInstance } from '@/apis/axiosInstance';
 import { getCartItems } from '@/components/page-layout/cartLayout/types/cartApiType';
 
 import { SelectedItemsType } from '../components/CartView/CartView';

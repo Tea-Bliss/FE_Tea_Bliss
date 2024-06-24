@@ -6,12 +6,12 @@ import {
   postBlendingTeasSave,
 } from '@/components/page-layout/myPageLayout/saveList/apis/finishedTeasSaveApis';
 
-export const useGetBlendingTeasSave = (limit: number) => {
+export const useGetBlendingTeasSave = (limit: number, owner: string) => {
   return useInfiniteQuery({
     queryKey: ['save-list', 'blending-save'],
 
     queryFn: ({ pageParam = 0 }) => {
-      return getBlendingTeasSave(limit, pageParam as number);
+      return getBlendingTeasSave(limit, pageParam as number, owner);
     },
 
     initialPageParam: 0,

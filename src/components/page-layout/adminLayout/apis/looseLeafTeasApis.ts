@@ -1,4 +1,4 @@
-import axiosInstance from '@/apis/axiosInstance';
+import { axiosInstance } from '@/apis/axiosInstance';
 import { PostOrPutLooseLeafTeaType } from '@/components/page-layout/adminLayout/types/productType';
 
 export const getIngredients = (query: { category?: string | null; page?: number; limit?: number }) => {

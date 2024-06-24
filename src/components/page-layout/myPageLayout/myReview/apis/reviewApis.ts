@@ -1,4 +1,4 @@
-import axiosInstance from '@/apis/axiosInstance';
+import { axiosInstance } from '@/apis/axiosInstance';
 
 export const getMyReviews = () => {
   return axiosInstance.get('review/my-reviews');

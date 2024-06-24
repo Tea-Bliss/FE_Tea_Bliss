@@ -1,4 +1,4 @@
-import axiosInstance from '@/apis/axiosInstance';
+import { axiosInstance } from '@/apis/axiosInstance';
 import { PatchFinishedTeasType, PostFinishedTeasType } from '@/components/page-layout/adminLayout/types/productType';
 import createQueryString from '@/components/page-layout/adminLayout/utils/createQueryString';
 
