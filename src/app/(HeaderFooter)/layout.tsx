@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
 
-import Footer from '@/components/common/Footer/Footer';
-import GlobalNavBar from '@/components/common/GlobalNavBar/GlobalNavBar';
 import Layout from '@/components/common/Layout/Layout';
 
 export default function HeaderFooterLayout({
