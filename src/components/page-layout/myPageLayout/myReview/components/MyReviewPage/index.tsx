@@ -18,9 +18,9 @@ const mockDatas = [
       {
         product: {
           payId: 14,
-          name: '허니부쉬 차',
+          name: '미국의 차',
           amount: 1000,
-          quantity: 3,
+          quantity: 2,
         },
         review: false,
       },
@@ -33,7 +33,7 @@ const mockDatas = [
       {
         product: {
           payId: 15,
-          name: '허니부쉬 차',
+          name: '중국 홍차',
           amount: 1000,
           quantity: 3,
         },
@@ -48,18 +48,18 @@ const mockDatas = [
       {
         product: {
           payId: 16,
-          name: '허니부쉬 차',
+          name: '초콜릿 티',
           amount: 1000,
-          quantity: 3,
+          quantity: 4,
         },
         review: false,
       },
       {
         product: {
           payId: 16,
-          name: '허니부쉬 차',
+          name: '얼 그레이 차',
           amount: 1000,
-          quantity: 3,
+          quantity: 6,
         },
         review: false,
       },

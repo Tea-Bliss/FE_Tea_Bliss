@@ -1,80 +1,49 @@
 'use client';
 
-import classNames from 'classnames/bind';
+import { useEffect } from 'react';
 
+import classNames from 'classnames/bind';
+import { useInView } from 'react-intersection-observer';
+
+import Loader from '@/components/common/Loader';
+import Skeleton from '@/components/common/Skeleton/Skeleton';
 import SavePageCard from '@/components/page-layout/myPageLayout/saveList/components/common/SavePageCard';
 import styles from '@/components/page-layout/myPageLayout/saveList/components/saveListPage/SaveListPage.module.scss';
+import { useGetFinishedTeasSave } from '@/components/page-layout/myPageLayout/saveList/hooks/useHandleFinishedTeasSave';
 
 const cn = classNames.bind(styles);
 
-const datas = [
-  {
-    id: 1,
-    img: '/icons/다운로드.jpg',
-    name: '초콜릿',
-    nameEng: 'chocolate',
-    price: 14000,
-  },
-  {
-    id: 2,
-    img: '/icons/다운로드.jpg',
-    name: '초콜릿',
-    nameEng: 'chocolate',
-    price: 14000,
-  },
-  {
-    id: 3,
-    img: '/icons/다운로드.jpg',
-    name: '초콜릿',
-    nameEng: 'chocolate',
-    price: 14000,
-  },
-  {
-    id: 4,
-    img: '/icons/다운로드.jpg',
-    name: '초콜릿',
-    nameEng: 'chocolate',
-    price: 14000,
-  },
-  {
-    id: 5,
-    img: '/icons/다운로드.jpg',
-    name: '초콜릿',
-    nameEng: 'chocolate',
-    price: 14000,
-  },
-  {
-    id: 1,
-    img: '/icons/다운로드.jpg',
-    name: '초콜릿',
-    nameEng: 'chocolate',
-    price: 14000,
-  },
-  {
-    id: 1,
-    img: '/icons/다운로드.jpg',
-    name: '초콜릿',
-    nameEng: 'chocolate',
-    price: 14000,
-  },
-];
-
 export default function BlendingSavePage() {
+  const { data, isLoading, isError, fetchNextPage, isFetchingNextPage } = useGetFinishedTeasSave({
+    nickname: '코드잇',
+  });
+
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      fetchNextPage;
+    }
+  }, [inView, fetchNextPage]);
+
+  const saveData = data?.pages.flatMap((param) => param.data.items);
+
   return (
-    <div className={cn('container')}>
-      {datas?.map((data) => {
-        return (
-          <SavePageCard
-            key={data.id}
-            linkPath={'/'}
-            productImage={data?.img}
-            name={data.name}
-            nameEng={data.nameEng}
-            price={data.price}
-            type="완제품"
-          />
-        );
-      })}
-    </div>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className={cn('container')}>
+          {saveData?.map((item) => {
+            return <SavePageCard key={item?.id} productId={item?.productId} type={'ingredient'} />;
+          })}
+          {isFetchingNextPage
+            ? Array.from({ length: 8 }).map((_, index) => {
+                return <Skeleton key={index} className={cn('skeleton')} />;
+              })
+            : !isError && !isLoading && <div ref={ref} />}
+        </div>
+      )}
+    </>
   );
 }
