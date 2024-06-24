@@ -26,10 +26,10 @@ export default function ReviewModal({ role, data }: ReviewModalProps) {
       <div className={cn('contents')}>
         <div className={cn('productInfo')}>
           <p className={cn('grayText')}>판매완료</p>
-          <h2 className={cn('productTitle')}>{data.title}</h2>
+          <h2 className={cn('productTitle')}>{data.name}</h2>
           <div className={cn('dayAndQuantity')}>
-            <span className={cn('grayText')}>{data.createDt.split(' ')[0]}</span>
-            <span className={cn('grayText')}>{`구매 수량: ${data.purchaseQuantity}`}</span>
+            <span className={cn('grayText')}>{data.paidAt.split(' ')[0]}</span>
+            <span className={cn('grayText')}>{`구매 수량: ${data.quantity}`}</span>
           </div>
         </div>
 

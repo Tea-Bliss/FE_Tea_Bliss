@@ -13,5 +13,5 @@ export const putReview = (data: any, reviewId: number) => {
 };
 
 export const getMyPurchaseDatas = () => {
-  return axiosInstance.get('/');
+  return axiosInstance.get('/payment');
 };

@@ -30,7 +30,7 @@ export default function SavePageCard({
   linkPath,
   queryData,
 }: SavePageCardProps) {
-  const [saveStatus, setSaveStatus] = useState(false);
+  const [saveStatus, setSaveStatus] = useState(true);
   return (
     <div className={cn('card')}>
       <Link className={cn('teaImageContainer')} href={{ pathname: linkPath, query: queryData }}>

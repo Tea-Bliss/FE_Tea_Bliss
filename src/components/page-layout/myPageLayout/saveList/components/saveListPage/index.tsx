@@ -7,25 +7,74 @@ import styles from '@/components/page-layout/myPageLayout/saveList/components/sa
 
 const cn = classNames.bind(styles);
 
-const data = {
-  id: 1,
-  img: '/icons/다운로드.jpg',
-  name: '초콜릿',
-  nameEng: 'chocolate',
-  price: 14000,
-};
+const datas = [
+  {
+    id: 1,
+    img: '/icons/다운로드.jpg',
+    name: '초콜릿',
+    nameEng: 'chocolate',
+    price: 14000,
+  },
+  {
+    id: 2,
+    img: '/icons/다운로드.jpg',
+    name: '초콜릿',
+    nameEng: 'chocolate',
+    price: 14000,
+  },
+  {
+    id: 3,
+    img: '/icons/다운로드.jpg',
+    name: '초콜릿',
+    nameEng: 'chocolate',
+    price: 14000,
+  },
+  {
+    id: 4,
+    img: '/icons/다운로드.jpg',
+    name: '초콜릿',
+    nameEng: 'chocolate',
+    price: 14000,
+  },
+  {
+    id: 5,
+    img: '/icons/다운로드.jpg',
+    name: '초콜릿',
+    nameEng: 'chocolate',
+    price: 14000,
+  },
+  {
+    id: 1,
+    img: '/icons/다운로드.jpg',
+    name: '초콜릿',
+    nameEng: 'chocolate',
+    price: 14000,
+  },
+  {
+    id: 1,
+    img: '/icons/다운로드.jpg',
+    name: '초콜릿',
+    nameEng: 'chocolate',
+    price: 14000,
+  },
+];
 
 export default function SaveListPage() {
   return (
-    <div>
-      <SavePageCard
-        linkPath={'/'}
-        productImage={data?.img}
-        name={data.name}
-        nameEng={data.nameEng}
-        price={data.price}
-        type="완제품"
-      />
+    <div className={cn('container')}>
+      {datas?.map((data) => {
+        return (
+          <SavePageCard
+            key={data.id}
+            linkPath={'/'}
+            productImage={data?.img}
+            name={data.name}
+            nameEng={data.nameEng}
+            price={data.price}
+            type="완제품"
+          />
+        );
+      })}
     </div>
   );
 }
