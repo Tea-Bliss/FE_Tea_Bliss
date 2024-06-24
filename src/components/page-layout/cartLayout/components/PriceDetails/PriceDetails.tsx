@@ -27,6 +27,7 @@ export default function PriceDetails({ selectedItems }: PriceDetailsProps) {
       <div className={cn('item')}>
         <span className={cn('label')}>배송비</span>
         <span className={cn('amount')}>
+          {deliveryFee !== 0 && '+'}
           {deliveryFee.toLocaleString()}
           <span className={cn('currency')}>원</span>
         </span>

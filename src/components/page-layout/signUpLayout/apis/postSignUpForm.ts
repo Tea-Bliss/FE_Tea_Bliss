@@ -1,4 +1,4 @@
-import axiosInstance from '@/apis/axiosInstance';
+import { axiosInstance } from '@/apis/axiosInstance';
 import SignUpFormData from '@/components/page-layout/signUpLayout/types/signUpFormData';
 
 const postSignUpForm = async (data: SignUpFormData) => {
