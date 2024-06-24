@@ -11,7 +11,7 @@
 }
 
 .couponContainer {
-  @include flexSort(null, center, center, null);
+  @include flexSort(column, center, center, 3rem);
   padding-bottom: 10rem;
 }
 
@@ -20,4 +20,10 @@
   width: 95rem;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+}
+
+.skeleton {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 465 / 240;
 }
