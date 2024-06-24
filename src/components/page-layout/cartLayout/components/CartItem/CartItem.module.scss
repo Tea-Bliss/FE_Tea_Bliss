@@ -34,8 +34,8 @@
     position: relative;
 
     &:checked {
-      background-color: $orange-5;
-      border-color: $orange-5;
+      background-color: #181717;
+      border-color: #181717;
     }
 
     &:checked::after {
@@ -56,11 +56,20 @@
       left: 1.6rem;
     }
   }
+}
+
+.productNameWrapper {
+  @include flexSort(column, space-between, null, 1.6rem);
+  flex: 1 0 0;
+
+  .nameEng {
+    color: #181717;
+    @include font(2.4rem, 400, normal);
+  }
 
   .productName {
-    color: $black-13;
+    color: #181717;
     @include font(1.8rem, 400, 2.6rem);
-    flex: 1 0 0;
   }
 }
 
