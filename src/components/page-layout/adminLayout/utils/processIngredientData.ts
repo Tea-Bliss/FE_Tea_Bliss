@@ -6,7 +6,7 @@ const processIngredientData = (data: LooseLeafTeaType) => {
 
   const newData: any = { ...data };
 
-  newData.flavor = newData?.flavors.map((flavor: any) => {
+  newData.flavor = newData?.flavors?.map((flavor: any) => {
     return flavors.find((taste) => taste.nameEng === flavor.nameEng)?.number;
   });
 

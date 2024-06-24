@@ -12,7 +12,7 @@
     }
 
     &.customInput::before {
-      border: 0.1rem solid $orange-5;
+      border: 0.1rem solid #181717;
       position: absolute;
       top: 0.3rem;
       left: -2.5rem;
@@ -30,8 +30,8 @@
     }
 
     &.checked::before {
-      border-color: $orange-5;
-      background-color: $orange-5;
+      border-color: #181717;
+      background-color: #181717;
       color: $black-1;
       content: '✓';
     }

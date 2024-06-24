@@ -1,0 +1,17 @@
+.layout {
+  padding: 0 4rem 14.8rem;
+  width: 100%;
+
+  .container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 120rem;
+    @include flexSort(column, null, null, 13.2rem);
+  }
+
+  .reviewArea {
+    @include flexSort(column, null, null, 7.2rem);
+    margin: 0 auto;
+    width: 89.5rem;
+  }
+}
