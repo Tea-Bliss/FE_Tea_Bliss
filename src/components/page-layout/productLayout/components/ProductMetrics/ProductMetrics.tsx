@@ -11,6 +11,7 @@ import QuantityButton from '@/components/common/QuantityButton/QuantityButton';
 import useAddCartItemMutation from '@/components/page-layout/cartLayout/hooks/useAddCartItemMutation';
 import styles from '@/components/page-layout/productLayout/components/ProductMetrics/ProductMetrics.module.scss';
 import ROUTE from '@/constants/route';
+import Heart from '@/icons/heart.svg';
 
 import useGetTeaDetailQuery from '../../hooks/useGetTeaDetailQuery';
 
@@ -20,6 +21,7 @@ export default function ProductMetrics() {
   const { id }: { id: string } = useParams();
   const router = useRouter();
   const [currentQuantity, setCurrentQuantity] = useState(1);
+  const [isLiked, setIsLiked] = useState(false);
   const { data } = useGetTeaDetailQuery(id);
   const { mutate } = useAddCartItemMutation(data?.data.name, currentQuantity);
 
@@ -90,6 +92,9 @@ export default function ProductMetrics() {
         </div>
 
         <div className={cn('buttonContainer')}>
+          <button type="button" onClick={() => setIsLiked(!isLiked)}>
+            <Heart width="4rem" height="3.6rem" fill={isLiked ? 'red' : 'none'} />
+          </button>
           <Button shape="square" color="white" onClick={handlePaymentClick}>
             구매하기
           </Button>
