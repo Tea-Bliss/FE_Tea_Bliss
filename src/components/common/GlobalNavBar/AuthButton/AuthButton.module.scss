@@ -42,3 +42,7 @@
   background-color: #181717;
   vertical-align: middle;
 }
+
+.admin {
+  @include font(1.8rem, 400, normal);
+}

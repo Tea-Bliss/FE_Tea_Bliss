@@ -1,10 +1,14 @@
 'use client';
+import { useEffect, useState } from 'react';
+
 import classNames from 'classnames/bind';
 
 import Link from 'next/link';
 
 import styles from '@/components/common/GlobalNavBar/AuthButton/AuthButton.module.scss';
 import Profile from '@/components/common/GlobalNavBar/AuthButton/Profile';
+import { useCartItemQuery } from '@/components/page-layout/cartLayout/hooks/useCartItemQuery';
+import { getCartItems } from '@/components/page-layout/cartLayout/types/cartApiType';
 import ROUTE from '@/constants/route';
 import { useUserInfoQuery } from '@/hooks/query/useUserInfoQuery';
 import Cart from '@/icons/cart.svg';
@@ -12,20 +16,31 @@ import Cart from '@/icons/cart.svg';
 const cn = classNames.bind(styles);
 
 export default function AuthButton() {
-  const { data, isLoading } = useUserInfoQuery();
+  const [cartItems, setCartItems] = useState<getCartItems[]>();
+  const { data } = useUserInfoQuery();
+  const { data: cartItem } = useCartItemQuery();
 
-  if (isLoading) return <div className={cn('authButton')}>...Loading</div>;
+  useEffect(() => {
+    setCartItems(cartItem);
+  }, [cartItem]);
 
   return (
     <div className={cn('authButton')}>
-      <div className={cn('cartWrapper')}>
-        <Link href={ROUTE.CART}>
-          <Cart width={24} height={24} />
-          <span className={cn('cartItemCount')}>1</span>
-        </Link>
-      </div>
-      {data ? (
-        <Profile />
+      {data?.data.data ? (
+        <>
+          <div className={cn('cartWrapper')}>
+            <Link href={ROUTE.CART}>
+              <Cart width={24} height={24} />
+              <span className={cn('cartItemCount')}>{cartItems ? cartItems.length : 0}</span>
+            </Link>
+          </div>
+          <Profile />
+          {data.data.data.role !== '일반 회원' && (
+            <Link href={ROUTE.ADMIN} className={cn('admin')}>
+              관리자
+            </Link>
+          )}
+        </>
       ) : (
         <div className={cn('authLinkWrapper')}>
           <Link className={cn('authLink')} href={ROUTE.SIGN_IN}>

@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 
@@ -77,6 +75,7 @@ export default function ProductList() {
               <Card
                 type="productList"
                 key={item.id}
+                id={item.id}
                 img={item.img}
                 href={item.href}
                 price={item.price}

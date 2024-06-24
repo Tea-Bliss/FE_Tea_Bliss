@@ -7,7 +7,6 @@ export default async function getPagenationItems(
   caffeine: string | null,
   season: string | null
 ) {
-  console.log(caffeine);
   if (caffeine !== null) {
     const { data } = await axiosInstance.get(`tea/${type}?page=${page}&limit=${limit}&caffeine=${caffeine}`);
     return data;

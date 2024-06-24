@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import ROUTE from '@/constants/route';
-import Logo from '@/images/logo.svg';
+import Logo from '@/icons/footer_logo.svg';
 
 interface HeaderProps {
   className: string;

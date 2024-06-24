@@ -4,8 +4,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import classNames from 'classnames/bind';
 
-import { StaticImageData } from 'next/image';
-
 import Left from '@/icons/left_arrow.svg';
 import Right from '@/icons/right_arrow.svg';
 
@@ -18,7 +16,7 @@ interface CarouselProps {
   cards: {
     href: string;
     isMainPageCard?: boolean;
-    img: StaticImageData;
+    img: string;
     title: string;
     price: number;
     review: number;
@@ -37,12 +35,12 @@ export default function Carousel({ cards, num }: CarouselProps) {
   const handlePrevSlide = useCallback(() => {
     const index = current === 0 ? cards.length - cardsPerSlide : current - 1;
     setCurrent(index);
-  }, [current, cards.length, cardsPerSlide]);
+  }, [current, cards?.length, cardsPerSlide]);
 
   const handleNextSlide = useCallback(() => {
     const index = current === cards.length - 1 ? 0 : current + 1;
     setCurrent(index);
-  }, [current, cards.length]);
+  }, [current, cards?.length]);
 
   useEffect(() => {
     timerRef.current = setInterval(() => {
@@ -66,16 +64,16 @@ export default function Carousel({ cards, num }: CarouselProps) {
   // }, [current, cards.length, cardsPerSlide, contentRef]);
 
   const visibleCards =
-    cards.length - current < cardsPerSlide
+    cards?.length - current < cardsPerSlide
       ? [...cards.slice(current), ...cards.slice(0, cardsPerSlide - (cards.length - current))]
-      : cards.slice(current, current + cardsPerSlide);
+      : cards?.slice(current, current + cardsPerSlide);
 
   return (
     <div className={cn('layout')}>
       <Left className={cn('left')} onClick={handlePrevSlide} />
       <div className={cn('container')}>
         <div className={cn('content')} ref={contentRef}>
-          {visibleCards.map((card, index) => (
+          {visibleCards?.map((card, index) => (
             <div className={cn('card')} key={index}>
               <Card
                 type="main"
