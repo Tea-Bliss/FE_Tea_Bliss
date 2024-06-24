@@ -64,7 +64,7 @@ export default function SurveyForm() {
 
     mutate.mutate(formData, {
       onSuccess: () => {
-        router.push('/survey/result');
+        router.push('/recommend');
       },
     });
   };
