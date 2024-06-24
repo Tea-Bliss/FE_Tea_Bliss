@@ -76,7 +76,7 @@ export default function Card({
         {type === 'productList' && <Cart fill="white" width={40} height={40} className={cn('cartImg')} />}
       </div>
       <article className={cn('contentContainer', { isBleding: type === 'blending' })}>
-        {type === 'productList' && <Heart className={cn('heart')} />}
+        {type === 'productList' && <Heart className={cn('heart')} width="2.4rem" height="2.4rem" fill="none" />}
         <p className={cn('enTitle')}>{title}</p>
         <p className={cn('koTitle')}>{koTitle}</p>
         {type === 'blending' && <p className={cn('description')}>{description}</p>}
