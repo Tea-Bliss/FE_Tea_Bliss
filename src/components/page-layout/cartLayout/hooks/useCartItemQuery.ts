@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getCartItem } from '@/components/page-layout/cartLayout/apis/cartApi';
+import { getCartItem } from '../apis/cartApi';
 
 export const useCartItemQuery = () => {
   const isBrowser = typeof window !== 'undefined';
