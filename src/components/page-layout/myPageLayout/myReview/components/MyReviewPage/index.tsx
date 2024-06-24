@@ -78,12 +78,13 @@ export default function MyReviewPage() {
         const newProductList = payment?.productList.map((product) => ({ ...product, paidAt: payment.paidAt }));
         return (
           <>
-            {newProductList.map((product, index) => {
+            {newProductList.map((product) => {
               if (product?.review) return;
 
               const purchasedItem = teas?.find((tea: any) => tea?.name === product?.product.name);
 
               const cardData = {
+                teaId: purchasedItem?.id,
                 name: product?.product.name,
                 paidAt: product?.paidAt,
                 quantity: product?.product.quantity,
@@ -93,7 +94,7 @@ export default function MyReviewPage() {
               return (
                 <>
                   <MyReviewCard key={product.product.payId} status="작성 전" data={cardData} />
-                  {index + 1 !== mockDatas.length && <hr className={cn('hr')} />}
+                  <hr className={cn('hr')} />
                 </>
               );
             })}
