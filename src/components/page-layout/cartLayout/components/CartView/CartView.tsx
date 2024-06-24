@@ -18,7 +18,7 @@ import { getCartItems } from '@/components/page-layout/cartLayout/types/cartApiT
 
 const cn = classNames.bind(styles);
 
-interface SelectedItemsType {
+export interface SelectedItemsType {
   id: number;
   img: string;
   product: string;

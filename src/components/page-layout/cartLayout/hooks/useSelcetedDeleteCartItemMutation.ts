@@ -3,8 +3,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import openToast from '@/components/common/Toast/features/openToast';
 
 import { deleteSelectedCartItem } from '../apis/cartApi';
+import { SelectedItemsType } from '../components/CartView/CartView';
 
-const useSelectedDeleteCartItemMutation = (product: { id: number; price: number }[]) => {
+const useSelectedDeleteCartItemMutation = (product: SelectedItemsType[]) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: () => deleteSelectedCartItem(product),

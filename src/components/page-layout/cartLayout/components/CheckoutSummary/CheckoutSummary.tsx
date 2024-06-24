@@ -9,10 +9,12 @@ import DeliveryAddress from '@/components/page-layout/cartLayout/components/Deli
 import PriceDetails from '@/components/page-layout/cartLayout/components/PriceDetails/PriceDetails';
 import ROUTE from '@/constants/route';
 
+import { SelectedItemsType } from '../CartView/CartView';
+
 const cn = classNames.bind(styles);
 
 export interface CheckoutSummaryProps {
-  selectedItems: { id: number; price: number; quantity: number }[];
+  selectedItems: SelectedItemsType[];
 }
 
 export default function CheckoutSummary({ selectedItems }: CheckoutSummaryProps) {
