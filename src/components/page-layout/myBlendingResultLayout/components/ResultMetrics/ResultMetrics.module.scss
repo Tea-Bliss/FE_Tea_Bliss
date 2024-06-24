@@ -1,0 +1,84 @@
+.container {
+  @include flexSort(row, space-between, null, 4rem);
+  padding-bottom: 8.8rem;
+  border-bottom: 0.1rem solid #d9d9d9;
+}
+
+.imageWrapper {
+  position: relative;
+
+  .overlayText {
+    position: absolute;
+    top: 45%;
+    left: 41%;
+    width: 80px;
+    height: 54px;
+    text-align: center;
+    @include font(1.5rem, 400, 2.2rem);
+  }
+}
+
+.content {
+  @include flexSort(column, null, null, 2rem);
+  flex: 1 0 0;
+}
+
+.productInfo {
+  @include flexSort(column, null, null, 2rem);
+}
+
+.productName {
+  color: #181717;
+  @include font(2.4rem, 400, 3.2rem);
+}
+
+.productPrice {
+  color: #181717;
+  @include font(3.6rem, 700, 3.8rem);
+}
+
+.productDetails {
+  @include flexSort(column, null, null, 1.6rem);
+  padding: 2rem 0;
+}
+
+.productDetailRow {
+  @include flexSort(row, null, center, null);
+  padding: 1.2rem 0;
+  border-bottom: 0.1rem solid #f0f0f0;
+}
+
+.detailLabel {
+  width: 18rem;
+  color: #181717;
+  @include font(1.6rem, 700, 2.2rem);
+}
+
+.detailValue {
+  font-family: Predendard;
+  color: #181717;
+  @include font(1.6rem, 400, 2.2rem);
+}
+
+.totalPriceContainer {
+  @include flexSort(row, flex-end, center, 1.2rem);
+}
+
+.totalPriceLabel {
+  color: #181717;
+  @include font(1.4rem, 400, 2rem);
+}
+
+.totalPriceValue {
+  color: #181717;
+  @include font(4.2rem, 700, 4.8rem);
+}
+
+.currencyUnit {
+  color: #181717;
+  @include font(2.8rem, 400, 3.8rem);
+}
+
+.buttonContainer {
+  @include flexSort(row, null, center, 1.4rem);
+}
