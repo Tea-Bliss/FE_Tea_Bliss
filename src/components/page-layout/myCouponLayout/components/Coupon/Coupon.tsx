@@ -9,7 +9,7 @@ interface CouponProps {
   data: {
     startDate: string;
     discountRate: number;
-    used: boolean;
+    used: number;
     type: 'welcome' | 'review';
   };
 }
