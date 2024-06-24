@@ -1,0 +1,24 @@
+.container {
+  position: relative;
+  @include flexSort(row, space-between, null, 9rem);
+}
+
+.detailsContainer {
+  @include flexSort(column, null, null, 5rem);
+  flex: 1 0 0;
+}
+
+.summaryContainer {
+  width: 28.4rem;
+  height: 100%;
+  position: sticky;
+  top: 6rem;
+  right: 0;
+  padding-top: 1.6rem;
+  @include flexSort(column, null, null, 1.6rem);
+}
+
+.summaryTitle {
+  color: #181717;
+  @include font(2rem, 500, 2.9rem);
+}
