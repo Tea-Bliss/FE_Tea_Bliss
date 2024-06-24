@@ -1,5 +1,7 @@
 'use client';
 
+import { Fragment } from 'react';
+
 import classNames from 'classnames/bind';
 
 import { useGetAllTeas } from '@/components/page-layout/adminLayout/hooks/useManageTeas';
@@ -77,8 +79,8 @@ export default function MyReviewPage() {
       {mockDatas?.map((payment) => {
         const newProductList = payment?.productList.map((product) => ({ ...product, paidAt: payment.paidAt }));
         return (
-          <>
-            {newProductList.map((product) => {
+          <Fragment key={payment?.paymentid}>
+            {newProductList.map((product, index) => {
               if (product?.review) return;
 
               const purchasedItem = teas?.find((tea: any) => tea?.name === product?.product.name);
@@ -92,13 +94,13 @@ export default function MyReviewPage() {
               };
 
               return (
-                <>
-                  <MyReviewCard key={product.product.payId} status="작성 전" data={cardData} />
+                <Fragment key={`${product?.product?.payId}/${index}}`}>
+                  <MyReviewCard status="작성 전" data={cardData} />
                   <hr className={cn('hr')} />
-                </>
+                </Fragment>
               );
             })}
-          </>
+          </Fragment>
         );
       })}
     </div>

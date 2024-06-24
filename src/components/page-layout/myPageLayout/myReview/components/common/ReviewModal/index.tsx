@@ -64,6 +64,8 @@ export default function ReviewModal({ role, data, onClose }: ReviewModalProps) {
             likes: 0,
           }
     );
+
+    setRating(data?.likes || 0);
   }, [data, reset, role]);
 
   useEffect(() => {
@@ -79,7 +81,7 @@ export default function ReviewModal({ role, data, onClose }: ReviewModalProps) {
         },
       });
     } else {
-      postMutate.mutate(
+      putMutate.mutate(
         { data: formData, reviewId },
         {
           onSuccess: () => {

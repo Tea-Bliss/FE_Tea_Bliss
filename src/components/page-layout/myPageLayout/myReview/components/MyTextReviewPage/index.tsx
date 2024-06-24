@@ -1,5 +1,7 @@
 'use client';
 
+import { Fragment } from 'react';
+
 import classNames from 'classnames/bind';
 
 import { useGetAllTeas } from '@/components/page-layout/adminLayout/hooks/useManageTeas';
@@ -72,10 +74,10 @@ export default function MyTextReviewPage() {
         };
 
         return (
-          <>
-            <MyReviewCard key={data?.id} status="작성 후" data={cardData} />
+          <Fragment key={data?.id}>
+            <MyReviewCard status="작성 후" data={cardData} />
             <hr className={cn('hr')} />
-          </>
+          </Fragment>
         );
       })}
     </div>
