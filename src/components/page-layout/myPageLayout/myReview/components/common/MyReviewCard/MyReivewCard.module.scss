@@ -1,0 +1,112 @@
+.card {
+  @include flexSort(row, null, null, 3.95rem);
+  padding: 2.5rem 1.488rem 1.4rem 1.9rem;
+  width: 100%;
+  max-height: 25rem;
+
+  .productImage {
+    border-radius: 5px;
+  }
+
+  .grayText {
+    color: #bfbfbf;
+    font-family: Pretendard !important;
+    letter-spacing: -0.6px;
+    @include font(1.3rem, 400, 1.8rem);
+  }
+
+  .textArea {
+    @include flexSort(column, null, null, 2.7rem);
+    flex-grow: 1;
+
+    .productInfo {
+      @include flexSort(column, null, null, 0.8rem);
+
+      .productTitle {
+        color: #181717;
+        letter-spacing: -0.144px;
+        @include font(2.4rem, 600, 2.8rem);
+      }
+
+      .dayAndQuantity {
+        @include flexSort(row, null, null, 2.4rem);
+        position: relative;
+        width: 20rem;
+
+        &::before {
+          display: block;
+          border: 0.1rem solid #bfbfbf;
+          border-top: none;
+          border-right: none;
+          border-bottom: none;
+          position: absolute;
+          top: 10%;
+          left: 35%;
+          width: 1rem;
+          height: 1.2rem;
+          content: '';
+        }
+      }
+    }
+
+    .reviewArea {
+      border: 0.1rem solid #bfbfbf;
+      padding: 1.17rem 2.1rem;
+      width: 100%;
+      max-width: 73rem;
+
+      .vacantReview {
+        @include flexSort(row, null, center, 1.1rem);
+
+        .reviewText {
+          position: relative;
+          flex-grow: 1;
+          top: 0.2rem;
+        }
+      }
+
+      .review {
+        @include flexSort(column, null, null, 0.8rem);
+        max-height: 6.4rem;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar,
+        ::-webkit-scrollbar-track,
+        ::-webkit-scrollbar-button,
+        ::-webkit-scrollbar-thumb {
+          display: none;
+        }
+
+        .reviewText {
+          font-family: Pretendard !important;
+          @include font(1.5rem, 400, 2.8rem);
+          word-break: break-all;
+        }
+
+        .reviewContents {
+          @include flexSort(row, space-between, center, 0);
+
+          .rating {
+            @include flexSort(row, null, center, 0.8rem);
+          }
+        }
+      }
+    }
+  }
+
+  .writeReviewButton {
+    background-color: #181717;
+    color: white;
+    height: 2.8rem;
+    padding: 0 0.8rem;
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: $black-7;
+    }
+
+    &:active {
+      background-color: $black-8;
+    }
+  }
+}

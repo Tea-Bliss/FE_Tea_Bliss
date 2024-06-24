@@ -16,13 +16,14 @@ interface TableProps {
   postPath: string;
   modifyPath: string;
   keys: string[];
+  totalCount: number;
 }
 
-export default function Table({ fields, items, name, unit, postPath, modifyPath, keys }: TableProps) {
+export default function Table({ fields, items, name, unit, postPath, modifyPath, keys, totalCount }: TableProps) {
   return (
     <div className={cn('container')}>
       <div className={cn('count')}>
-        {`전체 ${name}`} <span className={cn('number')}>{items?.length}</span>
+        {`전체 ${name}`} <span className={cn('number')}>{totalCount}</span>
         {`${unit}`}
       </div>
       <div className={cn('table')}>

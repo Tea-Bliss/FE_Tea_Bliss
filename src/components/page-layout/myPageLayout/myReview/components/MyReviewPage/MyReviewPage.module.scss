@@ -1,0 +1,8 @@
+.reviewList {
+  @include flexSort(column, null, null, 4rem);
+
+  .hr {
+    width: 100%;
+    background-color: #181717;
+  }
+}

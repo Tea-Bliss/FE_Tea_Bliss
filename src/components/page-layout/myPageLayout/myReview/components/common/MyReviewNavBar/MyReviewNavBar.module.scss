@@ -1,0 +1,28 @@
+.navBar {
+  @include flexSort(row, space-between, null, null);
+
+  .reviewLink {
+    text-align: left;
+  }
+
+  .textReviewLink {
+    text-align: right;
+  }
+
+  .blur {
+    opacity: 0.4;
+  }
+
+  .titleEng {
+    margin-bottom: 1.2rem;
+    letter-spacing: 1.6px;
+    color: #181717;
+    @include font(4rem, 400, 5.8rem);
+  }
+
+  .title {
+    color: #181717;
+    letter-spacing: -0.144px;
+    @include font(2.4rem, 400, normal);
+  }
+}
