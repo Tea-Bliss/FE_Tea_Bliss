@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 
 import MyPageNav from '@/components/common/MyPageNav/MyPageNav';
 import SubHeader from '@/components/common/SubHeader/SubHeader';
-import MyReviewNavBar from '@/components/page-layout/myPageLayout/myReview/components/common/MyReviewNavBar';
+import MyPageDetailNav from '@/components/page-layout/myPageLayout/myReview/components/common/MyPageDetailNav';
 import styles from '@/components/page-layout/myPageLayout/myReview/MyReviewLayout.module.scss';
 
 const cn = classNames.bind(styles);
@@ -16,7 +16,10 @@ export default function MyReviewLayout({ children }: { children: ReactNode }) {
       <MyPageNav />
       <div className={cn('container')}>
         <div className={cn('reviewArea')}>
-          <MyReviewNavBar />
+          <MyPageDetailNav
+            firstPageData={{ nameEng: 'Review', name: '리뷰', path: '/my-page/my-review' }}
+            secondPageData={{ nameEng: 'Text Review', name: '작성한 리뷰', path: '/my-page/my-review/text-review' }}
+          />
           {children}
         </div>
       </div>

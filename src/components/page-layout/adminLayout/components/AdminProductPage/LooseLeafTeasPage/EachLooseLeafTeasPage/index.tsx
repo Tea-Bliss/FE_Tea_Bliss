@@ -36,6 +36,11 @@ export default function EachLooseLeafTeasPage() {
   const deleteMutate = useAdminDeleteIngredient();
 
   const handleFormPut = async (formValues: any) => {
+    if (!data) {
+      openToast('error', '상품 정보를 불러오지 못해 수정이 불가능합니다.');
+      return;
+    }
+
     if (imageFile) {
       const publicUrl = await uploadImage(imageFile);
 
@@ -78,8 +83,19 @@ export default function EachLooseLeafTeasPage() {
       <SubmitButton
         isDelete={true}
         onClick={() => {
-          deleteMutate.mutate(+id);
-          router.push('/admin/product/loose-leaf-teas');
+          if (!data) {
+            openToast('error', '상품 정보를 불러오지 못해 삭제가 불가능합니다.');
+            return;
+          }
+
+          deleteMutate.mutate(+id, {
+            onSuccess: async () => {
+              if (newData?.photo) {
+                await deleteImage(newData?.photo);
+              }
+              router.push('/admin/product/loose-leaf-teas');
+            },
+          });
         }}
       >
         삭제하기

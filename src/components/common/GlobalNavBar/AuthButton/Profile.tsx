@@ -28,9 +28,9 @@ export default function Profile() {
     <>
       <button onClick={toggleMyInfo} ref={toggleRef}>
         <span className={cn('profileContent')}>
-          {data.profile ? (
+          {data?.data.data.profile ? (
             <Image
-              src={data.profile}
+              src={data.data.data.profile}
               width={24}
               height={24}
               style={{ borderRadius: '999px' }}
@@ -46,7 +46,7 @@ export default function Profile() {
               alt="기본 프로필 이미지"
             />
           )}
-          <span className={cn('profileName')}>{data.nickname}</span>
+          <span className={cn('profileName')}>{data?.data.data.nickname}</span>
         </span>
       </button>
       {showMyInfo && <MyInfo toggle={toggleMyInfo} ref={ref} />}

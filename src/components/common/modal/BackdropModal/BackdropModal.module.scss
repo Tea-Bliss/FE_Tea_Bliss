@@ -1,6 +1,7 @@
 .back {
   @include flexSort(column, center, center, null);
   position: fixed;
+  z-index: 99;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -10,7 +11,7 @@
 .container {
   @include flexSort(column, center, flex-end, null);
   padding: 2.8rem;
-  background-color: $black-1;
   box-shadow: 0rem 0.2rem 1.8rem 0rem rgba(0, 0, 0, 0.3);
+  background-color: $black-1;
   border-radius: 1.2rem;
 }

@@ -1,0 +1,5 @@
+.container {
+  @include flexSort(row, null, null, 6rem 3rem);
+  flex-wrap: wrap;
+  width: 89.5rem;
+}

@@ -1,0 +1,103 @@
+.cartItemContainer {
+  padding: 1.6rem;
+  @include flexSort(row, null, center, 4rem);
+  position: relative;
+
+  &:not(:first-of-type) {
+    border-top: 0.1rem solid $black-4;
+  }
+
+  @include mobile {
+    @include flexSort(column, null, center, 2.4rem);
+  }
+}
+
+.cartItem {
+  width: 100%;
+  @include flexSort(row, null, center, 1.2rem);
+
+  @include mobile {
+    margin-top: 3.2rem;
+  }
+
+  .cartItemCheckbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+
+    &:checked {
+      background-color: #181717;
+      border-color: #181717;
+    }
+
+    &:checked::after {
+      content: '';
+      position: absolute;
+      left: 0.5rem;
+      top: 0rem;
+      width: 0.6rem;
+      height: 1rem;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    @include mobile {
+      position: absolute;
+      top: 1.6rem;
+      left: 1.6rem;
+    }
+  }
+}
+
+.productNameWrapper {
+  @include flexSort(column, space-between, null, 1.6rem);
+  flex: 1 0 0;
+
+  .nameEng {
+    color: #181717;
+    @include font(2.4rem, 400, normal);
+  }
+
+  .productName {
+    color: #181717;
+    @include font(1.8rem, 400, 2.6rem);
+  }
+}
+
+.quantityContainer {
+  @include flexSort(row, null, center, 6rem);
+
+  @include mobile {
+    width: 100%;
+    @include flexSort(row, space-between, center, null);
+  }
+}
+
+.priceBox {
+  @include flexSort(row, null, center, 2rem);
+}
+
+.price {
+  color: $black-13;
+  width: 12.7rem;
+  @include font(1.8rem, 600, 2.6rem);
+  white-space: nowrap;
+  text-align: right;
+}
+
+.deleteButton {
+  @include mobile {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+  }
+}

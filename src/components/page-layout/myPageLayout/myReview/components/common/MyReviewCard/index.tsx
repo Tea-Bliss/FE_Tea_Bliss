@@ -26,7 +26,7 @@ export default function MyReviewCard({ status, className, data }: MyReivewCardPr
   return (
     <div className={cn('card', className)}>
       <Image
-        src={'/images/default_product.png'}
+        src={data?.img || '/images/default_product.png'}
         alt={'상품 이미지'}
         width="95"
         height="95"
@@ -35,10 +35,10 @@ export default function MyReviewCard({ status, className, data }: MyReivewCardPr
       <div className={cn('textArea')}>
         <div className={cn('productInfo')}>
           <p className={cn('grayText')}>판매완료</p>
-          <h2 className={cn('productTitle')}>{data.title}</h2>
+          <h2 className={cn('productTitle')}>{data?.name}</h2>
           <div className={cn('dayAndQuantity')}>
-            <span className={cn('grayText')}>{data.createDt.split(' ')[0]}</span>
-            <span className={cn('grayText')}>{`구매 수량: ${data.purchaseQuantity}`}</span>
+            <span className={cn('grayText')}>{data?.paidAt?.split(' ')[0]}</span>
+            <span className={cn('grayText')}>{`구매 수량: ${data?.quantity}`}</span>
           </div>
         </div>
         <div className={cn('reviewArea')}>
@@ -55,13 +55,13 @@ export default function MyReviewCard({ status, className, data }: MyReivewCardPr
               <div className={cn('reviewContents')}>
                 <div className={cn('rating')}>
                   <RateStars rate={data.likes as likesType} where="page" />
-                  <p className={cn('reviewText')}>{`${data.likes}점`}</p>
+                  <p className={cn('reviewText')}>{`${data?.likes}점`}</p>
                 </div>
                 <button className={cn('writeReviewButton')} onClick={() => setIsModalOpen(true)}>
                   리뷰 수정
                 </button>
               </div>
-              <div className={cn('reviewText')}>{data.contents}</div>
+              <div className={cn('reviewText')}>{data?.contents}</div>
             </div>
           )}
         </div>

@@ -8,6 +8,7 @@
   background-color: #fcf8ef;
   border-radius: 0.8rem;
   @include flexSort(column, center, null, 3.2rem);
+  z-index: 10;
 }
 
 .popupHeader {

@@ -20,7 +20,8 @@ const cn = classNames.bind(styles);
 
 export default function ProfileChange() {
   const queryClient = useQueryClient();
-  const { email, nickname, profile, role } = useMyInfoContext();
+  const userData = useMyInfoContext();
+  const { email, nickname, profile, role } = userData;
   const [imageFile, setImageFile] = useState<File | null | undefined>(undefined);
   const mutate = usePatchProfile();
 
@@ -43,6 +44,11 @@ export default function ProfileChange() {
     profile?: string | null;
     role: '관리자' | '일반 회원';
   }) => {
+    if (!userData) {
+      openToast('error', '유저 데이터를 불러오지 못해 수정이 불가능합니다.');
+      return;
+    }
+
     if (imageFile) {
       const publicUrl = await uploadImage(imageFile);
 

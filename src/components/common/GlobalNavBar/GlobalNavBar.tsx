@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import classNames from 'classnames/bind';
 
 import Link from 'next/link';
@@ -28,7 +30,9 @@ export default function GlobalNavBar() {
               </li>
             ))}
           </ul>
-          <AuthButton />
+          <Suspense>
+            <AuthButton />
+          </Suspense>
         </div>
       </nav>
     </header>

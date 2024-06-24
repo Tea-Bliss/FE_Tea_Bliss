@@ -1,57 +1,102 @@
+'use client';
+
 import classNames from 'classnames/bind';
 
+import { useGetAllTeas } from '@/components/page-layout/adminLayout/hooks/useManageTeas';
 import MyReviewCard from '@/components/page-layout/myPageLayout/myReview/components/common/MyReviewCard';
 import styles from '@/components/page-layout/myPageLayout/myReview/components/MyReviewPage/MyReviewPage.module.scss';
+// import { useGetMyPurchaseDatas } from '@/components/page-layout/myPageLayout/myReview/hooks/usehandleReviews';
 
 const cn = classNames.bind(styles);
 
 const mockDatas = [
   {
-    id: 10,
-    title: 'Review Title 10',
-    contents: 'This is the content of review 10.',
-    likes: 5,
-    member: null,
-    tea: null,
-    purchaseQuantity: 1,
-    teaImg: 'https://oboomyrmdekomaldptgh.supabase.co/storage/v1/object/public/images/1719045389574.svg',
-    createDt: '2023-01-10 19:00:00',
-    updateDt: '2024-06-22 12:57:28',
+    paymentid: 14,
+    productList: [
+      {
+        product: {
+          payId: 14,
+          name: '허니부쉬 차',
+          amount: 1000,
+          quantity: 3,
+        },
+        review: false,
+      },
+    ],
+    paidAt: '2024-06-22 22:57:39',
   },
   {
-    id: 11,
-    title: 'Review Title 10',
-    contents: 'This is the content of review 10.',
-    likes: 4.5,
-    member: null,
-    tea: null,
-    purchaseQuantity: 1,
-    teaImg: 'https://oboomyrmdekomaldptgh.supabase.co/storage/v1/object/public/images/1719045389574.svg',
-    createDt: '2023-01-10 19:00:00',
-    updateDt: '2024-06-22 12:57:28',
+    paymentid: 15,
+    productList: [
+      {
+        product: {
+          payId: 15,
+          name: '허니부쉬 차',
+          amount: 1000,
+          quantity: 3,
+        },
+        review: false,
+      },
+    ],
+    paidAt: '2024-06-24 18:47:51',
   },
   {
-    id: 12,
-    title: 'Review Title 10',
-    contents: 'This is the content of review 10.',
-    likes: 0,
-    member: null,
-    tea: null,
-    purchaseQuantity: 1,
-    teaImg: 'https://oboomyrmdekomaldptgh.supabase.co/storage/v1/object/public/images/1719045389574.svg',
-    createDt: '2023-01-10 19:00:00',
-    updateDt: '2024-06-22 12:57:28',
+    paymentid: 16,
+    productList: [
+      {
+        product: {
+          payId: 16,
+          name: '허니부쉬 차',
+          amount: 1000,
+          quantity: 3,
+        },
+        review: false,
+      },
+      {
+        product: {
+          payId: 16,
+          name: '허니부쉬 차',
+          amount: 1000,
+          quantity: 3,
+        },
+        review: false,
+      },
+    ],
+    paidAt: '2024-06-24 19:54:00',
   },
 ];
 
 export default function MyReviewPage() {
+  const { data: teasData } = useGetAllTeas({ page: 1, limit: 100 });
+  // const { data: paymentData } = useGetMyPurchaseDatas();
+
+  const teas = teasData?.data.tea;
+
   return (
     <div className={cn('reviewList')}>
-      {mockDatas.map((data, index) => {
+      {mockDatas?.map((payment) => {
+        const newProductList = payment?.productList.map((product) => ({ ...product, paidAt: payment.paidAt }));
         return (
           <>
-            <MyReviewCard key={data.id} status="작성 전" data={data} />
-            {index + 1 !== mockDatas.length && <hr className={cn('hr')} />}
+            {newProductList.map((product, index) => {
+              if (product?.review) return;
+
+              const purchasedItem = teas?.find((tea: any) => tea?.name === product?.product.name);
+
+              const cardData = {
+                name: product?.product.name,
+                paidAt: product?.paidAt,
+                quantity: product?.product.quantity,
+                img: purchasedItem?.img,
+              };
+
+              return (
+                <>
+                  <MyReviewCard key={product.product.payId} status="작성 전" data={cardData} />
+                  {index + 1 !== mockDatas.length && <hr className={cn('hr')} />}
+                </>
+              );
+            })}
           </>
         );
       })}

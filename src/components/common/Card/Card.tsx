@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import styles from '@/components/common/Card/Card.module.scss';
+import useAddCartItemMutation from '@/components/page-layout/cartLayout/hooks/useAddCartItemMutation';
+import ROUTE from '@/constants/route';
 import Cart from '@/icons/cart.svg';
 import Heart from '@/icons/heart.svg';
 import DefaultImg from '@/images/default_product.png';
@@ -22,6 +24,7 @@ interface CardProps {
   price?: number;
   review?: number;
   scope?: number;
+  id?: number;
   koTitle?: string;
   description?: string;
 }
@@ -29,6 +32,7 @@ interface CardProps {
 export default function Card({
   onClick,
   description,
+  id,
   koTitle,
   href,
   type,
@@ -38,6 +42,7 @@ export default function Card({
   review,
   scope,
 }: CardProps) {
+  const { mutate } = useAddCartItemMutation(koTitle);
   const router = useRouter();
 
   const handleCardClick = () => {
@@ -50,7 +55,11 @@ export default function Card({
 
   const handleCardImgClick = (e: MouseEvent) => {
     e.stopPropagation();
-    router.push('/');
+    if (!localStorage.getItem('token')) {
+      router.push(ROUTE.SIGN_IN);
+      return;
+    }
+    mutate();
   };
 
   return (
