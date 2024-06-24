@@ -1,6 +1,5 @@
 .icon {
   @include flexSort(row, center, center, null);
-  padding-top: 0.3rem;
   border: 0.1rem solid #181717;
   position: relative;
   width: 2.4rem;

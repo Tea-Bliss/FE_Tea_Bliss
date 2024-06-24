@@ -1,5 +1,3 @@
-import { StaticImageData } from 'next/image';
-
 export default interface FinishedItem {
   category: string;
   review: number;
@@ -9,7 +7,7 @@ export default interface FinishedItem {
   season: string;
   createat: Date;
   href: string;
-  img: StaticImageData;
+  img: string;
   id: number;
   price: number;
   caffeine: boolean;

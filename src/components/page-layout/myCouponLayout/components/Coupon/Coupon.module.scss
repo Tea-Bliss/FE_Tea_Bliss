@@ -1,0 +1,96 @@
+.container {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.blur {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #a0a0a0, $alpha: 0.5);
+  border-radius: 1rem;
+}
+
+.contentContainer {
+  border: 0.1rem solid $black-13;
+  border-radius: 1rem;
+  padding: 3.4rem 2.4rem;
+  flex: 5;
+  position: relative;
+  @include flexSort(column, null, null, 2rem);
+}
+
+.coupon {
+  @include flexSort(null, center, center, null);
+  background-color: $black-13;
+  border: 0.1rem solid $black-13;
+  border-radius: 1rem;
+}
+
+.couponText {
+  color: white;
+  @include font(2rem, 400, normal);
+  writing-mode: vertical-rl;
+  padding: 1rem;
+}
+
+.topCircle {
+  background: #fcf8ef;
+  z-index: 1;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  border-radius: 50%;
+  border: 0.1rem solid $black-13;
+  border-bottom: 0.1rem solid #fcf8ef;
+  border-left: 0.1rem solid #fcf8ef;
+  rotate: -225deg;
+}
+
+.used {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.bottomCircle {
+  background: #fcf8ef;
+  z-index: 1;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  bottom: -1rem;
+  right: -1rem;
+  border-radius: 50%;
+  border: 0.1rem solid $black-13;
+  border-bottom: 0.1rem solid #fcf8ef;
+  border-left: 0.1rem solid #fcf8ef;
+  rotate: -45deg;
+}
+
+.type {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.discountRateBox {
+  @include flexSort(null, center, center, 0.5rem);
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.discount {
+  font-size: 5rem;
+}
+
+.detailBox {
+  @include flexSort(column, null, null, 0.5rem);
+  font-size: 2rem;
+}
+
+.blurText {
+  color: #a0a0a0;
+}

@@ -10,9 +10,7 @@ const getFileNameFromPublicUrl = (publicUrl: string) => {
 export const deleteImage = async (publicUrl: string) => {
   const fileName = getFileNameFromPublicUrl(publicUrl);
 
-  const { data, error } = await supabase.storage.from('images').remove([fileName]);
-
-  console.log(data);
+  const { error } = await supabase.storage.from('images').remove([fileName]);
 
   if (error) {
     openToast('error', '이미지 처리 중 문제가 발생했습니다.');
