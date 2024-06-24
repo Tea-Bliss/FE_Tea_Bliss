@@ -16,7 +16,15 @@ const cn = classNames.bind(styles);
 
 interface CartItemProps extends getCartItems {
   openModal: (productId: number) => void;
-  handleItemSelection: (id: number, price: number, quantity: number, isSelected: boolean) => void;
+  handleItemSelection: (
+    id: number,
+    img: string,
+    product: string,
+    nameEng: string,
+    price: number,
+    quantity: number,
+    isSelected: boolean
+  ) => void;
   isSelected: boolean;
 }
 
@@ -52,7 +60,7 @@ export default function CartItem({
         <input
           type="checkbox"
           className={cn('cartItemCheckbox')}
-          onChange={() => handleItemSelection(id, price, quantity, isSelected)}
+          onChange={() => handleItemSelection(id, img, product, nameEng, price, quantity, isSelected)}
           checked={isSelected}
         />
         <Image src={img} width={64} height={80} alt="상품 이미지" className={cn('productImage')} />

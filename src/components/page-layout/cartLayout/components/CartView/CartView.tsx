@@ -18,9 +18,18 @@ import { getCartItems } from '@/components/page-layout/cartLayout/types/cartApiT
 
 const cn = classNames.bind(styles);
 
+interface SelectedItemsType {
+  id: number;
+  img: string;
+  product: string;
+  nameEng: string;
+  price: number;
+  quantity: number;
+}
+
 export default function CartView() {
   const [cartItems, setCartItems] = useState<getCartItems[]>([]);
-  const [selectedItems, setSelectedItems] = useState<{ id: number; price: number; quantity: number }[]>([]);
+  const [selectedItems, setSelectedItems] = useState<SelectedItemsType[]>([]);
   const [isAllSelected, setIsAllSelected] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isSelectedDeleteModalOpen, setIsSelectedDeleteModalOpen] = useState(false);
@@ -49,17 +58,27 @@ export default function CartView() {
   const openSelectedDeleteModal = () => setIsSelectedDeleteModalOpen(true);
   const closeSelectedDeleteModal = () => setIsSelectedDeleteModalOpen(false);
 
-  const handleItemSelection = (id: number, price: number, quantity: number, isSelected: boolean) => {
+  const handleItemSelection = (
+    id: number,
+    img: string,
+    product: string,
+    nameEng: string,
+    price: number,
+    quantity: number,
+    isSelected: boolean
+  ) => {
     setSelectedItems((prevSelectedItems) =>
-      isSelected ? prevSelectedItems.filter((item) => item.id !== id) : [...prevSelectedItems, { id, price, quantity }]
+      isSelected
+        ? prevSelectedItems.filter((item) => item.id !== id)
+        : [...prevSelectedItems, { id, img, product, nameEng, price, quantity }]
     );
   };
-
+  console.log(selectedItems);
   const handleSelectAll = () => {
     if (isAllSelected) {
       setSelectedItems([]);
     } else {
-      setSelectedItems(cartItems.map((item) => ({ id: item.id, price: item.price, quantity: item.quantity })));
+      setSelectedItems(cartItems.map((item) => ({ ...item })));
     }
     setIsAllSelected(!isAllSelected);
   };
