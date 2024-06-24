@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -8,13 +8,12 @@ import styles from '@/components/page-layout/orderLayout/components/PaymentMetho
 
 const cn = classNames.bind(styles);
 
-export default function PaymentMethod() {
-  const [selectedPayment, setSelectedPayment] = useState('CARD');
+interface PaymentMethodProps {
+  selectedPayment: 'CARD' | 'EASY_PAY';
+  onPaymentSelect: Dispatch<SetStateAction<'CARD' | 'EASY_PAY'>>;
+}
 
-  const handlePaymentSelection = (paymentType: 'CARD' | 'EASY_PAY') => {
-    setSelectedPayment(paymentType);
-  };
-
+export default function PaymentMethod({ selectedPayment, onPaymentSelect }: PaymentMethodProps) {
   return (
     <div className={cn('container')}>
       <h2 className={cn('title')}>결제 수단</h2>
@@ -24,14 +23,14 @@ export default function PaymentMethod() {
           <Button
             shape="square"
             color={selectedPayment === 'CARD' ? 'black' : 'white'}
-            onClick={() => handlePaymentSelection('CARD')}
+            onClick={() => onPaymentSelect('CARD')}
           >
             신용 카드
           </Button>
           <Button
             shape="square"
             color={selectedPayment === 'EASY_PAY' ? 'black' : 'white'}
-            onClick={() => handlePaymentSelection('EASY_PAY')}
+            onClick={() => onPaymentSelect('EASY_PAY')}
           >
             간편 결제
           </Button>
