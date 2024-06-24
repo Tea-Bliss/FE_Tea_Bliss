@@ -1,3 +1,5 @@
-export default function ProductList() {
-  return <>제품 상세 페이지</>;
+import ProductLayout from '@/components/page-layout/productLayout/ProductLayout';
+
+export default function Product() {
+  return <ProductLayout />;
 }

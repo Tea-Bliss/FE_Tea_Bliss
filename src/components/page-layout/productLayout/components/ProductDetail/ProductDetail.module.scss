@@ -1,0 +1,30 @@
+.container {
+  padding-top: 8.8rem;
+  @include flexSort(column, null, null, 4rem);
+}
+
+.title {
+  color: #181717;
+  @include font(2rem, 700, 2.8rem);
+  text-align: center;
+}
+
+.contentContainer {
+  @include flexSort(row, center, center, 8rem);
+}
+
+.content {
+  width: 20rem;
+  @include flexSort(column, null, null, 1.2rem);
+}
+
+.productName {
+  text-align: center;
+  color: #181717;
+  @include font(1.8rem, 400, 2.6rem);
+}
+
+.productDescription {
+  color: #181717;
+  @include font(1.4rem, 400, 2.4rem);
+}

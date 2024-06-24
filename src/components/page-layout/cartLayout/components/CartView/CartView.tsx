@@ -35,7 +35,7 @@ export default function CartView() {
   const [isSelectedDeleteModalOpen, setIsSelectedDeleteModalOpen] = useState(false);
   const [removeProductId, setRemoveProductId] = useState<number | null>(null);
   const { mutate: deleteItemMutate } = useDeleteItemMutation(removeProductId);
-  const { mutate: selectedDeleteItemMutate } = useSelectedDeleteCartItemMutation(selectedItems);
+  const { mutate: selectedDeleteItemMutate } = useSelectedDeleteCartItemMutation();
   const { data } = useCartItemQuery();
 
   useEffect(() => {
@@ -92,7 +92,7 @@ export default function CartView() {
   };
 
   const handleSelectedDeleteConfirm = () => {
-    selectedDeleteItemMutate();
+    selectedDeleteItemMutate(selectedItems);
     setSelectedItems([]);
     closeSelectedDeleteModal();
   };
