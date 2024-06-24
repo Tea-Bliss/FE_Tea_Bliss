@@ -75,9 +75,9 @@ export default function FinishedTeasPage() {
         unit="개"
         postPath="/admin/product/finished-teas/post"
         modifyPath="/admin/product/finished-teas/detail"
-        totalCount={data?.data.tea.length}
+        totalCount={products?.length}
       />
-      <PageButtons currentPage={page} setPage={setPage} size={data?.data.size} />
+      <PageButtons currentPage={page} setPage={setPage} size={products?.length} />
     </>
   );
 }

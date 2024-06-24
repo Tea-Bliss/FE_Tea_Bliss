@@ -4,42 +4,50 @@ import {
   deleteFinishedTeasSave,
   getFinishedTeasSave,
   postFinishedTeasSave,
-} from '@/components/page-layout/myPageLayout/saveList/apis/blendingTeasSaveApis';
+} from '@/components/page-layout/myPageLayout/saveList/apis/finishedTeasSaveApis';
 
-export const useGetFinishedTeasSave = (limit: number) => {
+export const useGetFinishedTeasSave = ({
+  nickname,
+  productId = '',
+  limit = 8,
+}: {
+  nickname: '진찬용' | '코드잇';
+  productId?: number | string;
+  limit?: number;
+}) => {
   return useInfiniteQuery({
     queryKey: ['save-list'],
 
-    queryFn: ({ pageParam = 0 }) => {
-      return getFinishedTeasSave(limit, pageParam as number);
+    queryFn: ({ pageParam }: { pageParam: number }) => {
+      return getFinishedTeasSave({ nickname, productId: pageParam, limit });
     },
 
-    initialPageParam: 0,
+    initialPageParam: productId,
 
-    getNextPageParam: (lastPage: any, allPages: any) => {
-      const nextPage = allPages.length * limit;
+    getNextPageParam: (lastPage: any, allPage: any) => {
+      if (lastPage.next) {
+        return lastPage.next.productId;
+      }
 
       if (lastPage?.data.next === null) {
         return undefined;
       }
 
-      if (lastPage?.data.count <= nextPage) {
-        return undefined;
-      }
-
-      return nextPage;
+      return undefined;
     },
   });
 };
 
 export const usePostFinishedTeasSave = () => {
   return useMutation({
-    mutationFn: async (data: any) => await postFinishedTeasSave(data),
+    mutationFn: async ({ nickname, productId }: { nickname: '진찬용' | '코드잇'; productId: number }) =>
+      await postFinishedTeasSave({ nickname, productId }),
   });
 };
 
 export const useDeleteBlendingTeasSave = () => {
   return useMutation({
-    mutationFn: async (id: number) => await deleteFinishedTeasSave(id),
+    mutationFn: async ({ nickname, productId }: { nickname: '진찬용' | '코드잇'; productId: number }) =>
+      await deleteFinishedTeasSave({ nickname, productId }),
   });
 };

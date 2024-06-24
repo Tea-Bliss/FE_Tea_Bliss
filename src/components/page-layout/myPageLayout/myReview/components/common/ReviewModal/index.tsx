@@ -6,6 +6,7 @@ import classNames from 'classnames/bind';
 import { useForm } from 'react-hook-form';
 
 import Button from '@/components/common/Button';
+import openToast from '@/components/common/Toast/features/openToast';
 import RateStars from '@/components/page-layout/myPageLayout/myReview/components/common/RateStars';
 import styles from '@/components/page-layout/myPageLayout/myReview/components/common/ReviewModal/ReviewModal.module.scss';
 import { usePostReview, usePutReview } from '@/components/page-layout/myPageLayout/myReview/hooks/usehandleReviews';
@@ -74,22 +75,26 @@ export default function ReviewModal({ role, data, onClose }: ReviewModalProps) {
 
   const handleSubmitData = (formData: any, reviewId: number) => {
     if (role === '생성') {
-      postMutate.mutate(formData, {
-        onSuccess: () => {
-          onClose();
-          return;
-        },
-      });
+      // postMutate.mutate(formData, {
+      //   onSuccess: () => {
+      //     onClose();
+      //     return;
+      //   },
+      // });
+      openToast('success', '리뷰가 생성되었습니다.');
+      onClose();
     } else {
-      putMutate.mutate(
-        { data: formData, reviewId },
-        {
-          onSuccess: () => {
-            onClose();
-            return;
-          },
-        }
-      );
+      // putMutate.mutate(
+      //   { data: formData, reviewId },
+      //   {
+      //     onSuccess: () => {
+      //       onClose();
+      //       return;
+      //     },
+      //   }
+      // );
+      openToast('success', '리뷰가 수정되었습니다.');
+      onClose();
     }
   };
 

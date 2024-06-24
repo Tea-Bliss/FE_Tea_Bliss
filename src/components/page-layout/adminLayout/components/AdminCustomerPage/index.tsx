@@ -21,6 +21,7 @@ export default function AdminCustomerPage() {
 
   const handleEnter: KeyboardEventHandler = (e) => {
     if (e.keyCode === 13) {
+      setPage(1);
       if (!searchValue) {
         setUsers(data?.data?.data);
         return;
@@ -55,10 +56,10 @@ export default function AdminCustomerPage() {
         unit="명"
         postPath="/admin/customer/detail"
         modifyPath="/admin/customer/detail"
-        totalCount={data?.data.data.length}
+        totalCount={users?.length}
       />
 
-      <PageButtons currentPage={page} setPage={setPage} size={data?.data.data.length} />
+      <PageButtons currentPage={page} setPage={setPage} size={users?.length} />
     </>
   );
 }

@@ -14,6 +14,7 @@ interface myBlendingValues {
   setSelectedTeas: Dispatch<SetStateAction<LooseLeafTeaType[]>>;
   myTeaName: string;
   setMyTeaName: Dispatch<SetStateAction<string>>;
+  isLoading: boolean;
 }
 
 const defaultValue: myBlendingValues = {
@@ -24,6 +25,7 @@ const defaultValue: myBlendingValues = {
   setSelectedTeas: () => {},
   myTeaName: '',
   setMyTeaName: () => {},
+  isLoading: false,
 };
 
 const myBlendingContext = createContext(defaultValue);
@@ -34,7 +36,7 @@ export function MyBlendingProvider({ children }: { children: ReactNode }) {
   const [selectedTeas, setSelectedTeas] = useState<LooseLeafTeaType[]>([]);
   const [myTeaName, setMyTeaName] = useState('');
 
-  const { data, isError } = useGetLooseLeafTeas();
+  const { data, isError, isLoading } = useGetLooseLeafTeas();
 
   useEffect(() => {
     if (isError) {
@@ -57,8 +59,9 @@ export function MyBlendingProvider({ children }: { children: ReactNode }) {
       setSelectedTeas,
       myTeaName,
       setMyTeaName,
+      isLoading,
     }),
-    [teaList, filter, selectedTeas, myTeaName]
+    [teaList, filter, selectedTeas, myTeaName, isLoading]
   );
 
   return <myBlendingContext.Provider value={value}>{children}</myBlendingContext.Provider>;
