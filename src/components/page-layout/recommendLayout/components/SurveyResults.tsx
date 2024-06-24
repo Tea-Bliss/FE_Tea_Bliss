@@ -9,7 +9,7 @@ import useGetSurveyResults from '@/components/page-layout/recommendLayout/apis/u
 const cn = classNames.bind(styles);
 
 interface SurveyResultsProps {
-  name: string;
+  name: string | undefined;
   taste: string;
   sale: number;
   category: string;
