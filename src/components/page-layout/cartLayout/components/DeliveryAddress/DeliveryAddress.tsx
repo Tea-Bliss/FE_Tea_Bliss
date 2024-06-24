@@ -25,7 +25,7 @@ export default function DeliveryAddress() {
               <Location />
               <h3 className={cn('addressTitle')}>배송지</h3>
             </div>
-            <span className={cn('addressDetails')}>{data.address}</span>
+            <span className={cn('addressDetails')}>{data.data.data.address}</span>
           </div>
           <Button shape="square" color="white" onClick={() => setIsModalOpen(!isModalOpen)}>
             배송지 변경
