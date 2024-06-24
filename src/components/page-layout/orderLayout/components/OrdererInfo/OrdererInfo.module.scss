@@ -1,0 +1,25 @@
+.title {
+  width: 100%;
+  border-bottom: 0.1rem solid $black-13;
+  padding: 1.6rem 0;
+  @include flexSort(row, space-between, center, 1.2rem);
+  @include font(2rem, 400, 2.8rem);
+}
+
+.details {
+  padding-top: 1.6rem;
+  @include flexSort(column, center, null, 1.6rem);
+}
+
+.detail {
+  @include flexSort(row, null, center, null);
+}
+
+.label {
+  width: 16rem;
+  @include font(1.6rem, 500, normal);
+}
+
+.value {
+  @include font(1.6rem, 400, normal);
+}
