@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { useRouter } from 'next/navigation';
 
-import axiosInstance from '@/apis/axiosInstance';
+import { axiosInstance } from '@/apis/axiosInstance';
 import ROUTE from '@/constants/route';
 
 const postPaymentComplete = async (paymentId: string) => {
