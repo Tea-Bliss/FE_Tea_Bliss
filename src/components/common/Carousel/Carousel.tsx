@@ -4,8 +4,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import classNames from 'classnames/bind';
 
-import { StaticImageData } from 'next/image';
-
 import Left from '@/icons/left_arrow.svg';
 import Right from '@/icons/right_arrow.svg';
 
@@ -18,7 +16,7 @@ interface CarouselProps {
   cards: {
     href: string;
     isMainPageCard?: boolean;
-    img: StaticImageData;
+    img: string;
     title: string;
     price: number;
     review: number;

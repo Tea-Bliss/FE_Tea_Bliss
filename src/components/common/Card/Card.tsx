@@ -2,13 +2,14 @@ import { MouseEvent } from 'react';
 
 import classNames from 'classnames/bind';
 
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import styles from '@/components/common/Card/Card.module.scss';
 import Cart from '@/icons/cart.svg';
 import Heart from '@/icons/heart.svg';
+import DefaultImg from '@/images/default_product.png';
 
 const cn = classNames.bind(styles);
 
@@ -16,7 +17,7 @@ interface CardProps {
   onClick?: () => void;
   type: 'main' | 'productList' | 'blending';
   href?: string;
-  img: StaticImageData;
+  img: string;
   title: string;
   price?: number;
   review?: number;
@@ -56,7 +57,7 @@ export default function Card({
     <div onClick={handleCardClick} className={cn('cardContainer')}>
       <div className={cn('imgContainer')} onClick={handleCardImgClick}>
         <Image
-          src={img}
+          src={img?.startsWith('/') || img?.startsWith('http') ? img : DefaultImg}
           alt="완제품"
           priority
           fill
