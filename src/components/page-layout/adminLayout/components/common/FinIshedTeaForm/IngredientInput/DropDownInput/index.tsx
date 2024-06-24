@@ -96,7 +96,15 @@ export default function DropDownInput({ fieldIndex, defaultValue }: DropDownInpu
               className={cn('dropdownArrow', isTeaOpen && 'visibleDropdown')}
             />
             {selectedTeaValue}
-            <input className={cn('input')} type="number" {...register(`ingredient.${fieldIndex}`)} />
+            <input
+              className={cn('input')}
+              type="number"
+              {...register(`ingredient.${fieldIndex}`, {
+                validate: {
+                  shouldNumber: (value) => typeof value === 'number',
+                },
+              })}
+            />
           </div>
         </CustomDropDownTrigger>
         <DropDownContent className={cn('dropdownContent')}>

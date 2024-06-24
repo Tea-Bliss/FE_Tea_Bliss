@@ -17,11 +17,16 @@ interface ButtonInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function ButtonInput({ item, name, isSelected, status, ...props }: ButtonInputProps) {
-  const [UIStatus, setUIStatus] = useState('');
+  const [UIStatus, setUIStatus] = useState(name === 'taste' ? 'current' : 'preparing');
   const { register } = useFormContext();
 
   useEffect(() => {
-    if (name === 'price') {
+    if (name === 'taste') {
+      setUIStatus(status > 0 ? 'done' : 'current');
+      return;
+    }
+
+    if (name === 'sale') {
       setUIStatus(status < 1 ? 'preparing' : status === 1 ? 'current' : 'done');
       return;
     }

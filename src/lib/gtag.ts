@@ -4,14 +4,12 @@ import { usePathname } from 'next/navigation';
 
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
 
-// https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageView = (url: URL) => {
   window.gtag('config', GA_TRACKING_ID as string, {
     page_path: url,
   });
 };
 
-// https://developers.google.com/analytics/devguides/collection/gtagjs/events
 export const event = (action: Gtag.EventNames, { event_category, event_label, value }: Gtag.EventParams) => {
   if (process.env.NODE_ENV === 'development') return true;
   window.gtag('event', action, {
@@ -23,9 +21,8 @@ export const event = (action: Gtag.EventNames, { event_category, event_label, va
 };
 
 export const useGtag = () => {
-  const pathname = usePathname(); // Get current route
+  const pathname = usePathname();
 
-  // Save pathname on component mount into a REF
   const savedPathNameRef = useRef(pathname);
 
   useEffect(() => {
@@ -37,7 +34,6 @@ export const useGtag = () => {
 
     if (savedPathNameRef.current !== pathname) {
       handleRouteChange(new URL(pathname, window.location.origin));
-      // Update REF
       savedPathNameRef.current = pathname;
     }
   }, [pathname]);

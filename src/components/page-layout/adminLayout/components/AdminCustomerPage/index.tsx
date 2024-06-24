@@ -53,6 +53,7 @@ export default function AdminCustomerPage() {
         unit="명"
         postPath="/admin/customer/detail"
         modifyPath="/admin/customer/detail"
+        totalCount={data?.data.data.length}
       />
 
       <PageButtons currentPage={page} setPage={setPage} size={data?.data.data.length} />

@@ -4,6 +4,7 @@
     border: 0.1rem solid $black-13;
     color: $black-13;
     border-radius: 2.4rem;
+    font-family: Pretendard !important;
     @include font(1.3rem, 500, 1.8rem);
     cursor: pointer;
 
@@ -13,8 +14,8 @@
     }
 
     &.checked {
-      border-color: $orange-5;
-      background-color: $orange-5;
+      border-color: #181717;
+      background-color: #181717;
       color: $black-1;
     }
 

@@ -1,0 +1,31 @@
+.stars {
+  @include flexSort(row, null, null, 0.5rem);
+
+  .star {
+    position: relative;
+  }
+
+  .left {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 50%;
+  }
+
+  .right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+  }
+
+  .setZero {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -50%;
+    right: 100%;
+  }
+}

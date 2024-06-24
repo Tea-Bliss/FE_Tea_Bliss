@@ -1,12 +1,16 @@
 .icon {
-  border: 0.1rem solid $orange-5;
+  @include flexSort(row, center, center, null);
+  padding-top: 0.3rem;
+  border: 0.1rem solid #181717;
   position: relative;
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 1.2rem;
+  font-family: Pretendard !important;
+  @include font(1.4rem, 400, 2rem);
 
   &.done::after {
-    border: 0.1rem solid $orange-5;
+    border: 0.1rem solid #181717;
     border-top: none;
     border-right: none;
     position: absolute;
@@ -19,16 +23,12 @@
   }
 
   &.current {
-    @include flexSort(row, center, center, null);
-    background-color: $orange-5;
-    @include font(1.2rem, 400, 2rem);
+    background-color: #181717;
     color: $black-1;
   }
 
   &.preparing {
-    @include flexSort(row, center, center, null);
     border-color: rgba(0, 0, 0, 0.25);
-    @include font(1.2rem, 400, 2rem);
     color: rgba(0, 0, 0, 0.25);
   }
 }
