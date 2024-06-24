@@ -7,12 +7,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import styles from '@/components/common/Card/Card.module.scss';
-import addLocalCartItem from '@/components/page-layout/cartLayout/components/utils/addLocalCartItem';
 import useAddCartItemMutation from '@/components/page-layout/cartLayout/hooks/useAddCartItemMutation';
 import Cart from '@/icons/cart.svg';
 import Heart from '@/icons/heart.svg';
-
-import openToast from '../Toast/features/openToast';
 
 const cn = classNames.bind(styles);
 
