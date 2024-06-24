@@ -1,4 +1,4 @@
-import axiosInstance from '@/apis/axiosInstance';
+import { axiosInstance } from '@/apis/axiosInstance';
 
 export const getBlendingTeasSave = (limit: number, offset: number) => {
   return axiosInstance.get('');

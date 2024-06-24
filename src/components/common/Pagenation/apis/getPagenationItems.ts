@@ -1,4 +1,4 @@
-import axiosInstance from '@/apis/axiosInstance';
+import { axiosInstance } from '@/apis/axiosInstance';
 
 export default async function getPagenationItems(
   type: string,
