@@ -73,7 +73,7 @@ export default function CartView() {
         : [...prevSelectedItems, { id, img, product, nameEng, price, quantity }]
     );
   };
-  console.log(selectedItems);
+
   const handleSelectAll = () => {
     if (isAllSelected) {
       setSelectedItems([]);
