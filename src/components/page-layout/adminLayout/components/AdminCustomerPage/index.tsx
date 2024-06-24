@@ -2,6 +2,7 @@
 
 import { ChangeEvent, KeyboardEventHandler, useEffect, useState } from 'react';
 
+import Loader from '@/components/common/Loader';
 import PageButtons from '@/components/page-layout/adminLayout/components/common/PageButtons';
 import SearchBar from '@/components/page-layout/adminLayout/components/common/SearchBar';
 import Table from '@/components/page-layout/adminLayout/components/common/Table';
@@ -13,7 +14,7 @@ export default function AdminCustomerPage() {
   const [users, setUsers] = useState<User[]>([]);
   const [searchValue, setSearchValue] = useState<string>('');
 
-  const { data } = useGetCustomers({ page: 1, limit: 100 });
+  const { data, isLoading } = useGetCustomers({ page: 1, limit: 100 });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -21,6 +22,7 @@ export default function AdminCustomerPage() {
 
   const handleEnter: KeyboardEventHandler = (e) => {
     if (e.keyCode === 13) {
+      setPage(1);
       if (!searchValue) {
         setUsers(data?.data?.data);
         return;
@@ -47,18 +49,24 @@ export default function AdminCustomerPage() {
         placeholder="닉네임 또는 이메일을 검색해주세요"
       />
 
-      <Table
-        fields={['ID', '닉네임', '이메일', '사용자 유형', '가입일', '리뷰 수', '구매 금액']}
-        keys={['id', 'nickname', 'email', 'role', 'createDt', 'reviewCount', 'purchaseAmount']}
-        items={users?.slice(10 * (page - 1), 10 * page)}
-        name="사용자"
-        unit="명"
-        postPath="/admin/customer/detail"
-        modifyPath="/admin/customer/detail"
-        totalCount={data?.data.data.length}
-      />
-
-      <PageButtons currentPage={page} setPage={setPage} size={data?.data.data.length} />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {' '}
+          <Table
+            fields={['ID', '닉네임', '이메일', '사용자 유형', '가입일', '리뷰 수', '구매 금액']}
+            keys={['id', 'nickname', 'email', 'role', 'createDt', 'reviewCount', 'purchaseAmount']}
+            items={users?.slice(10 * (page - 1), 10 * page)}
+            name="사용자"
+            unit="명"
+            postPath="/admin/customer/detail"
+            modifyPath="/admin/customer/detail"
+            totalCount={users?.length}
+          />
+          <PageButtons currentPage={page} setPage={setPage} size={users?.length} />{' '}
+        </>
+      )}
     </>
   );
 }

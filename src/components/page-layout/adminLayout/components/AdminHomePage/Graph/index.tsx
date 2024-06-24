@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 import { Chart, ChartData, ChartOptions } from 'chart.js/auto';
 import classNames from 'classnames/bind';
 
+import Loader from '@/components/common/Loader';
 import styles from '@/components/page-layout/adminLayout/components/AdminHomePage/Graph/Graph.module.scss';
 import useGAReport from '@/components/page-layout/adminLayout/hooks/useGAReport';
 import formatDateString from '@/components/page-layout/adminLayout/utils/formatDataString';
@@ -17,7 +18,7 @@ export default function Graph() {
   const pageViewChartInstanceRef = useRef<Chart | null>(null);
   const activeUserChartInstanceRef = useRef<Chart | null>(null);
 
-  const { data: graphData } = useGAReport();
+  const { data: graphData, isLoading } = useGAReport();
 
   useEffect(() => {
     if (!graphData) return;
@@ -113,12 +114,19 @@ export default function Graph() {
 
   return (
     <>
-      <div className={cn('container')}>
-        <canvas ref={pageViewRef} className={cn('graph')}></canvas>
-      </div>
-      <div className={cn('container')}>
-        <canvas ref={activeUserRef} className={cn('graph')}></canvas>
-      </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {' '}
+          <div className={cn('container')}>
+            <canvas ref={pageViewRef} className={cn('graph')}></canvas>
+          </div>
+          <div className={cn('container')}>
+            <canvas ref={activeUserRef} className={cn('graph')}></canvas>
+          </div>
+        </>
+      )}
     </>
   );
 }

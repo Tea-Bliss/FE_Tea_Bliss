@@ -4,6 +4,8 @@
 
   .teaImageContainer {
     position: relative;
+    width: 20rem;
+    height: 27.2rem;
 
     &:hover {
       .cardImage {
@@ -27,19 +29,25 @@
   .teaContents {
     position: relative;
     padding: 1.4rem 0;
-    @include flexSort(column, null, null, 1rem);
+    @include flexSort(column, space-between, null, 0);
     border-top: 0.1rem solid #181717;
     border-bottom: 0.1rem solid #181717;
     color: #181717;
+    height: 15.1rem;
+
+    .nameArea {
+      @include flexSort(column, null, null, 1rem);
+    }
 
     .teaNameEng {
       @include font(2.4rem, 400, 2.8rem);
       padding-right: 2.5rem;
       letter-spacing: -0.0144rem;
+      height: 5.6rem;
     }
 
     .teaName {
-      @include font(1.4rem, 400, normal);
+      @include font(1.7rem, 400, normal);
       letter-spacing: -0.0084rem;
       font-family: GabiaHeuldot;
     }
@@ -57,4 +65,13 @@
       right: 0.1rem;
     }
   }
+}
+
+.skeleton {
+  width: 20rem;
+  height: 27.2rem;
+}
+
+.inVisible {
+  display: none;
 }
