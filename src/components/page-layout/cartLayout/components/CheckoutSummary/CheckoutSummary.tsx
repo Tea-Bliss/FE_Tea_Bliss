@@ -6,15 +6,20 @@ import DeliveryAddress from '@/components/page-layout/cartLayout/components/Deli
 import PriceDetails from '@/components/page-layout/cartLayout/components/PriceDetails/PriceDetails';
 
 const cn = classNames.bind(styles);
-export default function CheckoutSummary() {
+
+export interface CheckoutSummaryProps {
+  selectedItems: { id: number; price: number; quantity: number }[];
+}
+
+export default function CheckoutSummary({ selectedItems }: CheckoutSummaryProps) {
   return (
     <section className={cn('container')}>
       <div className={cn('wrapper')}>
         <div>
           <DeliveryAddress />
-          <PriceDetails />
+          <PriceDetails selectedItems={selectedItems} />
         </div>
-        <Button shape="square" color="red">
+        <Button shape="square" color="black">
           주문하기
         </Button>
       </div>
