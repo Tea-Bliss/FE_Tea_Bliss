@@ -1,6 +1,8 @@
 'use client';
 
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { useEffect } from 'react';
+
+import { keepPreviousData, useQuery, useQueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -27,6 +29,8 @@ export default function ProductList() {
 
   const season = searchParams.get('season') || null;
 
+  const queryClient = useQueryClient();
+
   const setPage = (newPage: number) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', newPage.toString());
@@ -40,7 +44,7 @@ export default function ProductList() {
     router.replace(`${pathname}?${params}`);
   };
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isPlaceholderData } = useQuery({
     queryKey: ['items', page, selectedFilter, caffeine, season],
     queryFn: () => getPagenationItems(selectedFilter, page, LIMIT, caffeine, season),
     placeholderData: keepPreviousData,
@@ -54,6 +58,15 @@ export default function ProductList() {
   const handleFilterClick = (filter: string) => {
     setSelectedFilter(filter);
   };
+
+  useEffect(() => {
+    if (!isPlaceholderData && !data?.tea[0].lastPage) {
+      queryClient.prefetchQuery({
+        queryKey: ['items', page + 1, selectedFilter, caffeine, season],
+        queryFn: () => getPagenationItems(selectedFilter, page + 1, LIMIT, caffeine, season),
+      });
+    }
+  }, [isPlaceholderData, queryClient, page, caffeine, season, selectedFilter, data?.tea]);
 
   return (
     <div className={cn('main')}>

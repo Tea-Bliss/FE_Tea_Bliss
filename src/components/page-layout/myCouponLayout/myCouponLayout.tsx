@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery, useQueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 
 import MyPageNav from '@/components/common/MyPageNav/MyPageNav';
@@ -28,12 +28,22 @@ interface Coupon {
 export default function MyCouponLayout() {
   const [state, setState] = useState(0);
   const [page, setPage] = useState(1);
+  const queryClient = useQueryClient();
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isPlaceholderData } = useQuery({
     queryKey: [page, state],
     queryFn: () => getPagenationCoupon(state, page, 4),
     placeholderData: keepPreviousData,
   });
+
+  useEffect(() => {
+    if (!isPlaceholderData && !data?.isLastPage) {
+      queryClient.prefetchQuery({
+        queryKey: [page + 1, state],
+        queryFn: () => getPagenationCoupon(state, page + 1, 4),
+      });
+    }
+  }, [isPlaceholderData, queryClient, page, data?.isLastPage, state]);
 
   return (
     <>
