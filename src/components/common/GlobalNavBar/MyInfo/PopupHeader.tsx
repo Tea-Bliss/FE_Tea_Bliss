@@ -15,7 +15,7 @@ export default function PopupHeader({ toggle }: PopupHeaderProps) {
     <div className={cn('popupHeader')}>
       <h2>내 정보</h2>
       <button onClick={toggle}>
-        <Close />
+        <Close width={16} height={16} stroke={'#000'} />
       </button>
     </div>
   );

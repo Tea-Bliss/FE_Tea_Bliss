@@ -1,0 +1,39 @@
+.container {
+  @include flexSort(column, center, flex-start, 1.2rem);
+  padding: 1.6rem;
+  background-color: #fefcf8;
+  border: 0.1rem solid $black-4;
+}
+
+.item {
+  width: 100%;
+  @include flexSort(row, space-between, center, null);
+}
+
+.label,
+.amount,
+.currency {
+  color: $black-13;
+  @include font(1.6rem, 400, 2.4rem);
+}
+
+.additionalInfo {
+  width: 100%;
+  text-align: right;
+  color: #d95e55;
+  @include font(1.4rem, 400, 2rem);
+
+  strong {
+    @include font(1.4rem, 700, 2rem);
+  }
+}
+
+.total-item {
+  border-top: 0.1rem solid $black-6;
+  padding-top: 1.8rem;
+}
+
+.total-amount {
+  color: $black-13;
+  @include font(2rem, 400, 2.8rem);
+}

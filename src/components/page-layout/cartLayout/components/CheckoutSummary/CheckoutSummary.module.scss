@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+  width: 30.4rem;
+  padding-top: 7.2rem;
+  min-height: 94.2rem;
+
+  @include tablet {
+    width: 100%;
+    padding: 2rem;
+  }
+}
+
+.wrapper {
+  @include flexSort(column, null, null, 2rem);
+  position: sticky;
+  top: 6rem;
+  right: 0;
+}

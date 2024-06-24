@@ -77,6 +77,7 @@ export default function ProductList() {
               <Card
                 type="productList"
                 key={item.id}
+                id={item.id}
                 img={item.img}
                 href={item.href}
                 price={item.price}
