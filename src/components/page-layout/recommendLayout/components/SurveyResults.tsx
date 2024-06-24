@@ -40,7 +40,15 @@ export default function SurveyResults({ name }: SurveyResultsProps) {
         <div className={cn('section')}>
           <h3 className={cn('sub-title')}>선호하는 재료</h3>
           <div className={cn('results')}>
-            <BlendingLabel>단맛</BlendingLabel>
+            <BlendingLabel>홍차</BlendingLabel>
+            <BlendingLabel>푸에르 티</BlendingLabel>
+            <BlendingLabel>차이 티</BlendingLabel>
+            <BlendingLabel>우롱차</BlendingLabel>
+            <BlendingLabel>백차</BlendingLabel>
+            <BlendingLabel>녹차</BlendingLabel>
+            <BlendingLabel>허브 티</BlendingLabel>
+            <BlendingLabel>루이보스 티</BlendingLabel>
+            <BlendingLabel>상관없음</BlendingLabel>
           </div>
         </div>
         <div className={cn('section')}>

@@ -9,7 +9,7 @@
 .title {
   max-width: 30rem;
   white-space: nowrap;
-  @include font(2.5rem, 200, normal);
+  @include font(2rem, 200, normal);
   @include flexSort(null, null, null, null);
 }
 
@@ -17,7 +17,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  @include font(2.5rem, 200, normal);
+  @include font(2rem, 200, normal);
 }
 
 .section {
@@ -25,7 +25,7 @@
 }
 
 .sub-title {
-  @include font(2rem, 100, normal);
+  @include font(1.5rem, 100, normal);
 }
 
 .results {
