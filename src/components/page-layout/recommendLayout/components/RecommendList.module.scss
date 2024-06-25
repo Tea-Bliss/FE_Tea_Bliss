@@ -1,0 +1,13 @@
+.layout {
+  width: 50rem;
+  flex-wrap: wrap;
+  @include flexSort(row, null, null, 3rem);
+}
+
+.container {
+  width: 14.6rem;
+}
+
+.card {
+  flex-shrink: 1;
+}
