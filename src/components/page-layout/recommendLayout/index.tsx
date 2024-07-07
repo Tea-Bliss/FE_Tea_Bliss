@@ -4,18 +4,17 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 
 import styles from '@/components/page-layout/recommendLayout/RecommendLayout.module.scss';
+import { useUserInfoQuery } from '@/hooks/query/useUserInfoQuery';
 import Checklist from '@/images/checklist.png';
+import Banner from '@/images/surveyResultBanner.png';
 
 import RecommendList from './components/RecommendList';
 import SurveyResults from './components/SurveyResults';
 
-import Banner from '@/images/surveyResultBanner.png';
-import { useUserInfoQuery } from '@/hooks/query/useUserInfoQuery';
-
 const cn = classNames.bind(styles);
 
 interface RecommendLayoutProps {
-  name: string;
+  name?: string;
   surveyId: string;
 }
 

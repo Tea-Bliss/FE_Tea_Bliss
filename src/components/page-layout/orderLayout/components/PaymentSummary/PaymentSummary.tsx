@@ -27,12 +27,14 @@ export default function PaymentSummary({ selectedPayment }: PaymentSummaryProps)
   const deliveryFee = totalPrice >= 50000 ? 0 : 3000;
   const totalAmount = totalPrice + deliveryFee;
 
-  const transformedItems = selectedItems.map((item) => ({
-    id: item.id.toString(),
-    name: item.product,
-    amount: item.price,
-    quantity: item.quantity,
-  }));
+  const transformedItems =
+    selectedItems &&
+    selectedItems.map((item) => ({
+      id: item.id.toString(),
+      name: item.product,
+      amount: item.price,
+      quantity: item.quantity,
+    }));
 
   const generateOrderName = () => {
     if (transformedItems.length === 1) {

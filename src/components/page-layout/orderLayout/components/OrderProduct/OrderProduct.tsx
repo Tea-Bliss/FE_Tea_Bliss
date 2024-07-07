@@ -17,11 +17,13 @@ export default function OrderProduct() {
       <AccordionTrigger className={cn('trigger')} value="item1">
         주문 상품
       </AccordionTrigger>
-      <AccordionContent className={cn('content')} value="item1">
-        {orderProductItem.map((item: SelectedItemsType) => (
-          <OrderProductItem {...item} key={item.id} />
-        ))}
-      </AccordionContent>
+      {orderProductItem && (
+        <AccordionContent className={cn('content')} value="item1">
+          {orderProductItem.map((item: SelectedItemsType) => (
+            <OrderProductItem {...item} key={item.id} />
+          ))}
+        </AccordionContent>
+      )}
     </Accordion>
   );
 }

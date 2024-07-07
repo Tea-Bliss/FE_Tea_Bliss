@@ -3,17 +3,17 @@
 import classNames from 'classnames/bind';
 
 import BlendingLabel from '@/components/common/BlendingLabel/BlendingLabel';
-import styles from '@/components/page-layout/recommendLayout/components/SurveyResults.module.scss';
 import useGetSurveyResults from '@/components/page-layout/recommendLayout/apis/useGetSurveyResults';
+import styles from '@/components/page-layout/recommendLayout/components/SurveyResults.module.scss';
 
 const cn = classNames.bind(styles);
 
 interface SurveyResultsProps {
   name: string | undefined;
-  taste: string;
-  sale: number;
-  category: string;
-  caffeine: string;
+  taste?: string;
+  sale?: number;
+  category?: string;
+  caffeine?: string;
   surveyId: string;
 }
 
