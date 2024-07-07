@@ -60,7 +60,7 @@ export default function ProductList() {
   };
 
   useEffect(() => {
-    if (!isPlaceholderData && !data?.tea[0].lastPage) {
+    if (!isPlaceholderData && !data?.tea[0]?.lastPage) {
       queryClient.prefetchQuery({
         queryKey: ['items', page + 1, selectedFilter, caffeine, season],
         queryFn: () => getPagenationItems(selectedFilter, page + 1, LIMIT, caffeine, season),

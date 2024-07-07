@@ -23,16 +23,18 @@ export default function PaymentSummary({ selectedPayment }: PaymentSummaryProps)
   const { mutate } = usePaymentMutation();
   const selectedItems: SelectedItemsType[] =
     typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('selectedItems')!) : [];
-  const totalPrice = selectedItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalPrice = selectedItems?.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const deliveryFee = totalPrice >= 50000 ? 0 : 3000;
   const totalAmount = totalPrice + deliveryFee;
 
-  const transformedItems = selectedItems.map((item) => ({
-    id: item.id.toString(),
-    name: item.product,
-    amount: item.price,
-    quantity: item.quantity,
-  }));
+  const transformedItems =
+    selectedItems &&
+    selectedItems.map((item) => ({
+      id: item.id.toString(),
+      name: item.product,
+      amount: item.price,
+      quantity: item.quantity,
+    }));
 
   const generateOrderName = () => {
     if (transformedItems.length === 1) {
@@ -76,7 +78,7 @@ export default function PaymentSummary({ selectedPayment }: PaymentSummaryProps)
       } else {
         alert(response.message);
       }
-      localStorage.removeItem('selectedItems');
+      // localStorage.removeItem('selectedItems');
       router.push(ROUTE.CART);
       return;
     }
