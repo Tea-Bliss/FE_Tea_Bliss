@@ -9,7 +9,7 @@ const cn = classNames.bind(styles);
 interface PriceDetailsProps extends CheckoutSummaryProps {}
 
 export default function PriceDetails({ selectedItems }: PriceDetailsProps) {
-  const totalPrice = selectedItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalPrice = selectedItems?.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const deliveryFee = totalPrice >= 50000 ? 0 : 3000;
   const totalAmount = totalPrice + deliveryFee;
   const additionalOrderForFreeShipping = 50000 - totalPrice;

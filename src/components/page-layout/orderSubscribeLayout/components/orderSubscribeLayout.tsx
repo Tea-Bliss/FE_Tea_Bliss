@@ -8,7 +8,7 @@ import MyPageNav from '@/components/common/MyPageNav/MyPageNav';
 import MyPageSubNav from '@/components/common/MyPageSubNav';
 import SubHeader from '@/components/common/SubHeader/SubHeader';
 import styles from '@/components/page-layout/orderSubscribeLayout/components/orderSubscribeLayout.module.scss';
-import Img from '@/icons/다운로드.jpg';
+import Img from '@/images/목데이터.png';
 
 import Card from './Card/Card';
 

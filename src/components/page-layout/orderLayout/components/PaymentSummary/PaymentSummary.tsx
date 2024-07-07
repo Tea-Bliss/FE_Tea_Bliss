@@ -23,7 +23,7 @@ export default function PaymentSummary({ selectedPayment }: PaymentSummaryProps)
   const { mutate } = usePaymentMutation();
   const selectedItems: SelectedItemsType[] =
     typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('selectedItems')!) : [];
-  const totalPrice = selectedItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalPrice = selectedItems?.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const deliveryFee = totalPrice >= 50000 ? 0 : 3000;
   const totalAmount = totalPrice + deliveryFee;
 
@@ -76,7 +76,7 @@ export default function PaymentSummary({ selectedPayment }: PaymentSummaryProps)
       } else {
         alert(response.message);
       }
-      localStorage.removeItem('selectedItems');
+      // localStorage.removeItem('selectedItems');
       router.push(ROUTE.CART);
       return;
     }

@@ -17,10 +17,10 @@ interface CarouselProps {
     href: string;
     isMainPageCard?: boolean;
     img: string;
-    title: string;
+    nameEng: string;
     price: number;
     review: number;
-    scope: number;
+    rating: number;
   }[];
   num: number;
 }
@@ -79,10 +79,10 @@ export default function Carousel({ cards, num }: CarouselProps) {
                 type="main"
                 href={card.href}
                 img={card.img}
-                title={card.title}
+                title={card.nameEng}
                 price={card.price}
                 review={card.review}
-                scope={card.scope}
+                scope={card.rating}
               />
             </div>
           ))}
