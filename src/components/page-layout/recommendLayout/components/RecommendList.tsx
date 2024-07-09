@@ -50,6 +50,8 @@ export default function RecommendList({ surveyId }: RecommendListProps) {
         </div>
       ))} */}
     </div>
-    /** * TODO: Todo data 받아지는거 확인 후 하단 코드로 바꾸기(data 구조 한번 확인하고) */
+    /**
+     * TODO: Todo data 받아지는거 확인 후 상단 코드로 바꾸기(data 구조 한번 확인하고)
+     */
   );
 }
