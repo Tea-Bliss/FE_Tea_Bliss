@@ -20,7 +20,7 @@ export default function RecommendList({ surveyId }: RecommendListProps) {
   return (
     // 목데이터로 구현한 코드
     <div className={cn('layout')}>
-      {teas.map((item) => (
+      {teas.slice(0, 6).map((item) => (
         <div className={cn('container')} key={item.id}>
           <Card
             type="productList"
@@ -35,7 +35,6 @@ export default function RecommendList({ surveyId }: RecommendListProps) {
           />
         </div>
       ))}
-      /** * TODO: Todo data 받아지는거 확인 후 하단 코드로 바꾸기(data 구조 한번 확인하고) */
       {/* {data.slice(0, 6).map((item: FinishedItem) => (
         <div className={cn('container')} key={item.id}>
           <Card
@@ -51,5 +50,6 @@ export default function RecommendList({ surveyId }: RecommendListProps) {
         </div>
       ))} */}
     </div>
+    /** * TODO: Todo data 받아지는거 확인 후 하단 코드로 바꾸기(data 구조 한번 확인하고) */
   );
 }
