@@ -3,7 +3,6 @@
 import classNames from 'classnames/bind';
 
 import BlendingLabel from '@/components/common/BlendingLabel/BlendingLabel';
-import useGetSurveyResults from '@/components/page-layout/recommendLayout/apis/useGetSurveyResults';
 import styles from '@/components/page-layout/recommendLayout/components/SurveyResults.module.scss';
 
 const cn = classNames.bind(styles);
@@ -19,6 +18,9 @@ interface SurveyResultsProps {
 
 export default function SurveyResults({ name, taste, sale, category, caffeine, surveyId }: SurveyResultsProps) {
   // const { data } = useGetSurveyResults(surveyId);
+  /**
+   * TODO: 목데이터 -> data 받아지면 하단 코드 수정필요
+   */
   const data = [
     {
       status: 200,
