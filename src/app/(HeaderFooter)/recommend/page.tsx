@@ -8,5 +8,6 @@ interface RecommendProps {
 }
 
 export default function Recommend({ searchParams }: RecommendProps) {
+  console.log(searchParams.data);
   return <RecommendLayout surveyId={searchParams.data} />;
 }
